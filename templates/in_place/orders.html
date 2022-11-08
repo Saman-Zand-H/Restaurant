@@ -1,0 +1,310 @@
+{% extends 'base/layout/dash_base.html' %}
+{% load static humanize crispy_forms_tags dash_utils %}
+
+
+{% block stylesheet %}
+    <style>
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+    </style>
+{% endblock %}
+
+{% block modals %}
+    {% for order in orders %}
+        <div 
+             class="modal fade"
+             id="edit-order-{{ order.qs.public_uuid }}"
+             tabindex="-1"
+             role="dialog"
+            >
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content bg-dark">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-light">
+                            Edit Order
+                        </h5>
+                        <button 
+                                type="button" 
+                                class="close" 
+                                data-dismiss="modal" 
+                                aria-label="Close"
+                               >
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form 
+                              method="POST" 
+                              action="{% url 'in_place:edit_order' %}"
+                              class="edit_form"
+                              id="editOrderForm-{{ order.qs.public_uuid }}"
+                             >
+                            {% csrf_token %}
+                            {{ order.formset.management_form }}
+                            <div class="table-responsive">
+                                <table class="table table-dark table-bordered">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th>item</th>
+                                            <th>count</th>
+                                            <th>fee</th>
+                                            <th>auto price</th>
+                                            <th>total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for form in order.formset.forms %}
+                                            <tr>
+                                                <td>{{ form.item }}</td>
+                                                <td>{{ form.count }}</td>
+                                                <td>{{ form.fee }}</td>
+                                                <td>
+                                                    <label
+                                                        class="form-check-label d-flex justify-content-center 
+                                                                align-items-center align-content-center"
+                                                        >
+                                                        {{ form.auto_price }}
+                                                        <span class="form-check-sign">
+                                                            <span class="check"></span>
+                                                        </span>
+                                                    </label>
+                                                </td>
+                                                <td>{{ form.paid_price }}</td>
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div>
+                                <hr>
+                                <div class="mx-3 mt-4">
+                                    {% for val, choice in order.order_form.order_type.field.choices %}
+                                        <div class="form-check form-check-radio">
+                                            <label class="form-check-label">
+                                                <input 
+                                                       type="radio" 
+                                                       class="form-check-input" 
+                                                       name="order_type" 
+                                                       value="{{ val }}"
+                                                       {% if val == order.order_form.order_type.value %}
+                                                           checked
+                                                       {% endif %}   
+                                                      >
+                                                {{ choice|upper }}
+                                                <span class="circle">
+                                                    <span class="check"></span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                    {% endfor %}
+                                    <input 
+                                           type="hidden"
+                                           name="public_uuid"
+                                           value="{{ order.qs.public_uuid }}"
+                                          >
+                                </div>
+                                <div class="dinein_info" id="dinein_info-{{order.qs.public_uuid}}">
+                                    <hr>
+                                    <div class="mt-5 mx-3">
+                                        <div class="form-group">
+                                            <label for="dinein_table_num" class="bmd-label-floating">
+                                                {{ order.dinein_form.table_number.label|title }}*
+                                            </label>
+                                            {{ order.dinein_form.table_number }}
+                                            <span class="text-warning my-2">
+                                                {{ order.dinein_form.table_number.errors }}
+                                            </span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="dinein_desc" class="bmd-label-floating">
+                                                {{ order.dinein_form.description.label|title }}
+                                            </label>
+                                            {{ order.dinein_form.description }}
+                                            <span class="text-warning my-2">
+                                                {{ order.dinein_form.description.errors }}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                            Close
+                        </button>
+                        <button 
+                                type="button" 
+                                class="btn btn-primary" 
+                                onclick="javascript:$('#editOrderForm-{{ order.qs.public_uuid }}').submit()"
+                               >
+                            Edit
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-header card-header-primary">
+            <h4 class="card-title">
+                Orders - <span id="orders-date">
+                    {% now "F j\t\h, Y" %}
+                </span>
+            </h4>
+        </div>
+        <div class="card-body table-responsive" id="orders-table">
+            <table class="table table-hover">
+                <thead>
+                    <th>no.</th>
+                    <th>order</th>
+                    <th>timestamp</th>
+                    <th>type</th>
+                    <th></th>
+                </thead>
+                <tbody>
+                    {% for order in orders %}
+                        <tr>
+                            <td>{{ order.order_number }}</td>
+                            <td>
+                                <span class="text-wrap">
+                                    {{ order.order_repr|join:", " }}
+                                </span>
+                            </td>
+                            <td>
+                                {{ order.timestamp|date:'H\:i' }}
+                            </td>
+                            <td>{{ order.get_order_type_display }}</td>
+                            <td>
+                                <button 
+                                        type="button"
+                                        rel="tooltip"
+                                        title="Details"
+                                        class="btn btn-white btn-link btn-sm"
+                                        data-toggle="modal"
+                                        data-target="order-modal-{{ order.public_uuid }}"
+                                       >
+                                    <i class="material-icons">info</i>
+                                </button>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="5">
+                            total: {{ restaurant.daily_revenue|trunc_number }}T
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script>
+        const $autoPrice = $(".auto-price"),
+              $count = $(".item-count"),
+              $orderType = $("#newOrderForm input[name=order_type]").filter(":checked"),
+              $dinein = $("#new_dinein_info"),
+              $paid = $(".paid-price");
+        $(document).ready(() => {
+            $paid.prop("disabled", true);
+            $paid.filter((i, e) => { return e.value == 0 }).val(0);
+            $count.attr("min", 0);
+            $("#order_type-i").prop("checked", true);
+            if ($orderType.val() === "d") {
+                $dinein.hide();
+            }
+            var $edit_form,
+                $edit_dinein,
+                $edit_order_type;
+            {% for order in orders %}
+                $edit_form = $("#editOrderForm-{{ order.qs.public_uuid }}"),
+                $edit_dinein = $edit_form.find(".dinein_info"),
+                $edit_order_type = $edit_form.find("input[name=order_type]");
+                if ($edit_order_type.filter(':checked').val() === "d") {
+                    $edit_dinein.hide();
+                }
+                $edit_order_type.change((e) => {
+                        $("#dinein_info-{{ order.qs.public_uuid }}").toggle()
+                    });
+            {% endfor %}
+        });
+        $autoPrice.click((e) => {
+                const formNumber = e.currentTarget.id.split("-")[1],
+                      formType = e.currentTarget.id.split("-")[0],
+                      formId = e.currentTarget.closest("form").id,
+                      formUuid = formId.split("-").slice(1).join("-"),
+                      $form = $(`#${formId}`),
+                      $e = $(`#${e.currentTarget.getAttribute("id")}`),
+                      orderId = $(`#${e.currentTarget.getAttribute("id")}`);
+                var count,
+                    fee,
+                    $paidPrice;
+                    
+                if (formType == "edit_form") {
+                    fee = parseInt($(`#edit_form-${formNumber}-fee-${formUuid}`).val());
+                    count = parseInt($(`#edit_form-${formNumber}-count-${formUuid}`).val() | 0);
+                    $paidPrice = $(`#edit_form-${formNumber}-paid_price-${formUuid}`);
+                } else {
+                    fee = parseInt($(`#id_form-${formNumber}-fee`).val() | 0);
+                    count = parseInt($(`#id_form-${formNumber}-count`).val() | 0);
+                    $paidPrice = $(`#id_form-${formNumber}-paid_price`);
+                }
+                
+                $e.prop("checked", (_, v) => {
+                    v ? $paidPrice.prop("disabled", true)
+                        : $paidPrice.prop("disabled", false);
+                    if (v) {
+                        $form.find(`.paid-price[name=form-${formNumber}-paid_price]`
+                            ).val(parseInt(count * fee) | 0);
+                    }
+                });
+            });
+            $count.keyup((e) => {
+                if (e.currentTarget.value) {
+                    const formNumber = e.currentTarget.id.split("-")[1],
+                          formUuid = e.currentTarget.closest("form").id.split("-").slice(1).join("-"),
+                          formType = e.currentTarget.id.split("-")[0];
+                    var fee,
+                        $paidPriceLoc,
+                        count;
+
+                    if (formType == "id_form") {
+                        fee = parseInt($(`#${e.currentTarget.closest("form").id} #id_form-${formNumber}-fee`).val());
+                        $autoPriceLoc = $(`#id_form-${formNumber}-auto_price`);
+                        count = parseInt($(`#${e.currentTarget.closest("form").id} #id_form-${formNumber}-count`).val() | 0);
+                        $paidPriceLoc = $(`#${e.currentTarget.closest("form").id} #id_form-${formNumber}-paid_price`);
+                    } else {
+                        fee = parseInt($(`#${e.currentTarget.closest("form"
+                        ).getAttribute("id")} #edit_form-${formNumber}-fee-${formUuid}`).val());
+                        count = parseInt($(`#${e.currentTarget.closest("form"
+                        ).getAttribute("id")} #edit_form-${formNumber}-count-${formUuid}`).val() | 0);
+                        $paidPriceLoc = $(`#${e.currentTarget.closest("form"
+                        ).getAttribute("id")} #edit_form-${formNumber}-paid_price-${formUuid}`);
+                        $autoPriceLoc = $(`#edit_form-${formNumber}-auto_price-${formUuid}`);
+                    }
+                    $autoPriceLoc.prop("checked", (_, v) => {
+                        if (v) {
+                            $paidPriceLoc.val(parseInt(count * fee) | 0);
+                        }
+                    });
+                }
+            });
+            $("#newOrderForm input[name=order_type]").change((e) => {
+                $dinein.toggle();
+            });
+    </script>
+{% endblock %}

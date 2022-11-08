@@ -1,0 +1,30 @@
+# Names of nodes to start
+#   most people will only start one node:
+CELERYD_NODES="worker1"
+#   but you can also start multiple and configure settings
+#   for each in CELERYD_OPTS
+#CELERYD_NODES="worker1 worker2 worker3"
+#   alternatively, you can specify the number of nodes to start:
+#CELERYD_NODES=10
+
+# Absolute or relative path to the 'celery' command:
+CELERY_BIN="/usr/local/bin/celery"
+
+# App instance to use
+CELERY_APP="conf"
+
+# Where to chdir at start.
+CELERYD_CHDIR="/usr/src/app"
+
+CELERYD_OPTS="--time-limit=300"
+
+CELERYD_LOG_LEVEL="INFO"
+CELERYD_LOG_FILE="/var/log/celery/%n%I.log"
+CELERYD_PID_FILE="/var/run/celery/%n.pid"
+
+CELERYD_USER="root"
+CELERYD_GROUP="root"
+
+# If enabled pid and log directories will be created if missing,
+# and owned by the userid/group configured.
+CELERY_CREATE_DIRS=1

@@ -1,0 +1,343 @@
+{% extends 'base/layout/base.html' %}
+
+{% load static %}
+
+{% block title %} {{ restaurant.name }} {% endblock %}
+
+{% block stylesheet %}
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.1.2/css/star-rating.css'
+        integrity='sha512-cqu9y2zklfOkWLlEXgeHQvROuTIy9U5QRr3k3Gpv45PR0tWdtKGgbS4D2UqavK/4Ss4/jFw97SFwepxvgPArdg=='
+        crossorigin='anonymous' />
+    <link rel='stylesheet'
+        href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.1.2/themes/krajee-fas/theme.css'
+        integrity='sha512-ewddDS1iCt0mC7H2IO6anlOjl/XbSPMIWS/Tf7Eg6Ep21XnKBs3zXTex8VvsisozTdjww9um0oYrFaHkZqtAmw=='
+        crossorigin='anonymous' />
+{% endblock %}
+
+{% block content %}
+<body class="index-page bg-gray-200">
+    {% include 'base/includes/navbar.html' %}
+    {% include 'base/includes/alerts.html' %}
+
+    <div class="row d-flex mb-7" id="topContainer">
+        <div class="col">
+            <div class="image-container">
+                <img class="img-fluid w-100 h-50 mt-auto z-index-0 position-absolute"
+                    src="{{ restaurant.get_picture_url }}">
+            </div>
+            <button 
+                    class="btn btn-white rounded rounded-circle shadow shadow-none px-3 ms-4 mt-4 btn-md"
+                    id="goBackBtn"
+                   >
+                   <i class="fas fa-chevron-left fa-1x"></i>
+            </button>
+        </div>
+    </div>
+    <div class="row mx-0 mt-8" id="mainContainer">
+        <div class="col z-index-2 text-left bg-white shadow shadow-blur">
+            <div class="row">
+                <div class="col-10">
+                    <div class="offset-1 mt-4">
+                        <div>
+                            <h1 class="display-5 text-dark">{{ restaurant.name }}</h1>
+                            <small class="small">{{ restaurant.description }}</small>
+                            <span class="dark horizontal my-0">
+                                <small>
+                                    <i class="material-icons position-relative text-sm mx-2 my-auto">place</i>
+                                    {{ restaurant.info.address }}
+                                </small>
+                            </span>
+                        </div>
+                        <hr class="bg-dark">
+                        <div class="my-4">
+                            <h2>
+                                {% if restaurant.delivery %}
+                                    <i class="fas fa-2xl fa-motorcycle"></i>
+                                {% else %}
+                                    <i class="fas fa-2xl fa-ban"></i>
+                                    Delivery is not available for the searched area.
+                                {% endif %}
+                            </h2>
+                        </div>
+                        <center class="row d-flex">
+                            <div class="col justify-content-around">
+                                <button 
+                                        class="btn btn-light shadow shadow-card flex-fill" 
+                                        onclick="toggleContainers()" 
+                                        id="navItems"
+                                       >
+                                       Items
+                                </button>
+                                <button 
+                                        class="btn shadow shadow-card flex-fill" 
+                                        onclick="toggleContainers()" 
+                                        id="navReviews"
+                                       >
+                                       Reviews
+                                </button>
+                            </div>
+                        </center>
+                        <hr class="bg-dark">
+                        <div class="row" id="allItemsContainer">
+                            <div class="col-lg-3 col-md-5 col-12 mb-5">
+                                <div class="card card-body bg-white shadow shadow-card">
+                                    {% if restaurant.restaurant_cuisines.exists %}
+                                        {% for cuisine in restaurant.restaurant_cuisines.all %}
+                                            <a class="my-2" href="#cuisine-{{ cuisine.public_uuid }}">
+                                                {{ cuisine.name }}
+                                            </a>
+                                        {% endfor %}
+                                    {% else %}
+                                        <span>
+                                            This place hasn't registered any cuisine yet.
+                                        </span>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="col-lg-8 col-md-7 col-12 mx-4 d-flex mb-6 flex-wrap">
+                                {% if restaurant.restaurant_cuisines.exists %}
+                                    {% for cuisine in restaurant.restaurant_cuisines.all %}
+                                        <div class="row flex-fill" id="cuisine-{{ cuisine.public_uuid }}">
+                                            <center>
+                                                <hr class="bg-dark">
+                                                <h1>{{ cuisine.name }}</h1>
+                                                <hr class="bg-dark">
+                                            </center>
+                                            {% if cuisine.cuisine_items.exists %}
+                                                {% for item in cuisine.cuisine_items.all %}
+                                                    <div
+                                                       class="col-lg-6 d-flex" 
+                                                      >
+                                                        <div 
+                                                             class="card card-body rounded rounded-0 flex-md-row gap-md-3
+                                                                    shadow shadow-card border h-80 mb-5 mt-2 px-4
+                                                                    flex-md-nowrap"
+                                                            >
+                                                            <a 
+                                                               href="javascript:void(0);" 
+                                                               data-bs-toggle="modal" 
+                                                               data-bs-target="#item-{{item.public_uuid}}"
+                                                              >
+                                                                <img 
+                                                                     src="{{ item.get_picture_url }}" 
+                                                                     alt="item-picture" 
+                                                                     class="img-fluid shadow shadow-blur border-radius-lg w-25"
+                                                                    >
+                                                                <div>
+                                                                    <h5>{{ item.name }}</h5>
+                                                                    <small class="small">{{ item.description }}</small><br>
+                                                                    <small class="small">Click for details</small>
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                {% endfor %}
+                                            {% else %}
+                                                <div class="card card-body shadow shadow-card">
+                                                    <h1 class="display-4">
+                                                        No item registered for this cuisine.
+                                                    </h1>
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                    {% endfor %}
+                                {% else %}
+                                    <div class="card card-body h-100 w-100 bg-white shadow shadow-blur text-center">
+                                        <h1 class="display-1">
+                                            There's nothing to show.
+                                        </h1>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="row d-none mb-6" id="allReviewsContainer">
+                            <div class="col">
+                                {% if reviews.exists %}
+                                    {% for review in reviews %}
+                                        <div class="row d-flex">
+                                            <div class="col-lg-8 mt-2 card card-body rounded rounded-0 justify-content-center offset-2 col-12">
+                                                <h6 class="flex-fill">{{ review.user.name|title }}</h6>
+                                                <small class="small">
+                                                    for {{ review.item.item.name }} - {{ review.item }} at {{ review.date_created }}
+                                                </small>
+                                                <input value="{{ review.score }}" id="review-{{ review.public_uuid }}">
+                                                <p class="flex-fill">
+                                                    {{ review.review }}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                {% else %}
+                                    <div class="card card-body">
+                                        <h1 class="display-3">No review has been submitted for this restaurant.</h1>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% include 'base/includes/footer.html' %}
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.1.2/js/star-rating.min.js'
+        integrity='sha512-BjVoLC9Qjuh4uR64WRzkwGnbJ+05UxQZphP2n7TJE/b0D/onZ/vkhKTWpelfV6+8sLtQTUqvZQbvvGnzRZniTQ=='
+        crossorigin='anonymous'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.1.2/themes/krajee-fas/theme.js'
+        integrity='sha512-QCR1cBLo+kxccYVcK32Eyjx20ND8bxIytZp0nQG+SDXhSaYXOPTBwJ+0x9E9Xhna4dzMWoEgRd0/KmD2vqOB3g=='
+        crossorigin='anonymous'></script>
+    <script 
+            src='https://cdnjs.cloudflare.com/ajax/libs/js-cookie/3.0.1/js.cookie.js' 
+            integrity='sha512-DJw15+xxGmXB1/c6pvu2eRoVCGo5s6rdeswkFS4HLFfzNQSc6V71jk6t+eMYzlyakoLTwBrKnyhVc7SCDZOK4Q==' 
+            crossorigin='anonymous'
+           ></script>
+    <script>
+        const searchPrefs = {
+            "lat": Cookies.get("lat"),
+            "lon": Cookies.get("lon"),
+        },
+              searchParamsArr = Array();
+
+        for (let i = 0; i < Object.entries(searchPrefs).length; i++) {
+            searchParamsArr.push(Object.entries(searchPrefs)[i].join("="))
+        }
+        
+        const qString = searchParamsArr.join("&"),
+              searchUrl = `${window.location.origin}/restaurants/?${qString}`,
+              returnToSearch = (e) => {
+                window.location.href = searchUrl;
+              },
+              goBackBtn = $("#goBackBtn");
+        
+        goBackBtn.click(returnToSearch);
+    </script>
+    <script>
+        const navItemsBtn = $("#navItems"),
+              navReviewsBtn = $("#navReviews"),
+              allItemsContainer = $("#allItemsContainer"),
+              allReviewsContainer = $("#allReviewsContainer"),
+              toggleContainers = (e) => {
+                  allReviewsContainer.toggleClass("d-none");
+                  allItemsContainer.toggleClass("d-none");
+                  navItemsBtn.toggleClass("btn-light");
+                  navReviewsBtn.toggleClass("btn-light");
+              };
+    </script>
+    <script>
+        const modalTemplates = `
+            {% for cuisine in restaurant.restaurant_cuisines.all %}
+                {% for item in cuisine.cuisine_items.all %}
+                    <div 
+                        class="modal fade" 
+                        role="dialog"
+                        id="item-{{item.public_uuid}}" 
+                        tabindex="-1" 
+                        aria-labelledby="item-variations" 
+                        aria-hidden="true"
+                        >
+                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Item Variations for {{ item.name|title }}</h5>
+                                    <button type="button" class="btn-close bg-dark" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div 
+                                    class="modal-body d-flex px-5 flex-wrap flex-column 
+                                            justify-content-center align-content-center align-items-center"
+                                            id="modal-body-{{ item.public_uuid }}"
+                                    >
+                                    {% if item.item_variations.exists %}
+                                        {% for item_var in item.item_variations.all %}
+                                            <div class="flex-fill w-100 my-4 flex-row">
+                                                <div class="row">
+                                                    <div class="col-lg-10 col flex-column">
+                                                        <h5>{{ item_var.name }}</h5>
+                                                        <h6>Price: {{ item_var.price }}</h6>
+                                                        <small class="small">{{ item_var.description|default:'' }}</small>
+                                                    </div>
+                                                    <div class="col-lg-2 col">
+                                                        <button 
+                                                                public_uuid={{ item_var.public_uuid }}
+                                                                type="button" 
+                                                                class="btn btn-info addToCartBtn"
+                                                               >
+                                                            <i class="fas fa-cart-plus"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                    {% else %}
+                                        <h2 class="text-center">No variation is provided for this item.</h2>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endfor %}`;
+        $("#mainContainer").after($.parseHTML(modalTemplates));
+    </script>
+    <script>
+        const createMessge = (message_tag, message, dom_elem) => {
+            var tag = message_tag;
+            if (message_tag == 'error') {
+                tag = 'danger'
+            }
+            const messageTemplate = `
+                    <div 
+                         class="alert alert-${tag.toLowerCase()} 
+                                alert-dismissible fade show" 
+                                role="alert"
+                        >
+                        <span class="alert-icon"><i class="ni ni-like-2"></i></span>
+                        <span class="alert-text"><strong>${message_tag.toUpperCase()}!</strong> ${message}</span>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                `;
+            $(`#${dom_elem.getAttribute("id")}`).prepend($.parseHTML(messageTemplate));
+        };
+    </script>
+    <script>
+        var ratingOptions = {
+                                min: 0,
+                                max: 5,
+                                theme: "krajee-fas",
+                                size: "xs",
+                                containerClass: "plugin-rating",
+                                displayOnly: true
+                            };
+        $("#review-{{ reviews.first.public_uuid }}").rating(ratingOptions);
+        const addToCart = (public_uuid, element) => {
+            const csrftoken = Cookies.get("csrftoken");
+                $.ajax({
+                    method: "POST",
+                    data: {
+                        public_uuid: public_uuid,
+                    },
+                    headers: {
+                        "X-CSRFToken": csrftoken,
+                    },
+                    url: "{% url 'delivery:add_to_cart' %}",
+                    success: (data) => {
+                        $("#cart-count").html(data.user_cart_count);
+                        createMessge(data.message_tag, data.message, element);
+                    },
+                    error: (data) => {
+                        console.log(data);
+                    }
+                })
+            };
+        $(".addToCartBtn").click((e) => {
+            e.preventDefault();
+            addToCart(e.currentTarget.getAttribute("public_uuid"), 
+                      e.currentTarget.parentElement.parentElement.parentElement.parentElement);
+        })
+    </script>
+</body>
+
+{% endblock %}

@@ -1,0 +1,375 @@
+{% extends 'base/layout/base.html' %}
+
+{% load static humanize %}
+
+{% block title %}
+    {{ user.first_name|title }}'s Cart
+{% endblock %}
+
+{% block stylesheet %}
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/fakeLoader.js/1.1.0/fakeLoader.css'
+        integrity='sha512-T9RaysM7SOOcLWxh80AT9XOOxDIhhdt64IAnVLRCcl8wPFzL7dmHxl5J7XLbo2cnNzTS1lAjxVQ0uvBDstah7A=='
+        crossorigin='anonymous' />
+    <style>
+        tr.shipping-row {
+            height: 3rem;
+        }
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+        }
+
+        input[type=number] {
+        -moz-appearance: textfield;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+<body class="index-page bg-gray-200">
+    <div id="fakeLoader"></div>
+    {% include 'base/includes/navbar.html' %}
+    {% include 'base/includes/alerts.html' %}
+    
+    <section class="row bg-white shadow shadow-blur text-left ms-lg-1">
+        <div class="col-lg-8 col-12" id="cartContainer">
+            {% if user.user_cart.cart_items.exists %}
+                <div class="table-responsive mx-4 my-5" id="cartTable">
+                    <table class="table table-borderless">
+                        <thead class="thead-light">
+                            <th class="w-25">
+                                item
+                            </th>
+                            <th>
+                                price
+                            </th>
+                            <th>
+                                count
+                            </th>
+                            <th>
+                                final price
+                            </th>
+                        </thead>
+                        <tbody>
+                            {% for cart_item in user.user_cart.cart_items.all %}
+                                <tr class="cartItemRow" id="{{ cart_item.public_uuid }}-tr">
+                                    <td class="w-35">
+                                        <div class="d-flex flex-row flex-nowrap justify-content-between">
+                                            <img 
+                                            class="img-fluid w-25" 
+                                            src="{{ cart_item.item.item.get_picture_url }}"
+                                            >
+                                        <h6>
+                                            {{ cart_item.item.item.name }} - {{ cart_item.item.name }}
+                                        </h6>
+                                        </div>
+                                    </td>
+                                    <td class="w-10">
+                                        <div class="d-flex flex-row gap-2 justify-content-between align-items-baseline">
+                                            <h6 id="{{ cart_item.public_uuid }}-price">
+                                                {{ cart_item.item.price|intcomma }}
+                                            </h6>
+                                            T
+                                        </div>
+                                    </td>
+                                    <td class="w-25">
+                                        <div class="d-flex flex-row align-items-baseline my-4 align-content-center gap-2 justify-content-center">
+                                            {% if cart_item.count >= 1 %}
+                                            <button 
+                                                    class="btn btn-light btn-sm decreaseCount order-1" 
+                                                    public_uuid="{{ cart_item.public_uuid }}"
+                                                >
+                                                <i class="fas fa-minus"></i>
+                                            </button>
+                                        {% endif %}
+                                        <input 
+                                            type="number" 
+                                            class="w-25 order-2 text-center" 
+                                            id="{{ cart_item.public_uuid }}-count" 
+                                            value="{{ cart_item.count }}"
+                                            disabled
+                                            >
+                                        <button 
+                                                class="btn btn-light btn-sm increaseCount order-3" 
+                                                public_uuid="{{ cart_item.public_uuid }}" 
+                                            >
+                                            <i class="fas fa-plus"></i>
+                                        </button>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex align-items-baseline gap-3">
+                                            <span>
+                                                <h6 id="{{ cart_item.public_uuid }}-total">
+                                                    {{ cart_item.price|intcomma }}
+                                                </h6>
+                                            </span>
+                                            <span>T</span>
+                                        </div>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% else %}
+                <div class="card card-body shadow shadow-card mx-2 my-5 text-center">
+                    <h1 class="display-5">
+                        Your cart is empty. Let's check the 
+                        <a class="text-primary"
+                           href="{% url 'restaurants:list_restaurants' %}">
+                            restaurants
+                        </a>.
+                    </h1>
+                </div>
+            {% endif %}
+        </div>
+        <div class="col-lg-4 col-8 offset-lg-0 offset-2 bg-white my-5">
+            <div>
+                <div class="card shadow shadow-card w-lg-70 my-4">
+                    <div class="card-header text-center py-1">
+                        <h4>Shipping Address</h4>
+                    </div>
+                    <div class="card-body pb-4">
+                        <form method="POST" id="shippingForm">
+                            {% csrf_token %}
+                            {% if user.user_addresses.exists %}
+                                {% for address in user.user_addresses.all %}
+                                    <div class="form-check mb-3">
+                                        <input 
+                                            class="form-check-input" 
+                                            type="radio" 
+                                            name="shippingAddress" 
+                                            value="{{ address.public_uuid }}"
+                                            id="address-{{ address.public_uuid }}"
+                                            >
+                                        <label 
+                                            class="custom-control-label" 
+                                            for="address-{{ address.public_uuid }}"
+                                            >
+                                            {{ address.address }}
+                                        </label>
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                        </form>
+                        <div class="text-center">
+                            <a href="{% url 'accounts:profile' %}#addressesCard">
+                                <i class="fas fa-plus text-success"></i>
+                                add a new address
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {% if user.user_cart.discounts.exists %}
+                    <div class="card shadow shadow-card w-lg-70 my-4">
+                        <div class="card-header text-center py-1">
+                            <h4>Your Discounts</h4>
+                        </div>
+                        <div class="card-body pb-4">
+                            {% for discount in user.user_cart.discounts.all %}
+                                <div>
+                                    <form 
+                                          action="{% url 'delivery:discount' %}" 
+                                          method="POST" 
+                                          id="form-{{ discount.discount_code }}"
+                                         >
+                                        {% csrf_token %}
+                                        <span><i class="material-icons text-warning">circle</i></span>
+                                        <span>
+                                            {{ discount.item.item.name }} - {{ discount.item.name }}
+                                        </span>
+                                        <span>
+                                            {{ discount.item.price|intcomma }} -> {{ discount.new_price|intcomma }}
+                                        </span>
+                                        <input
+                                               type="hidden"
+                                               name="op"
+                                               value="d"
+                                              > 
+                                        <input
+                                               type="hidden"
+                                               name="promo_code"
+                                               value="{{ discount.discount_code }}"
+                                              > 
+                                        <center>
+                                            <a 
+                                               href="#form-{{ discount.discount_code }}" 
+                                               onclick="document.getElementById('form-{{ discount.discount_code }}').submit()"
+                                              >
+                                                Delete
+                                            </a>
+                                        </center>
+                                    </form>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endif %}
+            </div><hr class="bg-dark w-lg-70">
+            <div>
+                <form action="{% url 'delivery:discount' %}" method="POST">
+                    {% csrf_token %}
+                    <div class="input-group w-lg-70">
+                        <input 
+                               class="form-control px-3" 
+                               placeholder="promo code" 
+                               type="text" 
+                               name="promo_code"
+                               id="promoCode"
+                              >
+                        <input
+                               type="hidden"
+                               name="op"
+                               value="a"
+                              > 
+                        <button class="btn bg-gradient-dark" type="submit" id="promoBtn">
+                            Submit
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <div class="table-responsive">
+                <table class="table w-lg-70">
+                    <tbody>
+                        <tr class="shipping-row">
+                            <td>
+                                <div class="d-flex justify-content-between my-2">
+                                    <span>Shipping Cost:</span>
+                                    <span>{{ shipping_cost|default:'0' }}</span>
+                                </div>
+                            </td>                            
+                        </tr>
+                        <tr class="shipping-row">
+                            <td>
+                                <div class="d-flex justify-content-between my-2">
+                                    <span>Discount:</span>
+                                    <span>- {{ user.user_cart.get_discounts_price_diff|intcomma }}</span>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="shipping-row">
+                            <td>
+                                <div class="d-flex justify-content-between my-2">
+                                    <span>
+                                        <h5>Estimated Price:</h5>
+                                    </span>
+                                    <div class="align-items-baseline flex-row">
+                                        <span>
+                                            <h5 id="estimatedPrice">{{ user.user_cart.get_estimated_price|intcomma }}</h5>
+                                        </span>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="d-flex justify-content-end w-lg-70">
+                <button 
+                        class="btn btn-warning" 
+                        type="button" 
+                        onclick="document.getElementById('shippingForm').submit()"
+                       >
+                    Purchase
+                </button>
+            </div>
+        </div>
+    </section>
+
+    {% include 'base/includes/footer.html' %}
+
+    <script 
+            src='https://cdnjs.cloudflare.com/ajax/libs/js-cookie/3.0.1/js.cookie.js' 
+            integrity='sha512-DJw15+xxGmXB1/c6pvu2eRoVCGo5s6rdeswkFS4HLFfzNQSc6V71jk6t+eMYzlyakoLTwBrKnyhVc7SCDZOK4Q==' 
+            crossorigin='anonymous'
+           ></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/fakeLoader.js/1.1.0/fakeLoader.min.js'
+        integrity='sha512-pH8YdfmyjuBq0Gw/w7pdbwa2ioO/ditfNSfTzai0LWbbpejBnwdw15eatRCCmyexiw409/+gjAzggMXuJZchOw=='
+        crossorigin='anonymous'></script>
+    <script>
+        $("#fakeLoader").fakeLoader({spinner: "spinner5"});
+            $(document).ajaxStart(() => {
+                $("#fakeLoader").show();
+            });
+            $(document).ajaxStop(() => {
+                $("#fakeLoader").hide();
+            });
+    </script>
+    <script>
+        const numberParser = (number_str) => {
+                return parseInt(number_str.replace(/,/g, ""))
+              },
+              applyEsPriceChange = (price) => {
+                var elem = $("#estimatedPrice"),
+                    currentPrice = parseInt(elem.text().replace(/,/g, "")),
+                    newPrice = currentPrice + price;
+                return elem.text(newPrice.toLocaleString())
+              };
+        $(".decreaseCount").click((e) => {
+            const public_uuid = e.currentTarget.getAttribute("public_uuid");
+            if ($(`#${public_uuid}-count`).val() >= 1){
+                $.ajax({
+                    method: "POST",
+                    headers: {
+                        "X-CSRFToken": Cookies.get("csrftoken")
+                    },
+                    data: {
+                        public_uuid: public_uuid,
+                        op: "d",
+                    },
+                    success: (data) => {
+                        if ($(`#${public_uuid}-count`).val() == 1) {
+                            $(`#${public_uuid}-tr`).remove();
+                            $("#cart-count").text(parseInt($("#cart-count").text())-1);
+                            if ($(".cartItemRow").length == 0) {
+                                $("#cartTable").remove();
+                                $("#cartContainer").append($.parseHTML(`
+                                    <div class="card card-body shadow shadow-card mx-2 my-5 text-center">
+                                        <h1 class="display-5">
+                                            Your cart is empty. Let's check the 
+                                            <a class="text-primary"
+                                            href="{% url 'restaurants:list_restaurants' %}">
+                                                restaurants
+                                            </a>.
+                                        </h1>
+                                    </div>
+                                `));
+                            }
+                        } else {
+                            var newCount = parseInt($(`#${public_uuid}-count`).val()) - 1;
+                            $(`#${public_uuid}-count`).val(newCount);
+                            var itemPrice = numberParser($(`#${public_uuid}-price`).text());
+                            var newTotal = itemPrice * newCount;
+                            $(`#${public_uuid}-total`).text(newTotal.toLocaleString());
+                            applyEsPriceChange(-itemPrice);
+                        }
+                    },
+                });
+            }
+        });
+        $(".increaseCount").click((e) => {
+            const public_uuid = e.currentTarget.getAttribute("public_uuid");
+            $.ajax({
+                method: "POST",
+                headers: {
+                    "X-CSRFToken": Cookies.get("csrftoken"),
+                },
+                data: {
+                    op: "i",
+                    public_uuid: public_uuid,
+                },
+                success: (data) => {
+                    var newCount = parseInt($(`#${public_uuid}-count`).val()) + 1;
+                    $(`#${public_uuid}-count`).val(newCount);
+                    var itemPrice = numberParser($(`#${public_uuid}-price`).text());
+                    var newTotal = itemPrice * newCount;
+                    $(`#${public_uuid}-total`).text(newTotal.toLocaleString());
+                    applyEsPriceChange(itemPrice);
+                },
+            });
+        });
+    </script>
+</body>
+{% endblock %}

@@ -1,0 +1,538 @@
+{% extends 'base/layout/base.html' %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block title %}Restaurants{% endblock %}
+
+{% block stylesheet %}
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/roundSlider/1.6.1/roundslider.css'
+    integrity='sha512-XO53CaiPx+m4HUiZ02P4OEGLyyT46mJQzWhwqYsdqRR7IOjPuujK0UPAK9ckSfcJE4ED7dT9pF9r78yXoOKeYw=='
+    crossorigin='anonymous' />
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.1.2/css/star-rating.css'
+    integrity='sha512-cqu9y2zklfOkWLlEXgeHQvROuTIy9U5QRr3k3Gpv45PR0tWdtKGgbS4D2UqavK/4Ss4/jFw97SFwepxvgPArdg=='
+    crossorigin='anonymous' />
+<link rel='stylesheet'
+    href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.1.2/themes/krajee-fas/theme.css'
+    integrity='sha512-ewddDS1iCt0mC7H2IO6anlOjl/XbSPMIWS/Tf7Eg6Ep21XnKBs3zXTex8VvsisozTdjww9um0oYrFaHkZqtAmw=='
+    crossorigin='anonymous' />
+<link href="{% static 'assets/vendor/@fortawesome/fontawesome-free/css/all.min.css' %}" rel="stylesheet">
+<style>
+    #slider .rs-range-color {
+        background-color: black;
+    }
+
+    ;
+
+    #slider .rs-handle {
+        background-color: #fff;
+        border: 5px solid black;
+    }
+
+    ;
+</style>
+{% endblock %}
+
+{% block content %}
+
+<body class="index-page bg-gray-200">
+    {% include 'base/includes/navbar.html' %}
+
+    <div class="row mt-3" id="mainContainer">
+        <div class="col-lg-3 col-sm-6 col-md-5">
+            <div class="card card-body blur shadow-blur mx-3 mx-md-4 mt-3">
+                <section>
+                    {% for type in types %}
+                    <button class="btn border-0 type-img" type="button" typeName="{{ type.name }}">
+                        <div class="image-container my-3">
+                            <img 
+                                 class="img-fluid shadow shadow-blur w-20 h-20" 
+                                 src="{{ type.get_icon_url }}"
+                                >
+                            {{ type.name }}
+                        </div>
+                    </button>
+                    {% endfor %}
+                </section>
+                <section class="px-3 py-4">
+                    <form method="GET" id="filterRestaurantsForm" action="{% url 'restaurants:search_restaurants' %}">
+                        <div>
+                            {{ filter_form.name|as_crispy_field }}
+                        </div>
+                        <div class="form-check form-switch px-4 py-2 mt-2">
+                            <label class="form-check-label ms-3" for="isOpenField">
+                                is open now
+                            </label>
+                            {{ filter_form.is_open }}
+                        </div>
+                        <div class="form-check form-switch px-4">
+                            <label class="form-check-label ms-3" for="freeDeliveryField">
+                                has free delivery
+                            </label>
+                            {{ filter_form.free_delivery }}
+                        </div>
+                        <hr>
+                        <div>
+                            <label class="control-label" for="filter-score">
+                                score
+                            </label>
+                            <center>
+                                <input name="score" type="number" id="filter-score">
+                            </center>
+                        </div>
+                    </form>
+                </section>
+            </div>
+        </div>
+        <div class="col-lg-9 col-sm-6 col-md-7">
+            <div class="d-flex align-items-baseline 
+                            flex-wrap gap-3" id="itemsContainer">
+                {% if page.object_list %}
+                    {% for restaurant in page.object_list %}
+                        <div class="card w-lg-30 w-md-80 w-100 mt-3">
+                            <a class="stretched-link" href="{{ restaurant.get_absolute_url }}">
+                                <div class="card-header p-0 mt-6 z-index-2">
+                                    <a class="d-block blur-shadow-image w-90 mx-auto">
+                                        <img src="{{ restaurant.get_picture_url }}" alt="item-picture"
+                                            class="img-fluid shadow border-radius-lg">
+                                    </a>
+                                </div>
+                                <div class="card-body text-center">
+                                    <h5 class="font-weight-normal mt-3">
+                                        <a href="javascript:void(0);">
+                                            <i class="fas fa-utensils"></i>
+                                            &nbsp;{{ restaurant.name }}
+                                        </a>
+                                    </h5>
+                                    {% if restaurant.description %}
+                                    <p class="mb-0">
+                                        {{ restaurant.description }}
+                                    </p>
+                                    {% endif %}
+                                </div>
+                                <hr class="dark horizontal my-0">
+                                <div class="card-footer text-center">
+                                    <div class="d-flex justify-content-center">
+                                        <i class="material-icons position-relative text-sm me-1 my-auto">place</i>
+                                        <p class="text-xs my-auto flex-wrap">
+                                            {{ restaurant.info.address|default:"نامعین" }}
+                                        </p>
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        <p class="text-xs my-auto">
+                                            <i class="fas fa-star text-warning mt-1">
+                                                {{ restaurant.score }}</i>
+                                        </p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        {% endfor %}
+                    {% else %}
+                <div class="card card-body blur shadow-blur mt-3 me-4">
+                    <div class="text-center">
+                        <h3>No restaurants found</h3>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    {% if page.object_list|length %}
+    <div class="row d-block" id="pagContainer">
+        <div class="col-12 offset-6">
+            <div class="mt-6">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        <div id="prevPage">
+                            {% if page.has_previous %}
+                            <li class="page-item">
+                                <a class="page-link items-pagination" href="javascript:void(0);" aria-label="Previous"
+                                    page="{{ page.previous_page_number }}">
+                                    <i class="fa fa-angle-left"></i>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                            </li>
+                            {% endif %}
+                        </div>
+                        {% for p in paginator.page_range %}
+                        <li class="page-item">
+                            <a class="page-link 
+                                                items-pagination 
+                                                {% if p == page.number %}active text-white{% endif %}"
+                                href="javascript:void(0);" page="{{ forloop.counter }}" id="page-{{ forloop.counter }}">
+                                {{ forloop.counter }}
+                            </a>
+                        </li>
+                        {% endfor %}
+                        <div id="nextPage">
+                            {% if page.has_next %}
+                            <li class="page-item">
+                                <a class="page-link items-pagination" id="nextPageLink" href="javascript:void(0);"
+                                    aria-label="Next" page="{{ page.next_page_number }}">
+                                    <i class="fa fa-angle-right"></i>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </li>
+                            {% endif %}
+                        </div>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    {% include 'base/includes/footer.html' %}
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/roundSlider/1.6.1/roundslider.js'
+        integrity='sha512-8C4mof12aZm7dm5kdDkw3gv3buTAcVd+mXnjpktTyZZTctElhcOuMivKteYDM2vpJSFzkwACfEN8+HMlit9jjQ=='
+        crossorigin='anonymous'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.1.2/js/star-rating.min.js'
+        integrity='sha512-BjVoLC9Qjuh4uR64WRzkwGnbJ+05UxQZphP2n7TJE/b0D/onZ/vkhKTWpelfV6+8sLtQTUqvZQbvvGnzRZniTQ=='
+        crossorigin='anonymous'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.1.2/themes/krajee-fas/theme.js'
+        integrity='sha512-QCR1cBLo+kxccYVcK32Eyjx20ND8bxIytZp0nQG+SDXhSaYXOPTBwJ+0x9E9Xhna4dzMWoEgRd0/KmD2vqOB3g=='
+        crossorigin='anonymous'></script>
+    <script>
+        const rating = $("#filter-score"),
+            ratingOptions = {
+                min: 0,
+                max: 5,
+                step: 1,
+                theme: "krajee-fas",
+                size: "xs",
+                containerClass: "plugin-rating",
+                clearValue: 0
+            };
+    </script>
+    <script>
+        const filterForm = $("#filterRestaurantsForm"),
+            restaurant_typeBtns = $(".restaurant_typeBtn"),
+            itemsContainer = $("#itemsContainer"),
+            inputs = [
+                $("#freeDeliveryField"),
+                $("#isOpenField"),
+                $("#itemName")
+            ];
+        inputs.forEach((input) => {
+            input.change((e) => {
+                filterForm.submit();
+            });
+        });
+        restaurant_typeBtns.click((e) => {
+            var filterFormData = new FormData(filterForm);
+            filterFormData.append("restaurant_type", e.target.attr("restaurant_typeName"));
+            filterForm.submit();
+        });
+        rating.change(() => {
+            $("#filter-score").val(rating.val());
+            if (!rating.val()) {
+                rating.val(0);
+            }
+            filterForm.submit();
+        });
+        $("#itemName").keyup((e) => {
+            filterForm.submit()
+        });
+        var pagPrev,
+            pagNext,
+            pagItems;
+
+        const currentPage = "{{ page.number }}",
+            paginatorTemplate = `
+                    <div class="row d-block" id="pagContainer">
+                        <div class="col-12 offset-6">
+                            <div class="mt-6">
+                                <nav aria-label="Page navigation example">
+                                    <ul class="pagination">
+                                        <div id="prevPage">
+                                            ${pagPrev}
+                                        </div>
+                                        ${pagItems}
+                                        <div id="nextPage">
+                                            ${pagNext}
+                                        </div>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                  `;
+        const preparePagItems = (data) => {
+                pageItems = [];
+                for (let i = 0; i < data.num_pages; i++) {
+                    let isActive = "",
+                        itemTemplate;
+
+                    if (data.page == currentPage) {
+                        isActive = "active text-white";
+                    }
+
+                    itemTemplate = `
+                            <li class="page-item">
+                                <a 
+                                class="page-link 
+                                        items-pagination 
+                                        ${isActive}" 
+                                    href="javascript:void(0);"
+                                    page="${i + 1}"
+                                    id="page-${i + 1}"
+                                >
+                                    ${i + 1}
+                                </a>
+                            </li>`;
+                    pageItems.push(itemTemplate);
+                }
+                return pageItems.join("\n")
+            },
+            preparePagPrev = (data) => {
+                if (data.has_previous_page) {
+                    var prevTemplate = `
+                            <li class="page-item" id="prevPage">
+                                <a
+                                class="page-link items-pagination"
+                                href="javascript:void(0);"
+                                aria-label="Previous"
+                                page="${data.previous_page_number}"
+                                >
+                                    <i class="fa fa-angle-left"></i>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                            </li>`;
+                    return prevTemplate
+                }
+                return ""
+            },
+            preparePagNext = (data) => {
+                if (data.has_next_page) {
+                    var nextTemplate = `
+                                <li class="page-item" id="nextPage">
+                                    <a
+                                    class="page-link items-pagination"
+                                    href="javascript:void(0);"
+                                    aria-label="Next"
+                                    page="${data.next_page_number}"
+                                    >
+                                        <i class="fa fa-angle-right"></i>
+                                        <span class="sr-only">Next</span>
+                                    </a>
+                                </li>`;
+                    return nextTemplate
+                }
+                return ""
+            },
+            createPagTemplate = (data) => {
+                pagNext = preparePagNext(data);
+                pagPrev = preparePagPrev(data);
+                pagItems = preparePagItems(data);
+                pagTemplate = `
+                            <div class="row d-block" id="pagContainer">
+                                <div class="col-12 offset-6">
+                                    <div class="mt-6">
+                                        <nav aria-label="Page navigation example">
+                                            <ul class="pagination">
+                                                ${pagPrev}
+                                                ${pagItems}
+                                                ${pagNext}
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                return pagTemplate
+            };
+        const handlePaginator = (data) => {
+            if (data.object_list.length != 0) {
+                if ($("#pagContainer").length == 0) {
+                    pagTemplate = createPagTemplate(data);
+                    $("#mainContainer").after(pagTemplate);
+                }
+            } else {
+                $("#pagContainer").remove();
+            }
+        };
+
+        const renderResults = (data) => {
+            itemsContainer.html("");
+            if (data.length > 0) {
+                for (let hit = 0; hit < data.length; hit++) {
+                    var desc = " ",
+                        address = "نامعین",
+                        res = data[hit]._source;
+                    if (res.description) {
+                        desc = `<p class="mb-0">
+                                    ${res.description}
+                                </p>`;
+                    }
+                    if (res.info) {
+                        address = res.info.address;
+                    }
+                    var template =
+                        `<div class="card w-lg-30 w-md-80 w-100 mt-3">
+                                <a class="stretched-link" href="${res.absolute_url}">
+                                    <div class="card-header p-0 mt-6 z-index-2">
+                                        <div class="d-block blur-shadow-image w-90 mx-auto">
+                                            <img 
+                                                src="${res.logo}"
+                                                alt="item-picture" 
+                                                class="img-fluid shadow border-radius-lg"
+                                                >
+                                        </div>
+                                    </div>
+                                    <div class="card-body text-center">
+                                        <h5 class="font-weight-normal mt-3">
+                                            <a href="javascript:void(0);">
+                                                <i class="fas fa-utensils"></i>
+                                                    &nbsp;${res.name}
+                                            </a>
+                                        </h5>
+                                        {% if restaurant.description %}
+                                            <p class="mb-0">
+                                                ${desc}
+                                            </p>
+                                        {% endif %}
+                                    </div>
+                                    <hr class="dark horizontal my-0">
+                                    <div class="card-footer text-center">
+                                        <div class="d-flex justify-content-center">
+                                            <i class="material-icons position-relative text-sm me-1 my-auto">place</i>
+                                            <p class="text-xs my-auto flex-wrap">
+                                                ${address}
+                                            </p>
+                                        </div>
+                                        <div class="d-flex justify-content-center">
+                                            <p class="text-xs my-auto">
+                                                <i class="fas fa-star text-warning mt-1">
+                                                    ${res.score.toFixed(1)}</i>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>`;
+                    itemsContainer.append(template)
+                }
+            } else {
+                var template = `
+                        <div class="card card-body blur shadow-blur mt-3 me-4">
+                            <div class="text-center">
+                                <h3>No restaurants found</h3>
+                            </div>
+                        </div>
+                    `;
+                itemsContainer.html(template)
+            }
+        };
+
+        filterForm.submit((e) => {
+            e.preventDefault();
+            const url = filterForm.attr("action"),
+                formData = filterForm.serializeArray(),
+                method = filterForm.attr("method");
+            formData.push({
+                name: "op_type",
+                value: "search"
+            });
+            $.ajax({
+                url: url,
+                method: method,
+                data: formData,
+                success: (data) => {
+                    console.log(data.hits)
+                    handlePaginator(data.page);
+                    renderResults(data.hits);
+                },
+            });
+        });
+    </script>
+    <script>
+        const addNextPage = (nextPage) => {
+                var template = `
+                          <li class="page-item" id="nextPage">
+                              <a 
+                                 class="page-link items-pagination" 
+                                 href="javascript:void(0);" 
+                                 aria-label="Next"
+                                 page="${nextPage}"
+                              >
+                                  <i class="fa fa-angle-right"></i>
+                                  <span class="sr-only">Next</span>
+                              </a>
+                          </li>
+                      `;
+                $("#nextPage").html(template);
+            },
+            addPrevPage = (prevPage) => {
+                var template = `
+                        <li class="page-item" id="prevPage">
+                            <a 
+                                class="page-link items-pagination" 
+                                href="javascript:void(0);" 
+                                aria-label="Previous"
+                                page="${prevPage}"
+                                >
+                                <i class="fa fa-angle-left"></i>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                        </li>
+                     `;
+                $("#prevPage").html(template);
+            },
+            changeActivePage = (activePage) => {
+                var pageItems = $(".page-link");
+                pageItems.removeClass("active text-white");
+                $(`#page-${activePage}`).addClass("active text-white");
+                $(document).scrollTop(53);
+            },
+            navigatePage = (data) => {
+                if (data.has_next_page) {
+                    addNextPage(data.next_page_number);
+                } else {
+                    $("#nextPage").html("")
+                }
+                if (data.has_previous_page) {
+                    addPrevPage(data.previous_page_number);
+                } else {
+                    $("#prevPage").html("")
+                }
+                changeActivePage(data.page)
+            };
+
+        $(document).on("click", ".items-pagination", (e) => {
+            e.preventDefault();
+            var page = e.target.getAttribute("page");
+            $.ajax({
+                url: filterForm.attr("action"),
+                method: "GET",
+                data: {
+                    page: page,
+                    op_type: "pag"
+                },
+                success: (data) => {
+                    navigatePage(data.page);
+                    renderResults(data.hits);
+                },
+            })
+        });
+    </script>
+    <script>
+        const types = $(".type-img");
+        $(document).ready(() => {
+            types.on("click", (e) => {
+                const value = e.currentTarget.getAttribute("typeName");
+                if (window.location.href.search("type") < 0) {
+                    window.location.href += `&type=${value}`;
+                } else {
+                    window.location.href = window.location.href.slice(0,
+                        window.location.href.search("type")) + `type=${value}`;
+                }
+            });
+            rating.rating(ratingOptions);
+            rating.val(0);
+        });
+    </script>
+</body>
+{% endblock %}

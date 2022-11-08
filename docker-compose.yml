@@ -1,0 +1,91 @@
+version: '3.9'
+
+services:
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/usr/src/app/
+    networks:
+      - es_net
+      - backend
+    depends_on:
+      - db
+      - redis
+      - rabbitmq
+      - elasticsearch
+    tty: true
+  db:
+    image: postgis/postgis:13-master
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    networks:
+      - backend
+  adminer:
+    image: adminer:latest
+    depends_on:
+      - db
+    networks:
+      - backend
+    ports:
+      - "8080:8080"
+  redis:
+    image: redis:latest
+    command: redis-server --save
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/var/lib/redis/data/
+    networks:
+      - backend
+  rabbitmq:
+    image: rabbitmq:3.10.2-alpine
+    ports:
+      - "5672:5672"
+    command: rabbitmq-server
+    volumes:
+      - rabbit_data:/var/lib/rabbitmq/data/
+    networks:
+      - backend
+  elasticsearch:
+    image: elasticsearch:7.6.1
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    environment:
+      - discovery.type=single-node
+    volumes:
+      - elastic_data:/var/lib/elasticsearch/data/
+    networks:
+      - es_net
+    mem_limit: "2.1g"
+  kibana:
+    image: kibana:7.6.1
+    ports:
+      - "5601:5601"
+    networks:
+      - es_net
+    environment:
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+    depends_on:
+      - elasticsearch
+
+volumes:
+  postgres_data:
+  redis_data:
+  rabbit_data:
+  elastic_data:
+
+networks:
+  es_net:
+    driver: bridge
+  backend:
+    driver: bridge

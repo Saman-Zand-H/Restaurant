@@ -1,0 +1,71 @@
+{% load static %}
+
+<div 
+     class="sidebar" 
+     data-color="purple" 
+     data-background-color="black" 
+     data-image="{% static 'dash_assets/img/sidebar-2.jpg' %}"
+    >
+    <div class="logo"><a href="{% url 'restaurants:home' %}" class="simple-text logo-normal">
+            Rubik Food
+        </a></div>
+    <div class="sidebar-wrapper">
+        <ul class="nav">
+            {% if user.user_staff %}
+                <li class="nav-item {% if request.path == '/in_place/' %}active{% endif %}">
+                    <a 
+                       class="nav-link" 
+                       href="{% url 'in_place:dashboard' %}"
+                      >
+                        <i class="material-icons">dashboard</i>
+                        <p>Dashboard</p>
+                    </a>
+                </li>
+            {% endif %}
+            <li class="nav-item {% if 'profile' in request.path %}active{% endif %}">
+                <a class="nav-link" href="{% url 'accounts:profile' %}">
+                    <i class="material-icons">person</i>
+                    <p>Profile</p>
+                </a>
+            </li>
+            {% if user.user_staff.can_read_salaries %}
+                <li class="nav-item ">
+                    <a class="nav-link" href="./tables.html">
+                        <i class="material-icons">badge</i>
+                        <p>Staff</p>
+                    </a>
+                </li>
+            {% endif %}
+            <li class="nav-item ">
+                <a class="nav-link" href="./icons.html">
+                    <i class="material-icons">two_wheeler</i>
+                    <p>Delivery Service</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="./map.html">
+                    <i class="material-icons">grading</i>
+                    <p>Orders</p>
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="./typography.html">
+                    <i class="material-icons">attach_money</i>
+                    <p>Financial Management</p>
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="./notifications.html">
+                    <i class="material-icons">shopping_basket</i>
+                    <p>Menu</p>
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="./notifications.html">
+                    <i class="material-icons">inventory</i>
+                    <p>Resources</p>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
