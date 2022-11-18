@@ -251,6 +251,7 @@ CITIES_LIGHT_INDEX_SEARCH_NAMES = False
 ELASTICSEARCH_DSL = {
     'default': {
         'hosts': 'elasticsearch:9200',
+        'refresh_interval': 10
     },
 }
 

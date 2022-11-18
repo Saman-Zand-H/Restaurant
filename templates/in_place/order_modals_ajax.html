@@ -1,0 +1,205 @@
+    <!-- edit orders -->
+    {% for order in orders %}
+        <div 
+             class="modal fade"
+             id="edit-order-{{ order.qs.public_uuid }}"
+             tabindex="-1"
+             role="dialog"
+            >
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content bg-dark">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-light">
+                            Edit Order
+                        </h5>
+                        <button 
+                                type="button" 
+                                class="close" 
+                                data-dismiss="modal" 
+                                aria-label="Close"
+                               >
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form 
+                              method="POST" 
+                              action="{% url 'in_place:edit_order' %}"
+                              class="edit_form"
+                              id="editOrderForm-{{ order.qs.public_uuid }}"
+                             >
+                            {% csrf_token %}
+                            {{ order.formset.management_form }}
+                            <input type="hidden" name="dest" value="orders">
+                            <div class="table-responsive">
+                                <table class="table table-dark table-bordered">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th>item</th>
+                                            <th>count</th>
+                                            <th>fee</th>
+                                            <th>auto price</th>
+                                            <th>total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for form in order.formset.forms %}
+                                            <tr>
+                                                <td>{{ form.item }}</td>
+                                                <td>{{ form.count }}</td>
+                                                <td>{{ form.fee }}</td>
+                                                <td>
+                                                    <label
+                                                        class="form-check-label d-flex justify-content-center 
+                                                                align-items-center align-content-center"
+                                                        >
+                                                        {{ form.auto_price }}
+                                                        <span class="form-check-sign">
+                                                            <span class="check"></span>
+                                                        </span>
+                                                    </label>
+                                                </td>
+                                                <td>{{ form.paid_price }}</td>
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div>
+                                <hr>
+                                <div class="mx-3 mt-4">
+                                    {% for val, choice in order.order_form.order_type.field.choices %}
+                                        <div class="form-check form-check-radio">
+                                            <label class="form-check-label">
+                                                <input 
+                                                       type="radio" 
+                                                       class="form-check-input" 
+                                                       name="order_type" 
+                                                       value="{{ val }}"
+                                                       {% if val == order.order_form.order_type.value %}
+                                                           checked
+                                                       {% endif %}   
+                                                      >
+                                                {{ choice|upper }}
+                                                <span class="circle">
+                                                    <span class="check"></span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                    {% endfor %}
+                                    <input 
+                                           type="hidden"
+                                           name="public_uuid"
+                                           value="{{ order.qs.public_uuid }}"
+                                          >
+                                </div>
+                                <div class="dinein_info" id="dinein_info-{{ order.qs.public_uuid }}">
+                                    <hr>
+                                    <div class="mt-5 mx-3">
+                                        <div class="form-group">
+                                            <label for="dinein_table_num" class="bmd-label-floating">
+                                                {{ order.dinein_form.table_number.label|title }}*
+                                            </label>
+                                            {{ order.dinein_form.table_number }}
+                                            <span class="text-warning my-2">
+                                                {{ order.dinein_form.table_number.errors }}
+                                            </span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="dinein_desc" class="bmd-label-floating">
+                                                {{ order.dinein_form.description.label|title }}
+                                            </label>
+                                            {{ order.dinein_form.description }}
+                                            <span class="text-warning my-2">
+                                                {{ order.dinein_form.description.errors }}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                            Close
+                        </button>
+                        <button 
+                                type="button" 
+                                class="btn btn-primary" 
+                                onclick="javascript:$('#editOrderForm-{{ order.qs.public_uuid }}').submit()"
+                               >
+                            Edit
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+    <!-- delete orders -->
+    {% if user.user_staff.can_delete_orders %}
+        {% for order in orders %}
+            <div 
+                 class="modal fade" 
+                 id="delete-order-{{ order.qs.public_uuid }}" 
+                 tabindex="-1" 
+                 role="dialog" 
+                >
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content bg-dark">
+                        <div class="modal-header">
+                            <h5 class="modal-title text-light">
+                                Delete Order
+                            </h5>
+                            <button 
+                                    type="button" 
+                                    class="close" 
+                                    data-dismiss="modal" 
+                                    aria-label="Close"
+                                >
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body text-light">
+                            <h3 class="text-bolder">
+                                Are you sure you want to delete your record of this order?
+                            </h3>
+                            <form 
+                                  method="POST" 
+                                  action="{% url 'in_place:delete_order' %}"
+                                  id="delete-order-form-{{ order.qs.public_uuid }}"
+                                 >
+                                {% csrf_token %}
+                                <input 
+                                       type="hidden" 
+                                       name="public_uuid" 
+                                       value="{{ order.qs.public_uuid }}"
+                                      >
+                                <input 
+                                       type="hidden"
+                                       name="dest"
+                                       value="orders"
+                                      >  
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button 
+                                    type="button" 
+                                    class="btn btn-secondary" 
+                                    data-dismiss="modal"
+                                >
+                                Close
+                            </button>
+                            <button
+                                    type="button" 
+                                    class="btn btn-danger" 
+                                    onclick="javascript:$('#delete-order-form-{{ order.qs.public_uuid }}').submit()"
+                            >
+                                Yes
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}

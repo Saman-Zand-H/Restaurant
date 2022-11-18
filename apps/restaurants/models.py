@@ -8,7 +8,7 @@ from django.templatetags.static import static
 from django.utils.functional import cached_property
 
 from persiantools.jdatetime import JalaliDateTime
-from datetime import timedelta, datetime, time
+from datetime import timedelta, datetime, time, date
 from django.utils import timezone
 from dateutil.relativedelta import relativedelta
 from uuid import uuid4
@@ -102,11 +102,13 @@ class Restaurant(models.Model):
         return self.name
     
     def _get_daily_orders_data(self,
-                       timestamp:datetime=timezone.now()):
-        min_date = datetime.combine(timestamp.date(),
+                       timestamp:datetime|date=timezone.now()):
+        if isinstance(timestamp, datetime):
+            timestamp = timestamp.date()
+        min_date = datetime.combine(timestamp,
                                     time.min,
                                     tzinfo=timezone.utc)
-        max_date = datetime.combine(timestamp.date(),
+        max_date = datetime.combine(timestamp,
                                     time.max,
                                     tzinfo=timezone.utc)
         orders = self.restaurant_orders.filter(
@@ -130,7 +132,7 @@ class Restaurant(models.Model):
         return self.get_monthly_revenue() 
     
     def get_daily_revenue(self, 
-                          timestamp:datetime=timezone.now()):
+                          timestamp:datetime|date=timezone.now()):
         orders = self._get_daily_orders_data(timestamp)
         return sum([i.total_price for i in orders])
     
@@ -196,6 +198,10 @@ class Restaurant(models.Model):
             return self.logo.url
         return static("assets/img/no_image_available.png")
     
+    @cached_property
+    def orders_today(self):
+        return self._get_daily_orders_data()
+    
     def refresh_from_db(self, *args, **kwargs):
         super().refresh_from_db(*args, **kwargs)
         cached_properties = ["monthly_revenue",
@@ -204,7 +210,8 @@ class Restaurant(models.Model):
                              "weekly_revenue_sum",
                              "weekly_sale",
                              "weekly_score",
-                             "most_popular_food"]
+                             "most_popular_food",
+                             "orders_today"]
         for i in cached_properties:
             try:
                 del self.__dict__[i]
@@ -321,10 +328,22 @@ class OrderItem(models.Model):
     
     def save(self, *args, **kwargs):
         if self.count > 0:
-            super().save(*args, **kwargs)
+            s = super().save(*args, **kwargs)
             self.order.restaurant.refresh_from_db()
-        else:
+            # In order for ElasticSearch to detect changes in the value of orders_repr,
+            # we need to send a signal from Order to update the registry.
+            models.signals.post_save.send(
+                sender=Order,
+                instance=self.order,
+                *args,
+                **kwargs
+            )
+            return s
+        # If this is the last order item remained, delete the order entirely
+        keep_parents = 1 if self.order.order_items.count() > 1 else 0
+        if not keep_parents:
             self.order.delete()
+        super().delete(*args, **kwargs)
     
     class Meta:
         unique_together = (
@@ -369,7 +388,7 @@ class OrderDels(models.Manager):
 class Order(models.Model):
     order_type_choices = (
         ("d", "delivery"),
-        ("i", "in place"),
+        ("i", "dine-in"),
     ) 
     public_uuid = models.UUIDField(default=uuid4,
                                    auto_created=True,
@@ -388,6 +407,9 @@ class Order(models.Model):
     objects = models.Manager()
     deliveries = OrderDels()
     eatins = OrderEatIns()
+
+    class Meta:
+        ordering = ["-timestamp"]
     
     def __str__(self):
         return f"{self.restaurant}-{self.order_type}:{self.order_number}({self.id})"

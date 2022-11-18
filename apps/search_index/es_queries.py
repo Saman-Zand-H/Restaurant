@@ -1,6 +1,10 @@
 from elasticsearch_dsl import Q as ESQ
-from datetime import datetime
+from datetime import datetime, date
+from django.utils import timezone
 from functools import reduce
+
+from restaurants.models import Restaurant
+
 
 class ItemQuery:
     """
@@ -184,37 +188,41 @@ class RestaurantQuery:
 
 
 class OrderQuery:
-    def __init__(self, form_data=dict()):
-        self.timestamp = form_data.get("timestamp")
-        self.keyword = form_data.get("keyword")
+    def __init__(self, restaurant_id, form_data=dict()):
+        _timestamp = form_data.get("timestamp")
+        assert isinstance(_timestamp, date), f"invalid type: {type(_timestamp)}"
+        self.restaurant_id = restaurant_id
+        self._timestamp = _timestamp
+        self._keyword = form_data.get("keyword")
         self._query = self._prepare_queries()
         
     @property
     def query(self):
-        return self._querz
+        return self._query
 
     def _prepare_queries(self):
-        params_names = ["timestamp", 
-                        "keyword"]
-        params = [
-            self._timestamp,
-            self._keyword
-        ]
-        q_all = ESQ("match_all")
-        params = [*zip(params_names, params)]
-        q = [eval(f"{self.__class__.__name__}.{i[0]}(**{i[1]})") for i in params]
+        q_all = ESQ("match", restaurant=self.restaurant_id)
+        q = [self.timestamp(self._timestamp), self.keyword(self._keyword)]
         q = reduce(lambda i, j: i & j, q)
         q = q & q_all
         return q
     
-    def timestamp(self, *args, **kwargs):
-        timestamp = kwargs.get("timestamp")
+    def timestamp(self, timestamp:datetime=None):
         if timestamp:
-            return ESQ("match_all", timestamp=timestamp)
+            from datetime import time
+            min_date = datetime.combine(timestamp,
+                                        time.min,
+                                        tzinfo=timezone.utc)
+            max_date = datetime.combine(timestamp,
+                                        time.max,
+                                        tzinfo=timezone.utc)
+            return (ESQ("range", 
+                       timestamp={"gte": min_date})
+                    & ESQ("range",
+                          timestamp={"lte": max_date}))
         return ESQ("match_all")
     
-    def keyword(self, *args, **kwargs):
-        keyword = kwargs.get("keyword")
+    def keyword(self, keyword=None):
         if keyword:
             return ESQ("multi_match",
                        query=keyword,

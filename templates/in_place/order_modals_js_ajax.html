@@ -1,0 +1,90 @@
+var $autoPrice = $(".auto-price"),
+    $count = $(".item-count"),
+    $orderType = $("#newOrderForm input[name=order_type]").filter(":checked"),
+    $dinein = $("#new_dinein_info"),
+    $paid = $(".paid-price");
+$(document).ready(() => {
+    $paid.filter((i, e) => { return e.value == 0 }).val(0);
+    $count.attr("min", 0);
+    $("#order_type-i").prop("checked", true);
+    if ($orderType.val() === "d") {
+        $dinein.hide();
+    }
+    var $edit_form,
+        $edit_dinein,
+        $edit_order_type;
+    {% for order in orders %}
+        $edit_form = $("#editOrderForm-{{ order.qs.public_uuid }}"),
+            $edit_dinein = $edit_form.find(".dinein_info"),
+            $edit_order_type = $edit_form.find("input[name=order_type]");
+        if ($edit_order_type.filter(':checked').val() === "d") {
+            $edit_dinein.hide();
+        }
+        $edit_order_type.change((e) => {
+            $("#dinein_info-{{ order.qs.public_uuid }}").toggle()
+        });
+    {% endfor %}
+});
+$autoPrice.click((e) => {
+    const formNumber = e.currentTarget.id.split("-")[1],
+        formType = e.currentTarget.id.split("-")[0],
+        formId = e.currentTarget.closest("form").id,
+        formUuid = formId.split("-").slice(1).join("-"),
+        $form = $(`#${formId}`),
+        $e = $(`#${e.currentTarget.getAttribute("id")}`),
+        orderId = $(`#${e.currentTarget.getAttribute("id")}`);
+    var count,
+        fee,
+        $paidPrice;
+
+    if (formType == "edit_form") {
+        fee = parseInt($(`#edit_form-${formNumber}-fee-${formUuid}`).val());
+        count = parseInt($(`#edit_form-${formNumber}-count-${formUuid}`).val() | 0);
+        $paidPrice = $(`#edit_form-${formNumber}-paid_price-${formUuid}`);
+    } else {
+        fee = parseInt($(`#id_form-${formNumber}-fee`).val() | 0);
+        count = parseInt($(`#id_form-${formNumber}-count`).val() | 0);
+        $paidPrice = $(`#id_form-${formNumber}-paid_price`);
+    }
+
+    $e.prop("checked", (_, v) => {
+        v ? $paidPrice.prop("disabled", true)
+            : $paidPrice.prop("disabled", false);
+        if (v) {
+            $form.find(`.paid-price[name=form-${formNumber}-paid_price]`
+            ).val(parseInt(count * fee) | 0);
+        }
+    });
+});
+$count.keyup((e) => {
+    if (e.currentTarget.value) {
+        const formNumber = e.currentTarget.id.split("-")[1],
+            formUuid = e.currentTarget.closest("form").id.split("-").slice(1).join("-"),
+            formType = e.currentTarget.id.split("-")[0];
+        var fee,
+            $paidPriceLoc,
+            count;
+        if (formType == "id_form") {
+            fee = parseInt($(`#${e.currentTarget.closest("form").id} #id_form-${formNumber}-fee`).val());
+            $autoPriceLoc = $(`#id_form-${formNumber}-auto_price`);
+            count = parseInt($(`#${e.currentTarget.closest("form").id} #id_form-${formNumber}-count`).val() | 0);
+            $paidPriceLoc = $(`#${e.currentTarget.closest("form").id} #id_form-${formNumber}-paid_price`);
+        } else {
+            fee = parseInt($(`#${e.currentTarget.closest("form"
+            ).getAttribute("id")} #edit_form-${formNumber}-fee-${formUuid}`).val());
+            count = parseInt($(`#${e.currentTarget.closest("form"
+            ).getAttribute("id")} #edit_form-${formNumber}-count-${formUuid}`).val() | 0);
+            $paidPriceLoc = $(`#${e.currentTarget.closest("form"
+            ).getAttribute("id")} #edit_form-${formNumber}-paid_price-${formUuid}`);
+            $autoPriceLoc = $(`#edit_form-${formNumber}-auto_price-${formUuid}`);
+        }
+        $autoPriceLoc.prop("checked", (_, v) => {
+            if (v) {
+                $paidPriceLoc.val(parseInt(count * fee) | 0);
+            }
+        });
+    }
+});
+$("#newOrderForm input[name=order_type]").change((e) => {
+    $dinein.toggle();
+});

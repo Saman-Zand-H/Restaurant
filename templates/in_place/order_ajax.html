@@ -1,46 +1,77 @@
-{% load dash_utils %}
+{% load humanize %}
 
 
-<table class="table table-hover">
-    <thead>
-        <th>no.</th>
-        <th>order</th>
-        <th>timestamp</th>
-        <th>type</th>
-        <th></th>
+<table class="table table-hover table-bordered">
+    <thead class="text-center">
+        <th style="width:4%">no.</th>
+        <th>Order</th>
+        <th style="width:10%">Timestamp</th>
+        <th style="width:10%">Type</th>
+        <th style="width:4%">
+            <button 
+                    type="button" 
+                    class="btn btn-white btn-link" 
+                    data-toggle="modal" 
+                    data-target="#createOrder"
+                >
+                <i class="material-icons">add_circle</i>
+            </button>
+        </th>
     </thead>
     <tbody>
-        {% for order in orders %}
-        <tr>
-            <td>{{ order.order_number }}</td>
-            <td>
-                <span class="text-wrap">
-                    {{ order.order_repr }}
-                </span>
-            </td>
-            <td>
-                {{ order.timestamp|date:'H\:i' }}
-            </td>
-            <td>{{ order.get_order_type_display }}</td>
-            <td>
-                <button 
-                        type="button" 
-                        rel="tooltip" 
-                        title="Details" 
-                        class="btn btn-white btn-link btn-sm"
-                        data-toggle="modal" 
-                        data-target="order-modal-{{ order.public_uuid }}"
-                       >
-                    <i class="material-icons">info</i>
-                </button>
-            </td>
-        </tr>
-        {% endfor %}
+        {% if orders %}
+            {% for order in orders %}
+                <tr>
+                    <td style="width:4%" class="text-center">{{ order.order_number }}</td>
+                    <td>
+                        <span class="text-wrap">
+                            {{ order.orders_repr|join:", " }}
+                        </span>
+                    </td>
+                    <td style="width:10%" class="text-center">
+                        {{ order.timestamp|date:'H\:i' }}
+                    </td>
+                    <td style="width:10%" class="text-center">{{ order.get_order_type_display|title }}</td>
+                    <td style="width:4%">
+                        <div class="d-flex flex-row flex-grow-0">
+                                <button 
+                                        type="button"
+                                        rel="tooltip"
+                                        title="Edit"
+                                        class="btn btn-white btn-link btn-sm"
+                                        data-toggle="modal"
+                                        data-target="#edit-order-{{ order.public_uuid }}"
+                                   >
+                                <i class="material-icons text-warning">edit</i>
+                            </button>
+                            {% if user.user_staff.can_delete_orders %}
+                                <button 
+                                        type="button" 
+                                        rel="tooltip" 
+                                        title="Delete"
+                                        class="btn btn-white btn-link btn-sm" 
+                                        data-toggle="modal" 
+                                        data-target="#delete-order-{{ order.public_uuid }}"
+                                       >
+                                    <i class="material-icons text-danger">delete</i>
+                                </button>
+                            {% endif %}
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td colspan="5" class="text-center">
+                    <h4>We have no record to show for today</h4>
+                </td>
+            </tr>
+        {% endif %}
     </tbody>
     <tfoot>
         <tr>
             <td colspan="5">
-                total: {{ daily_revenue|trunc_number }}T
+                total: {{ daily_revenue|intcomma }}T
             </td>
         </tr>
     </tfoot>

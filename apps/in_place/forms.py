@@ -10,8 +10,13 @@ class OrderForm(forms.Form):
         ("d", "delivery"),
         ("i", "dine-in")
     )
+    dest_choices = (
+        ("orders", "orders"),
+        ("dashboard", "dashboard"),
+    )
     order_type = forms.ChoiceField(choices=type_choices,
                                    initial="i")
+    dest = forms.ChoiceField(choices=dest_choices)
  
 
 class OrderEditForm(OrderForm):
@@ -38,7 +43,12 @@ class DineInForm(forms.Form):
     
 
 class OrderDeleteForm(forms.Form):
+    dest_choices = (
+        ("dashboard", "dashboard"),
+        ("orders", "orders"),
+    )
     public_uuid = forms.UUIDField()
+    dest = forms.ChoiceField(choices=dest_choices)
     
     def clean(self, *args, **kwargs):
         cleaned_data = super().clean(*args, **kwargs)
@@ -86,7 +96,6 @@ class OrderItemForm(forms.Form):
         
     def clean(self, *args, **kwargs):
         cleaned_data = super().clean(*args, **kwargs)
-        print(cleaned_data)
         if cleaned_data.get("paid_price") is None:
             cleaned_data["paid_price"] = (self.initial.get("paid_price") 
                                           or 0)
@@ -97,3 +106,8 @@ class OrderItemForm(forms.Form):
             cleaned_data["count"] = (self.initial.get("count") 
                                      or 0)
         return cleaned_data
+
+
+class SearchOrdersForm(forms.Form):
+    timestamp = forms.DateField()
+    keyword = forms.CharField(required=False)

@@ -2,7 +2,7 @@
 
 {% load static humanize crispy_forms_tags dash_utils %}
 
-{% block title %}{{ user.name|title }}'s Dashboard{% endblock %}
+{% block title %}{{ user.name|title }} | Dashboard{% endblock %}
 
 {% block stylesheet %}
     <style>
@@ -46,6 +46,7 @@
                 <div class="modal-body">
                    <form method="POST" id="newOrderForm">
                     {% csrf_token %}
+                    <input name="dest" type="hidden" value="dashboard">
                     {{ order_item_formset.management_form }}
                         <div class="table-responsive">
                             <table class="table table-dark table-bordered">
@@ -61,10 +62,16 @@
                                 <tbody>
                                     {% for form in order_item_formset.forms %}
                                         <tr>
-                                            <td>{{ form.item }}</td>
-                                            <td>{{ form.count }}</td>
+                                            <td 
+                                                rel="tooltip" 
+                                                class="order-item-td"
+                                                style="width:30%"
+                                               >
+                                                {{ form.item }}
+                                            </td>
+                                            <td style="width:10%">{{ form.count }}</td>
                                             <td>{{ form.fee }}</td>
-                                            <td>
+                                            <td style="width:8%">
                                                 <label class="form-check-label d-flex justify-content-center align-items-center align-content-center">
                                                     {{ form.auto_price }}
                                                     <span class="form-check-sign">
@@ -173,6 +180,7 @@
                              >
                             {% csrf_token %}
                             {{ order.formset.management_form }}
+                            <input type="hidden" name="dest" value="dashboard">
                             <div class="table-responsive">
                                 <table class="table table-dark table-bordered">
                                     <thead class="thead-dark">
@@ -187,10 +195,14 @@
                                     <tbody>
                                         {% for form in order.formset.forms %}
                                             <tr>
-                                                <td>{{ form.item }}</td>
-                                                <td>{{ form.count }}</td>
+                                                <td 
+                                                    rel="tooltip"
+                                                    class="order-item-td"
+                                                    style="width:30%"
+                                                   >{{ form.item }}</td>
+                                                <td style="width:10%">{{ form.count }}</td>
                                                 <td>{{ form.fee }}</td>
-                                                <td>
+                                                <td style="width:8%">
                                                     <label
                                                         class="form-check-label d-flex justify-content-center 
                                                                 align-items-center align-content-center"
@@ -316,6 +328,11 @@
                                        type="hidden" 
                                        name="public_uuid" 
                                        value="{{ order.qs.public_uuid }}"
+                                      >
+                                <input 
+                                       type="hidden"
+                                       name="dest"
+                                       value="dashboard"
                                       >
                             </form>
                         </div>
@@ -446,7 +463,8 @@
                         <i class="material-icons">account_balance</i>
                     </div>
                     <p class="card-category">Monthly Revenue</p>
-                    <h3 class="card-title">{{ restaurant.weekly_revenue_sum|trunc_number }}T</h3>
+                    <h3 class="card-title">
+                        {{ restaurant.weekly_revenue_sum|default:'0'|trunc_number }}T</h3>
                 </div>
                 <div class="card-footer">
                     <div class="stats">
@@ -462,7 +480,8 @@
                         <i class="material-icons">paid</i>
                     </div>
                     <p class="card-category">Daily Revenue</p>
-                    <h3 class="card-title">{{ restaurant.daily_revenue|trunc_number }}T</h3>
+                    <h3 class="card-title">
+                        {{ restaurant.daily_revenue|default:'0'|trunc_number }}T</h3>
                 </div>
                 <div class="card-footer">
                     <div class="stats">
@@ -541,11 +560,11 @@
                                 </li>
                                 <li class="nav-item ml-auto">
                                     <a 
-                                    class="nav-link" 
-                                    href="#" 
-                                    onclick="$('#createOrderBtn').click()" 
-                                    data-toggle="tab"
-                                    >
+                                       class="nav-link" 
+                                       href="#" 
+                                       onclick="$('#createOrderBtn').click()" 
+                                       data-toggle="tab"
+                                      >
                                         <i class="material-icons">add_circle</i>
                                         <div class="ripple-container"></div>
                                     </a>
@@ -557,7 +576,7 @@
                                         data-target="#createOrder"
                                         id="createOrderBtn"
                                     >
-                                    </button>
+                                </button>
                             </ul>
                         </div>
                     </div>
@@ -623,7 +642,7 @@
                                         <tr>
                                             <td>
                                                 <h6 class="text-center">
-                                                    <a href="#">
+                                                    <a href="{% url 'in_place:orders' %}">
                                                         take a look at all orders instead
                                                     </a>
                                                 </h6>
@@ -693,7 +712,7 @@
                                         <tr>
                                             <td>
                                                 <h6 class="text-center">
-                                                    <a href="#">
+                                                    <a href="{% url 'in_place:orders' %}">
                                                         take a look at all orders instead
                                                     </a>
                                                 </h6>
@@ -720,9 +739,15 @@
               $count = $(".item-count"),
               $orderType = $("#newOrderForm input[name=order_type]").filter(":checked"),
               $dinein = $("#new_dinein_info"),
+              $orderItemTd = $(".order-item-td"),
               $paid = $(".paid-price");
         $(document).ready(() => {
-            $paid.prop("disabled", true);
+            md.initDashboardPageCharts();
+            for (var j = 0; j < $orderItemTd.length; j++) {
+                $($orderItemTd[j]).removeAttr("title");
+                var content = $($orderItemTd[j]).find("option").filter(":selected").text();
+                $($orderItemTd[j]).attr("data-original-title", `Item: ${content}`);
+            }
             $paid.filter((i, e) => { return e.value == 0 }).val(0);
             $count.attr("min", 0);
             $("#order_type-i").prop("checked", true);

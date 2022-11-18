@@ -50,7 +50,10 @@ class RestaurantDocument(Document):
         
 @registry.register_document
 class OrderDocument(Document):
-    order_repr = fields.TextField()
+    orders_repr = fields.TextField()
+    restaurant = fields.IntegerField()
+    get_order_type_display = fields.TextField()
+    public_uuid = fields.TextField()
     
     class Django:
         model = Order
@@ -65,6 +68,15 @@ class OrderDocument(Document):
             "number_of_replicas": 0
         }
     
-    def prepare_order_repr(self, instance):
-        return ", ".join(instance.order_repr)
+    def prepare_orders_repr(self, instance):
+        return instance.orders_repr
+    
+    def prepare_restaurant(self, instance):
+        return instance.restaurant.id
+    
+    def prepare_get_order_type_display(self, instance):
+        return instance.get_order_type_display()
+    
+    def prepare_public_uuid(self, instance):
+        return str(instance.public_uuid)
     
