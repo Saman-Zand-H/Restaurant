@@ -1,9 +1,12 @@
 from django import forms
+from django.utils import timezone
 from django.core.validators import MinValueValidator
 
 from typing import Any
 
 from restaurants.models import ItemVariation, Order
+from users.forms import SignupForm
+
 
 class OrderForm(forms.Form):
     type_choices = (
@@ -17,6 +20,10 @@ class OrderForm(forms.Form):
     order_type = forms.ChoiceField(choices=type_choices,
                                    initial="i")
     dest = forms.ChoiceField(choices=dest_choices)
+    timestamp = forms.DateTimeField(required=False,
+                                    initial=timezone.now(),
+                                    widget=forms.HiddenInput(attrs={
+                                        "id": "newTimestamp"}))
  
 
 class OrderEditForm(OrderForm):
@@ -111,3 +118,33 @@ class OrderItemForm(forms.Form):
 class SearchOrdersForm(forms.Form):
     timestamp = forms.DateField()
     keyword = forms.CharField(required=False)
+
+
+class CreateStaffForm(SignupForm):
+    roles_choices = (
+        ("ca", "cashier"),
+        ("ch", "chef"),
+        ("s", "supplier"),
+        ("w", "waiter"),
+        ("m", "manager"),
+    )
+    role = forms.ChoiceField(choices=roles_choices,
+                             initial="ch",
+                             show_hidden_initial=False)
+    income = forms.IntegerField(min_value=0,
+                                widget=forms.NumberInput(attrs={
+                                    "class": "form-control",
+                                    "placeholder": "how much are you going to pay?",
+                                    "id": "new_income"
+                                }))  
+    description = forms.CharField(required=False,
+                                  widget=forms.Textarea(attrs={
+                                      "class": "form-control",
+                                      "placeholder": "I take additional context"
+                                  }))  
+    address = forms.CharField(required=False,
+                              widget=forms.TextInput(attrs={
+                                  "class": "form-control",
+                                  "placeholder": "now where does she/he live"
+                              }))
+    

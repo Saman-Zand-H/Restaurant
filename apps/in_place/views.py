@@ -23,8 +23,9 @@ from .forms import (OrderForm,
                     OrderEditForm, 
                     OrderDeleteForm, 
                     DineInForm,
-                    SearchOrdersForm)
-from .models import DineInOrder
+                    SearchOrdersForm,
+                    CreateStaffForm)
+from .models import DineInOrder, Staff
 from search_index.es_queries import OrderQuery
 from search_index.documents import OrderDocument
 from restaurants.models import (ItemVariation, 
@@ -141,6 +142,7 @@ class DashboardView(LoginRequiredMixin, UserPassesTestMixin, View):
                     restaurant = self.request.user.user_staff.restaurant
                     order_type = order_form_data.cleaned_data.get("order_type")
                     dest = order_form_data.cleaned_data.get("dest")
+                    timestamp = order_form_data.cleaned_data.get("timestamp")
                     item_var_qs = ItemVariation.objects.filter(
                         item__cuisine__restaurant=restaurant)
                     OrderItemFormset = formset_factory(
@@ -152,7 +154,8 @@ class DashboardView(LoginRequiredMixin, UserPassesTestMixin, View):
                         item_var_qs, 
                         order_type,
                         restaurant,
-                        dest)
+                        dest,
+                        timestamp)
                     return response
         except (ValidationError, IntegrityError):
             return self.render_or_redirect()
@@ -162,7 +165,8 @@ class DashboardView(LoginRequiredMixin, UserPassesTestMixin, View):
                               item_var_qs, 
                               order_type, 
                               restaurant,
-                              dest):
+                              dest, 
+                              timestamp=None):
         formset_data = formset(self.request.POST,
                                initial=[
                                   {
@@ -176,6 +180,11 @@ class DashboardView(LoginRequiredMixin, UserPassesTestMixin, View):
         if formset_data.is_valid():
             order = Order.objects.create(restaurant=restaurant,
                                          order_type=order_type)
+            # If provided, use a custom timestamp
+            print(timestamp)
+            order.timestamp = timestamp
+            order.save()
+                
             if order_type == "i":
                 dinein_form = DineInForm(self.request.POST)
                 if dinein_form.is_valid():
@@ -253,6 +262,7 @@ class EditOrderView(LoginRequiredMixin, UserPassesTestMixin, View):
         with transaction.atomic():
             if order_data.is_valid():
                 dest = order_data.cleaned_data.get("dest")
+                timestamp = order_data.cleaned_data.get("timestamp")
                 order = Order.objects.get(
                     public_uuid=order_data.cleaned_data.get("public_uuid"))
                 
@@ -265,7 +275,8 @@ class EditOrderView(LoginRequiredMixin, UserPassesTestMixin, View):
                         DineInOrder.objects.select_for_update().filter(
                             order__public_uuid=order.public_uuid).update(
                                 table_number=dinein_form.cleaned_data.get("table_number"),
-                                description=dinein_form.cleaned_data.get("description"))
+                                description=dinein_form.cleaned_data.get("description"),
+                                timestamp=timestamp)
                     elif not dinein_form.is_valid():
                         self.request.session["dinein_form"] = dinein_form
                         self._invalid_input_message()
@@ -335,7 +346,7 @@ edit_order_view = EditOrderView.as_view()
 class DeleteOrderView(LoginRequiredMixin, UserPassesTestMixin, View):
     def test_func(self):
         return (hasattr(self.request.user, "user_staff") 
-                and self.request.user.has_perm("delte_orders"))
+                and self.request.user.has_perm("delete_orders"))
     
     def post(self, *args, **kwargs):
         form_data = OrderDeleteForm(self.request.POST)
@@ -399,7 +410,7 @@ class OrdersView(LoginRequiredMixin, UserPassesTestMixin, View):
                                 order_number=i["_source"]["order_number"],
                                 orders_repr=i["_source"]["orders_repr"],
                                 timestamp=datetime.fromisoformat(
-                                    i["_source"]["timestamp"]).time(),
+                                    i["_source"]["timestamp"]),
                                 public_uuid=i["_source"]["public_uuid"],
                                 get_order_type_display=i["_source"]["get_order_type_display"])
                            for i in e.hits.hits]
@@ -452,3 +463,47 @@ class OrdersView(LoginRequiredMixin, UserPassesTestMixin, View):
             
 orders_view = OrdersView.as_view()
     
+class StaffView(LoginRequiredMixin, UserPassesTestMixin, View):
+    template_name = "in_place/staff.html"
+    context = dict()
+    
+    def test_func(self):
+        return (self.request.user.has_perm("in_place.mod_staff")
+                and hasattr(self.request.user, "user_staff"))
+    
+    def get(self, *args, **kwargs):
+        restaurant = self.request.user.user_staff.restaurant
+        self.context.update({"staff": restaurant.restaurant_staff,
+                             "new_form": CreateStaffForm()})
+        return render(self.request, self.template_name, self.context)
+    
+    def post(self, *args, **kwargs):
+        form_data = CreateStaffForm(self.request.POST)
+        if form_data.is_valid():
+            with transaction.atomic():
+                user = form_data.save(self.request)
+                cleaned_data = form_data.cleaned_data
+                
+                address = cleaned_data.get("address")
+                role = cleaned_data.get("role")
+                description = cleaned_data.get("description")
+                income = cleaned_data.get("income")
+                restaurant = self.request.user.user_staff.restaurant
+                try:
+                    Staff.objects.create(user=user,
+                                         restaurant=restaurant,
+                                         address=address,
+                                         income=income,
+                                         description=description,
+                                         role=role)
+                    messages.success(self.request, "User was successfully created.")
+                    return redirect("in_place:staff")
+                except:
+                    pass
+        print(form_data.errors)
+        messages.error(self.request, 
+                       "Invalid input detected. Please try again more carefully.")
+        self.context.update({"new_form": form_data})
+        return render(self.request, self.template_name, self.context)
+
+staff_view = StaffView.as_view()

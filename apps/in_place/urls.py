@@ -17,5 +17,8 @@ urlpatterns = [
         name="delete_order"),
    path(route="orders",
         view=views.orders_view,
-        name="orders")
+        name="orders"),
+   path(route="staff/",
+        view=views.staff_view,
+        name="staff")
 ]

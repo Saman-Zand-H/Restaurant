@@ -29,8 +29,11 @@
                 </a>
             </li>
             {% if user.user_staff.can_read_salaries %}
-                <li class="nav-item ">
-                    <a class="nav-link" href="./tables.html">
+                <li class="nav-item {% if 'staff' in request.path %}active{% endif %}">
+                    <a 
+                       class="nav-link" 
+                       href="{% url 'in_place:staff' %}"
+                      >
                         <i class="material-icons">badge</i>
                         <p>Staff</p>
                     </a>

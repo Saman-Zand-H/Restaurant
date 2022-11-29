@@ -1,7 +1,9 @@
 from django import forms
-from allauth.account.forms import LoginForm, SignupForm
+from allauth.account.forms import LoginForm, SignupForm as AllauthSignupForm
 from django.contrib.gis.forms.fields import PointField
 from django.contrib.gis.forms.widgets import OSMWidget
+from phonenumber_field.formfields import PhoneNumberField
+from phonenumber_field.widgets import PhoneNumberInternationalFallbackWidget
 
 
 class LoginForm(LoginForm):
@@ -22,7 +24,7 @@ class LoginForm(LoginForm):
         self.fields["remember"].widget = forms.HiddenInput()
 
 
-class SignupForm(SignupForm):
+class SignupForm(AllauthSignupForm):
     first_name = forms.CharField(max_length=50,
                                  widget=forms.TextInput(attrs={
                                      "class": "form-control",
@@ -33,11 +35,15 @@ class SignupForm(SignupForm):
                                      "class": "form-control",
                                      "placeholder": "Your Last Name",
                                  }))
-    picture = forms.ImageField(label="Profile Picture",
+    picture = forms.ImageField(label="Picture",
                                required=False,
                                widget=forms.ClearableFileInput(attrs={
                                      "class": "form-control",
                                }))
+    phone_number = PhoneNumberField(required=False,
+                                    widget=PhoneNumberInternationalFallbackWidget(attrs={
+                                        "class": "form-control",
+                                    }))
     
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

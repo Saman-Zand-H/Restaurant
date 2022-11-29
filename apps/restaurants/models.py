@@ -400,7 +400,7 @@ class Order(models.Model):
                                    on_delete=models.CASCADE,
                                    related_name="restaurant_orders",
                                    to_field="id")
-    timestamp = models.DateTimeField(auto_now=True)
+    timestamp = models.DateTimeField(default=timezone.now)
     order_number = models.PositiveIntegerField(blank=True, 
                                                null=True)
     
@@ -415,9 +415,9 @@ class Order(models.Model):
         return f"{self.restaurant}-{self.order_type}:{self.order_number}({self.id})"
     
     def _set_order_number(self):
-        q = self.__class__.objects.filter(timestamp__date=timezone.now().date())
+        q = self.__class__.objects.filter(timestamp__date=self.timestamp.date())
         if q.exists():
-            return q.last().order_number + 1
+            return q.first().order_number + 1
         else:
             return 1
     

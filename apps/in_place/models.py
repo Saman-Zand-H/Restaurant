@@ -22,7 +22,11 @@ class Staff(models.Model):
                                    unique=True)
     role = models.CharField(max_length=2, choices=roles_choices)
     description = models.TextField(blank=True, null=True)
+    date_created = models.DateTimeField(auto_now_add=True)
     income = models.PositiveIntegerField()
+    address = models.CharField(max_length=255,
+                               blank=True,
+                               null=True)
     restaurant = models.ForeignKey(Restaurant,
                                    on_delete=models.CASCADE,
                                    related_name="restaurant_staff",
@@ -34,7 +38,9 @@ class Staff(models.Model):
     class Meta:
         permissions = [
             ("delete_orders", "is authorized to delete order records."),
-            ("read_salaries", "is authorized to read other staff's salaries")
+            ("read_salaries", "is authorized to read other staff's salaries"),
+            ("read_staff", "has access to details of the staff"),
+            ("mod_staff", "can add, modify, or delete members for the staff")
         ]
         
     @property
@@ -51,8 +57,11 @@ class Staff(models.Model):
             name=f"{self.restaurant.name.lower()}_managers")
         if created:
             perms = Permission.objects.filter(
-                codename__in=["delete_orders", "read_salaries"])
-            managers_g.permissions.add(perms)
+                codename__in=["delete_orders", 
+                              "read_salaries", 
+                              "read_staff", 
+                              "mod_staff"])
+            managers_g.permissions.set(perms)
         if self.role == "m":
             self.user.groups.add(managers_g)
         return sup_save

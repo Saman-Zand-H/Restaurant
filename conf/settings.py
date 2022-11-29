@@ -224,6 +224,9 @@ ACCOUNT_FORMS = {
     "login": "users.forms.LoginForm",
 }
 
+# seleniumlogin conf
+SELENIUM_LOGIN_START_PAGE = '/accounts/login/'
+
 # crispy forms configurations
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 

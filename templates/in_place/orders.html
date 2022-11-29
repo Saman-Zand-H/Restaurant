@@ -1,5 +1,5 @@
 {% extends 'base/layout/dash_base.html' %}
-{% load static humanize crispy_forms_tags dash_utils %}
+{% load static humanize crispy_forms_tags dash_utils tz %}
 
 
 {% block title %}{{ user.user_staff.restaurant.name|title }} | Orders{% endblock %}
@@ -52,6 +52,14 @@
                     <input name="dest" type="hidden" value="orders">
                     {% csrf_token %}
                     {{ order_item_formset.management_form }}
+                    {{ order_form.timestamp }}
+                        <div>
+                            <input 
+                                   id="newTimeDP" 
+                                   type="text" 
+                                   class="w-100 mt-2 mb-3 px-3 py-1 text-center"
+                                  >
+                        </div>
                         <div class="table-responsive">
                             <table class="table table-dark table-bordered">
                                 <thead class="thead-dark">
@@ -348,9 +356,9 @@
                                     Close
                                 </button>
                                 <button
-                                type="button" 
-                                class="btn btn-danger" 
-                                onclick="javascript:$('#delete-order-form-{{ order.qs.public_uuid }}').submit()"
+                                        type="button" 
+                                        class="btn btn-danger" 
+                                        onclick="javascript:$('#delete-order-form-{{ order.qs.public_uuid }}').submit()"
                                 >
                                     Yes
                                 </button>
@@ -411,9 +419,11 @@
                                         </span>
                                     </td>
                                     <td style="width:10%" class="text-center">
-                                        {{ order.qs.timestamp|date:'H\:i' }}
+                                        {{ order.qs.timestamp|localtime|date:'H\:i' }}
                                     </td>
-                                    <td style="width:10%" class="text-center">{{ order.qs.get_order_type_display|title }}</td>
+                                    <td style="width:10%" class="text-center">
+                                        {{ order.qs.get_order_type_display|title }}
+                                    </td>
                                     <td style="width:4%">
                                         <div class="d-flex flex-row flex-grow-0">
                                                 <button 
@@ -476,21 +486,35 @@
               csrftoken = Cookies.get("csrftoken"),
               dateOptions = {
                 format: 'YYYY/M/D',
+                calendar: {
+                    persian: {
+                        locale: "fa",
+                        leapYearMode: "algorithmic",
+                    },
+                    gregorian: {
+                        locale: "en",
+                    },
+                },
+                toolbox: {
+                    enabled: true,
+                    todayButton: {
+                        enabled: true,
+                    }
+                },
                 onSelect: (unix) => {
-                    var date = new Date(unix).toLocaleDateString("en-au");
+                    var date = new Date(unix).toLocaleDateString("en-au").split("/").reverse().join("-");
                     $.ajax({
                         method: "POST",
                         headers: {
                             "X-CSRFToken": csrftoken
                         },
                         data: {
-                            timestamp: date.split("/").reverse().join("-"),
+                            timestamp: date,
                         },
                         success: (data) => {
                             $("#orders-table").html($.parseHTML(data.orders_temp));
                             $("#dynMods").html($.parseHTML(data.modals_temp));
                             $("#forms-scripts").text(data.modals_js);
-                            console.log($("#dynMods").html())
                             eval($("#forms-scripts").text());
                         },
                     })
@@ -590,5 +614,24 @@
             $("#newOrderForm input[name=order_type]").change((e) => {
                 $dinein.toggle();
             });
+    </script>
+    <script>
+        const timeDPOptions = {
+            timePicker: {
+                enabled: true
+            },
+            format: 'YYYY/MM/DD',
+            toolbox: {
+                enabled: true,
+                todayButton: {
+                    enabled: true,
+                }
+            },
+            onSelect: (unix) => {
+                $('#newTimestamp').val(new Date(unix).toISOString());
+            },
+            initialValue: true,
+        };
+        $("#newTimeDP").pDatepicker(timeDPOptions);
     </script>
 {% endblock %}

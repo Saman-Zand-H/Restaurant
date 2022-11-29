@@ -1,0 +1,22 @@
+[
+    {
+        "model": "users.usermodel",
+        "pk": 1,
+        "fields": {
+            "password": "pbkdf2_sha256$390000$XjtmsRRV3qYwQvyXXI6MA1$E7ANbcsji2/Q8+5WYqJ7Ak/JtVmWXqjY51cynhreTwU=",
+            "last_login": "2022-10-18T21:56:29.288Z",
+            "username": "saman",
+            "email": null,
+            "phone_number": null,
+            "picture": "",
+            "first_name": "13\b\b",
+            "last_name": "asdf",
+            "date_joined": "2022-09-17T16:35:11.591Z",
+            "is_staff": true,
+            "is_superuser": true,
+            "is_active": true,
+            "groups": [],
+            "user_permissions": []
+        }
+    }
+]

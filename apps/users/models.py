@@ -8,6 +8,8 @@ from django.contrib.auth.models import (AbstractBaseUser,
                                         BaseUserManager, 
                                         PermissionsMixin)
 
+from phonenumber_field.modelfields import PhoneNumberField
+
 class UserModelManager(BaseUserManager):
     def _create_user(self, 
                      email, 
@@ -84,6 +86,9 @@ class UserModel(AbstractBaseUser, PermissionsMixin):
                               db_index=True,
                               blank=True,
                               null=True)
+    phone_number = PhoneNumberField(region="IR", 
+                                    blank=True, 
+                                    null=True)
     picture = models.ImageField(upload_to='media/profiles/', 
                                 blank=True, 
                                 null=True)

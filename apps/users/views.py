@@ -80,6 +80,9 @@ class AddAddressView(View):
                     postal_code=postal_code,
                 )
             return redirect("accounts:profile")
+        messages.error(self.request, "Invalid Data entered. "
+                                     "Try again and make sure you've set your location on the map.")
+        return redirect("accounts:profile")
     
     
 add_address_view = AddAddressView.as_view()

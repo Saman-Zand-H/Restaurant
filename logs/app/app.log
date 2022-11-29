@@ -18798,3 +18798,2124 @@ AttributeError: type object 'super' has no attribute 'save'
 2022-11-18 16:42:24,039 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
 2022-11-18 16:51:15,190 - [INFO]    django.utils.autoreload: /usr/src/app/apps/restaurants/models.py changed, reloading.
 2022-11-18 16:51:52,507 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-18 17:15:39,787 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/forms.py changed, reloading.
+2022-11-18 17:15:45,425 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-18 17:23:47,327 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/forms.py changed, reloading.
+2022-11-18 17:24:05,225 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-18 17:47:49,935 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-18 17:54:32,277 - [INFO]    django.channels.server: [mHTTP GET /in_place/orders 200 [4.29, 172.20.0.1:33078][0m
+2022-11-18 17:55:24,199 - [INFO]    django.channels.server: [mHTTP GET /in_place/orders 200 [0.35, 172.20.0.1:38574][0m
+2022-11-18 17:57:03,898 - [INFO]    django.channels.server: [mHTTP GET /in_place/orders 200 [0.40, 172.20.0.1:50360][0m
+2022-11-18 17:58:07,843 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [1.54, 172.20.0.1:34886][0m
+2022-11-18 17:58:07,993 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [1.84, 172.20.0.1:34874][0m
+2022-11-18 17:58:11,537 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.37, 172.20.0.1:34894][0m
+2022-11-18 17:58:14,590 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.41, 172.20.0.1:33080][0m
+2022-11-18 17:58:14,855 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.53, 172.20.0.1:33090][0m
+2022-11-18 17:58:17,566 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.29, 172.20.0.1:33100][0m
+2022-11-18 17:58:18,098 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.63, 172.20.0.1:33110][0m
+2022-11-18 17:58:18,721 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [1.06, 172.20.0.1:33124][0m
+2022-11-18 17:58:19,202 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [1.35, 172.20.0.1:33132][0m
+2022-11-18 17:58:19,589 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [1.35, 172.20.0.1:33150][0m
+2022-11-18 17:58:19,623 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [1.54, 172.20.0.1:33142][0m
+2022-11-18 17:58:19,825 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [1.42, 172.20.0.1:33160][0m
+2022-11-18 17:58:20,253 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.28, 172.20.0.1:33168][0m
+2022-11-18 17:58:20,758 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.55, 172.20.0.1:33182][0m
+2022-11-18 17:58:21,079 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.69, 172.20.0.1:33184][0m
+2022-11-18 17:58:21,264 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.70, 172.20.0.1:33192][0m
+2022-11-18 17:58:22,716 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.54, 172.20.0.1:33204][0m
+2022-11-18 17:58:28,652 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.69, 172.20.0.1:48482][0m
+2022-11-18 17:58:29,324 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [1.14, 172.20.0.1:48498][0m
+2022-11-18 17:58:29,875 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [1.49, 172.20.0.1:48508][0m
+2022-11-18 17:58:30,738 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [2.14, 172.20.0.1:48510][0m
+2022-11-18 17:58:31,069 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [2.29, 172.20.0.1:48520][0m
+2022-11-18 17:58:31,513 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [2.54, 172.20.0.1:48524][0m
+2022-11-18 17:58:32,028 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [2.62, 172.20.0.1:48532][0m
+2022-11-18 17:58:32,370 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [3.13, 172.20.0.1:48526][0m
+2022-11-18 17:58:32,975 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [3.10, 172.20.0.1:48542][0m
+2022-11-18 17:58:33,102 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [3.07, 172.20.0.1:48558][0m
+2022-11-18 17:58:33,306 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [3.69, 172.20.0.1:48538][0m
+2022-11-18 17:58:33,568 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [3.30, 172.20.0.1:48564][0m
+2022-11-18 17:58:33,837 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [3.04, 172.20.0.1:48574][0m
+2022-11-18 17:58:34,113 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [2.56, 172.20.0.1:48586][0m
+2022-11-18 17:58:34,196 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [3.11, 172.20.0.1:48582][0m
+2022-11-18 17:58:34,377 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [2.00, 172.20.0.1:48608][0m
+2022-11-18 17:58:34,490 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [2.43, 172.20.0.1:48592][0m
+2022-11-18 18:00:50,669 - [INFO]    django.channels.server: [mHTTP GET /in_place/orders 200 [0.51, 172.20.0.1:43888][0m
+2022-11-18 18:01:13,810 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.36, 172.20.0.1:53400][0m
+2022-11-18 18:01:27,539 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.30, 172.20.0.1:60716][0m
+2022-11-18 18:02:30,623 - [INFO]    django.channels.server: [mHTTP GET /in_place/orders 200 [0.43, 172.20.0.1:46766][0m
+2022-11-18 18:02:47,312 - [INFO]    django.channels.server: [mHTTP GET /in_place/orders 200 [0.48, 172.20.0.1:36764][0m
+2022-11-18 18:04:53,836 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.39, 172.20.0.1:58310][0m
+2022-11-18 18:05:14,632 - [INFO]    django.channels.server: [mHTTP GET /in_place/orders 200 [0.51, 172.20.0.1:52532][0m
+2022-11-18 18:05:32,615 - [INFO]    django.channels.server: [mHTTP GET /in_place/orders 200 [0.50, 172.20.0.1:40844][0m
+2022-11-18 18:06:09,835 - [INFO]    django.channels.server: [mHTTP GET /in_place/orders 200 [0.66, 172.20.0.1:54274][0m
+2022-11-18 18:06:22,223 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.30, 172.20.0.1:48876][0m
+2022-11-18 18:06:28,269 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.28, 172.20.0.1:44016][0m
+2022-11-18 18:06:30,530 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.28, 172.20.0.1:44032][0m
+2022-11-18 18:08:30,066 - [INFO]    django.channels.server: [mHTTP GET /in_place/orders 200 [0.63, 172.20.0.1:33988][0m
+2022-11-18 18:10:10,264 - [INFO]    django.channels.server: [mHTTP GET /in_place/orders 200 [0.43, 172.20.0.1:53284][0m
+2022-11-18 18:10:33,214 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/forms.py changed, reloading.
+2022-11-18 18:10:57,104 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-18 18:11:15,607 - [INFO]    django.channels.server: [mHTTP GET /in_place/orders 200 [0.84, 172.20.0.1:46216][0m
+2022-11-18 18:11:52,961 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.31, 172.20.0.1:52768][0m
+2022-11-18 18:11:56,509 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.37, 172.20.0.1:53332][0m
+2022-11-18 18:11:57,311 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.31, 172.20.0.1:53348][0m
+2022-11-18 18:11:58,446 - [INFO]    django.channels.server: [mHTTP GET /in_place/orders 200 [0.41, 172.20.0.1:53352][0m
+2022-11-18 18:12:11,890 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.43, 172.20.0.1:37292][0m
+2022-11-18 18:12:12,893 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [1.16, 172.20.0.1:37302][0m
+2022-11-18 18:12:13,184 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [1.29, 172.20.0.1:37306][0m
+2022-11-18 18:12:13,423 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [1.36, 172.20.0.1:37312][0m
+2022-11-18 18:12:13,701 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [1.41, 172.20.0.1:37324][0m
+2022-11-18 18:12:17,183 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.44, 172.20.0.1:55550][0m
+2022-11-18 18:12:17,590 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.59, 172.20.0.1:55564][0m
+2022-11-18 18:12:17,925 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.37, 172.20.0.1:55570][0m
+2022-11-18 18:12:33,738 - [INFO]    django.channels.server: [32mHTTP POST /in_place/ 302 [1.38, 172.20.0.1:33734][0m
+2022-11-18 18:12:34,549 - [INFO]    django.channels.server: [mHTTP GET /in_place/orders 200 [0.71, 172.20.0.1:43102][0m
+2022-11-18 18:22:45,370 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-11-18 18:22:48,850 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-18 18:23:03,731 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-11-18 18:23:06,047 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-18 18:23:10,319 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-11-18 18:23:12,632 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-18 18:24:32,371 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-11-18 18:24:34,762 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-18 18:24:48,493 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-11-18 18:24:50,683 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-18 18:25:00,651 - [INFO]    django.channels.server: [mHTTP GET /in_place/orders 200 [1.21, 172.20.0.1:57790][0m
+2022-11-18 18:25:19,433 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.52, 172.20.0.1:54504][0m
+2022-11-18 18:25:20,158 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.49, 172.20.0.1:54510][0m
+2022-11-18 18:25:21,320 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.76, 172.20.0.1:54526][0m
+2022-11-18 18:25:23,059 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [2.29, 172.20.0.1:54530][0m
+2022-11-18 18:25:24,630 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [3.47, 172.20.0.1:54550][0m
+2022-11-18 18:25:25,052 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [4.08, 172.20.0.1:54544][0m
+2022-11-18 18:25:25,325 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [3.54, 172.20.0.1:54590][0m
+2022-11-18 18:25:26,005 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [4.45, 172.20.0.1:54576][0m
+2022-11-18 18:25:26,693 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [5.33, 172.20.0.1:54564][0m
+2022-11-18 18:25:27,420 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [5.19, 172.20.0.1:54608][0m
+2022-11-18 18:25:27,448 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [5.52, 172.20.0.1:54594][0m
+2022-11-18 18:25:27,458 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [5.37, 172.20.0.1:54596][0m
+2022-11-18 18:25:37,177 - [INFO]    django.channels.server: [32mHTTP POST /in_place/ 302 [0.91, 172.20.0.1:36230][0m
+2022-11-18 18:25:37,973 - [INFO]    django.channels.server: [mHTTP GET /in_place/orders 200 [0.73, 172.20.0.1:36242][0m
+2022-11-18 18:25:51,382 - [INFO]    django.channels.server: [32mHTTP POST /in_place/orders/delete/ 302 [0.90, 172.20.0.1:49258][0m
+2022-11-18 18:25:52,152 - [INFO]    django.channels.server: [mHTTP GET /in_place/orders 200 [0.71, 172.20.0.1:49274][0m
+2022-11-18 23:11:27,194 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-11-18 23:11:50,266 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-18 23:15:09,989 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-11-18 23:15:12,047 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-18 23:15:17,429 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-11-18 23:15:19,449 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-18 23:15:27,055 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-11-18 23:15:29,274 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-18 23:21:51,173 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [6.86, 172.20.0.1:58914][0m
+2022-11-18 23:21:51,224 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [5.79, 172.20.0.1:58962][0m
+2022-11-18 23:21:51,240 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [5.45, 172.20.0.1:58968][0m
+2022-11-18 23:21:51,303 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [6.67, 172.20.0.1:58930][0m
+2022-11-18 23:21:51,340 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [6.19, 172.20.0.1:58958][0m
+2022-11-18 23:21:51,346 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [6.36, 172.20.0.1:58952][0m
+2022-11-18 23:21:51,353 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [6.52, 172.20.0.1:58938][0m
+2022-11-18 23:22:01,779 - [INFO]    django.channels.server: [mHTTP GET /in_place/orders 200 [0.81, 172.20.0.1:59402][0m
+2022-11-18 23:22:23,647 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.95, 172.20.0.1:34692][0m
+2022-11-18 23:22:23,764 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [1.02, 172.20.0.1:44278][0m
+2022-11-18 23:22:25,314 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [1.31, 172.20.0.1:44290][0m
+2022-11-18 23:22:25,728 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [1.70, 172.20.0.1:44304][0m
+2022-11-18 23:22:26,601 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [2.37, 172.20.0.1:44328][0m
+2022-11-18 23:22:26,896 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [2.74, 172.20.0.1:44310][0m
+2022-11-18 23:22:26,940 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [2.77, 172.20.0.1:44322][0m
+2022-11-18 23:22:34,927 - [INFO]    django.channels.server: [mHTTP GET /in_place/orders 200 [0.65, 172.20.0.1:33534][0m
+2022-11-18 23:22:46,518 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.62, 172.20.0.1:47148][0m
+2022-11-18 23:22:47,307 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [1.19, 172.20.0.1:47162][0m
+2022-11-18 23:22:48,428 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [2.06, 172.20.0.1:47170][0m
+2022-11-18 23:22:48,774 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [2.10, 172.20.0.1:47172][0m
+2022-11-18 23:22:49,460 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [2.66, 172.20.0.1:47188][0m
+2022-11-18 23:22:50,309 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [3.01, 172.20.0.1:47208][0m
+2022-11-18 23:22:50,862 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [3.89, 172.20.0.1:47200][0m
+2022-11-18 23:22:51,862 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [4.06, 172.20.0.1:47230][0m
+2022-11-18 23:22:51,927 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [4.39, 172.20.0.1:47218][0m
+2022-11-18 23:22:52,645 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [3.99, 172.20.0.1:47242][0m
+2022-11-18 23:22:53,003 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [3.74, 172.20.0.1:47264][0m
+2022-11-18 23:22:53,776 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [4.75, 172.20.0.1:47248][0m
+2022-11-18 23:22:53,898 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [4.20, 172.20.0.1:47282][0m
+2022-11-18 23:22:55,167 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [4.81, 172.20.0.1:47286][0m
+2022-11-18 23:22:55,256 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [4.37, 172.20.0.1:47290][0m
+2022-11-18 23:22:55,281 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [5.71, 172.20.0.1:47276][0m
+2022-11-18 23:23:08,399 - [ERROR]    django.request: Internal Server Error: /in_place/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/local/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/usr/local/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/in_place/views.py", line 151, in post
+    response = self.handle_formset_create(
+  File "/usr/src/app/apps/in_place/views.py", line 185, in handle_formset_create
+    order.timestamp = datetime.fromisoformat(timestamp)
+TypeError: fromisoformat: argument must be str
+2022-11-18 23:23:08,715 - [ERROR]    django.channels.server: [35;1mHTTP POST /in_place/ 500 [1.06, 172.20.0.1:45094][0m
+2022-11-18 23:23:28,990 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-11-18 23:23:31,098 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-18 23:23:37,094 - [ERROR]    django.request: Internal Server Error: /in_place/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/local/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/usr/local/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/in_place/views.py", line 151, in post
+    response = self.handle_formset_create(
+  File "/usr/src/app/apps/in_place/views.py", line 184, in handle_formset_create
+    order.timestamp = datetime.fromisoformat(timestamp)
+TypeError: fromisoformat: argument must be str
+2022-11-18 23:23:37,470 - [ERROR]    django.channels.server: [35;1mHTTP POST /in_place/ 500 [1.17, 172.20.0.1:58216][0m
+2022-11-18 23:23:43,956 - [ERROR]    django.request: Internal Server Error: /in_place/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/local/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/usr/local/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/in_place/views.py", line 151, in post
+    response = self.handle_formset_create(
+  File "/usr/src/app/apps/in_place/views.py", line 184, in handle_formset_create
+    order.timestamp = datetime.fromisoformat(timestamp)
+TypeError: fromisoformat: argument must be str
+2022-11-18 23:23:44,181 - [ERROR]    django.channels.server: [35;1mHTTP POST /in_place/ 500 [0.47, 172.20.0.1:48368][0m
+2022-11-18 23:23:56,564 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-11-18 23:23:58,901 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-18 23:24:04,369 - [INFO]    django.channels.server: [32mHTTP POST /in_place/ 302 [0.98, 172.20.0.1:38822][0m
+2022-11-18 23:24:05,483 - [INFO]    django.channels.server: [mHTTP GET /in_place/orders 200 [1.06, 172.20.0.1:38828][0m
+2022-11-18 23:47:53,774 - [INFO]    django.utils.autoreload: /usr/src/app/apps/restaurants/models.py changed, reloading.
+2022-11-18 23:47:56,647 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-18 23:48:57,892 - [INFO]    django.utils.autoreload: /usr/src/app/apps/restaurants/models.py changed, reloading.
+2022-11-18 23:49:00,536 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-18 23:49:20,716 - [INFO]    django.utils.autoreload: /usr/src/app/apps/restaurants/migrations/0011_alter_order_timestamp.py changed, reloading.
+2022-11-18 23:49:23,467 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-18 23:58:05,431 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [6.80, 172.20.0.1:33452][0m
+2022-11-18 23:58:05,818 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [6.72, 172.20.0.1:33476][0m
+2022-11-18 23:58:07,794 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [7.51, 172.20.0.1:33512][0m
+2022-11-18 23:58:07,830 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [7.32, 172.20.0.1:33522][0m
+2022-11-18 23:58:08,078 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [8.78, 172.20.0.1:33482][0m
+2022-11-18 23:58:08,147 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [8.66, 172.20.0.1:33496][0m
+2022-11-18 23:58:08,523 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [8.67, 172.20.0.1:33508][0m
+2022-11-18 23:58:09,464 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [10.99, 172.20.0.1:33446][0m
+2022-11-18 23:58:09,568 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [10.66, 172.20.0.1:33466][0m
+2022-11-18 23:58:12,452 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [7.01, 172.20.0.1:39470][0m
+2022-11-18 23:58:12,584 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [6.75, 172.20.0.1:39482][0m
+2022-11-18 23:58:13,864 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [6.06, 172.20.0.1:39494][0m
+2022-11-18 23:58:13,956 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [6.11, 172.20.0.1:39502][0m
+2022-11-18 23:58:14,187 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [5.65, 172.20.0.1:39528][0m
+2022-11-18 23:58:14,246 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [6.08, 172.20.0.1:39516][0m
+2022-11-18 23:58:14,272 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [6.18, 172.20.0.1:39514][0m
+2022-11-18 23:58:14,344 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [4.76, 172.20.0.1:39542][0m
+2022-11-18 23:58:14,347 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [4.86, 172.20.0.1:39536][0m
+2022-11-18 23:59:00,377 - [INFO]    django.channels.server: [mHTTP GET /in_place/orders 200 [1.10, 172.20.0.1:47058][0m
+2022-11-19 00:02:59,711 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.45, 172.20.0.1:49250][0m
+2022-11-19 00:03:00,584 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.96, 172.20.0.1:49262][0m
+2022-11-19 00:03:00,923 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [1.04, 172.20.0.1:49264][0m
+2022-11-19 00:03:01,334 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [1.26, 172.20.0.1:49266][0m
+2022-11-19 00:03:11,370 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.30, 172.20.0.1:43574][0m
+2022-11-19 00:03:14,388 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.48, 172.20.0.1:52626][0m
+2022-11-19 00:03:33,008 - [INFO]    django.channels.server: [mHTTP GET /in_place/orders 200 [0.63, 172.20.0.1:49778][0m
+2022-11-19 00:04:25,261 - [INFO]    django.channels.server: [mHTTP GET /in_place/orders 200 [0.29, 172.20.0.1:55524][0m
+2022-11-19 00:04:44,101 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.29, 172.20.0.1:34324][0m
+2022-11-19 00:04:44,353 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.31, 172.20.0.1:34338][0m
+2022-11-19 00:04:44,717 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.46, 172.20.0.1:34342][0m
+2022-11-19 00:04:45,072 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.59, 172.20.0.1:34356][0m
+2022-11-19 00:04:45,334 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.67, 172.20.0.1:34368][0m
+2022-11-19 00:06:26,450 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.24, 172.20.0.1:45294][0m
+2022-11-19 00:06:27,539 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.23, 172.20.0.1:45298][0m
+2022-11-19 00:06:28,256 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.25, 172.20.0.1:45304][0m
+2022-11-19 00:06:29,221 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.24, 172.20.0.1:45320][0m
+2022-11-19 00:06:29,840 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.24, 172.20.0.1:45324][0m
+2022-11-19 00:06:30,180 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.26, 172.20.0.1:45334][0m
+2022-11-19 00:06:31,082 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.31, 172.20.0.1:45346][0m
+2022-11-19 00:06:31,501 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.52, 172.20.0.1:45356][0m
+2022-11-19 00:06:31,951 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.71, 172.20.0.1:45370][0m
+2022-11-19 00:06:32,265 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.81, 172.20.0.1:45382][0m
+2022-11-19 00:06:32,551 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.89, 172.20.0.1:45390][0m
+2022-11-19 00:06:32,844 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.92, 172.20.0.1:45400][0m
+2022-11-19 00:06:33,135 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.90, 172.20.0.1:45406][0m
+2022-11-19 00:07:13,064 - [INFO]    django.channels.server: [mHTTP GET /in_place/orders 200 [0.34, 172.20.0.1:33632][0m
+2022-11-19 00:27:17,800 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.26, 172.20.0.1:34020][0m
+2022-11-19 00:27:18,896 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.25, 172.20.0.1:34026][0m
+2022-11-19 00:27:19,798 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.45, 172.20.0.1:34032][0m
+2022-11-19 00:27:20,203 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.42, 172.20.0.1:34048][0m
+2022-11-19 00:27:20,742 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.41, 172.20.0.1:34060][0m
+2022-11-19 00:27:21,163 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.38, 172.20.0.1:34076][0m
+2022-11-19 00:27:21,710 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.61, 172.20.0.1:34080][0m
+2022-11-19 00:27:22,230 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.82, 172.20.0.1:34088][0m
+2022-11-19 00:27:22,741 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.94, 172.20.0.1:34090][0m
+2022-11-19 00:27:22,934 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.86, 172.20.0.1:34102][0m
+2022-11-19 00:27:23,142 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.72, 172.20.0.1:34110][0m
+2022-11-19 00:27:24,758 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.23, 172.20.0.1:60242][0m
+2022-11-19 00:27:25,972 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.23, 172.20.0.1:60258][0m
+2022-11-19 00:27:26,755 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.40, 172.20.0.1:60264][0m
+2022-11-19 00:27:33,073 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.32, 172.20.0.1:60278][0m
+2022-11-19 00:27:33,511 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.52, 172.20.0.1:60292][0m
+2022-11-19 00:27:33,808 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.64, 172.20.0.1:60306][0m
+2022-11-19 00:27:34,032 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.46, 172.20.0.1:60310][0m
+2022-11-19 00:27:35,070 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.33, 172.20.0.1:55404][0m
+2022-11-19 00:27:35,484 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.50, 172.20.0.1:55418][0m
+2022-11-19 00:27:35,976 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.77, 172.20.0.1:55426][0m
+2022-11-19 00:27:36,163 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.70, 172.20.0.1:55440][0m
+2022-11-19 00:27:36,367 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.65, 172.20.0.1:55446][0m
+2022-11-19 00:27:37,190 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.24, 172.20.0.1:55448][0m
+2022-11-19 00:27:37,518 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.32, 172.20.0.1:55460][0m
+2022-11-19 00:27:38,072 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.59, 172.20.0.1:55472][0m
+2022-11-19 00:27:38,413 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.75, 172.20.0.1:55476][0m
+2022-11-19 00:27:38,591 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.76, 172.20.0.1:55478][0m
+2022-11-19 00:34:29,750 - [INFO]    django.channels.server: [mHTTP GET /in_place/orders 200 [0.49, 172.20.0.1:41714][0m
+2022-11-19 00:34:55,268 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.75, 172.20.0.1:40200][0m
+2022-11-19 00:34:56,455 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.26, 172.20.0.1:40202][0m
+2022-11-19 00:34:56,983 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.52, 172.20.0.1:40208][0m
+2022-11-19 00:34:57,481 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.79, 172.20.0.1:40210][0m
+2022-11-19 00:34:58,188 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [1.19, 172.20.0.1:40216][0m
+2022-11-19 00:34:58,392 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [1.19, 172.20.0.1:40222][0m
+2022-11-19 00:34:58,555 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [1.10, 172.20.0.1:40226][0m
+2022-11-19 00:34:58,788 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [1.14, 172.20.0.1:40242][0m
+2022-11-19 00:34:58,997 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [1.06, 172.20.0.1:40250][0m
+2022-11-19 00:34:59,333 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.41, 172.20.0.1:40254][0m
+2022-11-19 00:35:18,250 - [INFO]    django.channels.server: [32mHTTP POST /in_place/ 302 [2.38, 172.20.0.1:45144][0m
+2022-11-19 00:35:18,794 - [INFO]    django.channels.server: [mHTTP GET /in_place/orders 200 [0.44, 172.20.0.1:45150][0m
+2022-11-19 00:35:31,179 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.28, 172.20.0.1:48436][0m
+2022-11-19 00:35:37,012 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.26, 172.20.0.1:55828][0m
+2022-11-19 00:35:38,321 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.27, 172.20.0.1:55838][0m
+2022-11-19 00:35:41,023 - [INFO]    django.channels.server: [mHTTP GET /in_place/orders 200 [0.39, 172.20.0.1:55852][0m
+2022-11-19 00:37:57,906 - [INFO]    django.channels.server: [mHTTP GET /in_place/orders 200 [2.62, 172.20.0.1:42344][0m
+2022-11-19 00:38:24,765 - [INFO]    django.channels.server: [mHTTP GET /in_place/orders 200 [0.30, 172.20.0.1:45194][0m
+2022-11-19 00:38:35,481 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.67, 172.20.0.1:49980][0m
+2022-11-19 00:38:42,949 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.43, 172.20.0.1:49984][0m
+2022-11-19 00:38:49,232 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.26, 172.20.0.1:41820][0m
+2022-11-19 00:39:43,504 - [INFO]    django.utils.autoreload: /usr/src/app/apps/restaurants/models.py changed, reloading.
+2022-11-19 00:40:31,780 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-19 00:42:02,195 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [9.54, 172.20.0.1:43642][0m
+2022-11-19 00:42:02,365 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [9.69, 172.20.0.1:43646][0m
+2022-11-19 00:42:02,372 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [9.84, 172.20.0.1:43638][0m
+2022-11-19 00:42:02,379 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [9.70, 172.20.0.1:43644][0m
+2022-11-19 00:42:03,193 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [9.28, 172.20.0.1:43662][0m
+2022-11-19 00:42:03,205 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [8.64, 172.20.0.1:53162][0m
+2022-11-19 00:42:03,216 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [9.09, 172.20.0.1:43676][0m
+2022-11-19 00:42:03,235 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [9.57, 172.20.0.1:43648][0m
+2022-11-19 00:42:03,238 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [8.76, 172.20.0.1:53150][0m
+2022-11-19 00:42:03,551 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [1.16, 172.20.0.1:53164][0m
+2022-11-19 00:42:17,636 - [INFO]    django.channels.server: [mHTTP GET /in_place/orders 200 [0.72, 172.20.0.1:41330][0m
+2022-11-19 00:42:39,293 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.56, 172.20.0.1:58524][0m
+2022-11-19 00:42:39,586 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.84, 172.20.0.1:58530][0m
+2022-11-19 00:42:40,045 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [1.20, 172.20.0.1:58532][0m
+2022-11-19 00:42:40,306 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [1.24, 172.20.0.1:58540][0m
+2022-11-19 00:42:40,660 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [1.38, 172.20.0.1:58556][0m
+2022-11-19 00:42:40,898 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [1.43, 172.20.0.1:58566][0m
+2022-11-19 00:42:41,217 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [1.58, 172.20.0.1:58574][0m
+2022-11-19 00:42:41,644 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [1.80, 172.20.0.1:58580][0m
+2022-11-19 00:42:42,221 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [1.95, 172.20.0.1:58596][0m
+2022-11-19 00:42:42,323 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [1.91, 172.20.0.1:58610][0m
+2022-11-19 00:42:42,706 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [2.05, 172.20.0.1:58616][0m
+2022-11-19 00:42:43,768 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [2.92, 172.20.0.1:58624][0m
+2022-11-19 00:42:43,786 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [2.57, 172.20.0.1:58640][0m
+2022-11-19 00:42:43,804 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [2.38, 172.20.0.1:58646][0m
+2022-11-19 00:42:43,914 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [2.91, 172.20.0.1:58636][0m
+2022-11-19 00:42:44,061 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [2.42, 172.20.0.1:58648][0m
+2022-11-19 00:42:44,317 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [2.46, 172.20.0.1:58658][0m
+2022-11-19 00:42:44,506 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [2.25, 172.20.0.1:58670][0m
+2022-11-19 00:42:44,659 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [2.30, 172.20.0.1:58682][0m
+2022-11-19 00:42:45,059 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [2.28, 172.20.0.1:58686][0m
+2022-11-19 00:42:45,365 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [1.38, 172.20.0.1:58704][0m
+2022-11-19 00:42:45,368 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [1.46, 172.20.0.1:58688][0m
+2022-11-19 00:42:54,813 - [INFO]    django.channels.server: [32mHTTP POST /in_place/ 302 [2.70, 172.20.0.1:50058][0m
+2022-11-19 00:42:55,431 - [INFO]    django.channels.server: [mHTTP GET /in_place/orders 200 [0.50, 172.20.0.1:40196][0m
+2022-11-19 00:43:14,461 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.33, 172.20.0.1:40760][0m
+2022-11-19 00:43:26,369 - [INFO]    django.channels.server: [32mHTTP POST /in_place/ 302 [1.77, 172.20.0.1:45548][0m
+2022-11-19 00:43:27,019 - [INFO]    django.channels.server: [mHTTP GET /in_place/orders 200 [0.61, 172.20.0.1:45558][0m
+2022-11-19 00:43:59,302 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.46, 172.20.0.1:47036][0m
+2022-11-19 00:44:01,403 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.35, 172.20.0.1:47048][0m
+2022-11-19 00:44:03,882 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.22, 172.20.0.1:47050][0m
+2022-11-19 00:44:05,206 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.36, 172.20.0.1:47222][0m
+2022-11-19 00:44:22,279 - [INFO]    django.channels.server: [32mHTTP POST /in_place/ 302 [1.58, 172.20.0.1:37130][0m
+2022-11-19 00:44:22,969 - [INFO]    django.channels.server: [mHTTP GET /in_place/orders 200 [0.64, 172.20.0.1:37144][0m
+2022-11-19 00:44:54,844 - [INFO]    django.utils.autoreload: /usr/src/app/apps/restaurants/models.py changed, reloading.
+2022-11-19 00:45:55,952 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-19 00:46:27,585 - [INFO]    django.channels.server: [32mHTTP POST /in_place/orders/delete/ 302 [1.94, 172.20.0.1:59282][0m
+2022-11-19 00:46:30,487 - [INFO]    django.channels.server: [mHTTP GET /in_place/orders 200 [2.11, 172.20.0.1:59288][0m
+2022-11-19 00:46:51,541 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.76, 172.20.0.1:46024][0m
+2022-11-19 00:47:07,430 - [INFO]    django.channels.server: [32mHTTP POST /in_place/ 302 [1.82, 172.20.0.1:33342][0m
+2022-11-19 00:47:08,113 - [INFO]    django.channels.server: [mHTTP GET /in_place/orders 200 [0.63, 172.20.0.1:33346][0m
+2022-11-19 00:47:15,635 - [INFO]    django.channels.server: [mHTTP GET /in_place/orders 200 [0.56, 172.20.0.1:34206][0m
+2022-11-19 00:47:27,381 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.46, 172.20.0.1:32916][0m
+2022-11-19 00:48:36,680 - [INFO]    django.channels.server: [mHTTP GET /in_place/orders 200 [0.38, 172.20.0.1:36812][0m
+2022-11-19 00:48:56,337 - [INFO]    django.channels.server: [32mHTTP POST /in_place/ 302 [0.84, 172.20.0.1:54442][0m
+2022-11-19 00:48:56,966 - [INFO]    django.channels.server: [mHTTP GET /in_place/orders 200 [0.57, 172.20.0.1:54458][0m
+2022-11-19 00:49:15,787 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.42, 172.20.0.1:44532][0m
+2022-11-19 00:56:31,205 - [INFO]    django.channels.server: [mHTTP GET /in_place/orders 200 [0.72, 172.20.0.1:57690][0m
+2022-11-19 00:56:40,329 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.34, 172.20.0.1:39028][0m
+2022-11-19 00:56:54,711 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.22, 172.20.0.1:33158][0m
+2022-11-19 00:56:57,393 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.28, 172.20.0.1:35254][0m
+2022-11-19 00:57:44,055 - [INFO]    django.channels.server: [mHTTP GET /in_place/orders 200 [0.32, 172.20.0.1:58688][0m
+2022-11-19 00:57:50,788 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.27, 172.20.0.1:56446][0m
+2022-11-19 00:57:52,065 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.36, 172.20.0.1:56456][0m
+2022-11-19 00:57:52,379 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.36, 172.20.0.1:56472][0m
+2022-11-19 00:57:52,662 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.36, 172.20.0.1:56488][0m
+2022-11-19 00:57:52,904 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.28, 172.20.0.1:56496][0m
+2022-11-19 00:57:53,260 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.40, 172.20.0.1:56512][0m
+2022-11-19 00:57:53,491 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.47, 172.20.0.1:56522][0m
+2022-11-19 00:57:53,691 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.36, 172.20.0.1:56532][0m
+2022-11-19 00:57:54,035 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.20, 172.20.0.1:56534][0m
+2022-11-19 00:57:55,631 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.22, 172.20.0.1:45604][0m
+2022-11-19 00:57:56,716 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.23, 172.20.0.1:45620][0m
+2022-11-19 00:57:56,957 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.24, 172.20.0.1:45622][0m
+2022-11-19 00:57:57,309 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.38, 172.20.0.1:45634][0m
+2022-11-19 00:57:57,628 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.50, 172.20.0.1:45642][0m
+2022-11-19 00:57:57,839 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.49, 172.20.0.1:45652][0m
+2022-11-19 00:57:58,084 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.50, 172.20.0.1:45664][0m
+2022-11-19 00:57:58,325 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.55, 172.20.0.1:45672][0m
+2022-11-19 00:57:58,559 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.56, 172.20.0.1:45684][0m
+2022-11-19 00:57:58,816 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.59, 172.20.0.1:45694][0m
+2022-11-19 00:58:09,501 - [INFO]    django.channels.server: [mHTTP GET /in_place/orders 200 [0.35, 172.20.0.1:55738][0m
+2022-11-19 00:58:19,663 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.61, 172.20.0.1:53604][0m
+2022-11-19 00:58:19,834 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.75, 172.20.0.1:53610][0m
+2022-11-19 00:58:20,276 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.91, 172.20.0.1:53618][0m
+2022-11-19 00:58:20,521 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [1.12, 172.20.0.1:53630][0m
+2022-11-19 00:58:21,503 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [1.21, 172.20.0.1:53646][0m
+2022-11-19 00:58:21,968 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [1.78, 172.20.0.1:53632][0m
+2022-11-19 00:58:21,988 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [1.63, 172.20.0.1:53654][0m
+2022-11-19 00:58:22,053 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [1.67, 172.20.0.1:53672][0m
+2022-11-19 00:58:22,132 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [1.77, 172.20.0.1:53658][0m
+2022-11-19 00:58:22,210 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [1.34, 172.20.0.1:53680][0m
+2022-11-19 00:58:26,725 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.21, 172.20.0.1:42810][0m
+2022-11-19 00:58:27,069 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.22, 172.20.0.1:42824][0m
+2022-11-19 00:58:27,314 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.29, 172.20.0.1:42830][0m
+2022-11-19 00:58:27,574 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.21, 172.20.0.1:42844][0m
+2022-11-19 00:58:27,853 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.24, 172.20.0.1:42854][0m
+2022-11-19 00:58:28,293 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.21, 172.20.0.1:42868][0m
+2022-11-19 00:58:28,524 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.21, 172.20.0.1:42872][0m
+2022-11-19 00:58:29,175 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.23, 172.20.0.1:42878][0m
+2022-11-19 00:58:30,578 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.24, 172.20.0.1:42892][0m
+2022-11-19 00:58:37,650 - [INFO]    django.channels.server: [mHTTP GET /in_place/orders 200 [0.31, 172.20.0.1:32998][0m
+2022-11-19 00:58:46,441 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.29, 172.20.0.1:51132][0m
+2022-11-19 00:58:48,448 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.20, 172.20.0.1:51138][0m
+2022-11-19 00:58:48,948 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.36, 172.20.0.1:51152][0m
+2022-11-19 00:58:49,192 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.30, 172.20.0.1:51160][0m
+2022-11-19 00:58:50,421 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.26, 172.20.0.1:51166][0m
+2022-11-19 00:58:50,707 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.31, 172.20.0.1:51180][0m
+2022-11-19 00:58:50,987 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.45, 172.20.0.1:51190][0m
+2022-11-19 00:58:51,226 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.42, 172.20.0.1:51202][0m
+2022-11-19 00:58:53,536 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.25, 172.20.0.1:51212][0m
+2022-11-19 00:59:06,580 - [INFO]    django.channels.server: [32mHTTP POST /in_place/ 302 [0.61, 172.20.0.1:59378][0m
+2022-11-19 00:59:07,069 - [INFO]    django.channels.server: [mHTTP GET /in_place/orders 200 [0.45, 172.20.0.1:59388][0m
+2022-11-19 01:07:49,680 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.56, 172.20.0.1:35298][0m
+2022-11-19 01:14:49,391 - [INFO]    django.channels.server: [mHTTP GET /in_place/orders 200 [0.71, 172.20.0.1:40694][0m
+2022-11-19 01:17:36,609 - [INFO]    django.channels.server: [mHTTP GET /in_place/orders 200 [0.42, 172.20.0.1:39446][0m
+2022-11-19 01:19:31,196 - [INFO]    django.channels.server: [mHTTP GET /in_place/orders 200 [0.47, 172.20.0.1:60300][0m
+2022-11-19 01:20:11,549 - [INFO]    django.channels.server: [mHTTP GET /in_place/orders 200 [0.38, 172.20.0.1:52550][0m
+2022-11-19 01:20:15,304 - [INFO]    django.channels.server: [mHTTP GET /in_place/orders 200 [0.57, 172.20.0.1:52558][0m
+2022-11-19 01:20:54,439 - [INFO]    django.channels.server: [mHTTP GET /in_place/orders 200 [0.40, 172.20.0.1:41754][0m
+2022-11-19 01:21:07,820 - [INFO]    django.channels.server: [mHTTP GET /in_place/orders 200 [0.39, 172.20.0.1:51948][0m
+2022-11-19 01:21:57,029 - [INFO]    django.channels.server: [mHTTP GET /in_place/orders 200 [0.45, 172.20.0.1:36292][0m
+2022-11-19 01:22:27,602 - [INFO]    django.channels.server: [mHTTP GET /in_place/orders 200 [0.44, 172.20.0.1:35512][0m
+2022-11-19 01:24:11,551 - [INFO]    django.channels.server: [32mHTTP POST /in_place/ 302 [1.76, 172.20.0.1:34086][0m
+2022-11-19 01:24:12,325 - [INFO]    django.channels.server: [mHTTP GET /in_place/orders 200 [0.61, 172.20.0.1:34102][0m
+2022-11-19 01:25:12,562 - [INFO]    django.channels.server: [mHTTP GET /in_place/orders 200 [0.55, 172.20.0.1:52964][0m
+2022-11-19 01:25:17,613 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.40, 172.20.0.1:51944][0m
+2022-11-19 01:25:21,539 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.31, 172.20.0.1:51950][0m
+2022-11-19 01:25:23,543 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.30, 172.20.0.1:51962][0m
+2022-11-19 01:25:26,236 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.24, 172.20.0.1:41896][0m
+2022-11-19 01:25:28,418 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.33, 172.20.0.1:41906][0m
+2022-11-19 01:26:49,386 - [INFO]    django.utils.autoreload: /usr/src/app/apps/restaurants/models.py changed, reloading.
+2022-11-19 01:27:10,080 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-19 01:27:16,902 - [INFO]    django.channels.server: [mHTTP GET /in_place/orders 200 [1.28, 172.20.0.1:47042][0m
+2022-11-19 01:27:22,561 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.51, 172.20.0.1:47050][0m
+2022-11-19 01:27:25,829 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.24, 172.20.0.1:37678][0m
+2022-11-19 01:27:28,223 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.33, 172.20.0.1:37686][0m
+2022-11-19 01:27:44,491 - [INFO]    django.channels.server: [mHTTP GET /in_place/orders 200 [0.50, 172.20.0.1:43398][0m
+2022-11-19 01:29:13,461 - [INFO]    django.channels.server: [mHTTP GET /in_place/orders 200 [0.43, 172.20.0.1:37812][0m
+2022-11-19 01:29:23,003 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.55, 172.20.0.1:43072][0m
+2022-11-21 03:35:45,267 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-21 03:36:15,645 - [INFO]    django.channels.server: [mHTTP GET / 200 [1.96, 172.20.0.1:41696][0m
+2022-11-21 03:36:45,002 - [INFO]    django.channels.server: [mHTTP GET /in_place/ 200 [2.11, 172.20.0.1:60580][0m
+2022-11-21 03:37:05,326 - [INFO]    django.channels.server: [mHTTP GET /in_place/orders 200 [0.73, 172.20.0.1:57042][0m
+2022-11-21 03:37:49,196 - [INFO]    django.channels.server: [mHTTP GET /in_place/orders 200 [0.29, 172.20.0.1:59048][0m
+2022-11-21 04:05:07,636 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-21 04:06:00,740 - [INFO]    django.channels.server: [mHTTP GET /in_place/orders 200 [0.28, 172.20.0.1:45382][0m
+2022-11-21 04:06:13,340 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.60, 172.20.0.1:44004][0m
+2022-11-21 04:06:13,466 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.79, 172.20.0.1:43988][0m
+2022-11-21 04:06:15,431 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.21, 172.20.0.1:44018][0m
+2022-11-21 04:06:17,067 - [INFO]    django.channels.server: [mHTTP GET /in_place/orders 200 [0.28, 172.20.0.1:46828][0m
+2022-11-21 04:07:07,725 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.35, 172.20.0.1:39520][0m
+2022-11-21 04:07:10,406 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.63, 172.20.0.1:39522][0m
+2022-11-21 04:07:11,017 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.22, 172.20.0.1:39538][0m
+2022-11-21 04:07:12,346 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.35, 172.20.0.1:39554][0m
+2022-11-21 04:16:10,004 - [INFO]    django.utils.autoreload: /usr/src/app/apps/search_index/documents.py changed, reloading.
+2022-11-21 04:16:28,299 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-21 04:18:57,510 - [INFO]    django.utils.autoreload: /usr/src/app/apps/search_index/documents.py changed, reloading.
+2022-11-21 04:19:00,542 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-21 04:19:21,308 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-11-21 04:19:23,786 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-21 04:19:36,202 - [INFO]    django.channels.server: [mHTTP GET /in_place/orders 200 [1.21, 172.20.0.1:33418][0m
+2022-11-21 04:19:41,877 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.62, 172.20.0.1:34360][0m
+2022-11-21 04:20:58,232 - [INFO]    django.channels.server: [mHTTP GET /in_place/orders 200 [0.31, 172.20.0.1:46964][0m
+2022-11-21 04:21:01,546 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.35, 172.20.0.1:46968][0m
+2022-11-21 04:21:20,751 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.33, 172.20.0.1:60136][0m
+2022-11-21 04:21:23,245 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.31, 172.20.0.1:60148][0m
+2022-11-21 04:21:46,796 - [INFO]    django.channels.server: [32mHTTP POST /in_place/ 302 [1.60, 172.20.0.1:48678][0m
+2022-11-21 04:21:47,398 - [INFO]    django.channels.server: [mHTTP GET /in_place/orders 200 [0.43, 172.20.0.1:36086][0m
+2022-11-21 04:21:53,085 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.33, 172.20.0.1:36092][0m
+2022-11-21 04:21:54,808 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.45, 172.20.0.1:36100][0m
+2022-11-21 04:22:14,384 - [INFO]    django.channels.server: [32mHTTP POST /in_place/ 302 [0.55, 172.20.0.1:41716][0m
+2022-11-21 04:22:14,839 - [INFO]    django.channels.server: [mHTTP GET /in_place/orders 200 [0.40, 172.20.0.1:41722][0m
+2022-11-21 04:22:52,219 - [INFO]    django.channels.server: [mHTTP GET /in_place/orders 200 [0.38, 172.20.0.1:50718][0m
+2022-11-21 04:24:00,123 - [INFO]    django.channels.server: [32mHTTP POST /in_place/ 302 [0.51, 172.20.0.1:47264][0m
+2022-11-21 04:24:00,578 - [INFO]    django.channels.server: [mHTTP GET /in_place/orders 200 [0.41, 172.20.0.1:47276][0m
+2022-11-21 04:25:03,919 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.42, 172.20.0.1:46454][0m
+2022-11-21 04:25:27,572 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-11-21 04:25:30,324 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-21 04:25:36,911 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [1.15, 172.20.0.1:58336][0m
+2022-11-21 04:25:43,089 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.24, 172.20.0.1:44262][0m
+2022-11-21 04:25:44,262 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.40, 172.20.0.1:44274][0m
+2022-11-22 02:35:48,525 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-22 02:36:06,011 - [INFO]    django.channels.server: [mHTTP GET / 200 [3.99, 172.20.0.1:60256][0m
+2022-11-22 02:36:52,455 - [INFO]    django.channels.server: [mHTTP GET /in_place/ 200 [4.95, 172.20.0.1:55946][0m
+2022-11-24 16:44:47,348 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-24 17:19:31,284 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-24 21:28:29,648 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-24 21:54:45,720 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-24 21:56:43,529 - [INFO]    django.channels.server: [mHTTP GET / 200 [9.39, 172.20.0.1:58930][0m
+2022-11-24 22:28:06,108 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-11-24 22:28:40,595 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-24 22:29:02,387 - [INFO]    django.channels.server: [mHTTP GET / 200 [3.77, 172.20.0.1:58964][0m
+2022-11-24 22:29:21,949 - [INFO]    django.channels.server: [mHTTP GET /in_place/ 200 [2.38, 172.20.0.1:45032][0m
+2022-11-24 22:29:40,438 - [INFO]    django.channels.server: [32mHTTP POST /in_place/ 302 [2.38, 172.20.0.1:54932][0m
+2022-11-24 22:29:41,308 - [INFO]    django.channels.server: [mHTTP GET /in_place/ 200 [0.76, 172.20.0.1:54948][0m
+2022-11-24 22:29:45,259 - [INFO]    django.channels.server: [mHTTP GET /in_place/orders 200 [0.39, 172.20.0.1:43960][0m
+2022-11-24 22:29:54,571 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.84, 172.20.0.1:51756][0m
+2022-11-24 22:29:55,739 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.35, 172.20.0.1:51766][0m
+2022-11-24 22:29:58,166 - [INFO]    django.channels.server: [mHTTP GET /in_place/orders 200 [0.43, 172.20.0.1:51778][0m
+2022-11-24 22:30:07,202 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.32, 172.20.0.1:57022][0m
+2022-11-24 22:30:09,362 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.23, 172.20.0.1:57034][0m
+2022-11-24 22:30:11,238 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.22, 172.20.0.1:57044][0m
+2022-11-24 22:30:13,033 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.40, 172.20.0.1:54338][0m
+2022-11-24 22:30:34,000 - [INFO]    django.channels.server: [32mHTTP POST /in_place/ 302 [0.92, 172.20.0.1:43674][0m
+2022-11-24 22:30:34,577 - [INFO]    django.channels.server: [mHTTP GET /in_place/orders 200 [0.53, 172.20.0.1:43678][0m
+2022-11-24 22:30:42,434 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.31, 172.20.0.1:59232][0m
+2022-11-24 22:30:43,448 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.38, 172.20.0.1:59246][0m
+2022-11-24 22:31:06,736 - [INFO]    django.channels.server: [32mHTTP POST /in_place/ 302 [0.75, 172.20.0.1:56976][0m
+2022-11-24 22:31:07,299 - [INFO]    django.channels.server: [mHTTP GET /in_place/orders 200 [0.51, 172.20.0.1:56986][0m
+2022-11-24 22:31:11,262 - [INFO]    django.channels.server: [mHTTP POST /in_place/orders 200 [0.39, 172.20.0.1:57002][0m
+2022-11-25 00:07:29,229 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/urls.py changed, reloading.
+2022-11-25 00:07:41,803 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-25 00:07:47,764 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-11-25 00:07:50,354 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-25 00:08:00,010 - [INFO]    django.channels.server: [mHTTP GET /in_place/orders 200 [1.76, 172.20.0.1:42990][0m
+2022-11-25 00:08:02,792 - [WARNING]    django.request: Forbidden (Permission denied): /in_place/staff/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/local/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/usr/local/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 134, in dispatch
+    return self.handle_no_permission()
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 48, in handle_no_permission
+    raise PermissionDenied(self.get_permission_denied_message())
+django.core.exceptions.PermissionDenied
+2022-11-25 00:08:03,097 - [WARNING]    django.channels.server: [31;1mHTTP GET /in_place/staff/ 403 [0.34, 172.20.0.1:42992][0m
+2022-11-25 00:10:54,080 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-11-25 00:10:57,264 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-25 00:11:00,675 - [INFO]    django.channels.server: [mHTTP GET /in_place/staff/ 200 [0.51, 172.20.0.1:40888][0m
+2022-11-25 00:11:28,491 - [INFO]    django.channels.server: [mHTTP GET /in_place/staff/ 200 [0.24, 172.20.0.1:43996][0m
+2022-11-25 00:11:38,861 - [INFO]    django.channels.server: [mHTTP GET /in_place/staff/ 200 [0.29, 172.20.0.1:35578][0m
+2022-11-25 00:11:51,959 - [INFO]    django.channels.server: [mHTTP GET /in_place/staff/ 200 [0.27, 172.20.0.1:52296][0m
+2022-11-25 00:12:03,389 - [INFO]    django.channels.server: [mHTTP GET /in_place/staff/ 200 [0.26, 172.20.0.1:36844][0m
+2022-11-25 00:12:10,159 - [INFO]    django.channels.server: [mHTTP GET /in_place/staff/ 200 [0.26, 172.20.0.1:34452][0m
+2022-11-25 00:12:16,691 - [INFO]    django.channels.server: [mHTTP GET /in_place/staff/ 200 [0.26, 172.20.0.1:34456][0m
+2022-11-25 00:13:10,908 - [INFO]    django.channels.server: [mHTTP GET /in_place/staff/ 200 [0.42, 172.20.0.1:43650][0m
+2022-11-25 00:13:19,978 - [INFO]    django.channels.server: [mHTTP GET /in_place/staff/ 200 [0.25, 172.20.0.1:33478][0m
+2022-11-25 00:13:26,578 - [INFO]    django.channels.server: [mHTTP GET /in_place/staff/ 200 [0.25, 172.20.0.1:33490][0m
+2022-11-25 00:13:41,472 - [INFO]    django.channels.server: [mHTTP GET /in_place/staff/ 200 [0.24, 172.20.0.1:50872][0m
+2022-11-25 00:13:56,100 - [INFO]    django.channels.server: [mHTTP GET /in_place/staff/ 200 [0.26, 172.20.0.1:51236][0m
+2022-11-25 00:14:01,953 - [INFO]    django.channels.server: [mHTTP GET /in_place/staff/ 200 [0.25, 172.20.0.1:58494][0m
+2022-11-25 00:14:07,455 - [INFO]    django.channels.server: [mHTTP GET /in_place/staff/ 200 [0.26, 172.20.0.1:58496][0m
+2022-11-25 00:14:11,713 - [INFO]    django.channels.server: [mHTTP GET /in_place/staff/ 200 [0.30, 172.20.0.1:40678][0m
+2022-11-25 00:14:24,851 - [INFO]    django.channels.server: [mHTTP GET /in_place/staff/ 200 [0.31, 172.20.0.1:51754][0m
+2022-11-25 00:14:43,064 - [INFO]    django.channels.server: [mHTTP GET /in_place/staff/ 200 [0.29, 172.20.0.1:55984][0m
+2022-11-25 00:15:11,420 - [INFO]    django.channels.server: [mHTTP GET /in_place/staff/ 200 [0.26, 172.20.0.1:38736][0m
+2022-11-25 00:15:51,647 - [INFO]    django.channels.server: [mHTTP GET /in_place/staff/ 200 [0.34, 172.20.0.1:41040][0m
+2022-11-25 00:16:12,300 - [INFO]    django.channels.server: [mHTTP GET /in_place/staff/ 200 [0.24, 172.20.0.1:34678][0m
+2022-11-25 00:16:18,340 - [INFO]    django.channels.server: [mHTTP GET /in_place/staff/ 200 [0.27, 172.20.0.1:59602][0m
+2022-11-25 00:16:26,592 - [INFO]    django.channels.server: [mHTTP GET /in_place/staff/ 200 [0.27, 172.20.0.1:59612][0m
+2022-11-25 00:16:48,091 - [INFO]    django.channels.server: [mHTTP GET /in_place/staff/ 200 [0.26, 172.20.0.1:38202][0m
+2022-11-25 00:16:55,100 - [INFO]    django.channels.server: [mHTTP GET /in_place/staff/ 200 [0.34, 172.20.0.1:46620][0m
+2022-11-25 00:17:08,473 - [INFO]    django.channels.server: [mHTTP GET /in_place/staff/ 200 [0.26, 172.20.0.1:47548][0m
+2022-11-25 00:17:36,261 - [INFO]    django.channels.server: [mHTTP GET /in_place/staff/ 200 [0.26, 172.20.0.1:52204][0m
+2022-11-25 00:19:40,253 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-11-25 00:19:43,544 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-25 00:19:46,625 - [INFO]    django.channels.server: [mHTTP GET /in_place/staff/ 200 [0.51, 172.20.0.1:47472][0m
+2022-11-25 00:20:15,517 - [INFO]    django.channels.server: [mHTTP GET /in_place/staff/ 200 [0.34, 172.20.0.1:39880][0m
+2022-11-25 00:29:14,007 - [INFO]    django.utils.autoreload: /usr/src/app/apps/users/models.py changed, reloading.
+2022-11-25 00:29:34,952 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-25 00:30:17,431 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/models.py changed, reloading.
+2022-11-25 00:30:19,669 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-25 00:35:57,780 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-25 00:37:09,699 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-25 00:37:18,330 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-11-25 00:37:20,961 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-25 00:44:46,862 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/forms.py changed, reloading.
+2022-11-25 00:44:49,128 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-25 13:17:59,119 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-25 15:33:24,615 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-25 15:38:22,129 - [INFO]    django.utils.autoreload: /usr/src/app/apps/users/models.py changed, reloading.
+2022-11-25 15:38:40,345 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-25 19:40:11,752 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-25 19:45:06,000 - [INFO]    django.channels.server: [mHTTP GET / 200 [4.08, 172.20.0.1:49042][0m
+2022-11-25 19:46:03,473 - [INFO]    django.channels.server: [mHTTP GET /in_place/ 200 [2.59, 172.20.0.1:46766][0m
+2022-11-25 19:46:35,658 - [INFO]    django.channels.server: [mHTTP GET /in_place/staff/ 200 [0.55, 172.20.0.1:57188][0m
+2022-11-25 20:01:28,052 - [INFO]    django.utils.autoreload: /usr/src/app/apps/users/models.py changed, reloading.
+2022-11-25 20:02:55,279 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-25 20:11:10,435 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-25 20:16:27,944 - [INFO]    django.channels.server: [mHTTP GET /in_place/staff/ 200 [1.73, 172.20.0.1:36734][0m
+2022-11-25 20:17:59,612 - [INFO]    django.channels.server: [mHTTP GET /in_place/staff/ 200 [1.62, 172.20.0.1:42678][0m
+2022-11-25 20:32:32,527 - [INFO]    django.utils.autoreload: /usr/src/app/apps/users/forms.py changed, reloading.
+2022-11-25 20:32:57,215 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-25 20:42:50,408 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/models.py changed, reloading.
+2022-11-25 20:43:28,830 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-25 21:59:17,319 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-25 22:07:25,060 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-25 22:07:51,254 - [ERROR]    django.request: Internal Server Error: /in_place/staff/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/local/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/usr/local/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/in_place/views.py", line 478, in get
+    return render(self.request, self.template_name, self.context)
+  File "/usr/local/lib/python3.10/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/usr/local/lib/python3.10/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/usr/local/lib/python3.10/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "/usr/local/lib/python3.10/site-packages/django/template/backends/django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/usr/local/lib/python3.10/site-packages/django/template/engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+  File "/usr/local/lib/python3.10/site-packages/django/template/engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/usr/local/lib/python3.10/site-packages/django/template/loaders/cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "/usr/local/lib/python3.10/site-packages/django/template/loaders/base.py", line 28, in get_template
+    return Template(
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 200, in compile_nodelist
+    return parser.parse()
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/usr/local/lib/python3.10/site-packages/django/template/loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/usr/local/lib/python3.10/site-packages/django/template/loader_tags.py", line 232, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 484, in parse
+    raise self.error(token, e)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 482, in parse
+    filter_expression = self.compile_filter(token.contents)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 600, in compile_filter
+    return FilterExpression(token, self)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 698, in __init__
+    filter_func = parser.find_filter(filter_name)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 606, in find_filter
+    raise TemplateSyntaxError("Invalid filter: '%s'" % filter_name)
+django.template.exceptions.TemplateSyntaxError: Invalid filter: 'as_crispy_field'
+2022-11-25 22:07:51,890 - [ERROR]    django.channels.server: [35;1mHTTP GET /in_place/staff/ 500 [3.18, 172.20.0.1:53392][0m
+2022-11-25 22:08:58,782 - [ERROR]    django.request: Internal Server Error: /in_place/staff/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/local/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/usr/local/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/in_place/views.py", line 478, in get
+    return render(self.request, self.template_name, self.context)
+  File "/usr/local/lib/python3.10/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/usr/local/lib/python3.10/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/usr/local/lib/python3.10/site-packages/django/template/backends/django.py", line 62, in render
+    return self.template.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/test/utils.py", line 111, in instrumented_test_render
+    return self.nodelist.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/test/utils.py", line 111, in instrumented_test_render
+    return self.nodelist.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1064, in render
+    output = self.filter_expression.resolve(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 742, in resolve
+    new_obj = func(obj, *arg_vals)
+  File "/usr/local/lib/python3.10/site-packages/crispy_forms/templatetags/crispy_forms_filters.py", line 102, in as_crispy_field
+    raise CrispyError("|as_crispy_field got passed an invalid or inexistent field")
+crispy_forms.exceptions.CrispyError: |as_crispy_field got passed an invalid or inexistent field
+2022-11-25 22:08:59,018 - [ERROR]    django.channels.server: [35;1mHTTP GET /in_place/staff/ 500 [0.77, 172.20.0.1:50876][0m
+2022-11-25 22:11:27,789 - [ERROR]    django.request: Internal Server Error: /in_place/staff/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/local/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/usr/local/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/in_place/views.py", line 478, in get
+    return render(self.request, self.template_name, self.context)
+  File "/usr/local/lib/python3.10/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/usr/local/lib/python3.10/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/usr/local/lib/python3.10/site-packages/django/template/backends/django.py", line 62, in render
+    return self.template.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/test/utils.py", line 111, in instrumented_test_render
+    return self.nodelist.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/test/utils.py", line 111, in instrumented_test_render
+    return self.nodelist.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1064, in render
+    output = self.filter_expression.resolve(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 742, in resolve
+    new_obj = func(obj, *arg_vals)
+  File "/usr/local/lib/python3.10/site-packages/crispy_forms/templatetags/crispy_forms_filters.py", line 102, in as_crispy_field
+    raise CrispyError("|as_crispy_field got passed an invalid or inexistent field")
+crispy_forms.exceptions.CrispyError: |as_crispy_field got passed an invalid or inexistent field
+2022-11-25 22:11:28,033 - [ERROR]    django.channels.server: [35;1mHTTP GET /in_place/staff/ 500 [0.46, 172.20.0.1:43598][0m
+2022-11-25 22:11:32,153 - [ERROR]    django.request: Internal Server Error: /in_place/staff/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/local/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/usr/local/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/in_place/views.py", line 478, in get
+    return render(self.request, self.template_name, self.context)
+  File "/usr/local/lib/python3.10/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/usr/local/lib/python3.10/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/usr/local/lib/python3.10/site-packages/django/template/backends/django.py", line 62, in render
+    return self.template.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/test/utils.py", line 111, in instrumented_test_render
+    return self.nodelist.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/test/utils.py", line 111, in instrumented_test_render
+    return self.nodelist.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1064, in render
+    output = self.filter_expression.resolve(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 742, in resolve
+    new_obj = func(obj, *arg_vals)
+  File "/usr/local/lib/python3.10/site-packages/crispy_forms/templatetags/crispy_forms_filters.py", line 102, in as_crispy_field
+    raise CrispyError("|as_crispy_field got passed an invalid or inexistent field")
+crispy_forms.exceptions.CrispyError: |as_crispy_field got passed an invalid or inexistent field
+2022-11-25 22:11:32,502 - [ERROR]    django.channels.server: [35;1mHTTP GET /in_place/staff/ 500 [0.49, 172.20.0.1:46532][0m
+2022-11-25 22:11:46,458 - [INFO]    django.channels.server: [mHTTP GET /in_place/staff/ 200 [0.86, 172.20.0.1:46744][0m
+2022-11-25 22:12:26,203 - [INFO]    django.channels.server: [mHTTP GET /in_place/staff/ 200 [0.33, 172.20.0.1:44816][0m
+2022-11-25 22:12:57,074 - [INFO]    django.channels.server: [mHTTP GET /in_place/staff/ 200 [0.33, 172.20.0.1:49790][0m
+2022-11-25 22:15:23,330 - [INFO]    django.channels.server: [mHTTP GET /in_place/staff/ 200 [18.59, 172.20.0.1:37788][0m
+2022-11-25 22:16:28,585 - [INFO]    django.channels.server: [mHTTP GET /in_place/staff/ 200 [0.37, 172.20.0.1:39256][0m
+2022-11-25 22:16:53,174 - [INFO]    django.channels.server: [mHTTP GET /in_place/staff/ 200 [0.31, 172.20.0.1:36006][0m
+2022-11-25 22:17:02,013 - [INFO]    django.channels.server: [mHTTP GET /in_place/staff/ 200 [0.32, 172.20.0.1:33882][0m
+2022-11-25 22:19:16,829 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/forms.py changed, reloading.
+2022-11-25 22:19:42,558 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-25 22:19:47,830 - [INFO]    django.channels.server: [mHTTP GET /in_place/staff/ 200 [0.79, 172.20.0.1:58626][0m
+2022-11-25 22:20:24,747 - [INFO]    django.channels.server: [mHTTP GET /in_place/staff/ 200 [0.34, 172.20.0.1:57032][0m
+2022-11-25 22:33:36,413 - [INFO]    django.channels.server: [mHTTP GET /in_place/staff/ 200 [0.38, 172.20.0.1:52276][0m
+2022-11-25 22:35:59,794 - [INFO]    django.channels.server: [mHTTP GET /in_place/staff/ 200 [0.28, 172.20.0.1:38398][0m
+2022-11-25 22:44:53,105 - [INFO]    django.channels.server: [mHTTP GET /in_place/staff/ 200 [1.21, 172.20.0.1:44110][0m
+2022-11-25 23:25:09,956 - [INFO]    django.channels.server: [mHTTP GET /in_place/staff/ 200 [2.48, 172.20.0.1:39124][0m
+2022-11-25 23:25:28,144 - [INFO]    django.channels.server: [mHTTP POST /in_place/staff/ 200 [0.53, 172.20.0.1:52978][0m
+2022-11-25 23:25:49,833 - [INFO]    django.channels.server: [mHTTP POST /in_place/staff/ 200 [0.40, 172.20.0.1:33474][0m
+2022-11-25 23:27:55,525 - [ERROR]    django.request: Internal Server Error: /in_place/staff/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/local/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/usr/local/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/in_place/views.py", line 478, in get
+    return render(self.request, self.template_name, self.context)
+  File "/usr/local/lib/python3.10/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/usr/local/lib/python3.10/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/usr/local/lib/python3.10/site-packages/django/template/backends/django.py", line 62, in render
+    return self.template.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/test/utils.py", line 111, in instrumented_test_render
+    return self.nodelist.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/test/utils.py", line 111, in instrumented_test_render
+    return self.nodelist.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/loader_tags.py", line 197, in render
+    template = context.template.engine.select_template(template_name)
+  File "/usr/local/lib/python3.10/site-packages/django/template/engine.py", line 206, in select_template
+    return self.get_template(template_name)
+  File "/usr/local/lib/python3.10/site-packages/django/template/engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+  File "/usr/local/lib/python3.10/site-packages/django/template/engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/usr/local/lib/python3.10/site-packages/django/template/loaders/cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "/usr/local/lib/python3.10/site-packages/django/template/loaders/base.py", line 28, in get_template
+    return Template(
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 200, in compile_nodelist
+    return parser.parse()
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/usr/local/lib/python3.10/site-packages/django/template/defaulttags.py", line 954, in do_if
+    nodelist = parser.parse(("elif", "else", "endif"))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 518, in parse
+    self.unclosed_block_tag(parse_until)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 581, in unclosed_block_tag
+    raise self.error(token, msg)
+django.template.exceptions.TemplateSyntaxError: Unclosed tag on line 31: 'if'. Looking for one of: elif, else, endif.
+2022-11-25 23:27:55,788 - [ERROR]    django.channels.server: [35;1mHTTP GET /in_place/staff/ 500 [1.07, 172.20.0.1:54686][0m
+2022-11-25 23:28:25,621 - [INFO]    django.channels.server: [mHTTP GET /in_place/staff/ 200 [0.49, 172.20.0.1:43736][0m
+2022-11-25 23:29:14,173 - [INFO]    django.channels.server: [mHTTP GET /in_place/staff/ 200 [0.23, 172.20.0.1:42664][0m
+2022-11-25 23:29:41,029 - [INFO]    django.channels.server: [mHTTP GET /in_place/staff/ 200 [0.31, 172.20.0.1:38522][0m
+2022-11-25 23:30:18,190 - [INFO]    django.channels.server: [mHTTP GET /in_place/staff/ 200 [0.30, 172.20.0.1:35330][0m
+2022-11-25 23:30:39,096 - [INFO]    django.channels.server: [mHTTP GET /in_place/staff/ 200 [0.30, 172.20.0.1:33922][0m
+2022-11-25 23:32:17,589 - [INFO]    django.channels.server: [mHTTP GET /in_place/staff/ 200 [0.34, 172.20.0.1:55316][0m
+2022-11-25 23:47:05,406 - [INFO]    django.channels.server: [mHTTP GET /in_place/staff/ 200 [1.62, 172.20.0.1:49792][0m
+2022-11-25 23:47:50,803 - [INFO]    django.channels.server: [mHTTP GET /in_place/staff/ 200 [0.27, 172.20.0.1:60528][0m
+2022-11-26 00:38:20,398 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/models.py changed, reloading.
+2022-11-26 00:39:31,031 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-26 00:48:55,402 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-11-26 00:50:30,736 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-26 01:11:50,222 - [INFO]    django.utils.autoreload: /usr/src/app/apps/users/forms.py changed, reloading.
+2022-11-26 01:14:14,360 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-26 01:16:23,148 - [ERROR]    django.request: Internal Server Error: /in_place/staff/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/in_place/views.py", line 484, in post
+    user = form_data.save()
+TypeError: SignupForm.save() missing 1 required positional argument: 'request'
+2022-11-26 01:17:05,989 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-11-26 01:18:17,151 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-26 01:44:20,122 - [INFO]    django.utils.autoreload: /usr/src/app/apps/users/forms.py changed, reloading.
+2022-11-26 01:44:26,678 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-26 01:44:34,188 - [INFO]    django.utils.autoreload: /usr/src/app/apps/users/forms.py changed, reloading.
+2022-11-26 01:44:36,558 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-26 01:44:39,133 - [INFO]    django.utils.autoreload: /usr/src/app/apps/users/forms.py changed, reloading.
+2022-11-26 01:44:41,821 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-26 01:53:55,637 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-11-26 01:54:01,126 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-26 02:00:19,565 - [ERROR]    django.request: Internal Server Error: /in_place/staff/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/options.py", line 668, in get_field
+    return self.fields_map[field_name]
+KeyError: PhoneNumber(country_code=98, national_number=9991119911, extension=None, italian_leading_zero=None, number_of_leading_zeros=None, country_code_source=1, preferred_domestic_carrier_code=None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/allauth/account/utils.py", line 96, in user_field
+    field_meta = User._meta.get_field(field)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/options.py", line 670, in get_field
+    raise FieldDoesNotExist(
+django.core.exceptions.FieldDoesNotExist: UserModel has no field named '+989991119911'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/in_place/views.py", line 484, in post
+    user = form_data.save(self.request)
+  File "/usr/local/lib/python3.10/site-packages/allauth/account/forms.py", line 423, in save
+    adapter.save_user(request, user, self)
+  File "/usr/src/app/apps/users/adapters.py", line 12, in save_user
+    user_field("phone_number", data.get("phone_number"))
+  File "/usr/local/lib/python3.10/site-packages/allauth/account/utils.py", line 99, in user_field
+    if not hasattr(user, field):
+TypeError: hasattr(): attribute name must be string
+2022-11-26 02:02:22,773 - [ERROR]    django.request: Internal Server Error: /in_place/staff/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/options.py", line 668, in get_field
+    return self.fields_map[field_name]
+KeyError: PhoneNumber(country_code=98, national_number=9991119911, extension=None, italian_leading_zero=None, number_of_leading_zeros=None, country_code_source=1, preferred_domestic_carrier_code=None)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/allauth/account/utils.py", line 96, in user_field
+    field_meta = User._meta.get_field(field)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/options.py", line 670, in get_field
+    raise FieldDoesNotExist(
+django.core.exceptions.FieldDoesNotExist: UserModel has no field named '+989991119911'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/in_place/views.py", line 484, in post
+    user = form_data.save(self.request)
+  File "/usr/local/lib/python3.10/site-packages/allauth/account/forms.py", line 423, in save
+    adapter.save_user(request, user, self)
+  File "/usr/src/app/apps/users/adapters.py", line 12, in save_user
+    user_field("phone_number", data.get("phone_number"))
+  File "/usr/local/lib/python3.10/site-packages/allauth/account/utils.py", line 99, in user_field
+    if not hasattr(user, field):
+TypeError: hasattr(): attribute name must be string
+2022-11-26 02:04:58,162 - [ERROR]    django.request: Internal Server Error: /in_place/staff/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/in_place/views.py", line 484, in post
+    user = form_data.save(self.request)
+  File "/usr/local/lib/python3.10/site-packages/allauth/account/forms.py", line 423, in save
+    adapter.save_user(request, user, self)
+  File "/usr/src/app/apps/users/adapters.py", line 12, in save_user
+    user_field(user, "phone_number", data.get("phone_number"))
+  File "/usr/local/lib/python3.10/site-packages/allauth/account/utils.py", line 106, in user_field
+    v = v[0:max_length]
+TypeError: 'PhoneNumber' object is not subscriptable
+2022-11-26 20:50:59,885 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-26 20:56:43,949 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-26 21:01:54,294 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-26 21:05:47,411 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-26 21:21:11,977 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-11-26 21:21:19,273 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-26 21:51:40,296 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-11-26 21:51:44,302 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-26 21:54:33,874 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-11-26 21:54:37,815 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-27 01:49:43,525 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-27 11:00:15,952 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-27 11:21:56,263 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-27 11:44:36,831 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-27 11:47:00,240 - [INFO]    django.channels.server: [mHTTP GET /in_place/ 200 [22.78, 172.20.0.1:52296][0m
+2022-11-27 11:58:38,381 - [INFO]    django.channels.server: [mHTTP GET /in_place/ 200 [1.27, 172.20.0.1:55942][0m
+2022-11-27 15:34:04,030 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-27 15:35:18,807 - [INFO]    django.channels.server: [mHTTP GET /in_place/staff/ 200 [3.32, 172.20.0.1:41750][0m
+2022-11-27 15:38:05,928 - [INFO]    django.channels.server: [mHTTP GET /in_place/staff/ 200 [0.27, 172.20.0.1:37674][0m
+2022-11-27 15:38:19,028 - [INFO]    django.channels.server: [mHTTP GET /in_place/ 200 [4.29, 172.20.0.1:36620][0m
+2022-11-27 15:41:27,986 - [INFO]    django.channels.server: [mHTTP GET /in_place/ 200 [0.77, 172.20.0.1:37302][0m
+2022-11-27 15:41:35,876 - [INFO]    django.channels.server: [mHTTP GET /in_place/orders 200 [0.44, 172.20.0.1:33974][0m
+2022-11-27 15:41:54,168 - [ERROR]    django.request: Internal Server Error: /in_place/orders
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connection.py", line 174, in _new_conn
+    conn = connection.create_connection(
+  File "/usr/local/lib/python3.10/site-packages/urllib3/util/connection.py", line 72, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+  File "/usr/local/lib/python3.10/socket.py", line 955, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno -3] Temporary failure in name resolution
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/elasticsearch/connection/http_urllib3.py", line 255, in perform_request
+    response = self.pool.urlopen(
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connectionpool.py", line 785, in urlopen
+    retries = retries.increment(
+  File "/usr/local/lib/python3.10/site-packages/urllib3/util/retry.py", line 525, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "/usr/local/lib/python3.10/site-packages/urllib3/packages/six.py", line 770, in reraise
+    raise value
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connectionpool.py", line 703, in urlopen
+    httplib_response = self._make_request(
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connectionpool.py", line 398, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connection.py", line 239, in request
+    super(HTTPConnection, self).request(method, url, body=body, headers=headers)
+  File "/usr/local/lib/python3.10/http/client.py", line 1282, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "/usr/local/lib/python3.10/http/client.py", line 1328, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "/usr/local/lib/python3.10/http/client.py", line 1277, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/usr/local/lib/python3.10/http/client.py", line 1037, in _send_output
+    self.send(msg)
+  File "/usr/local/lib/python3.10/http/client.py", line 975, in send
+    self.connect()
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connection.py", line 205, in connect
+    conn = self._new_conn()
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connection.py", line 186, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x7f059e489f60>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/local/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/usr/local/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/in_place/views.py", line 408, in post
+    e = OrderDocument().search().sort("-timestamp").query(query).execute()
+  File "/usr/local/lib/python3.10/site-packages/elasticsearch_dsl/search.py", line 715, in execute
+    self, es.search(index=self._index, body=self.to_dict(), **self._params)
+  File "/usr/local/lib/python3.10/site-packages/elasticsearch/client/utils.py", line 347, in _wrapped
+    return func(*args, params=params, headers=headers, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/elasticsearch/client/__init__.py", line 1821, in search
+    return self.transport.perform_request(
+  File "/usr/local/lib/python3.10/site-packages/elasticsearch/transport.py", line 417, in perform_request
+    self._do_verify_elasticsearch(headers=headers, timeout=timeout)
+  File "/usr/local/lib/python3.10/site-packages/elasticsearch/transport.py", line 606, in _do_verify_elasticsearch
+    raise error
+  File "/usr/local/lib/python3.10/site-packages/elasticsearch/transport.py", line 569, in _do_verify_elasticsearch
+    _, info_headers, info_response = conn.perform_request(
+  File "/usr/local/lib/python3.10/site-packages/elasticsearch/connection/http_urllib3.py", line 280, in perform_request
+    raise ConnectionError("N/A", str(e), e)
+elasticsearch.exceptions.ConnectionError: ConnectionError(<urllib3.connection.HTTPConnection object at 0x7f059e489f60>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution) caused by: NewConnectionError(<urllib3.connection.HTTPConnection object at 0x7f059e489f60>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution)
+2022-11-27 15:41:54,590 - [ERROR]    django.channels.server: [35;1mHTTP POST /in_place/orders 500 [11.47, 172.20.0.1:33984][0m
+2022-11-27 15:42:03,827 - [ERROR]    django.request: Internal Server Error: /in_place/orders
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connection.py", line 174, in _new_conn
+    conn = connection.create_connection(
+  File "/usr/local/lib/python3.10/site-packages/urllib3/util/connection.py", line 72, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+  File "/usr/local/lib/python3.10/socket.py", line 955, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno -3] Temporary failure in name resolution
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/elasticsearch/connection/http_urllib3.py", line 255, in perform_request
+    response = self.pool.urlopen(
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connectionpool.py", line 785, in urlopen
+    retries = retries.increment(
+  File "/usr/local/lib/python3.10/site-packages/urllib3/util/retry.py", line 525, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "/usr/local/lib/python3.10/site-packages/urllib3/packages/six.py", line 770, in reraise
+    raise value
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connectionpool.py", line 703, in urlopen
+    httplib_response = self._make_request(
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connectionpool.py", line 398, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connection.py", line 239, in request
+    super(HTTPConnection, self).request(method, url, body=body, headers=headers)
+  File "/usr/local/lib/python3.10/http/client.py", line 1282, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "/usr/local/lib/python3.10/http/client.py", line 1328, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "/usr/local/lib/python3.10/http/client.py", line 1277, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/usr/local/lib/python3.10/http/client.py", line 1037, in _send_output
+    self.send(msg)
+  File "/usr/local/lib/python3.10/http/client.py", line 975, in send
+    self.connect()
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connection.py", line 205, in connect
+    conn = self._new_conn()
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connection.py", line 186, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x7f059e48a050>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/local/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/usr/local/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/in_place/views.py", line 408, in post
+    e = OrderDocument().search().sort("-timestamp").query(query).execute()
+  File "/usr/local/lib/python3.10/site-packages/elasticsearch_dsl/search.py", line 715, in execute
+    self, es.search(index=self._index, body=self.to_dict(), **self._params)
+  File "/usr/local/lib/python3.10/site-packages/elasticsearch/client/utils.py", line 347, in _wrapped
+    return func(*args, params=params, headers=headers, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/elasticsearch/client/__init__.py", line 1821, in search
+    return self.transport.perform_request(
+  File "/usr/local/lib/python3.10/site-packages/elasticsearch/transport.py", line 417, in perform_request
+    self._do_verify_elasticsearch(headers=headers, timeout=timeout)
+  File "/usr/local/lib/python3.10/site-packages/elasticsearch/transport.py", line 606, in _do_verify_elasticsearch
+    raise error
+  File "/usr/local/lib/python3.10/site-packages/elasticsearch/transport.py", line 569, in _do_verify_elasticsearch
+    _, info_headers, info_response = conn.perform_request(
+  File "/usr/local/lib/python3.10/site-packages/elasticsearch/connection/http_urllib3.py", line 280, in perform_request
+    raise ConnectionError("N/A", str(e), e)
+elasticsearch.exceptions.ConnectionError: ConnectionError(<urllib3.connection.HTTPConnection object at 0x7f059e48a050>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution) caused by: NewConnectionError(<urllib3.connection.HTTPConnection object at 0x7f059e48a050>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution)
+2022-11-27 15:42:04,073 - [ERROR]    django.channels.server: [35;1mHTTP POST /in_place/orders 500 [19.15, 172.20.0.1:46808][0m
+2022-11-27 15:42:07,936 - [INFO]    django.channels.server: [mHTTP GET /in_place/ 200 [0.80, 172.20.0.1:56260][0m
+2022-11-27 15:42:13,810 - [ERROR]    django.request: Internal Server Error: /in_place/orders
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connection.py", line 174, in _new_conn
+    conn = connection.create_connection(
+  File "/usr/local/lib/python3.10/site-packages/urllib3/util/connection.py", line 72, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+  File "/usr/local/lib/python3.10/socket.py", line 955, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno -3] Temporary failure in name resolution
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/elasticsearch/connection/http_urllib3.py", line 255, in perform_request
+    response = self.pool.urlopen(
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connectionpool.py", line 785, in urlopen
+    retries = retries.increment(
+  File "/usr/local/lib/python3.10/site-packages/urllib3/util/retry.py", line 525, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "/usr/local/lib/python3.10/site-packages/urllib3/packages/six.py", line 770, in reraise
+    raise value
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connectionpool.py", line 703, in urlopen
+    httplib_response = self._make_request(
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connectionpool.py", line 398, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connection.py", line 239, in request
+    super(HTTPConnection, self).request(method, url, body=body, headers=headers)
+  File "/usr/local/lib/python3.10/http/client.py", line 1282, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "/usr/local/lib/python3.10/http/client.py", line 1328, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "/usr/local/lib/python3.10/http/client.py", line 1277, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/usr/local/lib/python3.10/http/client.py", line 1037, in _send_output
+    self.send(msg)
+  File "/usr/local/lib/python3.10/http/client.py", line 975, in send
+    self.connect()
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connection.py", line 205, in connect
+    conn = self._new_conn()
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connection.py", line 186, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x7f05a50ad2d0>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/local/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/usr/local/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/in_place/views.py", line 408, in post
+    e = OrderDocument().search().sort("-timestamp").query(query).execute()
+  File "/usr/local/lib/python3.10/site-packages/elasticsearch_dsl/search.py", line 715, in execute
+    self, es.search(index=self._index, body=self.to_dict(), **self._params)
+  File "/usr/local/lib/python3.10/site-packages/elasticsearch/client/utils.py", line 347, in _wrapped
+    return func(*args, params=params, headers=headers, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/elasticsearch/client/__init__.py", line 1821, in search
+    return self.transport.perform_request(
+  File "/usr/local/lib/python3.10/site-packages/elasticsearch/transport.py", line 417, in perform_request
+    self._do_verify_elasticsearch(headers=headers, timeout=timeout)
+  File "/usr/local/lib/python3.10/site-packages/elasticsearch/transport.py", line 606, in _do_verify_elasticsearch
+    raise error
+  File "/usr/local/lib/python3.10/site-packages/elasticsearch/transport.py", line 569, in _do_verify_elasticsearch
+    _, info_headers, info_response = conn.perform_request(
+  File "/usr/local/lib/python3.10/site-packages/elasticsearch/connection/http_urllib3.py", line 280, in perform_request
+    raise ConnectionError("N/A", str(e), e)
+elasticsearch.exceptions.ConnectionError: ConnectionError(<urllib3.connection.HTTPConnection object at 0x7f05a50ad2d0>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution) caused by: NewConnectionError(<urllib3.connection.HTTPConnection object at 0x7f05a50ad2d0>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution)
+2022-11-27 15:42:23,773 - [ERROR]    django.request: Internal Server Error: /in_place/orders
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connection.py", line 174, in _new_conn
+    conn = connection.create_connection(
+  File "/usr/local/lib/python3.10/site-packages/urllib3/util/connection.py", line 72, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+  File "/usr/local/lib/python3.10/socket.py", line 955, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno -3] Temporary failure in name resolution
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/elasticsearch/connection/http_urllib3.py", line 255, in perform_request
+    response = self.pool.urlopen(
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connectionpool.py", line 785, in urlopen
+    retries = retries.increment(
+  File "/usr/local/lib/python3.10/site-packages/urllib3/util/retry.py", line 525, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "/usr/local/lib/python3.10/site-packages/urllib3/packages/six.py", line 770, in reraise
+    raise value
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connectionpool.py", line 703, in urlopen
+    httplib_response = self._make_request(
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connectionpool.py", line 398, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connection.py", line 239, in request
+    super(HTTPConnection, self).request(method, url, body=body, headers=headers)
+  File "/usr/local/lib/python3.10/http/client.py", line 1282, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "/usr/local/lib/python3.10/http/client.py", line 1328, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "/usr/local/lib/python3.10/http/client.py", line 1277, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/usr/local/lib/python3.10/http/client.py", line 1037, in _send_output
+    self.send(msg)
+  File "/usr/local/lib/python3.10/http/client.py", line 975, in send
+    self.connect()
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connection.py", line 205, in connect
+    conn = self._new_conn()
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connection.py", line 186, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x7f059e489180>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/local/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/usr/local/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/in_place/views.py", line 408, in post
+    e = OrderDocument().search().sort("-timestamp").query(query).execute()
+  File "/usr/local/lib/python3.10/site-packages/elasticsearch_dsl/search.py", line 715, in execute
+    self, es.search(index=self._index, body=self.to_dict(), **self._params)
+  File "/usr/local/lib/python3.10/site-packages/elasticsearch/client/utils.py", line 347, in _wrapped
+    return func(*args, params=params, headers=headers, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/elasticsearch/client/__init__.py", line 1821, in search
+    return self.transport.perform_request(
+  File "/usr/local/lib/python3.10/site-packages/elasticsearch/transport.py", line 417, in perform_request
+    self._do_verify_elasticsearch(headers=headers, timeout=timeout)
+  File "/usr/local/lib/python3.10/site-packages/elasticsearch/transport.py", line 606, in _do_verify_elasticsearch
+    raise error
+  File "/usr/local/lib/python3.10/site-packages/elasticsearch/transport.py", line 569, in _do_verify_elasticsearch
+    _, info_headers, info_response = conn.perform_request(
+  File "/usr/local/lib/python3.10/site-packages/elasticsearch/connection/http_urllib3.py", line 280, in perform_request
+    raise ConnectionError("N/A", str(e), e)
+elasticsearch.exceptions.ConnectionError: ConnectionError(<urllib3.connection.HTTPConnection object at 0x7f059e489180>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution) caused by: NewConnectionError(<urllib3.connection.HTTPConnection object at 0x7f059e489180>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution)
+2022-11-27 15:42:33,748 - [ERROR]    django.request: Internal Server Error: /in_place/orders
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connection.py", line 174, in _new_conn
+    conn = connection.create_connection(
+  File "/usr/local/lib/python3.10/site-packages/urllib3/util/connection.py", line 72, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+  File "/usr/local/lib/python3.10/socket.py", line 955, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno -3] Temporary failure in name resolution
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/elasticsearch/connection/http_urllib3.py", line 255, in perform_request
+    response = self.pool.urlopen(
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connectionpool.py", line 785, in urlopen
+    retries = retries.increment(
+  File "/usr/local/lib/python3.10/site-packages/urllib3/util/retry.py", line 525, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "/usr/local/lib/python3.10/site-packages/urllib3/packages/six.py", line 770, in reraise
+    raise value
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connectionpool.py", line 703, in urlopen
+    httplib_response = self._make_request(
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connectionpool.py", line 398, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connection.py", line 239, in request
+    super(HTTPConnection, self).request(method, url, body=body, headers=headers)
+  File "/usr/local/lib/python3.10/http/client.py", line 1282, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "/usr/local/lib/python3.10/http/client.py", line 1328, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "/usr/local/lib/python3.10/http/client.py", line 1277, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/usr/local/lib/python3.10/http/client.py", line 1037, in _send_output
+    self.send(msg)
+  File "/usr/local/lib/python3.10/http/client.py", line 975, in send
+    self.connect()
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connection.py", line 205, in connect
+    conn = self._new_conn()
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connection.py", line 186, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x7f059c1ebdc0>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/local/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/usr/local/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/in_place/views.py", line 408, in post
+    e = OrderDocument().search().sort("-timestamp").query(query).execute()
+  File "/usr/local/lib/python3.10/site-packages/elasticsearch_dsl/search.py", line 715, in execute
+    self, es.search(index=self._index, body=self.to_dict(), **self._params)
+  File "/usr/local/lib/python3.10/site-packages/elasticsearch/client/utils.py", line 347, in _wrapped
+    return func(*args, params=params, headers=headers, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/elasticsearch/client/__init__.py", line 1821, in search
+    return self.transport.perform_request(
+  File "/usr/local/lib/python3.10/site-packages/elasticsearch/transport.py", line 417, in perform_request
+    self._do_verify_elasticsearch(headers=headers, timeout=timeout)
+  File "/usr/local/lib/python3.10/site-packages/elasticsearch/transport.py", line 606, in _do_verify_elasticsearch
+    raise error
+  File "/usr/local/lib/python3.10/site-packages/elasticsearch/transport.py", line 569, in _do_verify_elasticsearch
+    _, info_headers, info_response = conn.perform_request(
+  File "/usr/local/lib/python3.10/site-packages/elasticsearch/connection/http_urllib3.py", line 280, in perform_request
+    raise ConnectionError("N/A", str(e), e)
+elasticsearch.exceptions.ConnectionError: ConnectionError(<urllib3.connection.HTTPConnection object at 0x7f059c1ebdc0>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution) caused by: NewConnectionError(<urllib3.connection.HTTPConnection object at 0x7f059c1ebdc0>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution)
+2022-11-27 15:42:43,722 - [ERROR]    django.request: Internal Server Error: /in_place/orders
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connection.py", line 174, in _new_conn
+    conn = connection.create_connection(
+  File "/usr/local/lib/python3.10/site-packages/urllib3/util/connection.py", line 72, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+  File "/usr/local/lib/python3.10/socket.py", line 955, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno -3] Temporary failure in name resolution
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/elasticsearch/connection/http_urllib3.py", line 255, in perform_request
+    response = self.pool.urlopen(
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connectionpool.py", line 785, in urlopen
+    retries = retries.increment(
+  File "/usr/local/lib/python3.10/site-packages/urllib3/util/retry.py", line 525, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "/usr/local/lib/python3.10/site-packages/urllib3/packages/six.py", line 770, in reraise
+    raise value
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connectionpool.py", line 703, in urlopen
+    httplib_response = self._make_request(
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connectionpool.py", line 398, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connection.py", line 239, in request
+    super(HTTPConnection, self).request(method, url, body=body, headers=headers)
+  File "/usr/local/lib/python3.10/http/client.py", line 1282, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "/usr/local/lib/python3.10/http/client.py", line 1328, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "/usr/local/lib/python3.10/http/client.py", line 1277, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/usr/local/lib/python3.10/http/client.py", line 1037, in _send_output
+    self.send(msg)
+  File "/usr/local/lib/python3.10/http/client.py", line 975, in send
+    self.connect()
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connection.py", line 205, in connect
+    conn = self._new_conn()
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connection.py", line 186, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x7f05a4095480>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/local/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/usr/local/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/in_place/views.py", line 408, in post
+    e = OrderDocument().search().sort("-timestamp").query(query).execute()
+  File "/usr/local/lib/python3.10/site-packages/elasticsearch_dsl/search.py", line 715, in execute
+    self, es.search(index=self._index, body=self.to_dict(), **self._params)
+  File "/usr/local/lib/python3.10/site-packages/elasticsearch/client/utils.py", line 347, in _wrapped
+    return func(*args, params=params, headers=headers, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/elasticsearch/client/__init__.py", line 1821, in search
+    return self.transport.perform_request(
+  File "/usr/local/lib/python3.10/site-packages/elasticsearch/transport.py", line 417, in perform_request
+    self._do_verify_elasticsearch(headers=headers, timeout=timeout)
+  File "/usr/local/lib/python3.10/site-packages/elasticsearch/transport.py", line 606, in _do_verify_elasticsearch
+    raise error
+  File "/usr/local/lib/python3.10/site-packages/elasticsearch/transport.py", line 569, in _do_verify_elasticsearch
+    _, info_headers, info_response = conn.perform_request(
+  File "/usr/local/lib/python3.10/site-packages/elasticsearch/connection/http_urllib3.py", line 280, in perform_request
+    raise ConnectionError("N/A", str(e), e)
+elasticsearch.exceptions.ConnectionError: ConnectionError(<urllib3.connection.HTTPConnection object at 0x7f05a4095480>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution) caused by: NewConnectionError(<urllib3.connection.HTTPConnection object at 0x7f05a4095480>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution)
+2022-11-27 15:42:53,675 - [ERROR]    django.request: Internal Server Error: /in_place/orders
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connection.py", line 174, in _new_conn
+    conn = connection.create_connection(
+  File "/usr/local/lib/python3.10/site-packages/urllib3/util/connection.py", line 72, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+  File "/usr/local/lib/python3.10/socket.py", line 955, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno -3] Temporary failure in name resolution
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/elasticsearch/connection/http_urllib3.py", line 255, in perform_request
+    response = self.pool.urlopen(
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connectionpool.py", line 785, in urlopen
+    retries = retries.increment(
+  File "/usr/local/lib/python3.10/site-packages/urllib3/util/retry.py", line 525, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "/usr/local/lib/python3.10/site-packages/urllib3/packages/six.py", line 770, in reraise
+    raise value
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connectionpool.py", line 703, in urlopen
+    httplib_response = self._make_request(
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connectionpool.py", line 398, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connection.py", line 239, in request
+    super(HTTPConnection, self).request(method, url, body=body, headers=headers)
+  File "/usr/local/lib/python3.10/http/client.py", line 1282, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "/usr/local/lib/python3.10/http/client.py", line 1328, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "/usr/local/lib/python3.10/http/client.py", line 1277, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/usr/local/lib/python3.10/http/client.py", line 1037, in _send_output
+    self.send(msg)
+  File "/usr/local/lib/python3.10/http/client.py", line 975, in send
+    self.connect()
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connection.py", line 205, in connect
+    conn = self._new_conn()
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connection.py", line 186, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x7f057819fb80>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/local/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/usr/local/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/in_place/views.py", line 408, in post
+    e = OrderDocument().search().sort("-timestamp").query(query).execute()
+  File "/usr/local/lib/python3.10/site-packages/elasticsearch_dsl/search.py", line 715, in execute
+    self, es.search(index=self._index, body=self.to_dict(), **self._params)
+  File "/usr/local/lib/python3.10/site-packages/elasticsearch/client/utils.py", line 347, in _wrapped
+    return func(*args, params=params, headers=headers, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/elasticsearch/client/__init__.py", line 1821, in search
+    return self.transport.perform_request(
+  File "/usr/local/lib/python3.10/site-packages/elasticsearch/transport.py", line 417, in perform_request
+    self._do_verify_elasticsearch(headers=headers, timeout=timeout)
+  File "/usr/local/lib/python3.10/site-packages/elasticsearch/transport.py", line 606, in _do_verify_elasticsearch
+    raise error
+  File "/usr/local/lib/python3.10/site-packages/elasticsearch/transport.py", line 569, in _do_verify_elasticsearch
+    _, info_headers, info_response = conn.perform_request(
+  File "/usr/local/lib/python3.10/site-packages/elasticsearch/connection/http_urllib3.py", line 280, in perform_request
+    raise ConnectionError("N/A", str(e), e)
+elasticsearch.exceptions.ConnectionError: ConnectionError(<urllib3.connection.HTTPConnection object at 0x7f057819fb80>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution) caused by: NewConnectionError(<urllib3.connection.HTTPConnection object at 0x7f057819fb80>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution)
+2022-11-27 15:43:04,773 - [ERROR]    django.request: Internal Server Error: /in_place/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connection.py", line 174, in _new_conn
+    conn = connection.create_connection(
+  File "/usr/local/lib/python3.10/site-packages/urllib3/util/connection.py", line 72, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+  File "/usr/local/lib/python3.10/socket.py", line 955, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno -3] Temporary failure in name resolution
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/elasticsearch/connection/http_urllib3.py", line 255, in perform_request
+    response = self.pool.urlopen(
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connectionpool.py", line 785, in urlopen
+    retries = retries.increment(
+  File "/usr/local/lib/python3.10/site-packages/urllib3/util/retry.py", line 525, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "/usr/local/lib/python3.10/site-packages/urllib3/packages/six.py", line 770, in reraise
+    raise value
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connectionpool.py", line 703, in urlopen
+    httplib_response = self._make_request(
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connectionpool.py", line 398, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connection.py", line 239, in request
+    super(HTTPConnection, self).request(method, url, body=body, headers=headers)
+  File "/usr/local/lib/python3.10/http/client.py", line 1282, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "/usr/local/lib/python3.10/http/client.py", line 1328, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "/usr/local/lib/python3.10/http/client.py", line 1277, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/usr/local/lib/python3.10/http/client.py", line 1037, in _send_output
+    self.send(msg)
+  File "/usr/local/lib/python3.10/http/client.py", line 975, in send
+    self.connect()
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connection.py", line 205, in connect
+    conn = self._new_conn()
+  File "/usr/local/lib/python3.10/site-packages/urllib3/connection.py", line 186, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x7f05a4e754b0>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/local/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/usr/local/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/in_place/views.py", line 152, in post
+    response = self.handle_formset_create(
+  File "/usr/src/app/apps/in_place/views.py", line 181, in handle_formset_create
+    order = Order.objects.create(restaurant=restaurant,
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/query.py", line 671, in create
+    obj.save(force_insert=True, using=self.db)
+  File "/usr/src/app/apps/restaurants/models.py", line 438, in save
+    super().save(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/base.py", line 831, in save
+    self.save_base(
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/base.py", line 897, in save_base
+    post_save.send(
+  File "/usr/local/lib/python3.10/site-packages/django/dispatch/dispatcher.py", line 176, in send
+    return [
+  File "/usr/local/lib/python3.10/site-packages/django/dispatch/dispatcher.py", line 177, in <listcomp>
+    (receiver, receiver(signal=self, sender=sender, **named))
+  File "/usr/local/lib/python3.10/site-packages/django_elasticsearch_dsl/signals.py", line 58, in handle_save
+    registry.update(instance)
+  File "/usr/local/lib/python3.10/site-packages/django_elasticsearch_dsl/registries.py", line 141, in update
+    doc().update(instance, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django_elasticsearch_dsl/documents.py", line 225, in update
+    return self._bulk(
+  File "/usr/local/lib/python3.10/site-packages/django_elasticsearch_dsl/documents.py", line 202, in _bulk
+    return self.bulk(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django_elasticsearch_dsl/documents.py", line 151, in bulk
+    response = bulk(client=self._get_connection(), actions=actions, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/elasticsearch/helpers/actions.py", line 410, in bulk
+    for ok, item in streaming_bulk(
+  File "/usr/local/lib/python3.10/site-packages/elasticsearch/helpers/actions.py", line 329, in streaming_bulk
+    for data, (ok, info) in zip(
+  File "/usr/local/lib/python3.10/site-packages/elasticsearch/helpers/actions.py", line 256, in _process_bulk_chunk
+    for item in gen:
+  File "/usr/local/lib/python3.10/site-packages/elasticsearch/helpers/actions.py", line 195, in _process_bulk_chunk_error
+    raise error
+  File "/usr/local/lib/python3.10/site-packages/elasticsearch/helpers/actions.py", line 240, in _process_bulk_chunk
+    resp = client.bulk(*args, body="\n".join(bulk_actions) + "\n", **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/elasticsearch/client/utils.py", line 347, in _wrapped
+    return func(*args, params=params, headers=headers, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/elasticsearch/client/__init__.py", line 472, in bulk
+    return self.transport.perform_request(
+  File "/usr/local/lib/python3.10/site-packages/elasticsearch/transport.py", line 417, in perform_request
+    self._do_verify_elasticsearch(headers=headers, timeout=timeout)
+  File "/usr/local/lib/python3.10/site-packages/elasticsearch/transport.py", line 606, in _do_verify_elasticsearch
+    raise error
+  File "/usr/local/lib/python3.10/site-packages/elasticsearch/transport.py", line 569, in _do_verify_elasticsearch
+    _, info_headers, info_response = conn.perform_request(
+  File "/usr/local/lib/python3.10/site-packages/elasticsearch/connection/http_urllib3.py", line 280, in perform_request
+    raise ConnectionError("N/A", str(e), e)
+elasticsearch.exceptions.ConnectionError: ConnectionError(<urllib3.connection.HTTPConnection object at 0x7f05a4e754b0>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution) caused by: NewConnectionError(<urllib3.connection.HTTPConnection object at 0x7f05a4e754b0>: Failed to establish a new connection: [Errno -3] Temporary failure in name resolution)
+2022-11-27 15:43:05,211 - [ERROR]    django.channels.server: [35;1mHTTP POST /in_place/ 500 [11.21, 172.20.0.1:60600][0m
+2022-11-27 15:43:13,069 - [INFO]    django.channels.server: [mHTTP GET /in_place/ 200 [0.69, 172.20.0.1:54664][0m
+2022-11-27 15:43:22,194 - [INFO]    django.channels.server: [mHTTP GET /accounts/profile/ 200 [5.69, 172.20.0.1:41924][0m
+2022-11-27 15:43:46,138 - [ERROR]    django.request: Internal Server Error: /accounts/addresses/add/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 265, in _get_response_async
+    self.check_response(response, callback)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 332, in check_response
+    raise ValueError(
+ValueError: The view users.views.view didn't return an HttpResponse object. It returned None instead.
+2022-11-27 15:43:46,384 - [ERROR]    django.channels.server: [35;1mHTTP POST /accounts/addresses/add/ 500 [0.37, 172.20.0.1:51086][0m
+2022-11-27 15:45:31,312 - [INFO]    django.utils.autoreload: /usr/src/app/apps/users/views.py changed, reloading.
+2022-11-27 15:45:52,152 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-27 15:45:59,137 - [ERROR]    django.request: Internal Server Error: /accounts/addresses/add/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 265, in _get_response_async
+    self.check_response(response, callback)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 332, in check_response
+    raise ValueError(
+ValueError: The view users.views.view didn't return an HttpResponse object. It returned None instead.
+2022-11-27 15:45:59,437 - [ERROR]    django.channels.server: [35;1mHTTP POST /accounts/addresses/add/ 500 [0.58, 172.20.0.1:56046][0m
+2022-11-27 15:46:08,334 - [ERROR]    django.request: Internal Server Error: /accounts/addresses/add/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 265, in _get_response_async
+    self.check_response(response, callback)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 332, in check_response
+    raise ValueError(
+ValueError: The view users.views.view didn't return an HttpResponse object. It returned None instead.
+2022-11-27 15:46:08,527 - [ERROR]    django.channels.server: [35;1mHTTP POST /accounts/addresses/add/ 500 [0.26, 172.20.0.1:46072][0m
+2022-11-27 15:46:16,128 - [INFO]    django.utils.autoreload: /usr/src/app/apps/users/views.py changed, reloading.
+2022-11-27 15:46:18,989 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-27 15:46:49,974 - [INFO]    django.utils.autoreload: /usr/src/app/apps/users/forms.py changed, reloading.
+2022-11-27 15:46:52,495 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-27 15:47:08,516 - [INFO]    django.utils.autoreload: /usr/src/app/apps/users/views.py changed, reloading.
+2022-11-27 15:47:10,594 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-27 15:47:20,197 - [INFO]    django.utils.autoreload: /usr/src/app/apps/users/views.py changed, reloading.
+2022-11-27 15:47:22,361 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-27 15:47:29,898 - [INFO]    django.channels.server: [32mHTTP POST /accounts/addresses/add/ 302 [0.75, 172.20.0.1:33352][0m
+2022-11-27 15:47:31,339 - [INFO]    django.channels.server: [mHTTP GET /accounts/profile/ 200 [1.37, 172.20.0.1:33368][0m
+2022-11-27 15:47:47,790 - [INFO]    django.utils.autoreload: /usr/src/app/apps/users/views.py changed, reloading.
+2022-11-27 15:47:50,708 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-27 15:48:04,396 - [INFO]    django.channels.server: [32mHTTP POST /accounts/addresses/add/ 302 [0.52, 172.20.0.1:58714][0m
+2022-11-27 15:48:05,008 - [INFO]    django.channels.server: [mHTTP GET /accounts/profile/ 200 [0.52, 172.20.0.1:52846][0m
+2022-11-27 15:53:26,627 - [INFO]    django.channels.server: [mHTTP GET /in_place/staff/ 200 [1.09, 172.20.0.1:33222][0m
+2022-11-27 15:59:22,991 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/forms.py changed, reloading.
+2022-11-27 15:59:30,718 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-27 18:47:48,487 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-27 18:58:21,606 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-28 22:54:07,832 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-28 23:08:24,180 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-29 00:28:57,129 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-29 01:34:19,162 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-29 02:06:35,532 - [INFO]    django.utils.autoreload: /usr/src/app/conf/settings.py changed, reloading.
+2022-11-29 02:06:49,457 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-29 02:07:06,438 - [INFO]    django.channels.server: [mHTTP GET / 200 [2.69, 172.20.0.1:47976][0m
+2022-11-29 02:07:26,654 - [INFO]    django.utils.autoreload: /usr/src/app/conf/settings.py changed, reloading.
+2022-11-29 02:07:29,714 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-29 02:29:04,061 - [INFO]    django.channels.server: [mHTTP GET /in_place/ 200 [3.08, 172.20.0.1:49722][0m
+2022-11-29 02:29:19,551 - [INFO]    django.channels.server: [mHTTP GET /in_place/staff/ 200 [0.28, 172.20.0.1:57718][0m
+2022-11-29 19:45:23,072 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-29 20:19:30,142 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-29 20:20:56,716 - [INFO]    django.channels.server: [mHTTP GET /in_place/ 200 [4.62, 172.20.0.1:38592][0m
+2022-11-29 20:21:59,290 - [INFO]    django.channels.server: [mHTTP GET /in_place/staff/ 200 [0.93, 172.20.0.1:58734][0m
+2022-11-30 00:53:25,801 - [INFO]    django.channels.server: [mHTTP GET /in_place/staff/ 200 [7.60, 172.20.0.1:36128][0m
+2022-11-30 01:13:32,875 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-11-30 01:13:43,861 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-30 01:26:37,726 - [ERROR]    django.request: Internal Server Error: /in_place/staff/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/in_place/views.py", line 484, in post
+    user = form_data.save(self.request)
+  File "/usr/local/lib/python3.10/site-packages/allauth/account/forms.py", line 423, in save
+    adapter.save_user(request, user, self)
+  File "/usr/src/app/apps/users/adapters.py", line 12, in save_user
+    user_field(user, "phone_number", data.get("phone_number").as_e164)
+AttributeError: 'str' object has no attribute 'as_e164'
+2022-11-30 01:31:10,072 - [ERROR]    django.request: Internal Server Error: /in_place/staff/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/in_place/views.py", line 484, in post
+    user = form_data.save(self.request)
+  File "/usr/local/lib/python3.10/site-packages/allauth/account/forms.py", line 423, in save
+    adapter.save_user(request, user, self)
+  File "/usr/src/app/apps/users/adapters.py", line 12, in save_user
+    user_field(user, "phone_number", data.get("phone_number").as_e164)
+AttributeError: 'str' object has no attribute 'as_e164'
+2022-11-30 01:36:07,498 - [ERROR]    django.request: Internal Server Error: /in_place/staff/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/in_place/views.py", line 484, in post
+    user = form_data.save(self.request)
+  File "/usr/local/lib/python3.10/site-packages/allauth/account/forms.py", line 423, in save
+    adapter.save_user(request, user, self)
+  File "/usr/src/app/apps/users/adapters.py", line 12, in save_user
+    user_field(user, "phone_number", getattr(data.get("phone_number"),
+AttributeError: 'str' object has no attribute 'as_e164'
+2022-11-30 01:44:37,591 - [ERROR]    django.request: Internal Server Error: /in_place/staff/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/in_place/views.py", line 484, in post
+    user = form_data.save(self.request)
+  File "/usr/local/lib/python3.10/site-packages/allauth/account/forms.py", line 423, in save
+    adapter.save_user(request, user, self)
+  File "/usr/src/app/apps/users/adapters.py", line 14, in save_user
+    user_field(user, "phone_number", getattr(data.get("phone_number"),
+AttributeError: 'str' object has no attribute 'as_e164'
+2022-11-30 01:49:21,505 - [ERROR]    django.request: Internal Server Error: /in_place/staff/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/in_place/views.py", line 484, in post
+    user = form_data.save(self.request)
+  File "/usr/local/lib/python3.10/site-packages/allauth/account/forms.py", line 423, in save
+    adapter.save_user(request, user, self)
+  File "/usr/src/app/apps/users/adapters.py", line 15, in save_user
+    user_field(user, "phone_number", getattr(data.get("phone_number"),
+AttributeError: 'str' object has no attribute 'as_e164'
+2022-11-30 01:53:21,016 - [INFO]    django.utils.autoreload: /usr/src/app/apps/users/views.py changed, reloading.
+2022-11-30 01:53:25,441 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-30 01:56:34,140 - [ERROR]    django.request: Internal Server Error: /in_place/staff/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/in_place/views.py", line 484, in post
+    user = form_data.save(self.request)
+  File "/usr/local/lib/python3.10/site-packages/allauth/account/forms.py", line 423, in save
+    adapter.save_user(request, user, self)
+  File "/usr/src/app/apps/users/adapters.py", line 15, in save_user
+    user_field(user, "phone_number", getattr(data.get("phone_number"),
+AttributeError: 'str' object has no attribute 'as_e164'
+2022-11-30 02:11:17,203 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/models.py changed, reloading.
+2022-11-30 02:11:21,602 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-30 02:15:54,349 - [INFO]    django.channels.server: [mHTTP GET /in_place/staff/ 200 [1.50, 172.20.0.1:35764][0m
+2022-11-30 02:16:30,673 - [INFO]    django.channels.server: [mHTTP GET /in_place/orders 200 [0.85, 172.20.0.1:50798][0m
+2022-11-30 02:16:50,619 - [INFO]    django.channels.server: [32mHTTP POST /in_place/ 302 [1.70, 172.20.0.1:53802][0m
+2022-11-30 02:16:51,300 - [INFO]    django.channels.server: [mHTTP GET /in_place/orders 200 [0.58, 172.20.0.1:53806][0m
+2022-11-30 02:17:00,788 - [INFO]    django.channels.server: [32mHTTP GET /in_place/orders 302 [0.29, 172.20.0.1:35888][0m
+2022-11-30 02:17:01,297 - [INFO]    django.channels.server: [mHTTP GET /accounts/login/?next=/in_place/orders 200 [0.36, 172.20.0.1:35904][0m
+2022-11-30 02:17:23,045 - [INFO]    django.channels.server: [32mHTTP POST /in_place/orders/delete/ 302 [2.92, 172.20.0.1:40052][0m
+2022-11-30 02:17:23,447 - [INFO]    django.channels.server: [mHTTP GET /in_place/orders 200 [0.35, 172.20.0.1:40056][0m
+2022-11-30 02:17:46,536 - [INFO]    django.channels.server: [32mHTTP POST /in_place/ 302 [0.56, 172.20.0.1:37644][0m
+2022-11-30 02:17:47,012 - [INFO]    django.channels.server: [mHTTP GET /in_place/orders 200 [0.45, 172.20.0.1:37652][0m
+2022-11-30 02:25:01,462 - [INFO]    django.utils.autoreload: /usr/src/app/apps/users/views.py changed, reloading.
+2022-11-30 02:25:10,131 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-30 02:25:14,033 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/models.py changed, reloading.
+2022-11-30 02:25:16,165 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-30 02:26:59,178 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/models.py changed, reloading.
+2022-11-30 02:27:03,280 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-30 02:27:44,646 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/models.py changed, reloading.
+2022-11-30 02:27:46,844 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader

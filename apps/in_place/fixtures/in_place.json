@@ -1,0 +1,16 @@
+[
+    {
+        "model": "in_place.staff",
+        "pk": 1,
+        "fields": {
+            "public_uuid": "ec55082c-d446-4d73-a01c-3fc519bd7241",
+            "role": "m",
+            "description": "",
+            "income": 0,
+            "address": null,
+            "restaurant": 2,
+            "user": 1,
+            "date_created": "2022-11-29T22:58:45.017Z"
+        }
+    }
+]

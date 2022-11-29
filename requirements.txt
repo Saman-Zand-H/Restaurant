@@ -7,6 +7,7 @@ async-timeout==4.0.2
 attrs==21.4.0
 autobahn==22.5.1
 Automat==20.2.0
+Babel==2.11.0
 baron==0.10.1
 billiard==3.6.4.0
 Brotli==1.0.9
@@ -74,6 +75,7 @@ oauthlib==3.2.0
 outcome==1.2.0
 packaging==21.3
 persiantools==3.0.1
+phonenumbers==8.13.0
 Pillow==9.1.1
 pluggy==1.0.0
 progressbar2==4.0.0

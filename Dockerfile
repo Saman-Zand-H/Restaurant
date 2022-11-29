@@ -25,6 +25,9 @@ COPY ./requirements.txt ./requirements.txt
 RUN pip install -U pip && pip install -r requirements.txt
 COPY . .
 
+# Install Chrome webdriver
+RUN python -c "from webdriver_manager.chrome import ChromeDriverManager;ChromeDriverManager().install()"
+
 COPY nginx/nginx.conf /etc/nginx/nginx.conf
 COPY nginx/default.conf /etc/nginx/conf.d/default.conf
 RUN service nginx start

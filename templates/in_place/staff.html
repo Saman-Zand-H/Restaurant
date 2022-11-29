@@ -1,0 +1,169 @@
+{% extends 'base/layout/dash_base.html' %}
+
+{% load static humanize tz dash_utils crispy_forms_tags %}
+
+
+{% block title %}
+    {{ user.user_staff.restaurant.name|title }} | Staff
+{% endblock %}
+
+{% block stylesheet %}
+{% endblock %}
+
+{% block modals %}
+    <div 
+         class="modal fade" 
+         id="createStaff" 
+         tabindex="-1" 
+         role="dialog"
+        >
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content bg-dark">
+                <div class="modal-header">
+                    <h5 class="modal-title text-light">
+                        NEW MEMBER
+                    </h5>
+                    <button 
+                            type="button" 
+                            class="close" 
+                            data-dismiss="modal" 
+                            aria-label="Close"
+                           >
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body text-light">
+                    <div class="my-3">
+                        <form method="POST" id="newStaffForm">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col">
+                                    {{ new_form.username|as_crispy_field }}
+                                </div>
+                                <div class="col">
+                                    {{ new_form.email|as_crispy_field }}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    {{ new_form.first_name|as_crispy_field }}
+                                </div>
+                                <div class="col">
+                                    {{ new_form.last_name|as_crispy_field }}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    {{ new_form.password1|as_crispy_field }}
+                                </div>
+                                <div class="col">
+                                    {{ new_form.password2|as_crispy_field }}
+                                </div>
+                            </div>
+                            <div>
+                                <label>Picture</label>
+                                {{ new_form.picture }}
+                                {{ new_form.picture.errors }}
+                            </div>
+                            <hr>
+                            <div>
+                                <div class="mx-3 my-4">
+                                    <label>Role:</label>
+                                    <div class="mx-3">
+                                        {% for val, choice in new_form.role.field.choices %}
+                                            <div class="form-check form-check-radio">
+                                                <label class="form-check-label">
+                                                    <input 
+                                                           type="radio" 
+                                                           id="role_{{ val }}"
+                                                           class="form-check-input" 
+                                                           name="role"
+                                                           value="{{ val }}"
+                                                        >
+                                                        {{ choice|upper }}
+                                                    <span class="circle">
+                                                        <span class="check"></span>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mx-3 my-4">
+                                {{ new_form.income|as_crispy_field }}
+                            </div>
+                            <div class="mx-3 my-4">
+                                {{ new_form.address|as_crispy_field }}
+                            </div>
+                            <div class="mx-3 my-4">
+                                {{ new_form.description|as_crispy_field }}
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button 
+                            type="button" 
+                            class="btn btn-secondary" 
+                            data-dismiss="modal"
+                           >
+                        Close
+                    </button>
+                    <button 
+                            type="button" 
+                            id="new_staff_btn"
+                            class="btn btn-success"
+                            onclick="javascript:$('#newStaffForm').submit()"
+                           >
+                        Create
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="d-flex justify-content-end">
+        <button 
+                type="button" 
+                id="createStaffBtn"
+                class="btn btn-white btn-link" 
+                data-toggle="modal" 
+                data-target="#createStaff"
+               >
+            <i class="material-icons">add_circle</i>
+        </button>
+    </div>
+    <div>
+        {% if staff.exists %}
+            {% for member in staff.all %}
+                <div class="card">
+                    <div class="card-body">
+                        <div class="mx-3">
+                            <h3>{{ member.user.name|title }}</h3><br>
+                            <h6>Phone Number: {{ member.phone_number|default:"Not Set" }}</h6>
+                            <h6>Address: {{ member.address|default:"Not Set" }}</h6>
+                            <h6>Role: {{ member.get_role_display }}</h6>
+                        </div>
+                        <div class="d-flex justify-content-end">
+                            <a class="btn btn-dark" href="#">more...</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="card">
+                <div class="card-body">
+                    <h1 class="display-2">
+                        No member's been registered yet.
+                    </h1>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}

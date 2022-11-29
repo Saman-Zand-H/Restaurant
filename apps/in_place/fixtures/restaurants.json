@@ -1,0 +1,275 @@
+[
+    {
+        "model": "restaurants.restauranttype",
+        "pk": 1,
+        "fields": {
+            "public_uuid": "1b2af6ca-ac9b-4501-aae2-229e67f68721",
+            "name": "کافه",
+            "icon": "restaurants/type_icons/coffee-cup_JhOQFGt.png"
+        }
+    },
+    {
+        "model": "restaurants.restauranttype",
+        "pk": 2,
+        "fields": {
+            "public_uuid": "e7edad33-80b1-4444-9653-335fb3a9c3b0",
+            "name": "شیرینی",
+            "icon": "restaurants/type_icons/bakery-shop_ZKSyj6m.png"
+        }
+    },
+    {
+        "model": "restaurants.restauranttype",
+        "pk": 3,
+        "fields": {
+            "public_uuid": "0b55d2c1-2dc1-421e-b420-63d4c60607a7",
+            "name": "رستوران",
+            "icon": "restaurants/type_icons/restaurant_V3WMsaS.png"
+        }
+    },
+    {
+        "model": "restaurants.restauranttype",
+        "pk": 4,
+        "fields": {
+            "public_uuid": "c9430809-cd63-4f43-a061-6720ddb05f9a",
+            "name": "آبمیو بستنی",
+            "icon": "restaurants/type_icons/ice-cream_AG7UR2R.png"
+        }
+    },
+    {
+        "model": "restaurants.restaurant",
+        "pk": 2,
+        "fields": {
+            "score": 0.0,
+            "public_uuid": "243556bc-a529-40a3-bc7e-7d63f54a4527",
+            "name": "Test",
+            "phone_number": null,
+            "table_count": 25,
+            "delivery": null,
+            "restaurant_type": 3,
+            "opens_at": "16:44:03",
+            "closes_at": "00:00:00",
+            "date_created": "2022-09-17T16:44:15.283Z",
+            "description": "",
+            "logo": "restaurants/logos/mcdonalds_ccruJEy.jpeg",
+            "info": null
+        }
+    },
+    {
+        "model": "restaurants.cuisine",
+        "pk": 1,
+        "fields": {
+            "public_uuid": "0b56a2a3-28f9-4b00-b4bb-1345d9b11768",
+            "name": "Steaks",
+            "restaurant": 2
+        }
+    },
+    {
+        "model": "restaurants.item",
+        "pk": 1,
+        "fields": {
+            "public_uuid": "2d248e60-890b-48e1-ab96-a2550bfde090",
+            "name": "Beef",
+            "cuisine": 1,
+            "picture": "",
+            "description": ""
+        }
+    },
+    {
+        "model": "restaurants.itemvariation",
+        "pk": 1,
+        "fields": {
+            "public_uuid": "da6f6808-7bc5-46d8-bfae-483dfae6868e",
+            "description": "lorem ipsum bluh bluh bluh",
+            "item": 1,
+            "name": "2kg",
+            "price": 25000
+        }
+    },
+    {
+        "model": "restaurants.itemvariation",
+        "pk": 2,
+        "fields": {
+            "public_uuid": "9930480c-614d-41d5-b2ae-c64983856770",
+            "description": "",
+            "item": 1,
+            "name": "5kg",
+            "price": 50000
+        }
+    },
+    {
+        "model": "restaurants.orderitem",
+        "pk": 71,
+        "fields": {
+            "order": 119,
+            "paid_price": 100000,
+            "item": 1,
+            "count": 4
+        }
+    },
+    {
+        "model": "restaurants.orderitem",
+        "pk": 72,
+        "fields": {
+            "order": 120,
+            "paid_price": 100000,
+            "item": 1,
+            "count": 4
+        }
+    },
+    {
+        "model": "restaurants.orderitem",
+        "pk": 73,
+        "fields": {
+            "order": 121,
+            "paid_price": 75000,
+            "item": 1,
+            "count": 3
+        }
+    },
+    {
+        "model": "restaurants.orderitem",
+        "pk": 74,
+        "fields": {
+            "order": 122,
+            "paid_price": 75000,
+            "item": 1,
+            "count": 3
+        }
+    },
+    {
+        "model": "restaurants.orderitem",
+        "pk": 75,
+        "fields": {
+            "order": 123,
+            "paid_price": 75000,
+            "item": 1,
+            "count": 3
+        }
+    },
+    {
+        "model": "restaurants.orderitem",
+        "pk": 76,
+        "fields": {
+            "order": 124,
+            "paid_price": 100000,
+            "item": 1,
+            "count": 4
+        }
+    },
+    {
+        "model": "restaurants.orderitem",
+        "pk": 77,
+        "fields": {
+            "order": 125,
+            "paid_price": 75000,
+            "item": 1,
+            "count": 3
+        }
+    },
+    {
+        "model": "restaurants.orderitem",
+        "pk": 78,
+        "fields": {
+            "order": 126,
+            "paid_price": 125000,
+            "item": 1,
+            "count": 5
+        }
+    },
+    {
+        "model": "restaurants.order",
+        "pk": 119,
+        "fields": {
+            "public_uuid": "1456816b-3598-4faf-9a47-a17945662b2f",
+            "done": false,
+            "order_type": "d",
+            "restaurant": 2,
+            "timestamp": "2022-11-18T08:30:00Z",
+            "order_number": 1
+        }
+    },
+    {
+        "model": "restaurants.order",
+        "pk": 120,
+        "fields": {
+            "public_uuid": "fb31fdaf-e82b-413c-a56e-46e21fc4bc07",
+            "done": false,
+            "order_type": "d",
+            "restaurant": 2,
+            "timestamp": "2022-11-18T17:43:26Z",
+            "order_number": 2
+        }
+    },
+    {
+        "model": "restaurants.order",
+        "pk": 121,
+        "fields": {
+            "public_uuid": "f2a959b9-c340-4651-8a22-cf836ed9818c",
+            "done": false,
+            "order_type": "d",
+            "restaurant": 2,
+            "timestamp": "2022-11-21T00:49:24.070Z",
+            "order_number": 2
+        }
+    },
+    {
+        "model": "restaurants.order",
+        "pk": 122,
+        "fields": {
+            "public_uuid": "39ad03a9-85a0-4d27-abd0-3934b16f7ac9",
+            "done": false,
+            "order_type": "d",
+            "restaurant": 2,
+            "timestamp": "2022-11-20T22:50:48Z",
+            "order_number": 1
+        }
+    },
+    {
+        "model": "restaurants.order",
+        "pk": 123,
+        "fields": {
+            "public_uuid": "4422ac5d-0a13-49db-8b7f-1b535e52695c",
+            "done": false,
+            "order_type": "d",
+            "restaurant": 2,
+            "timestamp": "2022-11-20T22:52:52Z",
+            "order_number": 1
+        }
+    },
+    {
+        "model": "restaurants.order",
+        "pk": 124,
+        "fields": {
+            "public_uuid": "309c5e87-5eec-48ef-bb54-ff18402b9ce2",
+            "done": false,
+            "order_type": "d",
+            "restaurant": 2,
+            "timestamp": "2022-11-24T18:58:43.682Z",
+            "order_number": 2
+        }
+    },
+    {
+        "model": "restaurants.order",
+        "pk": 125,
+        "fields": {
+            "public_uuid": "f11cc2df-20a3-4099-a928-8c7c56fd3fc6",
+            "done": false,
+            "order_type": "d",
+            "restaurant": 2,
+            "timestamp": "2022-11-24T11:59:58Z",
+            "order_number": 4
+        }
+    },
+    {
+        "model": "restaurants.order",
+        "pk": 126,
+        "fields": {
+            "public_uuid": "1c4f49a3-77cb-49d6-90e3-8e0701574b35",
+            "done": false,
+            "order_type": "d",
+            "restaurant": 2,
+            "timestamp": "2022-11-23T08:30:00Z",
+            "order_number": 1
+        }
+    }
+]

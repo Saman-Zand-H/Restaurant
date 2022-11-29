@@ -67,16 +67,16 @@ services:
     networks:
       - es_net
     mem_limit: "2.1g"
-  kibana:
-    image: kibana:7.6.1
-    ports:
-      - "5601:5601"
-    networks:
-      - es_net
-    environment:
-      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
-    depends_on:
-      - elasticsearch
+#  kibana:
+ #   image: kibana:7.6.1
+  #  ports:
+   #   - "5601:5601"
+    #networks:
+     # - es_net
+   # environment:
+    #  - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+    #depends_on:
+     # - elasticsearch
 
 volumes:
   postgres_data:

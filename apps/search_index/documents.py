@@ -1,6 +1,7 @@
 from django_elasticsearch_dsl.registries import registry
 from django_elasticsearch_dsl import Document, fields
 from django.templatetags.static import static
+from django.utils import timezone
 
 from restaurants.models import Restaurant, Order, RestaurantType
 
