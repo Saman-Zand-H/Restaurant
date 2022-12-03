@@ -1,6 +1,11 @@
 from django.contrib import admin
 
-from .models import Delivery, DeliveryCart, DeliveryCartItem, Discount
+from .models import Delivery, DeliveryCart, DeliveryCartItem, Discount, UserAddressInfo
+
+
+@admin.register(UserAddressInfo)
+class UserAddressInfoAdmin(admin.ModelAdmin):
+    pass
 
 
 @admin.register(Delivery)

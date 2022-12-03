@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
 from django.conf import settings
+from django.db.models.functions import TruncDate, TruncMonth
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.contrib.gis.db import models as gis_models
 from django.core.exceptions import ValidationError
@@ -11,6 +12,9 @@ from persiantools.jdatetime import JalaliDateTime
 from datetime import timedelta, datetime, time, date
 from django.utils import timezone
 from dateutil.relativedelta import relativedelta
+from functools import reduce
+from operator import attrgetter
+from itertools import groupby
 from uuid import uuid4
 
 from .utils import validate_extension, validate_size
@@ -125,7 +129,7 @@ class Restaurant(models.Model):
         lt = gte + relativedelta(months=1) 
         orders = self.restaurant_orders.filter(models.Q(timestamp__lt=lt)
                 & models.Q(timestamp__gte=gte))
-        return sum([i.total_price for i in orders])
+        return sum([i.total_price for i in orders if orders.exists()] or [0])
     
     @cached_property
     def monthly_revenue(self):
@@ -202,6 +206,19 @@ class Restaurant(models.Model):
     def orders_today(self):
         return self._get_daily_orders_data()
     
+    @cached_property
+    def all_revenues(self):
+        orders = self.restaurant_orders.annotate(
+            date_created=TruncDate(
+                'timestamp')).order_by('timestamp') 
+        grouped = [*map(lambda i: [*i[1]], 
+                        groupby(orders, attrgetter("date_created")))]
+        revenues = [
+            *map(lambda i: sum(
+                map(lambda j: j.total_price, i)), 
+            grouped)]
+        return revenues
+    
     def refresh_from_db(self, *args, **kwargs):
         super().refresh_from_db(*args, **kwargs)
         cached_properties = ["monthly_revenue",
@@ -211,7 +228,9 @@ class Restaurant(models.Model):
                              "weekly_sale",
                              "weekly_score",
                              "most_popular_food",
-                             "orders_today"]
+                             "orders_today",
+                             "all_revenues",
+                             "monthly_revenue_ls"]
         for i in cached_properties:
             try:
                 del self.__dict__[i]
@@ -331,7 +350,7 @@ class OrderItem(models.Model):
             s = super().save(*args, **kwargs)
             self.order.restaurant.refresh_from_db()
             # In order for ElasticSearch to detect changes in the value of orders_repr,
-            # we need to send a signal from Order to update the registry.
+            # we need to send a signal from Order to update the index.
             models.signals.post_save.send(
                 sender=Order,
                 instance=self.order,

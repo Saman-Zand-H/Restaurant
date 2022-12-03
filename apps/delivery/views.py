@@ -24,9 +24,10 @@ class AddToCartView(View, LoginRequiredMixin):
             item_var = ItemVariation.objects.filter(
                 public_uuid=form_data.cleaned_data.get("public_uuid"))
             if item_var.exists():
-                _, created = DeliveryCartItem.objects.get_or_create(cart=cart,
-                                                                    item=item_var.first(),
-                                                                    count=1)
+                _, created = DeliveryCartItem.objects.get_or_create(
+                    cart=cart,
+                    item=item_var.first(),
+                    count=1)
                 if created:
                     message = "Item was added to your cart."
                 else:

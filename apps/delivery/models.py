@@ -30,6 +30,11 @@ class UserAddressInfo(gis_models.Model):
     user = gis_models.ForeignKey(settings.AUTH_USER_MODEL,
                                  on_delete=models.CASCADE,
                                  related_name="user_addresses")
+    
+    # TODO: Implement str dunder
+    
+    class Meta:
+        verbose_name_plural = "User Address Info"
         
     def save(self, *args, **kwargs):
         self.address = self.address.lower()

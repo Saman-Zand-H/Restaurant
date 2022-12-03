@@ -20919,3 +20919,1297 @@ AttributeError: 'str' object has no attribute 'as_e164'
 2022-11-30 02:27:03,280 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
 2022-11-30 02:27:44,646 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/models.py changed, reloading.
 2022-11-30 02:27:46,844 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-11-30 02:43:23,782 - [INFO]    django.channels.server: [mHTTP GET /in_place/ 200 [2.25, 172.20.0.1:33250][0m
+2022-12-01 01:28:42,500 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-01 01:47:13,101 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/utils.py changed, reloading.
+2022-12-01 01:48:08,169 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-01 01:48:19,973 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/utils.py changed, reloading.
+2022-12-01 01:48:24,160 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-01 01:48:25,790 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/utils.py changed, reloading.
+2022-12-01 01:48:28,959 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-01 12:40:52,611 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-01 13:02:17,735 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/utils.py changed, reloading.
+2022-12-01 13:02:38,184 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-01 13:03:14,731 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/utils.py changed, reloading.
+2022-12-01 13:03:17,254 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-01 13:03:42,574 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/utils.py changed, reloading.
+2022-12-01 13:03:45,358 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-01 13:48:59,836 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-01 13:49:38,729 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-01 13:50:27,073 - [INFO]    django.channels.server: [mHTTP GET /in_place/ 200 [4.51, 172.20.0.1:36126][0m
+2022-12-01 13:50:33,949 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-01 13:50:37,561 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-01 13:51:09,526 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/urls.py changed, reloading.
+2022-12-01 13:51:11,914 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-01 13:51:18,666 - [INFO]    django.channels.server: [32mHTTP GET /in_place/finance 301 [0.23, 172.20.0.1:53000][0m
+2022-12-01 13:51:19,006 - [ERROR]    django.request: Internal Server Error: /in_place/finance/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/local/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/usr/local/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 132, in dispatch
+    user_test_result = self.get_test_func()()
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 119, in test_func
+    raise NotImplementedError(
+NotImplementedError: FinanceView is missing the implementation of the test_func() method.
+2022-12-01 13:51:19,248 - [ERROR]    django.channels.server: [35;1mHTTP GET /in_place/finance/ 500 [0.55, 172.20.0.1:53012][0m
+2022-12-01 13:52:20,896 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-01 13:52:23,610 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-01 14:01:17,687 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-01 14:08:35,303 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-01 14:11:54,401 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-01 14:14:53,300 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-01 14:34:58,090 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-01 14:36:09,083 - [INFO]    django.channels.server: [mHTTP GET /in_place/ 200 [4.81, 172.20.0.1:51864][0m
+2022-12-01 14:36:34,522 - [ERROR]    django.request: Internal Server Error: /in_place/finance/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/local/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/usr/local/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/in_place/views.py", line 522, in get
+    restaruant = self.user.user_staff.restaurant
+AttributeError: 'FinanceView' object has no attribute 'user'
+2022-12-01 14:36:34,930 - [ERROR]    django.channels.server: [35;1mHTTP GET /in_place/finance/ 500 [0.59, 172.20.0.1:35284][0m
+2022-12-01 14:37:11,269 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-01 14:37:45,328 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-01 14:38:12,938 - [ERROR]    django.request: Internal Server Error: /in_place/finance/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/local/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/usr/local/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/in_place/views.py", line 523, in get
+    gamma_data = json.dumps(sells_gamma_task.delay(restaruant.id))
+  File "/usr/local/lib/python3.10/json/__init__.py", line 231, in dumps
+    return _default_encoder.encode(obj)
+  File "/usr/local/lib/python3.10/json/encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/local/lib/python3.10/json/encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/local/lib/python3.10/json/encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type AsyncResult is not JSON serializable
+2022-12-01 14:38:13,735 - [ERROR]    django.channels.server: [35;1mHTTP GET /in_place/finance/ 500 [2.49, 172.20.0.1:46732][0m
+2022-12-01 14:38:54,512 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-01 14:38:57,267 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-01 14:39:09,674 - [ERROR]    django.request: Internal Server Error: /in_place/finance/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/local/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/usr/local/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/in_place/views.py", line 524, in get
+    self.context.update({"gamma_data": json.dumps(gamma_data)})
+  File "/usr/local/lib/python3.10/json/__init__.py", line 231, in dumps
+    return _default_encoder.encode(obj)
+  File "/usr/local/lib/python3.10/json/encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/local/lib/python3.10/json/encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/local/lib/python3.10/json/encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type AsyncResult is not JSON serializable
+2022-12-01 14:39:10,056 - [ERROR]    django.channels.server: [35;1mHTTP GET /in_place/finance/ 500 [0.81, 172.20.0.1:36038][0m
+2022-12-01 14:41:14,731 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-01 14:41:21,809 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-01 14:41:46,610 - [ERROR]    django.request: Internal Server Error: /in_place/finance/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/local/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/usr/local/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/in_place/views.py", line 525, in get
+    self.context.update({"gamma_data": json.dumps(gamma_data)})
+  File "/usr/local/lib/python3.10/json/__init__.py", line 231, in dumps
+    return _default_encoder.encode(obj)
+  File "/usr/local/lib/python3.10/json/encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/local/lib/python3.10/json/encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/local/lib/python3.10/json/encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type AsyncResult is not JSON serializable
+2022-12-01 14:41:46,902 - [ERROR]    django.channels.server: [35;1mHTTP GET /in_place/finance/ 500 [0.80, 172.20.0.1:56964][0m
+2022-12-01 14:42:11,906 - [ERROR]    django.request: Internal Server Error: /in_place/finance/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/local/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/usr/local/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/in_place/views.py", line 525, in get
+    self.context.update({"gamma_data": json.dumps(gamma_data)})
+  File "/usr/local/lib/python3.10/json/__init__.py", line 231, in dumps
+    return _default_encoder.encode(obj)
+  File "/usr/local/lib/python3.10/json/encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/local/lib/python3.10/json/encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/local/lib/python3.10/json/encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type AsyncResult is not JSON serializable
+2022-12-01 14:42:12,128 - [ERROR]    django.channels.server: [35;1mHTTP GET /in_place/finance/ 500 [0.33, 172.20.0.1:37814][0m
+2022-12-01 14:42:49,808 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/utils.py changed, reloading.
+2022-12-01 14:42:53,430 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-01 14:44:07,156 - [ERROR]    django.request: Internal Server Error: /in_place/finance/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/local/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/usr/local/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/in_place/views.py", line 525, in get
+    self.context.update({"gamma_data": json.dumps(gamma_data)})
+  File "/usr/local/lib/python3.10/json/__init__.py", line 231, in dumps
+    return _default_encoder.encode(obj)
+  File "/usr/local/lib/python3.10/json/encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/local/lib/python3.10/json/encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/local/lib/python3.10/json/encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type AsyncResult is not JSON serializable
+2022-12-01 14:44:07,445 - [ERROR]    django.channels.server: [35;1mHTTP GET /in_place/finance/ 500 [0.69, 172.20.0.1:53764][0m
+2022-12-01 14:44:26,213 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-01 14:44:29,507 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-01 14:44:32,426 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.88, 172.20.0.1:60348][0m
+2022-12-01 14:46:13,241 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.58, 172.20.0.1:50034][0m
+2022-12-01 14:46:37,097 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.34, 172.20.0.1:37384][0m
+2022-12-01 14:46:56,501 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.26, 172.20.0.1:43034][0m
+2022-12-01 14:48:58,161 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/tasks.py changed, reloading.
+2022-12-01 14:49:08,324 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-01 14:49:17,785 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-01 14:49:20,475 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-01 14:49:25,276 - [ERROR]    django.request: Internal Server Error: /in_place/finance/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/local/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/usr/local/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/in_place/views.py", line 522, in get
+    gamma_data = sells_gamma.delay(restaruant.id)
+AttributeError: 'function' object has no attribute 'delay'
+2022-12-01 14:49:25,628 - [ERROR]    django.channels.server: [35;1mHTTP GET /in_place/finance/ 500 [0.86, 172.20.0.1:60150][0m
+2022-12-01 14:49:35,828 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-01 14:49:40,541 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-01 14:50:35,059 - [ERROR]    django.request: Internal Server Error: /in_place/finance/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/local/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/usr/local/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/in_place/views.py", line 522, in get
+    gamma_data = sells_gamma(restaruant.id)
+  File "/usr/src/app/apps/in_place/utils.py", line 99, in sells_gamma
+    sells = get_restaurant_sells(restaurant_id)
+  File "/usr/src/app/apps/in_place/utils.py", line 93, in get_restaurant_sells
+    return [*chain.from_iterable(OrderItem.objects.filter(
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/query.py", line 1420, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/query.py", line 1438, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/query.py", line 1445, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1532, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1562, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1407, in build_filter
+    lookups, parts, reffed_expression = self.solve_lookup_type(arg)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1217, in solve_lookup_type
+    _, field, _, lookup_parts = self.names_to_path(lookup_splitted, self.get_meta())
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1709, in names_to_path
+    raise FieldError(
+django.core.exceptions.FieldError: Cannot resolve keyword 'order_restaurant' into field. Choices are: count, id, item, item_id, order, order_id, paid_price
+2022-12-01 14:50:35,379 - [ERROR]    django.channels.server: [35;1mHTTP GET /in_place/finance/ 500 [0.90, 172.20.0.1:48636][0m
+2022-12-01 14:51:02,670 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/utils.py changed, reloading.
+2022-12-01 14:51:05,938 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-01 14:51:28,597 - [ERROR]    django.request: Internal Server Error: /in_place/finance/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/local/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/usr/local/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/in_place/views.py", line 522, in get
+    gamma_data = sells_gamma(restaruant.id)
+  File "/usr/src/app/apps/in_place/utils.py", line 99, in sells_gamma
+    sells = get_restaurant_sells(restaurant_id)
+  File "/usr/src/app/apps/in_place/utils.py", line 93, in get_restaurant_sells
+    return [*chain.from_iterable(OrderItem.objects.filter(
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/query.py", line 1420, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/query.py", line 1438, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/query.py", line 1445, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1532, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1562, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1478, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1303, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/lookups.py", line 27, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/fields/related_lookups.py", line 168, in get_prep_lookup
+    return super().get_prep_lookup()
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/lookups.py", line 337, in get_prep_lookup
+    raise ValueError(
+ValueError: The QuerySet value for an exact lookup must be limited to one result using slicing.
+2022-12-01 14:51:28,891 - [ERROR]    django.channels.server: [35;1mHTTP GET /in_place/finance/ 500 [0.87, 172.20.0.1:37284][0m
+2022-12-01 14:51:44,491 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/utils.py changed, reloading.
+2022-12-01 14:51:47,437 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-01 14:52:00,247 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/utils.py changed, reloading.
+2022-12-01 14:52:03,130 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-01 14:52:18,066 - [ERROR]    django.request: Internal Server Error: /in_place/finance/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/local/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/usr/local/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/in_place/views.py", line 522, in get
+    gamma_data = sells_gamma(restaruant.id)
+  File "/usr/src/app/apps/in_place/utils.py", line 105, in sells_gamma
+    return json.dumps({"x": x, "y": f})
+  File "/usr/local/lib/python3.10/json/__init__.py", line 231, in dumps
+    return _default_encoder.encode(obj)
+  File "/usr/local/lib/python3.10/json/encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/local/lib/python3.10/json/encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/local/lib/python3.10/json/encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type ndarray is not JSON serializable
+2022-12-01 14:52:18,383 - [ERROR]    django.channels.server: [35;1mHTTP GET /in_place/finance/ 500 [0.80, 172.20.0.1:38368][0m
+2022-12-01 14:53:14,235 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/utils.py changed, reloading.
+2022-12-01 14:53:17,421 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-01 14:54:31,675 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.89, 172.20.0.1:55380][0m
+2022-12-01 14:54:54,739 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/utils.py changed, reloading.
+2022-12-01 14:54:57,977 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-01 14:55:08,048 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.81, 172.20.0.1:48880][0m
+2022-12-01 14:55:48,718 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.35, 172.20.0.1:48114][0m
+2022-12-01 14:56:14,952 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.38, 172.20.0.1:45898][0m
+2022-12-01 14:56:40,680 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/utils.py changed, reloading.
+2022-12-01 14:56:43,965 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-01 14:56:47,760 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.66, 172.20.0.1:48874][0m
+2022-12-01 14:57:23,947 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-01 14:57:26,389 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-01 14:57:37,642 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.77, 172.20.0.1:52706][0m
+2022-12-01 14:57:58,284 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.32, 172.20.0.1:44602][0m
+2022-12-01 14:58:11,267 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.38, 172.20.0.1:40186][0m
+2022-12-01 14:58:33,320 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.36, 172.20.0.1:38864][0m
+2022-12-01 14:58:56,098 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.40, 172.20.0.1:37076][0m
+2022-12-01 14:59:44,346 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.48, 172.20.0.1:57528][0m
+2022-12-01 14:59:55,458 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.42, 172.20.0.1:40846][0m
+2022-12-02 03:13:35,739 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-02 03:18:57,681 - [INFO]    django.utils.autoreload: /usr/src/app/apps/restaurants/models.py changed, reloading.
+2022-12-02 03:19:09,118 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-02 03:21:31,776 - [INFO]    django.utils.autoreload: /usr/src/app/apps/restaurants/models.py changed, reloading.
+2022-12-02 03:21:36,425 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-02 03:25:34,130 - [INFO]    django.utils.autoreload: /usr/src/app/apps/restaurants/models.py changed, reloading.
+2022-12-02 03:26:11,260 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-02 03:29:26,970 - [INFO]    django.utils.autoreload: /usr/src/app/apps/restaurants/models.py changed, reloading.
+2022-12-02 03:29:34,434 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-02 03:29:54,823 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/utils.py changed, reloading.
+2022-12-02 03:29:57,203 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-02 13:29:28,908 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-02 13:29:56,734 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [4.02, 172.20.0.1:36286][0m
+2022-12-02 13:31:34,897 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.44, 172.20.0.1:51148][0m
+2022-12-02 13:31:52,135 - [INFO]    django.channels.server: [32mHTTP GET /in_place/finance/ 302 [0.23, 172.20.0.1:33280][0m
+2022-12-02 13:31:52,916 - [INFO]    django.channels.server: [mHTTP GET /accounts/login/?next=/in_place/finance/ 200 [0.69, 172.20.0.1:33292][0m
+2022-12-02 13:32:41,143 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.67, 172.20.0.1:54934][0m
+2022-12-02 13:39:09,686 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.64, 172.20.0.1:48776][0m
+2022-12-02 13:40:17,270 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.37, 172.20.0.1:52030][0m
+2022-12-02 13:40:27,848 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.46, 172.20.0.1:50204][0m
+2022-12-02 13:40:48,286 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.43, 172.20.0.1:50920][0m
+2022-12-02 13:41:02,801 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.49, 172.20.0.1:60580][0m
+2022-12-02 13:41:10,235 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.47, 172.20.0.1:58320][0m
+2022-12-02 13:41:20,380 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.52, 172.20.0.1:44864][0m
+2022-12-02 13:41:32,067 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.40, 172.20.0.1:46872][0m
+2022-12-02 13:42:05,152 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.42, 172.20.0.1:33128][0m
+2022-12-02 13:42:42,749 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [1.47, 172.20.0.1:46664][0m
+2022-12-02 13:42:59,702 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.50, 172.20.0.1:39490][0m
+2022-12-02 13:43:06,816 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.48, 172.20.0.1:43544][0m
+2022-12-02 13:43:11,431 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.54, 172.20.0.1:56310][0m
+2022-12-02 13:44:19,624 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.40, 172.20.0.1:35412][0m
+2022-12-02 13:44:45,675 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.46, 172.20.0.1:39674][0m
+2022-12-02 13:44:56,706 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.45, 172.20.0.1:39092][0m
+2022-12-02 13:45:06,104 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.50, 172.20.0.1:56220][0m
+2022-12-02 13:45:20,021 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.39, 172.20.0.1:44372][0m
+2022-12-02 13:46:13,090 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.42, 172.20.0.1:53734][0m
+2022-12-02 13:47:13,620 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.45, 172.20.0.1:36180][0m
+2022-12-02 13:48:26,674 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.45, 172.20.0.1:60242][0m
+2022-12-02 13:48:56,830 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.46, 172.20.0.1:44404][0m
+2022-12-02 13:49:00,609 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.60, 172.20.0.1:37450][0m
+2022-12-02 13:49:13,784 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.54, 172.20.0.1:49590][0m
+2022-12-02 13:49:39,963 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.45, 172.20.0.1:46428][0m
+2022-12-02 13:50:01,851 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.42, 172.20.0.1:37708][0m
+2022-12-02 13:50:12,732 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.44, 172.20.0.1:34540][0m
+2022-12-02 13:50:30,955 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.43, 172.20.0.1:46626][0m
+2022-12-02 13:50:36,436 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.67, 172.20.0.1:46628][0m
+2022-12-02 13:51:01,115 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.53, 172.20.0.1:50612][0m
+2022-12-02 13:51:17,045 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.41, 172.20.0.1:59056][0m
+2022-12-02 13:52:15,181 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.48, 172.20.0.1:56458][0m
+2022-12-02 13:52:28,635 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.56, 172.20.0.1:34166][0m
+2022-12-02 13:52:41,046 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.47, 172.20.0.1:60620][0m
+2022-12-02 13:52:46,526 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.58, 172.20.0.1:60632][0m
+2022-12-02 13:53:14,511 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.53, 172.20.0.1:47704][0m
+2022-12-02 13:54:19,335 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.40, 172.20.0.1:56988][0m
+2022-12-02 13:55:26,126 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.41, 172.20.0.1:35124][0m
+2022-12-02 13:55:38,089 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.47, 172.20.0.1:34912][0m
+2022-12-02 13:55:41,776 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.58, 172.20.0.1:53914][0m
+2022-12-02 13:56:07,931 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.46, 172.20.0.1:55758][0m
+2022-12-02 13:56:20,135 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.45, 172.20.0.1:52160][0m
+2022-12-02 13:58:02,189 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.42, 172.20.0.1:34500][0m
+2022-12-02 13:58:10,460 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.46, 172.20.0.1:46434][0m
+2022-12-02 13:58:39,513 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.38, 172.20.0.1:52658][0m
+2022-12-02 13:59:08,138 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.41, 172.20.0.1:39086][0m
+2022-12-02 13:59:19,108 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.42, 172.20.0.1:42480][0m
+2022-12-02 13:59:39,582 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.51, 172.20.0.1:35838][0m
+2022-12-02 14:00:09,261 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.41, 172.20.0.1:33208][0m
+2022-12-02 14:02:34,211 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.57, 172.20.0.1:36178][0m
+2022-12-02 14:02:54,966 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.44, 172.20.0.1:56758][0m
+2022-12-02 14:03:08,185 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.44, 172.20.0.1:50666][0m
+2022-12-02 14:04:19,124 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.40, 172.20.0.1:50858][0m
+2022-12-02 14:04:59,004 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.45, 172.20.0.1:36032][0m
+2022-12-02 14:05:47,089 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.39, 172.20.0.1:57120][0m
+2022-12-02 14:05:55,948 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.44, 172.20.0.1:59506][0m
+2022-12-02 14:06:18,380 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.43, 172.20.0.1:60218][0m
+2022-12-02 14:06:23,958 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.71, 172.20.0.1:56850][0m
+2022-12-02 14:06:45,270 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.44, 172.20.0.1:50606][0m
+2022-12-02 14:06:53,476 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.57, 172.20.0.1:42388][0m
+2022-12-02 14:07:11,684 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.53, 172.20.0.1:41612][0m
+2022-12-02 14:07:50,308 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.50, 172.20.0.1:48602][0m
+2022-12-02 14:08:41,206 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.43, 172.20.0.1:44900][0m
+2022-12-02 14:08:55,318 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.43, 172.20.0.1:57610][0m
+2022-12-02 14:10:04,316 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.39, 172.20.0.1:42268][0m
+2022-12-02 14:10:16,552 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.70, 172.20.0.1:49314][0m
+2022-12-02 14:10:28,819 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.43, 172.20.0.1:47436][0m
+2022-12-02 14:11:12,462 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.42, 172.20.0.1:52888][0m
+2022-12-02 14:12:52,977 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.43, 172.20.0.1:58156][0m
+2022-12-02 14:13:12,881 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.41, 172.20.0.1:48636][0m
+2022-12-02 14:13:21,749 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.37, 172.20.0.1:36128][0m
+2022-12-02 14:14:15,770 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.48, 172.20.0.1:47532][0m
+2022-12-02 14:15:10,706 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.56, 172.20.0.1:43822][0m
+2022-12-02 14:15:52,897 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.46, 172.20.0.1:48830][0m
+2022-12-02 14:16:01,936 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.42, 172.20.0.1:50818][0m
+2022-12-02 14:16:28,052 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.44, 172.20.0.1:41776][0m
+2022-12-02 14:16:38,480 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.44, 172.20.0.1:36558][0m
+2022-12-02 14:16:47,533 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.56, 172.20.0.1:37490][0m
+2022-12-02 14:16:56,106 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.42, 172.20.0.1:39924][0m
+2022-12-02 14:17:31,309 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.38, 172.20.0.1:55874][0m
+2022-12-02 14:17:37,467 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.53, 172.20.0.1:55890][0m
+2022-12-02 14:17:46,288 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.40, 172.20.0.1:58904][0m
+2022-12-02 14:17:50,933 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.47, 172.20.0.1:55462][0m
+2022-12-02 14:18:22,308 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.59, 172.20.0.1:55980][0m
+2022-12-02 14:18:28,442 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.51, 172.20.0.1:55994][0m
+2022-12-02 14:18:34,590 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.43, 172.20.0.1:45474][0m
+2022-12-02 14:18:39,819 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.73, 172.20.0.1:45484][0m
+2022-12-02 14:18:48,689 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.42, 172.20.0.1:49310][0m
+2022-12-02 14:18:54,538 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.78, 172.20.0.1:51308][0m
+2022-12-02 14:19:04,087 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.41, 172.20.0.1:42358][0m
+2022-12-02 14:19:48,981 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.53, 172.20.0.1:58518][0m
+2022-12-02 14:20:01,753 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.41, 172.20.0.1:56082][0m
+2022-12-02 14:20:07,338 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.45, 172.20.0.1:56094][0m
+2022-12-02 14:20:24,059 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.90, 172.20.0.1:33536][0m
+2022-12-02 14:20:30,984 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.41, 172.20.0.1:47600][0m
+2022-12-02 14:20:44,333 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.41, 172.20.0.1:38308][0m
+2022-12-02 14:20:50,926 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.43, 172.20.0.1:41522][0m
+2022-12-02 14:21:31,058 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.42, 172.20.0.1:41366][0m
+2022-12-02 14:21:43,092 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.43, 172.20.0.1:48162][0m
+2022-12-02 14:21:52,287 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.41, 172.20.0.1:52990][0m
+2022-12-02 14:21:54,328 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.44, 172.20.0.1:52998][0m
+2022-12-02 14:22:23,053 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.40, 172.20.0.1:56504][0m
+2022-12-02 14:22:25,061 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.35, 172.20.0.1:56514][0m
+2022-12-02 14:22:31,552 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.50, 172.20.0.1:55816][0m
+2022-12-02 14:22:38,136 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.42, 172.20.0.1:55826][0m
+2022-12-02 14:22:39,959 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.52, 172.20.0.1:55838][0m
+2022-12-02 14:22:58,565 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.46, 172.20.0.1:34406][0m
+2022-12-02 14:23:20,961 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.41, 172.20.0.1:34586][0m
+2022-12-02 14:23:30,001 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.61, 172.20.0.1:34600][0m
+2022-12-02 14:23:35,505 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.41, 172.20.0.1:40440][0m
+2022-12-02 14:24:27,882 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.40, 172.20.0.1:46582][0m
+2022-12-02 14:24:45,593 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.54, 172.20.0.1:57058][0m
+2022-12-02 14:24:56,997 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.47, 172.20.0.1:45630][0m
+2022-12-02 14:25:07,387 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.56, 172.20.0.1:34232][0m
+2022-12-02 14:25:15,291 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.43, 172.20.0.1:42588][0m
+2022-12-02 14:25:21,960 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.42, 172.20.0.1:34600][0m
+2022-12-02 14:25:43,084 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.41, 172.20.0.1:53810][0m
+2022-12-02 14:26:03,657 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.39, 172.20.0.1:59524][0m
+2022-12-02 14:26:14,156 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.51, 172.20.0.1:52968][0m
+2022-12-02 14:26:25,515 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.46, 172.20.0.1:51170][0m
+2022-12-02 14:26:36,965 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.41, 172.20.0.1:44242][0m
+2022-12-02 14:26:43,196 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.48, 172.20.0.1:44578][0m
+2022-12-02 14:26:54,607 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.41, 172.20.0.1:33250][0m
+2022-12-02 14:27:00,056 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.76, 172.20.0.1:33260][0m
+2022-12-02 14:27:21,301 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.42, 172.20.0.1:43134][0m
+2022-12-02 15:09:15,529 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/utils.py changed, reloading.
+2022-12-02 15:09:45,255 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-02 15:14:37,095 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/utils.py changed, reloading.
+2022-12-02 15:14:44,350 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-02 15:14:50,343 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/utils.py changed, reloading.
+2022-12-02 15:14:53,286 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-02 15:17:34,052 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/utils.py changed, reloading.
+2022-12-02 15:17:37,865 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-02 15:26:53,322 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [2.20, 172.20.0.1:55754][0m
+2022-12-02 15:27:18,085 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.49, 172.20.0.1:37620][0m
+2022-12-02 15:27:33,224 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.43, 172.20.0.1:42962][0m
+2022-12-02 15:29:08,961 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/utils.py changed, reloading.
+2022-12-02 15:29:20,338 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-02 15:29:44,229 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.86, 172.20.0.1:52170][0m
+2022-12-02 15:33:32,889 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.51, 172.20.0.1:49830][0m
+2022-12-02 15:34:45,515 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.43, 172.20.0.1:55840][0m
+2022-12-02 15:35:12,104 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.57, 172.20.0.1:34876][0m
+2022-12-02 15:35:46,432 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.42, 172.20.0.1:39892][0m
+2022-12-02 15:36:40,527 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.42, 172.20.0.1:50136][0m
+2022-12-02 15:38:11,088 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.38, 172.20.0.1:38532][0m
+2022-12-02 15:38:46,790 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.42, 172.20.0.1:41722][0m
+2022-12-02 15:40:14,324 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.41, 172.20.0.1:44176][0m
+2022-12-02 15:40:38,415 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.40, 172.20.0.1:42620][0m
+2022-12-02 16:01:56,258 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [1.86, 172.20.0.1:54102][0m
+2022-12-02 16:04:01,192 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.39, 172.20.0.1:58946][0m
+2022-12-02 16:04:43,726 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.56, 172.20.0.1:39130][0m
+2022-12-02 16:05:06,297 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.70, 172.20.0.1:45638][0m
+2022-12-02 16:05:14,390 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.42, 172.20.0.1:33216][0m
+2022-12-02 16:05:19,301 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.46, 172.20.0.1:33224][0m
+2022-12-02 16:05:44,919 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.45, 172.20.0.1:35508][0m
+2022-12-02 16:05:55,362 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.41, 172.20.0.1:44658][0m
+2022-12-02 16:06:42,008 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.43, 172.20.0.1:52150][0m
+2022-12-02 16:06:48,375 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.38, 172.20.0.1:52158][0m
+2022-12-02 16:06:57,609 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.43, 172.20.0.1:40994][0m
+2022-12-02 16:07:00,670 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.50, 172.20.0.1:55722][0m
+2022-12-02 16:07:15,430 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.53, 172.20.0.1:35192][0m
+2022-12-02 16:07:19,065 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.38, 172.20.0.1:35204][0m
+2022-12-02 16:07:28,500 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.43, 172.20.0.1:43428][0m
+2022-12-02 16:07:35,849 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.42, 172.20.0.1:39506][0m
+2022-12-02 16:07:44,080 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.44, 172.20.0.1:50474][0m
+2022-12-02 16:07:54,237 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.41, 172.20.0.1:39180][0m
+2022-12-02 16:09:27,561 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.39, 172.20.0.1:44940][0m
+2022-12-02 16:21:48,307 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.54, 172.20.0.1:50734][0m
+2022-12-02 16:21:58,414 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.44, 172.20.0.1:49168][0m
+2022-12-02 16:28:39,796 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.61, 172.20.0.1:51460][0m
+2022-12-02 16:28:49,965 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.42, 172.20.0.1:58172][0m
+2022-12-02 16:29:11,956 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.47, 172.20.0.1:37696][0m
+2022-12-02 16:30:06,015 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/utils.py changed, reloading.
+2022-12-02 16:30:27,194 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-02 16:34:31,634 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/utils.py changed, reloading.
+2022-12-02 16:34:35,247 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-02 16:34:43,184 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [1.20, 172.20.0.1:59118][0m
+2022-12-02 16:35:49,613 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.41, 172.20.0.1:52726][0m
+2022-12-02 16:36:51,373 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.50, 172.20.0.1:57514][0m
+2022-12-02 16:37:00,169 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.50, 172.20.0.1:45464][0m
+2022-12-02 16:39:09,226 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.39, 172.20.0.1:45824][0m
+2022-12-02 16:40:55,542 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.38, 172.20.0.1:35848][0m
+2022-12-02 16:41:07,388 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.50, 172.20.0.1:50610][0m
+2022-12-02 16:41:25,932 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.41, 172.20.0.1:57740][0m
+2022-12-02 16:41:51,578 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.39, 172.20.0.1:35586][0m
+2022-12-02 16:43:17,672 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.42, 172.20.0.1:39854][0m
+2022-12-02 16:43:27,928 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.41, 172.20.0.1:48268][0m
+2022-12-02 16:43:55,108 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.47, 172.20.0.1:55066][0m
+2022-12-02 16:45:12,642 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.60, 172.20.0.1:40072][0m
+2022-12-02 16:45:52,669 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.40, 172.20.0.1:36724][0m
+2022-12-02 16:52:21,261 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [1.41, 172.20.0.1:33748][0m
+2022-12-02 16:52:34,180 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.45, 172.20.0.1:50998][0m
+2022-12-02 16:53:03,416 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.45, 172.20.0.1:39340][0m
+2022-12-02 17:16:17,790 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.48, 172.20.0.1:58102][0m
+2022-12-02 17:17:08,793 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.50, 172.20.0.1:54016][0m
+2022-12-02 17:17:52,894 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.43, 172.20.0.1:33150][0m
+2022-12-02 17:21:25,054 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.39, 172.20.0.1:39446][0m
+2022-12-02 17:22:29,716 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.47, 172.20.0.1:51434][0m
+2022-12-02 17:22:34,892 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.70, 172.20.0.1:47066][0m
+2022-12-02 17:22:51,973 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.37, 172.20.0.1:44956][0m
+2022-12-02 17:23:07,693 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.40, 172.20.0.1:41598][0m
+2022-12-02 17:23:17,123 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.44, 172.20.0.1:57994][0m
+2022-12-02 17:24:17,713 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-02 20:54:15,235 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-02 21:20:00,683 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-02 23:11:40,034 - [INFO]    django.utils.autoreload: /usr/src/app/apps/restaurants/models.py changed, reloading.
+2022-12-02 23:11:44,471 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-02 23:21:02,245 - [INFO]    django.utils.autoreload: /usr/src/app/apps/restaurants/models.py changed, reloading.
+2022-12-02 23:21:04,968 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-02 23:45:30,615 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/utils.py changed, reloading.
+2022-12-02 23:45:52,115 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-02 23:46:29,055 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/utils.py changed, reloading.
+2022-12-02 23:46:33,324 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-02 23:47:35,385 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-02 23:47:37,465 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-02 23:52:57,262 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-02 23:53:50,580 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-02 23:54:51,381 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/utils.py changed, reloading.
+2022-12-02 23:54:54,768 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-02 23:54:58,279 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/utils.py changed, reloading.
+2022-12-02 23:55:01,548 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-03 00:16:01,083 - [ERROR]    django.request: Internal Server Error: /in_place/finance/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/local/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/usr/local/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/in_place/views.py", line 526, in get
+    "regression_data": json.dumps(regression_data)})
+  File "/usr/local/lib/python3.10/json/__init__.py", line 231, in dumps
+    return _default_encoder.encode(obj)
+  File "/usr/local/lib/python3.10/json/encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/local/lib/python3.10/json/encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/local/lib/python3.10/json/encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type ndarray is not JSON serializable
+2022-12-03 00:16:02,134 - [ERROR]    django.channels.server: [35;1mHTTP GET /in_place/finance/ 500 [2.90, 172.20.0.1:47390][0m
+2022-12-03 00:26:38,325 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/utils.py changed, reloading.
+2022-12-03 00:26:43,327 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-03 00:27:51,928 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/utils.py changed, reloading.
+2022-12-03 00:27:54,246 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-03 00:28:17,246 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/utils.py changed, reloading.
+2022-12-03 00:28:21,016 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-03 00:28:28,601 - [ERROR]    django.request: Internal Server Error: /in_place/finance/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/local/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/usr/local/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/in_place/views.py", line 526, in get
+    "regression_data": json.dumps(regression_data)})
+  File "/usr/local/lib/python3.10/json/__init__.py", line 231, in dumps
+    return _default_encoder.encode(obj)
+  File "/usr/local/lib/python3.10/json/encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/local/lib/python3.10/json/encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/local/lib/python3.10/json/encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type ndarray is not JSON serializable
+2022-12-03 00:28:29,718 - [ERROR]    django.channels.server: [35;1mHTTP GET /in_place/finance/ 500 [1.97, 172.20.0.1:38746][0m
+2022-12-03 00:28:36,631 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/utils.py changed, reloading.
+2022-12-03 00:28:41,914 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-03 00:28:50,928 - [ERROR]    django.request: Internal Server Error: /in_place/finance/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/local/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/usr/local/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/in_place/views.py", line 526, in get
+    "regression_data": json.dumps(regression_data)})
+  File "/usr/local/lib/python3.10/json/__init__.py", line 231, in dumps
+    return _default_encoder.encode(obj)
+  File "/usr/local/lib/python3.10/json/encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/local/lib/python3.10/json/encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/local/lib/python3.10/json/encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type ndarray is not JSON serializable
+2022-12-03 00:28:51,727 - [ERROR]    django.channels.server: [35;1mHTTP GET /in_place/finance/ 500 [1.45, 172.20.0.1:41860][0m
+2022-12-03 00:30:30,658 - [ERROR]    django.request: Internal Server Error: /in_place/finance/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/local/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/usr/local/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/in_place/views.py", line 526, in get
+    "regression_data": json.dumps(regression_data)})
+  File "/usr/local/lib/python3.10/json/__init__.py", line 231, in dumps
+    return _default_encoder.encode(obj)
+  File "/usr/local/lib/python3.10/json/encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/local/lib/python3.10/json/encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/local/lib/python3.10/json/encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type ndarray is not JSON serializable
+2022-12-03 00:30:31,068 - [ERROR]    django.channels.server: [35;1mHTTP GET /in_place/finance/ 500 [0.82, 172.20.0.1:41522][0m
+2022-12-03 00:30:56,008 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-03 00:30:59,940 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-03 00:31:04,679 - [ERROR]    django.request: Internal Server Error: /in_place/finance/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/local/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/usr/local/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/in_place/views.py", line 527, in get
+    "regression_data": json.dumps(regression_data)})
+  File "/usr/local/lib/python3.10/json/__init__.py", line 231, in dumps
+    return _default_encoder.encode(obj)
+  File "/usr/local/lib/python3.10/json/encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/local/lib/python3.10/json/encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/local/lib/python3.10/json/encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type ndarray is not JSON serializable
+2022-12-03 00:31:06,081 - [ERROR]    django.channels.server: [35;1mHTTP GET /in_place/finance/ 500 [2.82, 172.20.0.1:51864][0m
+2022-12-03 00:31:55,773 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/utils.py changed, reloading.
+2022-12-03 00:31:59,050 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-03 00:32:02,447 - [ERROR]    django.request: Internal Server Error: /in_place/finance/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/local/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/usr/local/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/in_place/views.py", line 527, in get
+    "regression_data": json.dumps(regression_data)})
+  File "/usr/local/lib/python3.10/json/__init__.py", line 231, in dumps
+    return _default_encoder.encode(obj)
+  File "/usr/local/lib/python3.10/json/encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/local/lib/python3.10/json/encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/local/lib/python3.10/json/encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type ndarray is not JSON serializable
+2022-12-03 00:32:03,242 - [ERROR]    django.channels.server: [35;1mHTTP GET /in_place/finance/ 500 [1.44, 172.20.0.1:34576][0m
+2022-12-03 00:33:16,230 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/utils.py changed, reloading.
+2022-12-03 00:33:19,812 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-03 00:33:33,232 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [1.90, 172.20.0.1:55914][0m
+2022-12-03 00:38:50,272 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/utils.py changed, reloading.
+2022-12-03 00:38:52,934 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-03 00:38:57,996 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/utils.py changed, reloading.
+2022-12-03 00:39:01,148 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-03 00:39:54,909 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [1.50, 172.20.0.1:37036][0m
+2022-12-03 00:42:21,442 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.80, 172.20.0.1:40380][0m
+2022-12-03 00:42:27,739 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.99, 172.20.0.1:60004][0m
+2022-12-03 00:42:40,636 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.56, 172.20.0.1:33854][0m
+2022-12-03 00:43:13,295 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.58, 172.20.0.1:56680][0m
+2022-12-03 00:43:18,542 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.94, 172.20.0.1:56692][0m
+2022-12-03 00:45:19,080 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/utils.py changed, reloading.
+2022-12-03 00:45:36,961 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-03 00:45:47,612 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [2.02, 172.20.0.1:47594][0m
+2022-12-03 00:47:01,243 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.71, 172.20.0.1:59446][0m
+2022-12-03 00:47:35,104 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.58, 172.20.0.1:41572][0m
+2022-12-03 00:50:02,045 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.52, 172.20.0.1:54556][0m
+2022-12-03 00:50:19,319 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.60, 172.20.0.1:36802][0m
+2022-12-03 01:00:27,100 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.76, 172.20.0.1:44728][0m
+2022-12-03 01:02:24,049 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.64, 172.20.0.1:46778][0m
+2022-12-03 01:04:23,003 - [INFO]    django.utils.autoreload: /usr/src/app/apps/restaurants/models.py changed, reloading.
+2022-12-03 01:04:29,556 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-03 01:04:53,328 - [INFO]    django.utils.autoreload: /usr/src/app/apps/restaurants/models.py changed, reloading.
+2022-12-03 01:04:56,782 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-03 01:05:07,529 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/utils.py changed, reloading.
+2022-12-03 01:05:11,037 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-03 01:05:19,419 - [INFO]    django.utils.autoreload: /usr/src/app/apps/restaurants/models.py changed, reloading.
+2022-12-03 01:05:22,982 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-03 01:05:27,336 - [INFO]    django.utils.autoreload: /usr/src/app/apps/restaurants/models.py changed, reloading.
+2022-12-03 01:05:30,560 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-03 01:05:43,191 - [ERROR]    django.request: Internal Server Error: /in_place/finance/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/local/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/usr/local/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/in_place/views.py", line 524, in get
+    regression_data = reg_data(restaurant.id)
+  File "/usr/src/app/apps/in_place/utils.py", line 143, in reg_data
+    model = LinearRegression().fit(
+  File "/usr/local/lib/python3.10/site-packages/sklearn/linear_model/_base.py", line 736, in fit
+    self.coef_, _, self.rank_, self.singular_ = linalg.lstsq(X, y)
+  File "/usr/local/lib/python3.10/site-packages/scipy/linalg/_basic.py", line 1135, in lstsq
+    b1 = _asarray_validated(b, check_finite=check_finite)
+  File "/usr/local/lib/python3.10/site-packages/scipy/_lib/_util.py", line 287, in _asarray_validated
+    a = toarray(a)
+  File "/usr/local/lib/python3.10/site-packages/numpy/lib/function_base.py", line 627, in asarray_chkfinite
+    raise ValueError(
+ValueError: array must not contain infs or NaNs
+2022-12-03 01:05:44,072 - [ERROR]    django.channels.server: [35;1mHTTP GET /in_place/finance/ 500 [1.81, 172.20.0.1:38364][0m
+2022-12-03 01:12:08,608 - [ERROR]    django.request: Internal Server Error: /in_place/finance/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/local/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/usr/local/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/in_place/views.py", line 524, in get
+    regression_data = reg_data(restaurant.id)
+  File "/usr/src/app/apps/in_place/utils.py", line 143, in reg_data
+    model = LinearRegression().fit(
+  File "/usr/local/lib/python3.10/site-packages/sklearn/linear_model/_base.py", line 736, in fit
+    self.coef_, _, self.rank_, self.singular_ = linalg.lstsq(X, y)
+  File "/usr/local/lib/python3.10/site-packages/scipy/linalg/_basic.py", line 1135, in lstsq
+    b1 = _asarray_validated(b, check_finite=check_finite)
+  File "/usr/local/lib/python3.10/site-packages/scipy/_lib/_util.py", line 287, in _asarray_validated
+    a = toarray(a)
+  File "/usr/local/lib/python3.10/site-packages/numpy/lib/function_base.py", line 627, in asarray_chkfinite
+    raise ValueError(
+ValueError: array must not contain infs or NaNs
+2022-12-03 01:12:08,984 - [ERROR]    django.channels.server: [35;1mHTTP GET /in_place/finance/ 500 [0.77, 172.20.0.1:35442][0m
+2022-12-03 01:12:19,705 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/utils.py changed, reloading.
+2022-12-03 01:12:23,294 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-03 01:12:27,985 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [2.24, 172.20.0.1:43214][0m
+2022-12-03 01:12:44,984 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.71, 172.20.0.1:33740][0m
+2022-12-03 01:12:55,873 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/utils.py changed, reloading.
+2022-12-03 01:12:59,336 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-03 01:13:04,086 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/utils.py changed, reloading.
+2022-12-03 01:13:07,288 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-03 01:13:11,285 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [1.66, 172.20.0.1:57972][0m
+2022-12-03 01:13:33,680 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/utils.py changed, reloading.
+2022-12-03 01:13:36,978 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-03 01:14:50,554 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [1.24, 172.20.0.1:57384][0m
+2022-12-03 01:15:52,486 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.64, 172.20.0.1:50202][0m
+2022-12-03 01:15:55,942 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.77, 172.20.0.1:60294][0m
+2022-12-03 01:16:43,324 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.62, 172.20.0.1:34808][0m
+2022-12-03 01:16:54,285 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.63, 172.20.0.1:42208][0m
+2022-12-03 01:17:02,809 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.61, 172.20.0.1:32824][0m
+2022-12-03 01:17:12,448 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.55, 172.20.0.1:57436][0m
+2022-12-03 01:19:30,544 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.63, 172.20.0.1:46630][0m
+2022-12-03 01:19:33,520 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.51, 172.20.0.1:46002][0m
+2022-12-03 01:23:36,049 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/utils.py changed, reloading.
+2022-12-03 01:23:39,843 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-03 01:23:44,740 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [2.13, 172.20.0.1:53662][0m
+2022-12-03 01:29:13,345 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.61, 172.20.0.1:43228][0m
+2022-12-03 02:06:25,649 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.75, 172.20.0.1:50240][0m
+2022-12-03 02:06:48,428 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.79, 172.20.0.1:58872][0m
+2022-12-03 02:07:00,408 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.80, 172.20.0.1:44514][0m
+2022-12-03 02:07:36,846 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.62, 172.20.0.1:60452][0m
+2022-12-03 02:07:45,375 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.73, 172.20.0.1:60826][0m
+2022-12-03 02:08:03,612 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.57, 172.20.0.1:37664][0m
+2022-12-03 02:08:24,361 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.70, 172.20.0.1:47374][0m
+2022-12-03 02:08:50,698 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.66, 172.20.0.1:37404][0m
+2022-12-03 02:09:21,424 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.58, 172.20.0.1:49184][0m
+2022-12-03 02:13:50,534 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.60, 172.20.0.1:33176][0m
+2022-12-03 02:14:02,598 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.69, 172.20.0.1:44740][0m
+2022-12-03 02:16:32,150 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.60, 172.20.0.1:45524][0m
+2022-12-03 02:17:25,535 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.67, 172.20.0.1:58332][0m
+2022-12-03 02:20:39,600 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.60, 172.20.0.1:46920][0m
+2022-12-03 02:20:47,028 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [1.11, 172.20.0.1:50480][0m
+2022-12-03 02:20:56,979 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.63, 172.20.0.1:36072][0m
+2022-12-03 02:21:04,427 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [1.00, 172.20.0.1:43862][0m
+2022-12-03 02:23:50,574 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.71, 172.20.0.1:42082][0m
+2022-12-03 02:25:20,622 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.63, 172.20.0.1:43862][0m
+2022-12-03 02:25:35,958 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.70, 172.20.0.1:57332][0m
+2022-12-03 02:26:58,542 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.62, 172.20.0.1:34782][0m
+2022-12-03 02:27:40,388 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.59, 172.20.0.1:58638][0m
+2022-12-03 02:28:44,883 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.60, 172.20.0.1:42244][0m
+2022-12-03 02:29:00,977 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.69, 172.20.0.1:34978][0m
+2022-12-03 02:31:56,030 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.60, 172.20.0.1:48892][0m
+2022-12-03 02:35:34,753 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.65, 172.20.0.1:34302][0m
+2022-12-03 02:53:19,560 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-03 02:53:38,255 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-03 02:54:09,357 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [2.35, 172.20.0.1:38776][0m
+2022-12-03 02:54:33,141 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.56, 172.20.0.1:42292][0m
+2022-12-03 02:54:44,887 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.61, 172.20.0.1:58304][0m
+2022-12-03 02:55:09,211 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.61, 172.20.0.1:49236][0m
+2022-12-03 02:55:18,636 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.67, 172.20.0.1:40910][0m
+2022-12-03 02:55:21,240 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.61, 172.20.0.1:40920][0m
+2022-12-03 02:55:35,000 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.80, 172.20.0.1:56598][0m
+2022-12-03 16:29:28,036 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-03 16:31:02,193 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [4.43, 172.20.0.1:57144][0m
+2022-12-03 16:35:00,990 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.56, 172.20.0.1:55354][0m
+2022-12-03 16:36:13,948 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.63, 172.20.0.1:52900][0m
+2022-12-03 16:36:27,425 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.69, 172.20.0.1:38592][0m
+2022-12-03 16:36:44,024 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.78, 172.20.0.1:45258][0m
+2022-12-03 16:37:33,214 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.55, 172.20.0.1:57032][0m
+2022-12-03 16:37:39,567 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.65, 172.20.0.1:60814][0m
+2022-12-03 16:38:01,852 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.58, 172.20.0.1:47186][0m
+2022-12-03 16:38:18,225 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.76, 172.20.0.1:49320][0m
+2022-12-03 16:39:44,741 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.60, 172.20.0.1:46350][0m
+2022-12-03 16:40:23,076 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.63, 172.20.0.1:49492][0m
+2022-12-03 16:40:37,815 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.71, 172.20.0.1:52568][0m
+2022-12-03 16:42:53,956 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.66, 172.20.0.1:51106][0m
+2022-12-03 16:43:34,082 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.63, 172.20.0.1:36104][0m
+2022-12-03 16:44:56,406 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.73, 172.20.0.1:57038][0m
+2022-12-03 16:45:04,145 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.89, 172.20.0.1:57054][0m
+2022-12-03 16:45:24,982 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.65, 172.20.0.1:51382][0m
+2022-12-03 16:45:42,683 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.70, 172.20.0.1:59780][0m
+2022-12-03 16:45:55,400 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.70, 172.20.0.1:40992][0m
+2022-12-03 16:46:10,837 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.66, 172.20.0.1:50386][0m
+2022-12-03 16:50:25,098 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [1.18, 172.20.0.1:46864][0m
+2022-12-03 16:51:13,315 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.57, 172.20.0.1:55292][0m
+2022-12-03 17:00:48,001 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.71, 172.20.0.1:32982][0m
+2022-12-03 17:01:13,109 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.60, 172.20.0.1:56546][0m
+2022-12-03 17:01:37,182 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.59, 172.20.0.1:58894][0m
+2022-12-03 17:03:52,763 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.60, 172.20.0.1:44760][0m
+2022-12-03 17:04:07,985 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.66, 172.20.0.1:40126][0m
+2022-12-03 17:04:24,264 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.66, 172.20.0.1:58508][0m
+2022-12-03 17:25:46,583 - [INFO]    django.utils.autoreload: /usr/src/app/apps/delivery/views.py changed, reloading.
+2022-12-03 17:26:08,318 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-03 17:47:45,522 - [INFO]    django.channels.server: [mHTTP GET /admin/ 200 [5.41, 172.20.0.1:35796][0m
+2022-12-03 17:48:42,520 - [INFO]    django.utils.autoreload: /usr/src/app/apps/delivery/admin.py changed, reloading.
+2022-12-03 17:48:48,316 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-03 17:49:02,132 - [INFO]    django.channels.server: [mHTTP GET /admin/delivery/ 200 [0.85, 172.20.0.1:34496][0m
+2022-12-03 17:49:08,469 - [INFO]    django.channels.server: [mHTTP GET /admin/delivery/useraddressinfo/ 200 [0.68, 172.20.0.1:41888][0m
+2022-12-03 17:49:09,542 - [INFO]    django.channels.server: [mHTTP GET /admin/jsi18n/ 200 [0.40, 172.20.0.1:41894][0m
+2022-12-03 17:49:35,813 - [INFO]    django.utils.autoreload: /usr/src/app/apps/delivery/models.py changed, reloading.
+2022-12-03 17:49:38,755 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-03 17:50:28,891 - [INFO]    django.utils.autoreload: /usr/src/app/apps/delivery/models.py changed, reloading.
+2022-12-03 17:50:32,228 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-03 17:50:36,516 - [INFO]    django.channels.server: [mHTTP GET /admin/delivery/useraddressinfo/ 200 [1.33, 172.20.0.1:56642][0m
+2022-12-03 17:50:36,993 - [INFO]    django.channels.server: [mHTTP GET /admin/jsi18n/ 200 [0.25, 172.20.0.1:56646][0m
+2022-12-03 17:50:42,533 - [INFO]    django.channels.server: [mHTTP GET /admin/delivery/useraddressinfo/1/change/ 200 [2.07, 172.20.0.1:56652][0m
+2022-12-03 17:50:43,143 - [INFO]    django.channels.server: [mHTTP GET /admin/jsi18n/ 200 [0.24, 172.20.0.1:56658][0m
+2022-12-03 17:50:53,724 - [INFO]    django.channels.server: [32mHTTP POST /admin/delivery/useraddressinfo/1/change/ 302 [0.95, 172.20.0.1:55146][0m
+2022-12-03 17:50:54,124 - [INFO]    django.channels.server: [mHTTP GET /admin/delivery/useraddressinfo/ 200 [0.28, 172.20.0.1:55158][0m
+2022-12-03 17:50:54,762 - [INFO]    django.channels.server: [mHTTP GET /admin/jsi18n/ 200 [0.34, 172.20.0.1:45680][0m
+2022-12-03 18:02:24,642 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/utils.py changed, reloading.
+2022-12-03 18:02:27,610 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-03 18:03:48,377 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/utils.py changed, reloading.
+2022-12-03 18:03:51,624 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-03 18:04:52,579 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/utils.py changed, reloading.
+2022-12-03 18:04:55,372 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-03 18:05:59,526 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/utils.py changed, reloading.
+2022-12-03 18:06:02,753 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-03 18:07:10,753 - [INFO]    django.channels.server: [mHTTP GET /admin/delivery/useraddressinfo/ 200 [0.65, 172.20.0.1:50620][0m
+2022-12-03 18:07:11,652 - [INFO]    django.channels.server: [mHTTP GET /admin/jsi18n/ 200 [0.39, 172.20.0.1:50632][0m
+2022-12-03 18:07:34,329 - [INFO]    django.channels.server: [mHTTP GET /admin/delivery/useraddressinfo/1/change/ 200 [0.44, 172.20.0.1:55128][0m
+2022-12-03 18:07:34,928 - [INFO]    django.channels.server: [mHTTP GET /admin/jsi18n/ 200 [0.29, 172.20.0.1:44930][0m
+2022-12-03 18:09:47,741 - [INFO]    django.channels.server: [32mHTTP POST /admin/delivery/useraddressinfo/1/change/ 302 [0.33, 172.20.0.1:46094][0m
+2022-12-03 18:09:48,108 - [INFO]    django.channels.server: [mHTTP GET /admin/delivery/useraddressinfo/ 200 [0.33, 172.20.0.1:46110][0m
+2022-12-03 18:09:48,622 - [INFO]    django.channels.server: [mHTTP GET /admin/jsi18n/ 200 [0.24, 172.20.0.1:46112][0m
+2022-12-03 18:09:51,092 - [INFO]    django.channels.server: [mHTTP GET /admin/delivery/useraddressinfo/1/change/ 200 [0.37, 172.20.0.1:46120][0m
+2022-12-03 18:09:53,046 - [INFO]    django.channels.server: [mHTTP GET /admin/jsi18n/ 200 [0.32, 172.20.0.1:46136][0m
+2022-12-03 18:10:50,453 - [INFO]    django.channels.server: [32mHTTP POST /admin/delivery/useraddressinfo/1/change/ 302 [0.29, 172.20.0.1:53772][0m
+2022-12-03 18:10:50,816 - [INFO]    django.channels.server: [mHTTP GET /admin/delivery/useraddressinfo/ 200 [0.33, 172.20.0.1:53774][0m
+2022-12-03 18:10:51,378 - [INFO]    django.channels.server: [mHTTP GET /admin/jsi18n/ 200 [0.24, 172.20.0.1:53776][0m
+2022-12-03 18:14:04,302 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-03 18:14:22,794 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-03 18:14:39,019 - [ERROR]    django.request: Internal Server Error: /in_place/finance/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/local/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/usr/local/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/in_place/views.py", line 525, in get
+    map_data = orders_geos(restaurant.id)
+  File "/usr/src/app/apps/in_place/utils.py", line 166, in orders_geos
+    deliv_qs = DeliveryCartItem.objects.filter(
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/query.py", line 1574, in annotate
+    return self._annotate(args, kwargs, select=True)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/query.py", line 1584, in _annotate
+    self._validate_values_are_expressions(
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/query.py", line 1935, in _validate_values_are_expressions
+    raise TypeError(
+TypeError: QuerySet.annotate() received non-expression(s): cart.
+2022-12-03 18:14:39,952 - [ERROR]    django.channels.server: [35;1mHTTP GET /in_place/finance/ 500 [3.04, 172.20.0.1:34842][0m
+2022-12-03 18:15:15,768 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/utils.py changed, reloading.
+2022-12-03 18:15:19,103 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-03 18:15:23,224 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [1.77, 172.20.0.1:58044][0m
+2022-12-03 18:18:56,419 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/utils.py changed, reloading.
+2022-12-03 18:18:59,854 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-03 18:20:48,444 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/utils.py changed, reloading.
+2022-12-03 18:20:51,897 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-03 18:21:04,814 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/utils.py changed, reloading.
+2022-12-03 18:21:08,208 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-03 18:21:12,777 - [ERROR]    django.request: Internal Server Error: /in_place/finance/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/local/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/usr/local/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/in_place/views.py", line 525, in get
+    map_data = orders_geos(restaurant.id)
+  File "/usr/src/app/apps/in_place/utils.py", line 178, in orders_geos
+    return {"lon": [i for i in points[::2]], "lat": [j for j in points[1::2]]}
+TypeError: 'itertools.chain' object is not subscriptable
+2022-12-03 18:21:13,568 - [ERROR]    django.channels.server: [35;1mHTTP GET /in_place/finance/ 500 [1.80, 172.20.0.1:53078][0m
+2022-12-03 18:21:25,795 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/utils.py changed, reloading.
+2022-12-03 18:21:29,205 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-03 18:21:32,575 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [1.33, 172.20.0.1:40732][0m
+2022-12-03 18:21:55,121 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.74, 172.20.0.1:42534][0m
+2022-12-03 18:22:46,014 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.70, 172.20.0.1:46288][0m
+2022-12-03 18:23:18,930 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.58, 172.20.0.1:41254][0m
+2022-12-03 18:23:31,808 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.67, 172.20.0.1:33032][0m
+2022-12-03 18:23:40,162 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.62, 172.20.0.1:42794][0m
+2022-12-03 18:25:05,751 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.71, 172.20.0.1:39610][0m
+2022-12-03 18:25:54,374 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.63, 172.20.0.1:57432][0m
+2022-12-03 18:27:14,784 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [2.60, 172.20.0.1:38456][0m
+2022-12-03 18:39:18,167 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/utils.py changed, reloading.
+2022-12-03 18:39:40,381 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-03 18:39:47,583 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-03 18:39:51,328 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-03 18:41:19,060 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [1.67, 172.20.0.1:46438][0m
+2022-12-03 18:42:19,591 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/utils.py changed, reloading.
+2022-12-03 18:42:23,861 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-03 18:42:28,065 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.97, 172.20.0.1:34940][0m
+2022-12-03 18:43:00,422 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/utils.py changed, reloading.
+2022-12-03 18:43:04,020 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-03 18:43:07,340 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [1.51, 172.20.0.1:56598][0m
+2022-12-03 18:43:21,852 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-03 18:43:25,163 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-03 18:43:28,539 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [1.14, 172.20.0.1:40760][0m
+2022-12-03 18:43:41,998 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-03 18:43:44,906 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-03 18:43:48,474 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [1.18, 172.20.0.1:35838][0m
+2022-12-03 18:44:31,456 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/utils.py changed, reloading.
+2022-12-03 18:44:35,030 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-03 18:44:40,795 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [1.26, 172.20.0.1:43746][0m
+2022-12-03 18:45:28,281 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/utils.py changed, reloading.
+2022-12-03 18:45:31,883 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-03 18:46:03,365 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [1.84, 172.20.0.1:56248][0m
+2022-12-03 18:46:52,832 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.57, 172.20.0.1:46160][0m

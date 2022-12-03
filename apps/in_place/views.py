@@ -11,6 +11,7 @@ from django.db import transaction, IntegrityError
 from django.db.models import Q
 from django.views import View
 
+import json
 from datetime import datetime, date, time
 from logging import getLogger
 from typing import NamedTuple
@@ -18,6 +19,7 @@ from typing import NamedTuple
 from .utils import (weekly_revenue_chart_data, 
                     weekly_sale_chart_data, 
                     weekly_score_chart_data)
+from .utils import sells_gamma, reg_data, orders_geos
 from .forms import (OrderForm, 
                     OrderItemForm, 
                     OrderEditForm, 
@@ -500,10 +502,40 @@ class StaffView(LoginRequiredMixin, UserPassesTestMixin, View):
                     return redirect("in_place:staff")
                 except:
                     pass
-        print(form_data.errors)
         messages.error(self.request, 
                        "Invalid input detected. Please try again more carefully.")
         self.context.update({"new_form": form_data})
         return render(self.request, self.template_name, self.context)
 
 staff_view = StaffView.as_view()
+
+
+class FinanceView(LoginRequiredMixin, UserPassesTestMixin, View):
+    template_name = "in_place/fin.html"
+    context = dict()
+    
+    def test_func(self) :
+        return (hasattr(self.request.user, "user_staff") 
+                and self.request.user.has_perm("in_place.read_finance"))
+
+    def get(self, *args, **kwargs):
+        restaurant = self.request.user.user_staff.restaurant
+        gamma_data = sells_gamma(restaurant.id)
+        regression_data = reg_data(restaurant.id)
+        map_data = orders_geos(restaurant.id)
+        self.context.update({"gamma_data": json.dumps(gamma_data),
+                             "regression_data": json.dumps(regression_data),
+                             "map_data": json.dumps(map_data),
+                             "mean": gamma_data.get("mean"),
+                             "median": gamma_data.get("med"),
+                             "q1": gamma_data.get("q1"),
+                             "q3": gamma_data.get("q3"),
+                             "stdev": gamma_data.get("stdev"),
+                             "mse": regression_data.get("mse"),
+                             "r2": regression_data.get("r2")})
+        return render(self.request, 
+                      self.template_name, 
+                      self.context)
+
+
+finance_view = FinanceView.as_view()

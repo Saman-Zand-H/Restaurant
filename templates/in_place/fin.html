@@ -1,0 +1,315 @@
+{% extends 'base/layout/dash_base.html' %}
+{% load humanize dash_utils static tz %}
+
+{% block title %} {{ user.user_staff.restaurant.name|title }} | Finance {% endblock %}
+
+{% block stylesheet %}
+{% endblock %}
+
+{% block modals %}
+{% endblock %}
+
+{% block content %}
+    <div class="card card-body">
+        <div>
+            <h2 class="text-light"> 
+                Statistical Data
+            </h2>
+            <p class="text-light">
+                We've provided you basic statistical data for a better 
+                analysis of your data. The next version will give you the 
+                ability to take your data in different formats such as: excell, csv, etc.
+            </p>
+            <div class="card card-body bg-light my-2 w-75 
+                        mx-auto">
+                <div class="d-flex flex-row justify-content-between">
+                    <div class="text-dark"><h4>Median: {{ median }}</h4></div>
+                    <div class="text-dark"><h4>Quantile 1: {{ q1 }}</h4></div>
+                    <div class="text-dark"><h4>Quantile 3: {{ q3 }}</h4></div>
+                </div>
+                <div class="d-flex flex-row justify-content-between">
+                    <div class="text-dark">
+                        <h4>Mean: {{ mean }}</h4>
+                    </div>
+                    <div class="text-dark">
+                        <h4>Standard Deviation: {{ mean }}</h4>
+                    </div>
+                    <div class="text-dark">
+                        <h4>Population Standard Deviation: {{ mean }}</h4>
+                    </div>
+                </div>
+                <div class="d-flex flex-row justify-content-between">
+                    <div class="text-dark">
+                        <h4>R-Squared(R<sup>2</sup>): {{ r2 }}</h4>
+                    </div>
+                    <div class="text-dark">
+                        <h4>Mean-Squared-Error(MSE): {{ mse }}</h4>
+                    </div>
+                </div>
+            </div>
+        </div><hr class="bg-light">
+        <div>
+            <h2 class="text-light">Distribution</h2>
+            <p class="text-light">
+                The following chart represents you your 
+                revenue distribution using gamma distribution. This means that 
+                the x values with higher heights have a more likelyhood to be 
+                your daily revenue. The Chart provides you several statistical values:
+                The mean, median, first quantile and the third quantile.
+            </p>
+            <div class="card card-body bg-light w-75 mx-auto my-4">
+                <canvas id="gammaChart"></canvas>
+            </div>
+        </div><hr class="bg-light">
+        <div>
+            <h2 class="text-light">Revenue Prediction</h2>
+            <p class="text-light">
+                In the following chart we have several points and a line. The points 
+                represent your revenue during the last 30 days, and the line, which is 
+                called the line of regression, is a linear function that best fits your data 
+                and can be used to predict your revenue for a given day. The equation of 
+                this line is provided for you.
+            </p>
+            <div class="card card-body bg-light w-75 mx-auto my-4">
+                <canvas id="regChart"></canvas>
+            </div>
+        </div><hr class="bg-light">
+        <div class="my-4">
+            <h2 class="text-light">Sale Spots</h2>
+            <p class="text-light">
+                This map represents the spots you've had delivery orders from since 
+                you started working with us.
+            </p>
+            <div class="bg-dark">
+                <div id="mapChartElem"></div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script src="https://cdn.jsdelivr.net/npm/plotly.js@2.16.3/dist/plotly.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{% static 'dash_assets/vendors/chart/plugins/chartjs-plugin-annotation.min.js' %}"></script>
+    <script>
+        // Gamma Distribution Chart Setup
+        var gammaData = JSON.parse('{{ gamma_data|safe }}'),
+            x = gammaData.x,
+            y = gammaData.y,
+            stdev = gammaData.stdev,
+            mean = gammaData.mean,
+            med = gammaData.med,
+            q1 = gammaData.q1,
+            q3 = gammaData.q3,
+            closest = (arr, num) => {
+                return arr.reduce((prev, curr) => {
+                    return (Math.abs(prev-num)<Math.abs(curr-num)?prev:curr)
+                })
+              },
+            meanI = x.indexOf(closest(x, mean)),
+            medI = x.indexOf(closest(x, med)),
+            q1I = x.indexOf(closest(x, q1)),
+            q3I = x.indexOf(closest(x, q3)),
+            medAnnotation = {
+              type: 'line',
+              borderColor: 'black',
+              borderWidth: 3,
+              xScaleID: 'x',
+              yScaleID: 'y',
+              yMin: 0,
+              yMax: y[medI],
+              xMax: medI,
+              xMin: medI,
+              label: {
+                  display: true,
+                  content: (ctx) => `Q2: ${med.toFixed()}`
+              }
+            },
+            meanAnnotation = {
+              type: 'line',
+              borderColor: 'rgb(0, 60, 140)',
+              borderWidth: 3,
+              yMin: y[meanI],
+              yMax: y[meanI],
+              xMin: meanI - 4,
+              xMax: meanI + 3,
+              label: {
+                  display: true,
+                  content: (ctx) => `μ: ${mean.toFixed()}`
+              },
+              xScaleID: 'x',
+              yScaleID: 'y'
+            },
+            q1Annotation = {
+              type: 'line',
+              borderColor: 'black',
+              borderWidth: 3,
+              yMin: 0,
+              yMax: y[q1I],
+              xMin: q1I,
+              xMax: q1I,
+              xScaleID: 'x',
+              yScaleID: 'y',
+              label: {
+                  display: true,
+                  content: (ctx) => `Q1: ${q1}`
+              }
+            },
+            q3Annotation = {
+              type: 'line',
+              borderColor: 'black',
+              borderWidth: 3,
+              yMin: 0,
+              yMax: y[q3I],
+              xMin: q3I,
+              xMax: q3I,
+              xScaleID: 'x',
+              yScaleID: 'y',
+              label: {
+                  display: true,
+                  content: (ctx) => `Q3: ${q3}`
+              }
+            },
+            gammaChartData = {
+              data: {
+                  labels: x,
+                  datasets: [
+                      {
+                          type: 'line',
+                          data: y,
+                          fill: true,
+                          borderColor: "rgb(0, 60, 120)",
+                          backgroundColor: "rgb(102, 178, 255, .5)",
+                          order: 1,
+                      },
+                      {
+                          type: 'bar',
+                          data: y,
+                          fill: true,
+                          barPercentage: 1.1,
+                          order: 2,
+                          backgroundColor: "rgb(172, 178, 255)"
+                      }
+                  ]
+              },
+              options: {
+                  responsive: true,
+                  plugins: {
+                      title: {
+                          display: true,
+                          text: 'Sales Distribution'
+                      },
+                      legend: {
+                          position: 'center'
+                      },
+                      tooltip: {
+                          enabled: false
+                      },
+                      annotation: {
+                          annotations: {
+                              medAnnotation,
+                              meanAnnotation,
+                              q1Annotation,
+                              q3Annotation,
+                          }
+                      }
+                  },
+                  scales: {
+                      y: {
+                          ticks: {
+                              display: false,
+                          }
+                      },
+                      x: {
+                          ticks: {
+                              display: true,
+                              callback: function(val, i){
+                                  /* I don't know why but for the x values it
+                                  returns the index instead of the values, therefore I
+                                  use that index to access the data from the array */
+                                  f = x[i].toFixed();
+                                  return f % 25000 === 0 ? f : null
+                              }
+                          },
+                          grid: {
+                              display: false
+                          }
+                      }
+                  },
+              }
+          },
+           gammaElem = document.getElementById('gammaChart');
+        new Chart(gammaElem, gammaChartData);
+    </script>
+    <script>
+        var regData = JSON.parse('{{ regression_data|safe }}'),
+            s = regData.s,
+            rY = regData.r_y,
+            rX = regData.r_x,
+            regChartData = {
+                data: {
+                    labels: rX,
+                    datasets: [
+                        {
+                            type: "scatter",
+                            data: s,
+                            label: "actual data"
+                        }, {
+                            type: "line",
+                            data: rY,
+                            label: "prediction"
+                        }
+                    ]
+                },
+                options: {
+                    scales: {
+                        x: {
+                            ticks: {
+                                callback: (v, i) => {
+                                    return new Date(1000*v).toLocaleString("en-au").split(", ")[0]
+                                }
+                            }
+                        }
+                    },
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: "Linear Regression of the data"
+                        },
+                        tooltip: {
+                            callbacks: {
+                                // TODO: implement this.
+                            }
+                        }
+                    }
+                }
+            },
+            regElem = document.getElementById("regChart");
+        new Chart(regElem, regChartData);
+    </script>
+    <script>
+        var mapData = JSON.parse('{{ map_data|safe }}'),
+            lat=mapData.lat,
+            lon=mapData.lon,
+            data = [{
+                type: "scattermapbox",
+                lat: lat,
+                lon: lon,
+            }],
+            config = {
+                mapboxAccessToken: "pk.eyJ1IjoidG5zYW1hbiIsImEiOiJjbDgzZ3c1ZDkwNjA0M3drMG9heW5oYmFjIn0.lEg5Chz3DCK4kaEc8kkNUQ"
+            },
+            layout = {
+                mapbox: {
+                    style: "dark",
+                    zoom: 11,
+                    center: {
+                        lat: 36.30836706218105,
+                        lon: 59.60585098972023
+                    }
+                },
+                margin: {t: 0, b: 0}
+            };
+        Plotly.newPlot("mapChartElem", data, layout, config);
+    </script>
+{% endblock %}

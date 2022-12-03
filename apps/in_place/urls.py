@@ -20,5 +20,8 @@ urlpatterns = [
         name="orders"),
    path(route="staff/",
         view=views.staff_view,
-        name="staff")
+        name="staff"),
+   path(route="finance/",
+        view=views.finance_view,
+        name="finance"),
 ]
