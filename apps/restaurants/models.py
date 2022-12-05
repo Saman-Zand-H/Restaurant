@@ -341,6 +341,7 @@ class OrderItem(models.Model):
                              on_delete=models.CASCADE,
                              related_name="item_orders")
     count = models.PositiveIntegerField(default=1)
+    timestamp = models.DateTimeField(auto_now=True)
     
     def __str__(self):
         return f"{self.order}: {self.count} {self.item}"
@@ -449,8 +450,9 @@ class Order(models.Model):
         related = self.order_items.select_related("item")
         items = [i.item.full_name for i in related]
         counts = [i.count for i in related]
-        assert len(items) == len(counts)
-        return [f"{c} x {i.title()}" for i,c in zip(items, counts)]
+        paids = [i.paid_price for i in related]
+        assert len(items) == len(counts) == len(paids)
+        return [f"{c} x {i.title()} ({p})" for i, c, p in zip(items, counts, paids)]
         
     def save(self, *args, **kwargs):
         self.order_number = self._set_order_number()

@@ -24,4 +24,7 @@ urlpatterns = [
    path(route="finance/",
         view=views.finance_view,
         name="finance"),
+   path(route="export/excel/sells",
+        view=views.sells_to_excel_view,
+        name="sells_excel"),
 ]

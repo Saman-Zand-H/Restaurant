@@ -5,13 +5,17 @@ from django.core.exceptions import ValidationError
 from django.contrib.auth.mixins import (LoginRequiredMixin, 
                                         UserPassesTestMixin)
 from django.utils import timezone
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from django.template.loader import render_to_string
 from django.db import transaction, IntegrityError
 from django.db.models import Q
 from django.views import View
 
 import json
+import xlwt
+import numpy as np
+from itertools import chain
+from functools import reduce
 from datetime import datetime, date, time
 from logging import getLogger
 from typing import NamedTuple
@@ -539,3 +543,104 @@ class FinanceView(LoginRequiredMixin, UserPassesTestMixin, View):
 
 
 finance_view = FinanceView.as_view()
+
+
+class SellsToExcelView(LoginRequiredMixin, UserPassesTestMixin, View):
+    def test_func(self):
+        return (hasattr(self.request.user, "user_staff") 
+                and self.request.user.has_perm("in_place.download_fin_data"))
+    
+    def get(self, *args, **kwargs):
+        restaurant = self.request.user.user_staff.restaurant
+        response = HttpResponse(content_type="application/ms-excel")
+        response["Content-Disposition"] = (
+            "attachment; "
+            f" filename={restaurant.name.lower()}_orders.xls")
+        
+        wb = xlwt.Workbook("utf-8")
+        ws = wb.add_sheet("Sell Data (Orders)")
+        
+        xf = xlwt.XFStyle()
+        xf.font.bold = True
+        cols = ["items", "timestamp", "paid_price", "order_type", "order_number", "order_id"]
+        
+        for i in range(len(cols)):
+            ws.write(0, i, cols[i], xf)
+            
+        ############ Orders ############
+        qs = Order.objects.filter(restaurant=restaurant).order_by("-timestamp")
+        orders_reprs = np.asarray([i.orders_repr for i in qs])
+        order_t = np.asarray([i.get_order_type_display() for i in qs])
+        total_prices = np.asarray([i.total_price for i in qs])
+        fields = [*chain.from_iterable(
+            [*qs.values_list("timestamp", "order_number", "id")])]
+        timestamp, order_n, order_id = (
+            np.asarray(
+                [i.isoformat() for i in fields[::3]]), 
+            np.asarray(fields[1::3]),
+            np.asarray(fields[2::3]))
+        data = [
+            *reduce(
+                lambda i, j: np.append(
+                    i, j, axis=1
+                    ), 
+                [orders_reprs.reshape(-1, 1), 
+                 timestamp.reshape(-1, 1), 
+                 total_prices.reshape(-1, 1), 
+                 order_t.reshape(-1, 1), 
+                 order_n.reshape(-1, 1),
+                 order_id.reshape(-1, 1)]
+            )]
+        # Our data now will be in the format [[a0, b0, c0, d0, e0], ...]
+        data = [i.tolist() for i in data]
+        
+        # Enter the order values to the worksheet
+        for i, r in enumerate(data):
+            print(i, r)
+            for d in range(len(r)):
+                print(d, data[i][d])
+                ws.write(i+1, d, data[i][d])
+        
+        ############ Order Items ############
+        ws = wb.add_sheet("Sell Data (Order Items)")
+        qs = OrderItem.objects.filter(order__in=qs).order_by("-timestamp")
+        cols = ["item", "count", "paid_price", "order", "timestamp"]
+        for i in range(len(cols)):
+            ws.write(0, i, cols[i], xf)
+        vals = [*chain.from_iterable(
+            [*qs.values_list("item", "count", "paid_price", "order", "timestamp")])]
+        items, counts, paid_prices, order, timestamp = (
+            np.asarray(
+                [ItemVariation.objects.get(id=i).full_name 
+                 for i in vals[::5]]), 
+            np.asarray(vals[1::5]), 
+            np.asarray(vals[2::5]),
+            np.asarray(vals[3::5]),
+            np.asarray([i.isoformat() for i in vals[4::5]]))
+        data = [
+            *reduce(
+                lambda i, j: np.append(
+                    i, j, axis=1
+                    ), 
+                [
+                    items.reshape(-1, 1), 
+                    counts.reshape(-1, 1), 
+                    paid_prices.reshape(-1, 1), 
+                    order.reshape(-1, 1),
+                    timestamp.reshape(-1, 1)
+                ]
+            )]
+        data = [i.tolist() for i in data]
+        
+        for i, r in enumerate(data):
+            print(r)
+            for d in range(len(r)):
+                print(data[i][d])
+                ws.write(i+1, d, data[i][d])
+        
+        wb.save(response)
+        return response
+        
+    
+sells_to_excel_view = SellsToExcelView.as_view()
+        

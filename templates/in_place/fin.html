@@ -17,8 +17,8 @@
             </h2>
             <p class="text-light">
                 We've provided you basic statistical data for a better 
-                analysis of your data. The next version will give you the 
-                ability to take your data in different formats such as: excell, csv, etc.
+                analysis of your data. You can export the raw data to excel and
+                csv.
             </p>
             <div class="card card-body bg-light my-2 w-75 
                         mx-auto">
@@ -43,9 +43,15 @@
                         <h4>R-Squared(R<sup>2</sup>): {{ r2 }}</h4>
                     </div>
                     <div class="text-dark">
-                        <h4>Mean-Squared-Error(MSE): {{ mse }}</h4>
+                        <h4>Mean-Squared Error(MSE): {{ mse }}</h4>
                     </div>
                 </div>
+            </div>
+            <div class="text-light mx-4 my-4">
+                <h4>Export Data To:</h4>
+                <a class="btn btn-success mx-3" href="{% url 'in_place:sells_excel' %}">
+                    Excel
+                </a>
             </div>
         </div><hr class="bg-light">
         <div>
@@ -127,7 +133,7 @@
             },
             meanAnnotation = {
               type: 'line',
-              borderColor: 'rgb(0, 60, 140)',
+              borderColor: 'black',
               borderWidth: 3,
               yMin: y[meanI],
               yMax: y[meanI],

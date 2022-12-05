@@ -6,6 +6,7 @@ from django.db.models import F
 from itertools import groupby, chain
 from operator import is_not, attrgetter
 import numpy as np
+import xlwt
 from scipy import stats
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import r2_score, mean_squared_error

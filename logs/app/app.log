@@ -22213,3 +22213,835 @@ TypeError: 'itertools.chain' object is not subscriptable
 2022-12-03 18:45:31,883 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
 2022-12-03 18:46:03,365 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [1.84, 172.20.0.1:56248][0m
 2022-12-03 18:46:52,832 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.57, 172.20.0.1:46160][0m
+2022-12-04 19:42:20,271 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-04 19:50:02,598 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-04 21:22:12,619 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-04 21:28:40,355 - [INFO]    django.channels.server: [mHTTP GET /in_place/ 200 [10.32, 172.20.0.1:48968][0m
+2022-12-04 21:29:05,879 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [5.86, 172.20.0.1:39018][0m
+2022-12-04 21:32:11,102 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [1.52, 172.20.0.1:59270][0m
+2022-12-04 21:32:45,876 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [1.80, 172.20.0.1:52470][0m
+2022-12-04 21:33:02,017 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.66, 172.20.0.1:37252][0m
+2022-12-04 21:33:22,241 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.64, 172.20.0.1:60732][0m
+2022-12-04 21:33:33,798 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.72, 172.20.0.1:53900][0m
+2022-12-04 21:36:25,536 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.61, 172.20.0.1:58722][0m
+2022-12-04 21:36:38,916 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.68, 172.20.0.1:57204][0m
+2022-12-04 21:36:49,565 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.67, 172.20.0.1:38976][0m
+2022-12-04 21:36:53,248 - [ERROR]    django.request: Internal Server Error: /in_place/export/excel/sells
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/local/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/usr/local/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/in_place/views.py", line 580, in get
+    *reduce(
+  File "/usr/src/app/apps/in_place/views.py", line 581, in <lambda>
+    lambda i, j: np.append(
+  File "<__array_function__ internals>", line 180, in append
+  File "/usr/local/lib/python3.10/site-packages/numpy/lib/function_base.py", line 5444, in append
+    return concatenate((arr, values), axis=axis)
+  File "<__array_function__ internals>", line 180, in concatenate
+ValueError: all the input array dimensions for the concatenation axis must match exactly, but along dimension 0, the array at index 0 has size 18 and the array at index 1 has size 9
+2022-12-04 21:36:53,800 - [ERROR]    django.channels.server: [35;1mHTTP GET /in_place/export/excel/sells 500 [1.19, 172.20.0.1:51442][0m
+2022-12-04 21:38:22,326 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-04 21:38:53,258 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-04 21:39:11,210 - [ERROR]    django.request: Internal Server Error: /in_place/export/excel/sells
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/local/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/usr/local/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/in_place/views.py", line 581, in get
+    *reduce(
+  File "/usr/src/app/apps/in_place/views.py", line 582, in <lambda>
+    lambda i, j: np.append(
+  File "<__array_function__ internals>", line 180, in append
+  File "/usr/local/lib/python3.10/site-packages/numpy/lib/function_base.py", line 5444, in append
+    return concatenate((arr, values), axis=axis)
+  File "<__array_function__ internals>", line 180, in concatenate
+ValueError: all the input array dimensions for the concatenation axis must match exactly, but along dimension 0, the array at index 0 has size 18 and the array at index 1 has size 9
+2022-12-04 21:39:11,750 - [ERROR]    django.channels.server: [35;1mHTTP GET /in_place/export/excel/sells 500 [1.07, 172.20.0.1:53300][0m
+2022-12-04 21:39:52,277 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-04 21:39:55,364 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-04 21:39:59,225 - [ERROR]    django.request: Internal Server Error: /in_place/export/excel/sells
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/local/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/usr/local/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/in_place/views.py", line 582, in get
+    *reduce(
+  File "/usr/src/app/apps/in_place/views.py", line 583, in <lambda>
+    lambda i, j: np.append(
+  File "<__array_function__ internals>", line 180, in append
+  File "/usr/local/lib/python3.10/site-packages/numpy/lib/function_base.py", line 5444, in append
+    return concatenate((arr, values), axis=axis)
+  File "<__array_function__ internals>", line 180, in concatenate
+ValueError: all the input array dimensions for the concatenation axis must match exactly, but along dimension 0, the array at index 0 has size 18 and the array at index 1 has size 9
+2022-12-04 21:40:00,179 - [ERROR]    django.channels.server: [35;1mHTTP GET /in_place/export/excel/sells 500 [1.97, 172.20.0.1:58984][0m
+2022-12-04 21:41:58,103 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-04 21:42:01,465 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-04 21:42:05,273 - [ERROR]    django.request: Internal Server Error: /in_place/export/excel/sells
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/local/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/usr/local/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/in_place/views.py", line 579, in get
+    assert len(timestamp) == len(order_t) == len(order_n) == len(orders_rep) == len(total_prices)
+NameError: name 'orders_rep' is not defined
+2022-12-04 21:42:05,796 - [ERROR]    django.channels.server: [35;1mHTTP GET /in_place/export/excel/sells 500 [1.17, 172.20.0.1:34800][0m
+2022-12-04 21:42:13,968 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-04 21:42:16,601 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-04 21:42:24,805 - [ERROR]    django.request: Internal Server Error: /in_place/export/excel/sells
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/local/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/usr/local/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/in_place/views.py", line 582, in get
+    *reduce(
+  File "/usr/src/app/apps/in_place/views.py", line 583, in <lambda>
+    lambda i, j: np.append(
+  File "<__array_function__ internals>", line 180, in append
+  File "/usr/local/lib/python3.10/site-packages/numpy/lib/function_base.py", line 5444, in append
+    return concatenate((arr, values), axis=axis)
+  File "<__array_function__ internals>", line 180, in concatenate
+ValueError: all the input array dimensions for the concatenation axis must match exactly, but along dimension 0, the array at index 0 has size 18 and the array at index 1 has size 9
+2022-12-04 21:42:25,417 - [ERROR]    django.channels.server: [35;1mHTTP GET /in_place/export/excel/sells 500 [1.03, 172.20.0.1:33050][0m
+2022-12-04 21:42:36,940 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-04 21:42:39,951 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-04 21:43:50,157 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-04 21:43:52,644 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-04 21:53:06,088 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-04 21:53:09,541 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-04 21:53:19,065 - [ERROR]    django.request: Internal Server Error: /in_place/export/excel/sells
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/local/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/usr/local/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/in_place/views.py", line 605, in get
+    items, counts, paid_prices = (np.asarray([i.full_name for i in vals[::3]]),
+  File "/usr/src/app/apps/in_place/views.py", line 605, in <listcomp>
+    items, counts, paid_prices = (np.asarray([i.full_name for i in vals[::3]]),
+AttributeError: 'int' object has no attribute 'full_name'
+2022-12-04 21:53:19,859 - [ERROR]    django.channels.server: [35;1mHTTP GET /in_place/export/excel/sells 500 [1.38, 172.20.0.1:60022][0m
+2022-12-04 21:55:28,712 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-04 21:55:32,217 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-04 21:55:35,820 - [ERROR]    django.request: Internal Server Error: /in_place/export/excel/sells
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/local/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/usr/local/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/in_place/views.py", line 607, in get
+    [ItemVariation.objects.get(i).full_name
+  File "/usr/src/app/apps/in_place/views.py", line 607, in <listcomp>
+    [ItemVariation.objects.get(i).full_name
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/query.py", line 636, in get
+    clone = self._chain() if self.query.combinator else self.filter(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/query.py", line 1420, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/query.py", line 1438, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/query.py", line 1445, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1532, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1562, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1404, in build_filter
+    arg, value = filter_expr
+TypeError: cannot unpack non-iterable int object
+2022-12-04 21:55:36,567 - [ERROR]    django.channels.server: [35;1mHTTP GET /in_place/export/excel/sells 500 [1.41, 172.20.0.1:36004][0m
+2022-12-04 21:56:58,244 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-04 21:57:01,945 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-04 21:57:04,877 - [ERROR]    django.request: Internal Server Error: /in_place/export/excel/sells
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/local/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/usr/local/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/in_place/views.py", line 608, in get
+    [ItemVariation.objects.get(i).full_name
+  File "/usr/src/app/apps/in_place/views.py", line 608, in <listcomp>
+    [ItemVariation.objects.get(i).full_name
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/query.py", line 636, in get
+    clone = self._chain() if self.query.combinator else self.filter(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/query.py", line 1420, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/query.py", line 1438, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/query.py", line 1445, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1532, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1562, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1404, in build_filter
+    arg, value = filter_expr
+TypeError: cannot unpack non-iterable int object
+2022-12-04 21:57:05,670 - [ERROR]    django.channels.server: [35;1mHTTP GET /in_place/export/excel/sells 500 [1.45, 172.20.0.1:42264][0m
+2022-12-04 21:57:21,179 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-04 21:57:24,431 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-04 21:57:30,082 - [ERROR]    django.request: Internal Server Error: /in_place/export/excel/sells
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/local/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/usr/local/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/in_place/views.py", line 607, in get
+    [ItemVariation.objects.get(id=i).full_name
+  File "/usr/src/app/apps/in_place/views.py", line 607, in <listcomp>
+    [ItemVariation.objects.get(id=i).full_name
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/query.py", line 636, in get
+    clone = self._chain() if self.query.combinator else self.filter(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/query.py", line 1420, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/query.py", line 1438, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/query.py", line 1445, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1532, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1562, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1404, in build_filter
+    arg, value = filter_expr
+TypeError: cannot unpack non-iterable int object
+2022-12-04 21:57:30,884 - [ERROR]    django.channels.server: [35;1mHTTP GET /in_place/export/excel/sells 500 [1.54, 172.20.0.1:46982][0m
+2022-12-04 21:57:36,856 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-04 21:57:39,841 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-04 21:57:42,856 - [ERROR]    django.request: Internal Server Error: /in_place/export/excel/sells
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/local/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/usr/local/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/in_place/views.py", line 612, in get
+    *reduce(
+  File "/usr/src/app/apps/in_place/views.py", line 613, in <lambda>
+    lambda i, j: np.append(
+  File "<__array_function__ internals>", line 180, in append
+  File "/usr/local/lib/python3.10/site-packages/numpy/lib/function_base.py", line 5444, in append
+    return concatenate((arr, values), axis=axis)
+  File "<__array_function__ internals>", line 180, in concatenate
+ValueError: all the input array dimensions for the concatenation axis must match exactly, but along dimension 0, the array at index 0 has size 18 and the array at index 1 has size 9
+2022-12-04 21:57:43,490 - [ERROR]    django.channels.server: [35;1mHTTP GET /in_place/export/excel/sells 500 [1.19, 172.20.0.1:39510][0m
+2022-12-04 22:01:25,781 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-04 22:01:28,631 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-04 22:01:44,997 - [INFO]    django.channels.server: [mHTTP GET /in_place/export/excel/sells 200 [0.90, 172.20.0.1:51826][0m
+2022-12-04 22:02:05,883 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-04 22:02:08,842 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-04 22:02:14,500 - [INFO]    django.channels.server: [mHTTP GET /in_place/export/excel/sells 200 [0.86, 172.20.0.1:37940][0m
+2022-12-04 22:03:00,788 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [1.78, 172.20.0.1:59386][0m
+2022-12-04 22:04:22,785 - [INFO]    django.channels.server: [mHTTP GET /in_place/export/excel/sells 200 [0.68, 172.20.0.1:41750][0m
+2022-12-04 22:11:41,007 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-04 22:11:45,508 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-04 22:12:01,506 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [1.74, 172.20.0.1:41346][0m
+2022-12-04 22:12:04,614 - [INFO]    django.channels.server: [mHTTP GET /in_place/export/excel/sells 200 [0.76, 172.20.0.1:58782][0m
+2022-12-04 22:14:24,693 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-04 22:14:28,422 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-04 22:14:48,502 - [INFO]    django.channels.server: [mHTTP GET /in_place/export/excel/sells 200 [0.93, 172.20.0.1:33876][0m
+2022-12-04 22:15:50,389 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-04 22:15:53,538 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-04 22:33:45,900 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [2.00, 172.20.0.1:35528][0m
+2022-12-04 22:33:57,264 - [INFO]    django.channels.server: [mHTTP GET /in_place/export/excel/sells 200 [0.59, 172.20.0.1:58772][0m
+2022-12-04 22:36:56,043 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-04 22:36:59,584 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-04 22:37:12,086 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-04 22:37:15,218 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-04 22:37:22,472 - [INFO]    django.channels.server: [mHTTP GET /in_place/export/excel/sells 200 [1.11, 172.20.0.1:52642][0m
+2022-12-04 22:38:32,186 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-04 22:38:35,258 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-04 22:39:02,972 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-04 22:39:06,577 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-04 22:39:12,713 - [INFO]    django.channels.server: [mHTTP GET /in_place/export/excel/sells 200 [1.03, 172.20.0.1:37428][0m
+2022-12-04 22:54:22,109 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-04 22:54:25,408 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-04 22:54:31,490 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-04 22:54:34,347 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-04 22:55:35,248 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-04 22:55:37,957 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-04 22:56:05,288 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [2.04, 172.20.0.1:41922][0m
+2022-12-04 22:56:24,345 - [INFO]    django.channels.server: [mHTTP GET /in_place/export/excel/sells 200 [0.52, 172.20.0.1:52500][0m
+2022-12-04 22:59:47,306 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-04 22:59:51,203 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-04 22:59:59,801 - [INFO]    django.channels.server: [mHTTP GET /in_place/export/excel/sells 200 [0.91, 172.20.0.1:46064][0m
+2022-12-05 15:38:04,927 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-05 17:02:29,826 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-05 17:14:25,686 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [7.97, 172.20.0.1:37270][0m
+2022-12-05 17:38:18,835 - [ERROR]    django.request: Internal Server Error: /in_place/export/excel/sells
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/local/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/usr/local/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/in_place/views.py", line 598, in get
+    ws.write(i+1, d, data[i][d], xf)
+  File "/usr/local/lib/python3.10/site-packages/xlwt/Worksheet.py", line 1088, in write
+    self.row(r).write(c, label, style)
+  File "/usr/local/lib/python3.10/site-packages/xlwt/Row.py", line 244, in write
+    date_number = self.__excel_date_dt(label)
+  File "/usr/local/lib/python3.10/site-packages/xlwt/Row.py", line 99, in __excel_date_dt
+    delta = date - epoch
+TypeError: can't subtract offset-naive and offset-aware datetimes
+2022-12-05 17:38:19,390 - [ERROR]    django.channels.server: [35;1mHTTP GET /in_place/export/excel/sells 500 [1.36, 172.20.0.1:48736][0m
+2022-12-05 17:41:38,552 - [ERROR]    django.request: Internal Server Error: /in_place/export/excel/sells
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/local/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/usr/local/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/in_place/views.py", line 598, in get
+    ws.write(i+1, d, data[i][d], xf)
+  File "/usr/local/lib/python3.10/site-packages/xlwt/Worksheet.py", line 1088, in write
+    self.row(r).write(c, label, style)
+  File "/usr/local/lib/python3.10/site-packages/xlwt/Row.py", line 244, in write
+    date_number = self.__excel_date_dt(label)
+  File "/usr/local/lib/python3.10/site-packages/xlwt/Row.py", line 99, in __excel_date_dt
+    delta = date - epoch
+TypeError: can't subtract offset-naive and offset-aware datetimes
+2022-12-05 17:41:38,827 - [ERROR]    django.channels.server: [35;1mHTTP GET /in_place/export/excel/sells 500 [0.43, 172.20.0.1:39638][0m
+2022-12-05 17:42:08,148 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-05 17:42:39,167 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-05 17:42:53,555 - [ERROR]    django.request: Internal Server Error: /in_place/export/excel/sells
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/local/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/usr/local/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/in_place/views.py", line 598, in get
+    ws.write(i+1, d, data[i][d], xf)
+  File "/usr/local/lib/python3.10/site-packages/xlwt/Worksheet.py", line 1088, in write
+    self.row(r).write(c, label, style)
+  File "/usr/local/lib/python3.10/site-packages/xlwt/Row.py", line 244, in write
+    date_number = self.__excel_date_dt(label)
+  File "/usr/local/lib/python3.10/site-packages/xlwt/Row.py", line 99, in __excel_date_dt
+    delta = date - epoch
+TypeError: can't subtract offset-naive and offset-aware datetimes
+2022-12-05 17:42:54,111 - [ERROR]    django.channels.server: [35;1mHTTP GET /in_place/export/excel/sells 500 [1.04, 172.20.0.1:42974][0m
+2022-12-05 17:44:11,824 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-05 17:44:14,609 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-05 17:44:18,042 - [ERROR]    django.request: Internal Server Error: /in_place/export/excel/sells
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/local/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/usr/local/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/in_place/views.py", line 585, in get
+    [i.isoformat() for i in timestamp].reshape(-1, 1),
+AttributeError: 'list' object has no attribute 'reshape'
+2022-12-05 17:44:18,649 - [ERROR]    django.channels.server: [35;1mHTTP GET /in_place/export/excel/sells 500 [1.51, 172.20.0.1:43968][0m
+2022-12-05 17:44:51,485 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-05 17:44:55,179 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-05 17:44:58,759 - [INFO]    django.channels.server: [mHTTP GET /in_place/export/excel/sells 200 [1.26, 172.20.0.1:34304][0m
+2022-12-05 17:46:31,042 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-05 17:46:35,045 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-05 17:46:43,584 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-05 17:46:46,580 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-05 17:46:57,331 - [ERROR]    django.request: Internal Server Error: /in_place/export/excel/sells
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/local/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/usr/local/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/in_place/views.py", line 577, in get
+    timestamp, order_n = (np.asarray([i.isoformat() for i in fields[::3]]),
+  File "/usr/src/app/apps/in_place/views.py", line 577, in <listcomp>
+    timestamp, order_n = (np.asarray([i.isoformat() for i in fields[::3]]),
+AttributeError: 'int' object has no attribute 'isoformat'
+2022-12-05 17:46:58,214 - [ERROR]    django.channels.server: [35;1mHTTP GET /in_place/export/excel/sells 500 [1.66, 172.20.0.1:50612][0m
+2022-12-05 17:47:23,774 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-05 17:47:27,450 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-05 17:47:31,436 - [INFO]    django.channels.server: [mHTTP GET /in_place/export/excel/sells 200 [1.14, 172.20.0.1:42002][0m
+2022-12-05 17:48:45,134 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-05 17:48:48,344 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-05 17:49:38,132 - [INFO]    django.utils.autoreload: /usr/src/app/apps/restaurants/models.py changed, reloading.
+2022-12-05 17:49:41,459 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-05 17:51:18,796 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-05 17:52:40,335 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-05 17:52:43,622 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-05 17:53:23,589 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-05 17:53:27,012 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-05 17:53:31,064 - [ERROR]    django.request: Internal Server Error: /in_place/export/excel/sells
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/local/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/usr/local/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/in_place/views.py", line 608, in get
+    +[i.isoformat() for i in qs.values_list("timestamp")])]
+  File "/usr/src/app/apps/in_place/views.py", line 608, in <listcomp>
+    +[i.isoformat() for i in qs.values_list("timestamp")])]
+AttributeError: 'tuple' object has no attribute 'isoformat'
+2022-12-05 17:53:31,622 - [ERROR]    django.channels.server: [35;1mHTTP GET /in_place/export/excel/sells 500 [1.67, 172.20.0.1:37552][0m
+2022-12-05 17:53:48,203 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-05 17:53:51,838 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-05 17:54:04,799 - [ERROR]    django.request: Internal Server Error: /in_place/export/excel/sells
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/local/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/usr/local/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/in_place/views.py", line 611, in get
+    [ItemVariation.objects.get(id=i).full_name
+  File "/usr/src/app/apps/in_place/views.py", line 611, in <listcomp>
+    [ItemVariation.objects.get(id=i).full_name
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/query.py", line 650, in get
+    raise self.model.DoesNotExist(
+restaurants.models.ItemVariation.DoesNotExist: ItemVariation matching query does not exist.
+2022-12-05 17:54:05,698 - [ERROR]    django.channels.server: [35;1mHTTP GET /in_place/export/excel/sells 500 [2.09, 172.20.0.1:42876][0m
+2022-12-05 17:54:38,907 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-05 17:54:42,137 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-05 17:55:03,030 - [ERROR]    django.request: Internal Server Error: /in_place/export/excel/sells
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/local/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/usr/local/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/in_place/views.py", line 606, in get
+    vals = [*chain.from_iterable(
+TypeError: 'NoneType' object is not iterable
+2022-12-05 17:55:03,547 - [ERROR]    django.channels.server: [35;1mHTTP GET /in_place/export/excel/sells 500 [0.93, 172.20.0.1:41104][0m
+2022-12-05 17:56:14,139 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-05 17:56:17,042 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-05 17:56:34,694 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-05 17:56:38,028 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-05 17:56:41,715 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-05 17:56:44,802 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-05 17:56:50,206 - [ERROR]    django.request: Internal Server Error: /in_place/export/excel/sells
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/local/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/usr/local/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/in_place/views.py", line 624, in get
+    timestamp.resize(-1, 1)
+ValueError: negative dimensions not allowed
+2022-12-05 17:56:50,853 - [ERROR]    django.channels.server: [35;1mHTTP GET /in_place/export/excel/sells 500 [1.20, 172.20.0.1:35722][0m
+2022-12-05 17:56:59,040 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-05 17:57:02,541 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-05 17:57:05,893 - [INFO]    django.channels.server: [mHTTP GET /in_place/export/excel/sells 200 [1.16, 172.20.0.1:36498][0m
+2022-12-05 17:59:53,495 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-05 17:59:56,463 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-05 18:00:17,448 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-05 18:00:20,473 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-05 18:00:35,982 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-05 18:00:38,906 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-05 18:00:51,398 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-05 18:00:54,873 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-05 18:01:07,418 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-05 18:01:10,888 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-05 18:01:16,731 - [ERROR]    django.request: Internal Server Error: /in_place/export/excel/sells
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/sql/query.py", line 2142, in add_fields
+    join_info = self.setup_joins(
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1808, in setup_joins
+    path, final_field, targets, rest = self.names_to_path(
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/sql/query.py", line 1709, in names_to_path
+    raise FieldError(
+django.core.exceptions.FieldError: Cannot resolve keyword 'order_id' into field. Choices are: done, id, order_dinein, order_items, order_number, order_type, public_uuid, restaurant, restaurant_id, timestamp
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/local/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/usr/local/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/in_place/views.py", line 576, in get
+    [*qs.values_list("timestamp", "order_number", "order_id")])]
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/query.py", line 1329, in values_list
+    clone = self._values(*_fields, **expressions)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/query.py", line 1292, in _values
+    clone.query.set_values(fields)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/sql/query.py", line 2437, in set_values
+    self.add_fields(field_names, True)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/sql/query.py", line 2175, in add_fields
+    raise FieldError(
+django.core.exceptions.FieldError: Cannot resolve keyword 'order_id' into field. Choices are: done, id, order_dinein, order_items, order_number, order_type, public_uuid, restaurant, restaurant_id, timestamp
+2022-12-05 18:01:17,284 - [ERROR]    django.channels.server: [35;1mHTTP GET /in_place/export/excel/sells 500 [1.12, 172.20.0.1:50628][0m
+2022-12-05 18:01:28,580 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-05 18:01:32,516 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-05 18:01:37,327 - [INFO]    django.channels.server: [mHTTP GET /in_place/export/excel/sells 200 [1.04, 172.20.0.1:47632][0m
+2022-12-05 18:02:23,834 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-05 18:02:27,122 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-05 18:02:40,749 - [INFO]    django.channels.server: [mHTTP GET /in_place/export/excel/sells 200 [0.99, 172.20.0.1:34128][0m
+2022-12-05 18:03:17,490 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-05 18:03:20,918 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-05 18:03:29,799 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-05 18:03:33,228 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-05 18:03:38,676 - [INFO]    django.channels.server: [mHTTP GET /in_place/export/excel/sells 200 [1.27, 172.20.0.1:48146][0m
+2022-12-05 18:04:05,419 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-05 18:04:08,942 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-05 18:24:10,603 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [4.40, 172.20.0.1:51330][0m
+2022-12-05 18:31:00,697 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.98, 172.20.0.1:42918][0m
