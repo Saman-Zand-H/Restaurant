@@ -51,6 +51,18 @@ class Staff(models.Model):
     def can_read_salaries(self):
         return self.user.has_perm("in_place.read_salaries")
     
+    @property
+    def can_delete_items(self):
+        return self.user.has_perm("in_place.delete_items")
+    
+    @property
+    def can_add_items(self):
+        return self.user.has_perm("in_place.add_items")
+    
+    @property
+    def can_edit_items(self):
+        return self.user.has_perm("in_place.edit_items")
+    
     def save(self, *args, **kwargs):
         sup_save = super().save(*args, **kwargs)
         managers_g, created = Group.objects.get_or_create(

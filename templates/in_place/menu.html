@@ -1,0 +1,866 @@
+{% extends 'base/layout/dash_base.html' %}
+{% load static humanize tz dash_utils %}
+
+{% block title %}
+    {{ user.user_staff.restaurant }} | Menu
+{% endblock %}
+
+{% block stylesheet %}
+    <style>
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+    
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+    </style>
+{% endblock %}
+
+{% block modals %}
+    <!-- New Cuisine -->
+    {% if user.user_staff.can_add_items %}
+        <div 
+            class="modal fade" 
+            id="newCuisineM" 
+            tabindex="-1" 
+            role="dialog" 
+            aria-labelledby="newCuisineM" 
+            aria-hidden="true"
+            >
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content bg-dark">
+                    <div class="modal-header">
+                        <h4 class="modal-title text-light">
+                            New Cuisine
+                        </h4>
+                        <button 
+                                type="button" 
+                                class="close" 
+                                data-dismiss="modal" 
+                                aria-label="Close"
+                            >
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form   
+                            action="{% url 'in_place:create_cuisine' %}" 
+                            method="POST" 
+                            id="newCuisineF"
+                            >
+                            {% csrf_token %}
+                            <div class="my-3 mx-2 text-light">
+                                <label>{{ cuisine_form.name.label }}*</label>
+                                {{ cuisine_form.name }}
+                                {{ cuisine_form.name.errors }}
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                            Close
+                        </button>
+                        <button 
+                                type="button" 
+                                class="btn btn-success" 
+                                onclick="javascript:$('#newCuisineF').submit()"
+                            >
+                            Submit
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    
+    {% for cuisine in cuisines %}
+        {% if user.user_staff.can_edit_items %}
+            <!-- Edit Cuisine -->
+            <div 
+                class="modal fade" 
+                id="editCuisine-{{ cuisine.public_uuid }}-M" 
+                tabindex="-1" 
+                role="dialog" 
+                aria-labelledby="editCuisine-{{ cuisine.public_uuid }}-M" 
+                aria-hidden="true"
+                >
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content bg-dark">
+                        <div class="modal-header">
+                            <h4 class="modal-title text-light">
+                                Edit {{ cuisine.name|title }}
+                            </h4>
+                            <button 
+                                    type="button" 
+                                    class="close" 
+                                    data-dismiss="modal" 
+                                    aria-label="Close"
+                                >
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form   
+                                action="{% url 'in_place:edit_cuisine' %}" 
+                                method="POST" 
+                                id="editCuisine-{{ cuisine.public_uuid }}-F"
+                                >
+                                {% csrf_token %}
+                                <input type="hidden" name="public_uuid" value="{{ cuisine.public_uuid }}">
+                                <div class="my-3 mx-2 text-light">
+                                    <label>Name</label>
+                                    <input 
+                                        type="text" 
+                                        class="form-control" 
+                                        name="name" 
+                                        value="{{ cuisine.name }}"
+                                        >
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                Close
+                            </button>
+                            <button 
+                                    type="button" 
+                                    class="btn btn-success" 
+                                    onclick="$('#editCuisine-{{ cuisine.public_uuid }}-F').submit()"
+                                >
+                                Submit
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {% for item in cuisine.cuisine_items.all %}
+                <!-- Edit Item -->
+                <div 
+                     class="modal fade" 
+                     id="editItem-{{ item.public_uuid }}-M" 
+                     tabindex="-1" 
+                     role="dialog" 
+                     aria-labelledby="editItem-{{ item.public_uuid }}-M" 
+                     aria-hidden="true"
+                    >
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content bg-dark">
+                            <div class="modal-header">
+                                <h4 class="modal-title text-light">
+                                    Edit {{ item.name|title }}
+                                </h4>
+                                <button 
+                                        type="button" 
+                                        class="close" 
+                                        data-dismiss="modal" 
+                                        aria-label="Close"
+                                    >
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form   
+                                      action="{% url 'in_place:edit_item' %}" 
+                                      method="POST" 
+                                      id="editItem-{{ item.public_uuid }}-F"
+                                      enctype="multipart/form-data"
+                                     >
+                                    {% csrf_token %}
+                                    <input 
+                                           type="hidden" 
+                                           name="public_uuid" 
+                                           value="{{ item.public_uuid }}"
+                                          >
+                                    <div class="my-3 mx-2 text-light">
+                                        <div class="my-3 ">
+                                            <label>Name</label>
+                                            <input 
+                                                   type="text"
+                                                   name="name"
+                                                   value="{{ item.name }}"
+                                                   class="form-control"
+                                                  >
+                                        </div>
+                                    
+                                        <div class="my-3 mx-1">
+                                            <label>Picture</label>
+                                            <input 
+                                                   type="file"
+                                                   class="form-control"
+                                                   name="picture"
+                                                   accept="image/*"
+                                                  >
+                                        </div>
+                                    
+                                        <div class="my-3 mx-1">
+                                            <label>Description</label>
+                                            <textarea 
+                                                      class="form-control" 
+                                                      name="description" 
+                                                      placeholder="Describe this item more with more details here"
+                                                     >
+                                                {{ item.description }}
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                    Close
+                                </button>
+                                <button 
+                                        type="button" 
+                                        class="btn btn-success" 
+                                        onclick="$('#editItem-{{ item.public_uuid }}-F').submit()"
+                                       >
+                                    Submit
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {% for itemvar in item.item_variations.all %}
+                    <!-- Edit Itemvar -->
+                    <div 
+                         class="modal fade" 
+                         id="editItemvar-{{ itemvar.public_uuid }}-M" 
+                         tabindex="-1" 
+                         role="dialog" 
+                         aria-labelledby="editItemvar-{{ itemvar.public_uuid }}-M" 
+                         aria-hidden="true"
+                        >
+                        <div class="modal-dialog modal-lg" role="document">
+                            <div class="modal-content bg-dark">
+                                <div class="modal-header">
+                                    <h4 class="modal-title text-light">
+                                        Edit {{ item.name|title }}
+                                    </h4>
+                                    <button 
+                                            type="button" 
+                                            class="close" 
+                                            data-dismiss="modal" 
+                                            aria-label="Close"
+                                        >
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form   
+                                         action="{% url 'in_place:edit_itemvar' %}" 
+                                         method="POST" 
+                                         id="editItemvar-{{ itemvar.public_uuid }}-F"
+                                        >
+                                        {% csrf_token %}
+                                        <input 
+                                            type="hidden" 
+                                            name="public_uuid" 
+                                            value="{{ itemvar.public_uuid }}"
+                                            >
+                                        <div class="my-3 mx-2 text-light">
+                                            <div class="my-3 ">
+                                                <label>Name</label>
+                                                <input 
+                                                    type="text"
+                                                    name="name"
+                                                    value="{{ itemvar.name }}"
+                                                    class="form-control"
+                                                    >
+                                            </div>
+                                        
+                                            <div class="my-3 mx-1">
+                                                <label>Price</label>
+                                                <input 
+                                                       type="number"
+                                                       class="form-control"
+                                                       name="price"
+                                                       value="{{ itemvar.price }}"
+                                                      >
+                                            </div>
+                                        
+                                            <div class="my-3 mx-1">
+                                                <label>Description</label>
+                                                <textarea 
+                                                        class="form-control" 
+                                                        name="description" 
+                                                        placeholder="Describe this variation more with more details here"
+                                                        >
+                                                    {{ itemvar.description }}
+                                                </textarea>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                        Close
+                                    </button>
+                                    <button 
+                                            type="button" 
+                                            class="btn btn-success" 
+                                            onclick="$('#editItemvar-{{ itemvar.public_uuid }}-F').submit()"
+                                        >
+                                        Submit
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        {% endif %}
+
+        {% if user.user_staff.can_delete_items %}
+            <!-- Delete Cuisine -->
+            <div 
+                class="modal fade" 
+                id="deleteCuisine-{{ cuisine.public_uuid }}-M" 
+                tabindex="-1" 
+                role="dialog" 
+                aria-labelledby="deleteCuisine-{{ cuisine.public_uuid }}-M" 
+                aria-hidden="true"
+                >
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content bg-dark">
+                        <div class="modal-header">
+                            <h4 class="modal-title text-light">
+                                Delete {{ cuisine.name|title }}
+                            </h4>
+                            <button 
+                                    type="button" 
+                                    class="close" 
+                                    data-dismiss="modal" 
+                                    aria-label="Close"
+                                >
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form   
+                                action="{% url 'in_place:delete_cuisine' %}" 
+                                method="POST" 
+                                id="deleteCuisine-{{ cuisine.public_uuid }}-F"
+                                >
+                                {% csrf_token %}
+                                <input type="hidden" name="public_uuid" value="{{ cuisine.public_uuid }}">
+                                <h3 class="text-light">
+                                    Are you sure you want to delete this cuisine and its items entirely?
+                                </h3>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                Close
+                            </button>
+                            <button 
+                                    type="button" 
+                                    class="btn btn-success" 
+                                    onclick="$('#deleteCuisine-{{ cuisine.public_uuid }}-F').submit()"
+                                >
+                                Submit
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            {% for item in cuisine.cuisine_items.all %}
+                <!-- Delete Item -->
+                <div 
+                     class="modal fade" 
+                     id="deleteItem-{{ item.public_uuid }}-M" 
+                     tabindex="-1" 
+                     role="dialog" 
+                     aria-labelledby="deleteItem-{{ item.public_uuid }}-M" 
+                     aria-hidden="true"
+                    >
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content bg-dark">
+                            <div class="modal-header">
+                                <h4 class="modal-title text-light">
+                                    Delete {{ item.name|title }}
+                                </h4>
+                                <button 
+                                        type="button" 
+                                        class="close" 
+                                        data-dismiss="modal" 
+                                        aria-label="Close"
+                                    >
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form   
+                                    action="{% url 'in_place:delete_item' %}" 
+                                    method="POST" 
+                                    id="deleteItem-{{ item.public_uuid }}-F"
+                                    >
+                                    {% csrf_token %}
+                                    <input type="hidden" name="public_uuid" value="{{ item.public_uuid }}">
+                                    <h3 class="text-light">
+                                        Are you sure you want to delete this item and its variations entirely?
+                                    </h3>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                    Close
+                                </button>
+                                <button 
+                                        type="button" 
+                                        class="btn btn-success" 
+                                        onclick="$('#deleteItem-{{ item.public_uuid }}-F').submit()"
+                                    >
+                                    Submit
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {% for itemvar in item.item_variations.all %}
+                    <!-- Delete Itemvar -->
+                    <div 
+                         class="modal fade" 
+                         id="deleteItemvar-{{ itemvar.public_uuid }}-M" 
+                         tabindex="-1" 
+                         role="dialog" 
+                         aria-labelledby="deleteItemvar-{{ itemvar.public_uuid }}-M" 
+                         aria-hidden="true"
+                        >
+                        <div class="modal-dialog modal-lg" role="document">
+                            <div class="modal-content bg-dark">
+                                <div class="modal-header">
+                                    <h4 class="modal-title text-light">
+                                        Delete {{ itemvar.full_name|title }}
+                                    </h4>
+                                    <button 
+                                            type="button" 
+                                            class="close" 
+                                            data-dismiss="modal" 
+                                            aria-label="Close"
+                                        >
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form   
+                                          action="{% url 'in_place:delete_itemvar' %}" 
+                                          method="POST" 
+                                          id="deleteItemvar-{{ itemvar.public_uuid }}-F"
+                                         >
+                                        {% csrf_token %}
+                                        <input type="hidden" name="public_uuid" value="{{ itemvar.public_uuid }}">
+                                        <h3 class="text-light">
+                                            Are you sure you want to delete this variation?
+                                        </h3>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                        Close
+                                    </button>
+                                    <button 
+                                            type="button" 
+                                            class="btn btn-success" 
+                                            onclick="$('#deleteItemvar-{{ itemvar.public_uuid }}-F').submit()"
+                                        >
+                                        Submit
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        {% endif %}
+    {% endfor %}
+
+    {% if user.user_staff.can_add_items %}
+        <!-- New Item -->
+        <div 
+             class="modal fade" 
+             id="newItemM" 
+             tabindex="-1" 
+             role="dialog" 
+             aria-labelledby="newItemM" 
+             aria-hidden="true"
+            >
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content bg-dark">
+                    <div class="modal-header">
+                        <h4 class="modal-title text-light">
+                            New Item
+                        </h4>
+                        <button 
+                                type="button" 
+                                class="close" 
+                                data-dismiss="modal" 
+                                aria-label="Close"
+                            >
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form   
+                              action="{% url 'in_place:create_item' %}" 
+                              method="POST" 
+                              id="newItemF"
+                              enctype="multipart/form-data"
+                             >
+                            {% csrf_token %}
+                            <div class="my-3 mx-2 text-light">
+                                <div class="my-3 row">
+                                    <div class="col-md-6">
+                                        <label>{{ item_form.cuisine.label }}*</label>
+                                        {{ item_form.cuisine }}
+                                        {{ item_form.cuisine.errors }}
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label>{{ item_form.name.label }}*</label>
+                                        {{ item_form.name }}
+                                        {{ item_form.name.errors }}
+                                    </div>
+                                </div>
+
+                                <div class="my-3 mx-1">
+                                    <label>{{ item_form.picture.label }}</label>
+                                    {{ item_form.picture }}
+                                    {{ item_form.picture.errors }}
+                                </div>
+
+                                <div class="my-3 mx-1">
+                                    <label>{{ item_form.description.label }}</label>
+                                    {{ item_form.description }}
+                                    {{ item_form.description.errors }}
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                            Close
+                        </button>
+                        <button 
+                                type="button" 
+                                class="btn btn-success" 
+                                onclick="javascript:$('#newItemF').submit()"
+                            >
+                            Submit
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if user.user_staff.can_add_items %}
+        <!-- New Itemvar -->
+        <div 
+            class="modal fade" 
+            id="newItemvarM" 
+            tabindex="-1" 
+            role="dialog" 
+            aria-labelledby="newItemvarM" 
+            aria-hidden="true"
+            >
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content bg-dark">
+                    <div class="modal-header">
+                        <h4 class="modal-title text-light">
+                            New Item Variation
+                        </h4>
+                        <button 
+                                type="button" 
+                                class="close" 
+                                data-dismiss="modal" 
+                                aria-label="Close"
+                            >
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form   
+                            action="{% url 'in_place:create_itemvar' %}" 
+                            method="POST" 
+                            id="newItemvarF"
+                            >
+                            {% csrf_token %}
+                            <div class="my-3 mx-2 text-light">
+                                <div class="my-3 row">
+                                    <div class="col-md-6">
+                                        <label>{{ itemvar_form.item.label }}*</label>
+                                        {{ itemvar_form.item }}
+                                        {{ itemvar_form.item.errors }}
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label>{{ itemvar_form.name.label }}*</label>
+                                        {{ itemvar_form.name }}
+                                        {{ itemvar_form.name.errors }}
+                                    </div>
+                                </div>
+
+                                <div class="my-3 mx-1">
+                                    <label>{{ itemvar_form.price.label }}</label>
+                                    {{ itemvar_form.price }}
+                                    {{ itemvar_form.price.errors }}
+                                </div>
+
+                                <div class="my-3 mx-1">
+                                    <label>{{ itemvar_form.description.label }}</label>
+                                    {{ itemvar_form.description }}
+                                    {{ itemvar_form.description.errors }}
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                            Close
+                        </button>
+                        <button 
+                                type="button" 
+                                class="btn btn-success" 
+                                onclick="javascript:$('#newItemvarF').submit()"
+                            >
+                            Submit
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-1 offset-10">
+            <button 
+                    type="button" 
+                    id="newCuisineB"
+                    class="d-none" 
+                    data-toggle="modal" 
+                    data-target="#newCuisineM"
+                >
+            </button>
+            <button 
+                    type="button" 
+                    id="newItemB"
+                    class="d-none" 
+                    data-toggle="modal" 
+                    data-target="#newItemM"
+                >
+            </button>
+            <button 
+                    type="button" 
+                    id="newItemvarB"
+                    class="d-none" 
+                    data-toggle="modal" 
+                    data-target="#newItemvarM"
+                >
+            </button>
+            <div class="dropdown">
+                <button 
+                        class="btn btn-link dropdown-toggle" 
+                        data-toggle="dropdown" 
+                        id="addMenuD"
+                        type="button"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                       >
+                        <i class="material-icons">add_circle</i>
+                </button>
+                <div 
+                     class="dropdown-menu" 
+                     aria-labelledby="addMenuD"
+                     id="addMenuM"
+                    >
+                    <a 
+                       class="dropdown-item" 
+                       href="#" 
+                       onclick="javascript:$('#newCuisineB').click();"
+                      >
+                      New Cuisine
+                    </a>
+                    <a 
+                       class="dropdown-item" 
+                       href="#" 
+                       onclick="javascript:$('#newItemB').click();"
+                      >
+                      New Item
+                    </a>
+                    <a 
+                       class="dropdown-item" 
+                       href="#" 
+                       onclick="javascript:$('#newItemvarB').click();"
+                      >
+                      New Item Variation
+                    </a>
+                </div>
+            </div>    
+        </div>
+    </div>
+    {% if cuisines %}
+        {% for cuisine in cuisines %}
+            {% if cuisine.cuisine_items.exists %}
+                <div class="card card-body bg-light text-dark text-center">
+                    <h2>
+                        ----- {{ cuisine.name|title }} -----
+                        {% if user.user_staff.can_edit_items %}
+                            <button 
+                                    class="btn btn-link"
+                                    type="button"
+                                    title="Edit"
+                                    data-toggle="modal"
+                                    data-target="#editCuisine-{{ cuisine.public_uuid }}-M"
+                                >
+                                <i class="material-icons text-warning">edit_square</i>
+                            </button>
+                        {% endif %}
+                        {% if user.user_staff.can_delete_items %}
+                            <button
+                                    class="btn btn-link"
+                                    type="button"
+                                    title="Delete"
+                                    data-toggle="modal"
+                                    data-target="#deleteCuisine-{{ cuisine.public_uuid }}-M"
+                                >
+                                <i class="material-icons text-danger">delete</i>
+                            </button>
+                        {% endif %}
+                    </h2>
+                    
+                    <div class="d-flex flex-md-fill flex-md-row flex-wrap" style="gap: 1rem;">
+                        {% for item in cuisine.cuisine_items.all %}
+                            {% if item.item_variations.exists %}
+                                <div 
+                                     class="card w-auto" 
+                                     style="width: 35rem; height: 12.8rem; overflow: scroll"
+                                    >
+                                    <div class="card-header text-center">
+                                        <h3 class="card-title text-light">
+                                            {{ item.name|title }}
+                                            {% if user.user_staff.can_edit_items %}
+                                                <button class="btn btn-link" type="button" title="Edit" data-toggle="modal"
+                                                    data-target="#editItem-{{ item.public_uuid }}-M">
+                                                    <i class="material-icons text-warning">edit_square</i>
+                                                </button>
+                                            {% endif %}
+                                            {% if user.user_staff.can_delete_items %}
+                                                <button class="btn btn-link" type="button" title="Delete" data-toggle="modal"
+                                                    data-target="#deleteItem-{{ item.public_uuid }}-M">
+                                                    <i class="material-icons text-danger">delete</i>
+                                                </button>
+                                            {% endif %}
+                                        </h3>
+                                    </div>
+                                    {% if item.description %}   
+                                        <p class="text-light text-left mx-5">{{ item.description }}</p>
+                                    {% endif %}
+                                    <div 
+                                         class="card-body d-flex flex-row 
+                                                flex-wrap text-light py-4 px-4" 
+                                         style="gap: 1rem;"
+                                        >
+                                        <div class="img-container img-fluid">
+                                            <img src="{{ item.get_picture_url }}" width="60rem">
+                                        </div>
+                                        <div>
+                                            {% for item_var in item.item_variations.all %}
+                                                <a href="#">
+                                                    <h5 class="text-light">
+                                                        {{ item_var.name|title }} 
+                                                        | {{ item_var.price|intcomma }} T
+                                                        {% if user.user_staff.can_edit_items %}
+                                                            <button 
+                                                                    class="btn btn-link" 
+                                                                    type="button" 
+                                                                    title="Edit" 
+                                                                    data-toggle="modal"
+                                                                    data-target="#editItemvar-{{ item_var.public_uuid }}-M"
+                                                                   >
+                                                                <i class="material-icons text-warning">edit_square</i>
+                                                            </button>
+                                                        {% endif %}
+                                                        {% if user.user_staff.can_delete_items %}
+                                                            <button     
+                                                                    class="btn btn-link" 
+                                                                    type="button" 
+                                                                    title="Delete" 
+                                                                    data-toggle="modal"
+                                                                    data-target="#deleteItemvar-{{ item_var.public_uuid }}-M"
+                                                                   >
+                                                                <i class="material-icons text-danger">delete</i>
+                                                            </button>
+                                                        {% endif %}
+                                                    </h5>
+                                                </a>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                            {% else %}
+                                <div class="card" style="width: 35rem; height: 12.8rem; overflow: scroll">
+                                    <div class="card-header text-center">
+                                        <h3 class="card-title">
+                                            {{ item.name|title }}
+                                            {% if user.user_staff.can_edit_items %}
+                                                <button class="btn btn-link" type="button" title="Edit" data-toggle="modal"
+                                                    data-target="#editItem-{{ item.public_uuid }}-M">
+                                                    <i class="material-icons text-warning">edit_square</i>
+                                                </button>
+                                            {% endif %}
+                                            {% if user.user_staff.can_delete_items %}
+                                                <button class="btn btn-link" type="button" title="Delete" data-toggle="modal"
+                                                    data-target="#deleteItem-{{ item.public_uuid }}-M">
+                                                    <i class="material-icons text-danger">delete</i>
+                                                </button>
+                                            {% endif %}
+                                        </h3>
+                                    </div>
+                                    <div class="card-body text-center">
+                                        {% if item.description %}
+                                            <p class="text-light text-left mx-5">{{ item.description }}</p>
+                                        {% endif %}
+                                        <div class="d-flex flex-row px-2 py-1" style="gap: 1rem;">
+                                            <div class="img-container img-fluid">
+                                                <img src="{{ item.get_picture_url }}" width="60rem">
+                                            </div>
+                                            <div>
+                                                <h3 class="text-light">
+                                                    No item variation. Try to create an item variation.
+                                                </h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            {% else %}
+                <div class="card bg-light text-center">
+                    <div class="card-header card-title text-dark">
+                        <h2>----- {{ cuisine.name|title }} -----</h2>
+                    </div>
+                    <div class="card-body">
+                        <h1 class="display-3 text-dark mt-1 mb-3">
+                            No Item. Try to create a new item.
+                        </h1>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    {% else %}
+        <div class="card card-body bg-light text-center text-dark">
+            <h2>Nothing to show. Try to create a new cuisine.</h2>
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block script %}{% endblock %}

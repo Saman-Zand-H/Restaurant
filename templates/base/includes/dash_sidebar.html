@@ -39,12 +39,12 @@
                     </a>
                 </li>
             {% endif %}
-            <li class="nav-item ">
+            <!-- <li class="nav-item ">
                 <a class="nav-link" href="./icons.html">
                     <i class="material-icons">two_wheeler</i>
                     <p>Delivery Service</p>
                 </a>
-            </li>
+            </li> -->
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'in_place:orders' %}">
                     <i class="material-icons">grading</i>
@@ -57,18 +57,18 @@
                     <p>Finance</p>
                 </a>
             </li>
-            <li class="nav-item ">
-                <a class="nav-link" href="./notifications.html">
+            <li class="nav-item {% if 'menu' in request.path %}active{% endif %}">
+                <a class="nav-link" href="{% url 'in_place:menu' %}">
                     <i class="material-icons">shopping_basket</i>
                     <p>Menu</p>
                 </a>
             </li>
-            <li class="nav-item ">
+            <!-- <li class="nav-item ">
                 <a class="nav-link" href="./notifications.html">
                     <i class="material-icons">inventory</i>
-                    <p>Providers</p>
+                    <p>Resources</p>
                 </a>
-            </li>
+            </li> -->
         </ul>
     </div>
 </div>

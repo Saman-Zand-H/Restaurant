@@ -2,4 +2,5 @@ todo.txt
 __pycache__
 .*
 media
+logs
 *.log

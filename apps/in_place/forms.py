@@ -3,9 +3,18 @@ from django.utils import timezone
 from django.core.validators import MinValueValidator
 
 from typing import Any
+from abc import abstractmethod
 
-from restaurants.models import ItemVariation, Order
+from restaurants.models import ItemVariation, Order, Item, Cuisine
 from users.forms import SignupForm
+
+
+class _BaseDeleteForm(forms.Form):
+    public_uuid = forms.UUIDField()
+    
+    @abstractmethod
+    def clean(self, *args, **kwargs):
+        pass
 
 
 class OrderForm(forms.Form):
@@ -148,3 +157,146 @@ class CreateStaffForm(SignupForm):
                                   "placeholder": "now where does she/he live"
                               }))
     
+
+class NewCuisineForm(forms.Form):
+    name = forms.CharField(max_length=50,
+                           widget=forms.TextInput(attrs={
+                               "class": "form-control",
+                               "placeholder": "What's your cuisine gonna be called?"
+                               }),
+                           )
+    
+    
+class EditCuisineForm(forms.Form):
+    public_uuid = forms.UUIDField(widget=forms.HiddenInput())
+    name = forms.CharField(max_length=30)
+    
+    def clean(self, *args, **kwargs):
+        sup = super().clean(*args, **kwargs)
+        public_uuid = self.cleaned_data.get("public_uuid")
+        if not Cuisine.objects.filter(public_uuid=public_uuid).exists():
+            raise forms.ValidationError({"public_uuid": "This cuisine doesn't exist."})
+        return sup
+    
+    
+class DeleteCuisineForm(_BaseDeleteForm):
+    def clean(self, *args, **kwargs):
+        sup = super().clean(*args, **kwargs)
+        public_uuid = self.cleaned_data.get("public_uuid")
+        if not Cuisine.objects.filter(public_uuid=public_uuid).exists():
+            raise forms.ValidationError({"public_uuid": "This cuisine doesn't exist."})
+        return sup
+    
+    
+class NewItemForm(forms.Form):
+    name = forms.CharField(max_length=100,
+                           widget=forms.TextInput(attrs={
+                               "class": "form-control",
+                               "placeholder": "What is the name of your item..."
+                               }),
+                           )
+    cuisine = forms.ChoiceField(choices=[],
+                                widget=forms.Select(attrs={
+                                    "class": "form-control"
+                                }))
+    picture = forms.ImageField(widget=forms.ClearableFileInput(attrs={
+                                        "class": "form-control"
+                                    }),
+                               required=False,
+                               )
+    description = forms.CharField(required=False,
+                                  widget=forms.Textarea(attrs={
+                                            "class": "form-control",
+                                            "placeholder": "Is there anything else you want to add..."
+                                        }),
+                                  )
+    
+    def __init__(self, cuisine_qs, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["cuisine"].choices = [
+            [i.get("public_uuid"), i.get("name").title()] 
+            for i in cuisine_qs
+        ]
+    
+    
+class EditItemForm(forms.Form):
+    public_uuid = forms.UUIDField()
+    name = forms.CharField(max_length=100)
+    picture = forms.ImageField(required=False)
+    description = forms.CharField(required=False)
+    
+    def clean(self, *args, **kwargs):
+        sup = super().clean(*args, **kwargs)
+        public_uuid = self.cleaned_data.get("public_uuid")
+        if not Item.objects.filter(public_uuid=public_uuid).exists():
+            raise forms.ValidationError({"public_uuid": "This item doesn't exist."})
+        return sup
+    
+    
+class DeleteItemForm(_BaseDeleteForm):
+    def clean(self, *args, **kwargs):
+        sup = super().clean(*args, **kwargs)
+        public_uuid = self.cleaned_data.get("public_uuid")
+        if not Item.objects.filter(public_uuid=public_uuid).exists():
+            raise forms.ValidationError({"public_uuid": "This Item Doesn't Exist."})
+        return sup
+
+
+class NewItemVarForm(forms.Form):
+    item = forms.ChoiceField(choices=[], 
+                             widget=forms.Select(
+                                 attrs={
+                                     "class": "form-control"
+                                    }
+                                ),
+                            )
+    name = forms.CharField(max_length=100,
+                           widget=forms.TextInput(attrs={
+                               "class": "form-control",
+                               "placeholder": "What's the name of your item variation..."
+                            }),
+                           )
+    price = forms.IntegerField(validators=[MinValueValidator(0)],
+                               widget=forms.NumberInput(
+                                   attrs={
+                                       "class": "form-control",
+                                       "placeholder": "Is it worthy? How much is it?"
+                                   }))
+    description = forms.CharField(required=False,
+                                  widget=forms.Textarea(attrs={
+                                            "class": "form-control",
+                                            "placeholder": "Is there anything else we should know about?"
+                                        }),
+                                  )
+    
+    def __init__(self, item_qs, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["item"].choices = [
+            [i.get("public_uuid"), i.get("name").title()]
+            for i in item_qs
+        ]
+    
+    
+class EditItemVarForm(forms.Form):
+    public_uuid = forms.UUIDField()
+    name = forms.CharField(max_length=100)
+    description = forms.CharField(required=False)
+    price = forms.IntegerField(validators=[MinValueValidator(0)])
+    
+    def clean(self, *args, **kwargs):
+        sup = super().clean(*args, **kwargs)
+        public_uuid = self.cleaned_data.get("public_uuid")
+        if not ItemVariation.objects.filter(public_uuid=public_uuid).exists():
+            raise forms.ValidationError(
+                {"public_uuid": "This itemvar doesn't exist."})
+        return sup
+    
+    
+class DeleteItemVarForm(_BaseDeleteForm):
+    def clean(self, *args, **kwargs):
+        sup = super().clean(*args, **kwargs)
+        public_uuid = self.cleaned_data.get("public_uuid")
+        if not ItemVariation.objects.filter(public_uuid=public_uuid).exists():
+            raise forms.ValidationError(
+                {"public_uuid": "This itemvar doesn't exist."})
+        return sup

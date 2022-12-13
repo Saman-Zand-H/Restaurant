@@ -30,11 +30,22 @@ from .forms import (OrderForm,
                     OrderDeleteForm, 
                     DineInForm,
                     SearchOrdersForm,
-                    CreateStaffForm)
+                    CreateStaffForm,
+                    NewCuisineForm,
+                    EditCuisineForm,
+                    DeleteCuisineForm,
+                    NewItemForm,
+                    EditItemForm,
+                    DeleteItemForm,
+                    NewItemVarForm,
+                    EditItemVarForm,
+                    DeleteItemVarForm)
 from .models import DineInOrder, Staff
 from search_index.es_queries import OrderQuery
 from search_index.documents import OrderDocument
 from restaurants.models import (ItemVariation, 
+                                Item,
+                                Cuisine,
                                 Order, 
                                 OrderItem, 
                                 Restaurant)
@@ -228,7 +239,8 @@ class DashboardView(LoginRequiredMixin, UserPassesTestMixin, View):
                              "Order was submitted successfully.")
             return redirect(f"in_place:{dest}")
         messages.error(self.request,
-                       "Order was not submitted. We recognized invalid inputs here.")
+                       "Order was not submitted. "
+                       "We recognized invalid inputs here.")
         self.context.update({"order_item_formset": formset_data})
         return self.render_or_redirect(dest) 
     
@@ -555,14 +567,19 @@ class SellsToExcelView(LoginRequiredMixin, UserPassesTestMixin, View):
         response = HttpResponse(content_type="application/ms-excel")
         response["Content-Disposition"] = (
             "attachment; "
-            f" filename={restaurant.name.lower()}_orders.xls")
+            f"filename={restaurant.name.lower()}_orders.xls")
         
         wb = xlwt.Workbook("utf-8")
         ws = wb.add_sheet("Sell Data (Orders)")
         
         xf = xlwt.XFStyle()
         xf.font.bold = True
-        cols = ["items", "timestamp", "paid_price", "order_type", "order_number", "order_id"]
+        cols = ["items", 
+                "timestamp", 
+                "paid_price", 
+                "order_type", 
+                "order_number", 
+                "order_id"]
         
         for i in range(len(cols)):
             ws.write(0, i, cols[i], xf)
@@ -598,7 +615,6 @@ class SellsToExcelView(LoginRequiredMixin, UserPassesTestMixin, View):
         for i, r in enumerate(data):
             print(i, r)
             for d in range(len(r)):
-                print(d, data[i][d])
                 ws.write(i+1, d, data[i][d])
         
         ############ Order Items ############
@@ -633,9 +649,7 @@ class SellsToExcelView(LoginRequiredMixin, UserPassesTestMixin, View):
         data = [i.tolist() for i in data]
         
         for i, r in enumerate(data):
-            print(r)
             for d in range(len(r)):
-                print(data[i][d])
                 ws.write(i+1, d, data[i][d])
         
         wb.save(response)
@@ -644,3 +658,271 @@ class SellsToExcelView(LoginRequiredMixin, UserPassesTestMixin, View):
     
 sells_to_excel_view = SellsToExcelView.as_view()
         
+        
+class MenuView(LoginRequiredMixin, UserPassesTestMixin, View):
+    template_name = "in_place/menu.html"
+    context = dict()
+    
+    def test_func(self):
+        return (hasattr(self.request.user, "user_staff")
+                and self.request.user.has_perm("in_place.read_menu"))
+        
+    def get(self, *args, **kwargs):
+        restaurant = self.request.user.user_staff.restaurant
+        cuisines = Cuisine.objects.filter(restaurant=restaurant)
+        item_qs = Item.objects.filter(cuisine__restaurant=restaurant)
+        
+        sessions = self.request.session
+        cuisine_form = NewCuisineForm(
+            data=sessions.pop("cuisine_form", None))
+        item_form = NewItemForm(
+            cuisine_qs=cuisines.values("public_uuid", "name"),
+            data=sessions.pop("item_form", None))
+        itemvar_form = NewItemVarForm(
+            item_qs=item_qs.values("name", "public_uuid"),
+            data=sessions.pop("itemvar_form", None))
+        
+        self.context.update({"cuisines": cuisines,
+                             "cuisine_form": cuisine_form,
+                             "item_form": item_form,
+                             "itemvar_form": itemvar_form})
+        return render(self.request, self.template_name, self.context)
+        
+        
+menu_view = MenuView.as_view()
+
+
+class CreateCuisineView(LoginRequiredMixin, UserPassesTestMixin, View):
+    def test_func(self):
+        return (hasattr(self.request.user, "user_staff")
+                and self.request.user.has_perm("in_place.add_items"))
+        
+    def post(self, *args, **kwargs):
+        form_data = NewCuisineForm(self.request.POST)
+        if form_data.is_valid():
+            name = form_data.cleaned_data.get("name")
+            restaurant = self.request.user.user_staff.restaurant
+            Cuisine.objects.create(name=name, restaurant=restaurant)
+            messages.success(self.request, 
+                             f"{name.title()} was successfully added.")
+        else:
+            messages.error(self.request, 
+                           "There was an error during the process. Try again.")
+            self.request.session["cuisine_form"] = form_data
+        return redirect("in_place:menu")
+        
+        
+create_cuisine_view = CreateCuisineView.as_view()
+
+
+class EditCuisineView(LoginRequiredMixin, UserPassesTestMixin, View):
+    def test_func(self):
+        return (hasattr(self.request.user, "user_staff")
+                and self.request.user.has_perm("in_place.edit_items"))
+        
+    def post(self, *args, **kwargs):
+        form_data = EditCuisineForm(self.request.POST)
+        if form_data.is_valid():
+            public_uuid = form_data.cleaned_data.get("public_uuid")
+            name = form_data.cleaned_data.get("name")
+            Cuisine.objects.filter(
+                public_uuid=public_uuid).update(name=name)
+            messages.success(self.request, 
+                             "The cuisine was successfully updated.")
+        else:
+            messages.error(self.request, 
+                           "There was an error during the process. Try again.")
+        return redirect("in_place:menu")
+    
+    
+edit_cuisine_view = EditCuisineView.as_view()
+
+
+class DeleteCuisineView(LoginRequiredMixin, UserPassesTestMixin, View):    
+    def test_func(self):
+        return (hasattr(self.request.user, "user_staff")
+                and self.request.user.has_perm("in_place.delete_items"))
+        
+    def post(self, *args, **kwargs):
+        form_data = DeleteCuisineForm(self.request.POST)
+        if form_data.is_valid():
+            public_uuid = form_data.cleaned_data.get("public_uuid")
+            Cuisine.objects.filter(
+                public_uuid=public_uuid).delete()
+            messages.success(self.request, 
+                             "The cuisine was successfully deleted.")
+        else:
+            messages.error(self.request, 
+                           "There was an error during the process. Try again.")
+        return redirect("in_place:menu")
+    
+    
+delete_cuisine_view = DeleteCuisineView.as_view()
+
+
+class CreateItemView(LoginRequiredMixin, UserPassesTestMixin, View):
+    def test_func(self):
+        return (hasattr(self.request.user, "user_staff")
+                and self.request.user.has_perm("in_place.add_items"))
+        
+    def post(self, *args, **kwargs):
+        restaurant = self.request.user.user_staff.restaurant
+        cuisine_qs = Cuisine.objects.filter(
+            restaurant=restaurant).values("public_uuid", "name")
+        form_data = NewItemForm(data=self.request.POST, 
+                                files=self.request.FILES, 
+                                cuisine_qs=cuisine_qs)
+        if form_data.is_valid():
+            cuisine_uuid = form_data.cleaned_data.get("cuisine")
+            cuisine = Cuisine.objects.get(public_uuid=cuisine_uuid)
+            picture = form_data.cleaned_data.get("picture")
+            name = form_data.cleaned_data.get("name")
+            desc = form_data.cleaned_data.get("description")
+            Item.objects.create(cuisine=cuisine,
+                                name=name,
+                                picture=picture,
+                                description=desc)
+            messages.success(self.request, 
+                             f"{name.title()} was successfully added.")
+        else:
+            messages.error(self.request, 
+                           "There was an error during the process. Please try again.")
+            self.request.session["item_form"] = self.request.POST
+        return redirect("in_place:menu")
+    
+    
+create_item_view = CreateItemView.as_view()
+
+
+class EditItemView(LoginRequiredMixin, UserPassesTestMixin, View):
+    def test_func(self):
+        return (hasattr(self.request.user, "user_staff")
+                and self.request.user.has_perm("in_place.edit_items"))
+        
+    def post(self, *args, **kwargs):
+        form_data = EditItemForm(
+            data=self.request.POST, 
+            files=self.request.FILES)
+        if form_data.is_valid():
+            name = form_data.cleaned_data.get("name")
+            desc = form_data.cleaned_data.get("description")
+            public_uuid = form_data.cleaned_data.get("public_uuid")
+            
+            item = Item.objects.get(public_uuid=public_uuid)
+            item.name = name
+            item.description = desc
+            item.picture.delete(save=False)
+            item.picture = form_data.files.get("picture")
+            item.save()
+            
+            messages.success(self.request, 
+                             f"{name.title()} was successfully updated.")
+        else:
+            messages.error(self.request, 
+                           "There was an error during the process. Please try again.")
+        return redirect("in_place:menu")
+    
+    
+edit_item_view = EditItemView.as_view()
+
+
+class DeleteItemView(LoginRequiredMixin, UserPassesTestMixin, View):
+    def test_func(self):
+        return (hasattr(self.request.user, "user_staff")
+                and self.request.user.has_perm("in_place.delete_items"))
+        
+    def post(self, *args, **kwargs):
+        form_data = DeleteItemForm(self.request.POST, self.request.FILES)
+        if form_data.is_valid():
+            public_uuid = form_data.cleaned_data.get("public_uuid")
+            item = Item.objects.get(public_uuid=public_uuid)
+            item.picture.delete(save=True)
+            item.delete()
+            messages.success(self.request, 
+                             f"The item was successfully deleted.")
+        else:
+            messages.error(self.request, 
+                           "There was an error during the process. Please try again.")
+        return redirect("in_place:menu")
+    
+    
+delete_item_view = DeleteItemView.as_view()
+
+
+class CreateItemVarView(LoginRequiredMixin, UserPassesTestMixin, View):
+    def test_func(self):
+        return (hasattr(self.request.user, "user_staff")
+                and self.request.user.has_perm("in_place.add_items"))
+        
+    def post(self, *args, **kwargs):
+        restaurant = self.request.user.user_staff.restaurant
+        item_qs = Item.objects.filter(
+            cuisine__restaurant=restaurant).values("public_uuid", "name")
+        form_data = NewItemVarForm(data=self.request.POST,
+                                   item_qs=item_qs)
+        if form_data.is_valid():
+            item_uuid = form_data.cleaned_data.get("item")
+            item = Item.objects.get(public_uuid=item_uuid)
+            price = form_data.cleaned_data.get("price")
+            description = form_data.cleaned_data.get("description")
+            name = form_data.cleaned_data.get("name")
+            ItemVariation.objects.create(name=name,
+                                         price=price,
+                                         item=item,
+                                         description=description)
+            messages.success(self.request, f"{name.title()} was successfully added.")
+        else:
+            messages.error(self.request, 
+                           "There was an error during the process. Please try again.")
+            self.request.session["itemvar_form"] = self.request.POST
+        return redirect("in_place:menu")
+    
+
+create_itemvar_view = CreateItemVarView.as_view()
+
+
+class EditItemVarView(LoginRequiredMixin, UserPassesTestMixin, View):
+    def test_func(self):
+        return (hasattr(self.request.user, "user_staff")
+                and self.request.user.has_perm("in_place.edit_items"))
+        
+    def post(self, *args, **kwargs):
+        form_data = EditItemVarForm(self.request.POST)
+        if form_data.is_valid():
+            public_uuid = form_data.cleaned_data.get("public_uuid")
+            name = form_data.cleaned_data.get("name")
+            price = form_data.cleaned_data.get("price")
+            description = form_data.cleaned_data.get("description")
+            ItemVariation.objects.filter(public_uuid=public_uuid).update(
+                name=name,
+                price=price,
+                description=description)
+            messages.success(self.request, f"{name.title()} was successfully updated.")
+        else:
+            messages.error(self.request, 
+                           "There was an error during the process. Please try again.")
+        return redirect("in_place:menu")
+    
+
+edit_itemvar_view = EditItemVarView.as_view()
+
+
+class DeleteItemVarView(LoginRequiredMixin, UserPassesTestMixin, View):
+    def test_func(self):
+        return (hasattr(self.request.user, "user_staff")
+                and self.request.user.has_perm("in_place.delete_items"))
+        
+    def post(self, *args, **kwargs):
+        form_data = DeleteItemVarForm(self.request.POST)
+        if form_data.is_valid():
+            public_uuid = form_data.cleaned_data.get("public_uuid")
+            ItemVariation.objects.get(public_uuid=public_uuid).delete()
+            messages.success(self.request, 
+                             "The item-variation was successfully deleted.")
+        else:
+            messages.error(self.request, 
+                           "There was an error during the process. Please try again.")
+        return redirect("in_place:menu")
+    
+
+delete_itemvar_view = DeleteItemVarView.as_view()

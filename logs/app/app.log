@@ -23045,3 +23045,1023 @@ django.core.exceptions.FieldError: Cannot resolve keyword 'order_id' into field.
 2022-12-05 18:04:08,942 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
 2022-12-05 18:24:10,603 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [4.40, 172.20.0.1:51330][0m
 2022-12-05 18:31:00,697 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [0.98, 172.20.0.1:42918][0m
+2022-12-05 18:36:27,918 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-05 18:36:38,903 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-05 18:37:14,171 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-05 18:37:18,337 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-05 18:40:03,046 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-05 18:40:06,965 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-05 18:40:23,957 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/urls.py changed, reloading.
+2022-12-05 18:40:27,200 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-05 18:41:21,320 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [1.90, 172.20.0.1:42958][0m
+2022-12-05 18:41:25,421 - [ERROR]    django.request: Internal Server Error: /in_place/menu/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 505, in parse
+    compile_func = self.tags[command]
+KeyError: 'endtitle'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/local/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/usr/local/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/in_place/views.py", line 657, in get
+    return render(self.request, self.template_name, self.context)
+  File "/usr/local/lib/python3.10/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/usr/local/lib/python3.10/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/usr/local/lib/python3.10/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "/usr/local/lib/python3.10/site-packages/django/template/backends/django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/usr/local/lib/python3.10/site-packages/django/template/engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+  File "/usr/local/lib/python3.10/site-packages/django/template/engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/usr/local/lib/python3.10/site-packages/django/template/loaders/cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "/usr/local/lib/python3.10/site-packages/django/template/loaders/base.py", line 28, in get_template
+    return Template(
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 200, in compile_nodelist
+    return parser.parse()
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/usr/local/lib/python3.10/site-packages/django/template/loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/usr/local/lib/python3.10/site-packages/django/template/loader_tags.py", line 232, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 507, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 558, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 6: 'endtitle', expected 'endblock'. Did you forget to register or load this tag?
+2022-12-05 18:41:26,080 - [ERROR]    django.channels.server: [35;1mHTTP GET /in_place/menu/ 500 [1.21, 172.20.0.1:42966][0m
+2022-12-05 18:41:41,422 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.30, 172.20.0.1:53702][0m
+2022-12-06 00:02:56,048 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-06 00:20:02,049 - [INFO]    django.channels.server: [mHTTP GET / 200 [4.72, 172.20.0.1:33682][0m
+2022-12-06 00:20:05,961 - [INFO]    django.channels.server: [mHTTP GET /in_place/ 200 [3.09, 172.20.0.1:33684][0m
+2022-12-06 00:21:49,437 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.27, 172.20.0.1:54182][0m
+2022-12-06 00:33:46,004 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.34, 172.20.0.1:46638][0m
+2022-12-06 00:33:56,857 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.24, 172.20.0.1:43156][0m
+2022-12-06 00:33:59,110 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.30, 172.20.0.1:43172][0m
+2022-12-06 00:34:03,049 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.24, 172.20.0.1:43188][0m
+2022-12-06 00:34:28,978 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.35, 172.20.0.1:52208][0m
+2022-12-06 00:34:47,325 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.25, 172.20.0.1:50296][0m
+2022-12-06 00:34:49,515 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.39, 172.20.0.1:50308][0m
+2022-12-06 00:34:58,102 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.26, 172.20.0.1:36556][0m
+2022-12-06 00:35:02,278 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.32, 172.20.0.1:36572][0m
+2022-12-06 00:35:12,910 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.25, 172.20.0.1:51746][0m
+2022-12-06 00:43:10,799 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.27, 172.20.0.1:56398][0m
+2022-12-06 00:43:27,615 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.65, 172.20.0.1:51234][0m
+2022-12-06 00:43:39,756 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.37, 172.20.0.1:51982][0m
+2022-12-06 00:45:00,629 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-06 00:46:20,613 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-06 00:46:54,221 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [1.68, 172.20.0.1:56066][0m
+2022-12-06 00:48:10,231 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.25, 172.20.0.1:59750][0m
+2022-12-06 00:51:20,905 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.27, 172.20.0.1:37592][0m
+2022-12-06 00:52:16,731 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.26, 172.20.0.1:55696][0m
+2022-12-06 00:52:26,737 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.37, 172.20.0.1:39022][0m
+2022-12-06 00:52:45,582 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.29, 172.20.0.1:34014][0m
+2022-12-06 00:52:51,165 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.28, 172.20.0.1:59414][0m
+2022-12-06 00:53:03,113 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.29, 172.20.0.1:53330][0m
+2022-12-06 00:53:12,013 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.32, 172.20.0.1:57774][0m
+2022-12-06 00:53:30,832 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.28, 172.20.0.1:59476][0m
+2022-12-06 00:54:23,577 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.39, 172.20.0.1:57098][0m
+2022-12-06 00:54:35,298 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.29, 172.20.0.1:38518][0m
+2022-12-06 00:54:42,799 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.29, 172.20.0.1:46352][0m
+2022-12-06 00:55:04,975 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.28, 172.20.0.1:34126][0m
+2022-12-06 00:55:14,748 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.31, 172.20.0.1:47758][0m
+2022-12-06 00:55:25,289 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.30, 172.20.0.1:53676][0m
+2022-12-06 00:55:29,331 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.40, 172.20.0.1:33306][0m
+2022-12-06 00:55:52,801 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.29, 172.20.0.1:52444][0m
+2022-12-06 00:55:57,987 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.32, 172.20.0.1:37928][0m
+2022-12-06 00:56:04,839 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.29, 172.20.0.1:37944][0m
+2022-12-06 00:56:21,500 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.35, 172.20.0.1:41376][0m
+2022-12-06 00:57:54,156 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.28, 172.20.0.1:52666][0m
+2022-12-06 00:58:02,743 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.50, 172.20.0.1:44242][0m
+2022-12-06 00:58:22,801 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.29, 172.20.0.1:38896][0m
+2022-12-06 00:58:41,099 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.26, 172.20.0.1:54008][0m
+2022-12-06 00:58:43,927 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.33, 172.20.0.1:54024][0m
+2022-12-06 00:58:54,818 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.32, 172.20.0.1:46780][0m
+2022-12-06 00:59:07,810 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.27, 172.20.0.1:32786][0m
+2022-12-06 00:59:28,378 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.31, 172.20.0.1:51370][0m
+2022-12-06 00:59:41,043 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.33, 172.20.0.1:55384][0m
+2022-12-06 01:00:35,625 - [INFO]    django.channels.server: [mHTTP GET /admin/ 200 [1.13, 172.20.0.1:37642][0m
+2022-12-06 01:01:37,446 - [INFO]    django.channels.server: [mHTTP GET /admin/restaurants/item/ 200 [2.25, 172.20.0.1:35950][0m
+2022-12-06 01:01:38,487 - [INFO]    django.channels.server: [mHTTP GET /admin/jsi18n/ 200 [0.26, 172.20.0.1:48266][0m
+2022-12-06 01:02:41,096 - [INFO]    django.channels.server: [mHTTP GET /admin/restaurants/item/add/ 200 [0.59, 172.20.0.1:42116][0m
+2022-12-06 01:02:41,596 - [INFO]    django.channels.server: [mHTTP GET /admin/jsi18n/ 200 [0.24, 172.20.0.1:42124][0m
+2022-12-06 01:02:55,472 - [INFO]    django.channels.server: [32mHTTP POST /admin/restaurants/item/add/ 302 [0.85, 172.20.0.1:58450][0m
+2022-12-06 01:02:55,982 - [INFO]    django.channels.server: [mHTTP GET /admin/restaurants/item/ 200 [0.48, 172.20.0.1:58462][0m
+2022-12-06 01:02:56,501 - [INFO]    django.channels.server: [mHTTP GET /admin/jsi18n/ 200 [0.24, 172.20.0.1:44458][0m
+2022-12-06 01:02:57,656 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.25, 172.20.0.1:44472][0m
+2022-12-06 01:03:09,104 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.31, 172.20.0.1:38166][0m
+2022-12-06 01:03:15,081 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.33, 172.20.0.1:38182][0m
+2022-12-06 01:03:20,547 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.35, 172.20.0.1:51788][0m
+2022-12-06 01:03:29,531 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.35, 172.20.0.1:60572][0m
+2022-12-06 01:04:21,041 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.27, 172.20.0.1:45800][0m
+2022-12-06 01:04:23,265 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.37, 172.20.0.1:45816][0m
+2022-12-06 01:04:33,608 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.42, 172.20.0.1:36772][0m
+2022-12-06 01:04:42,279 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.30, 172.20.0.1:48116][0m
+2022-12-06 01:04:55,098 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.27, 172.20.0.1:51070][0m
+2022-12-06 01:06:30,376 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.30, 172.20.0.1:46192][0m
+2022-12-06 01:06:32,816 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.35, 172.20.0.1:46198][0m
+2022-12-06 01:06:38,231 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.45, 172.20.0.1:39522][0m
+2022-12-06 01:06:44,593 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.44, 172.20.0.1:39528][0m
+2022-12-06 01:09:46,894 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.31, 172.20.0.1:47136][0m
+2022-12-06 01:10:41,113 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.30, 172.20.0.1:58144][0m
+2022-12-06 01:10:53,528 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.31, 172.20.0.1:54948][0m
+2022-12-06 01:11:00,114 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.27, 172.20.0.1:54916][0m
+2022-12-06 01:11:18,471 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.31, 172.20.0.1:33966][0m
+2022-12-06 01:11:31,644 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.40, 172.20.0.1:49642][0m
+2022-12-06 01:11:41,838 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.30, 172.20.0.1:48826][0m
+2022-12-06 01:11:45,571 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.28, 172.20.0.1:48836][0m
+2022-12-06 01:11:51,260 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.32, 172.20.0.1:49068][0m
+2022-12-06 01:12:08,247 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.30, 172.20.0.1:49530][0m
+2022-12-06 01:12:12,698 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.33, 172.20.0.1:49538][0m
+2022-12-06 01:12:17,914 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.47, 172.20.0.1:48724][0m
+2022-12-06 01:13:54,186 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.30, 172.20.0.1:35684][0m
+2022-12-06 01:14:08,018 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.30, 172.20.0.1:43336][0m
+2022-12-06 01:14:13,044 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.41, 172.20.0.1:43346][0m
+2022-12-06 01:14:20,079 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.34, 172.20.0.1:41914][0m
+2022-12-06 01:14:42,587 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.29, 172.20.0.1:37626][0m
+2022-12-06 01:15:02,515 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.29, 172.20.0.1:36678][0m
+2022-12-06 01:15:04,340 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.28, 172.20.0.1:36688][0m
+2022-12-06 01:15:23,986 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.27, 172.20.0.1:53852][0m
+2022-12-06 01:15:30,436 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.30, 172.20.0.1:48404][0m
+2022-12-06 01:15:33,459 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.31, 172.20.0.1:48418][0m
+2022-12-06 01:15:37,693 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.46, 172.20.0.1:58742][0m
+2022-12-06 01:15:50,266 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.32, 172.20.0.1:35030][0m
+2022-12-06 01:15:54,145 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.26, 172.20.0.1:35032][0m
+2022-12-06 01:17:04,367 - [INFO]    django.channels.server: [mHTTP GET /admin/restaurants/item/add/ 200 [0.64, 172.20.0.1:59740][0m
+2022-12-06 01:17:04,917 - [INFO]    django.channels.server: [mHTTP GET /admin/jsi18n/ 200 [0.28, 172.20.0.1:59742][0m
+2022-12-06 01:17:22,756 - [INFO]    django.channels.server: [32mHTTP POST /admin/restaurants/item/add/ 302 [0.32, 172.20.0.1:60778][0m
+2022-12-06 01:17:23,171 - [INFO]    django.channels.server: [mHTTP GET /admin/restaurants/item/ 200 [0.39, 172.20.0.1:60794][0m
+2022-12-06 01:17:23,843 - [INFO]    django.channels.server: [mHTTP GET /admin/jsi18n/ 200 [0.27, 172.20.0.1:60798][0m
+2022-12-06 01:17:25,312 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.29, 172.20.0.1:60804][0m
+2022-12-06 01:17:45,432 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.30, 172.20.0.1:33942][0m
+2022-12-06 01:17:53,920 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.35, 172.20.0.1:38542][0m
+2022-12-06 01:21:14,622 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.30, 172.20.0.1:59134][0m
+2022-12-06 01:21:16,508 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.35, 172.20.0.1:46140][0m
+2022-12-06 01:21:24,984 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.39, 172.20.0.1:46146][0m
+2022-12-06 01:21:36,429 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.29, 172.20.0.1:56428][0m
+2022-12-06 01:21:42,250 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.28, 172.20.0.1:56444][0m
+2022-12-06 01:21:47,318 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.29, 172.20.0.1:52314][0m
+2022-12-06 01:22:02,401 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.31, 172.20.0.1:39754][0m
+2022-12-06 01:22:06,840 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.46, 172.20.0.1:59858][0m
+2022-12-06 01:22:30,868 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.31, 172.20.0.1:52414][0m
+2022-12-06 01:22:32,639 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.40, 172.20.0.1:52428][0m
+2022-12-06 01:22:42,642 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.30, 172.20.0.1:45996][0m
+2022-12-06 01:22:59,215 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.32, 172.20.0.1:37516][0m
+2022-12-06 01:23:06,267 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.40, 172.20.0.1:37522][0m
+2022-12-06 01:23:14,145 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.33, 172.20.0.1:57618][0m
+2022-12-06 01:23:17,100 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.37, 172.20.0.1:57328][0m
+2022-12-06 01:24:45,276 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.31, 172.20.0.1:53226][0m
+2022-12-06 01:24:51,819 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.44, 172.20.0.1:33740][0m
+2022-12-06 01:24:57,132 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.32, 172.20.0.1:38100][0m
+2022-12-06 01:25:01,342 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.50, 172.20.0.1:38104][0m
+2022-12-06 01:25:17,898 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.30, 172.20.0.1:36342][0m
+2022-12-06 01:25:27,456 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.31, 172.20.0.1:50810][0m
+2022-12-06 01:25:29,320 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.29, 172.20.0.1:50818][0m
+2022-12-06 01:25:39,699 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.36, 172.20.0.1:52868][0m
+2022-12-06 01:26:40,340 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.27, 172.20.0.1:32976][0m
+2022-12-06 01:26:46,580 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.31, 172.20.0.1:55998][0m
+2022-12-06 01:27:00,875 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.32, 172.20.0.1:36364][0m
+2022-12-06 01:27:20,817 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.33, 172.20.0.1:57872][0m
+2022-12-09 03:46:28,435 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-09 03:47:02,116 - [INFO]    django.channels.server: [mHTTP GET / 200 [2.03, 172.20.0.1:39330][0m
+2022-12-09 03:47:20,015 - [INFO]    django.channels.server: [mHTTP GET / 200 [0.19, 172.20.0.1:48662][0m
+2022-12-11 23:19:06,859 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-11 23:21:18,100 - [INFO]    django.channels.server: [mHTTP GET /in_place/ 200 [3.96, 172.20.0.1:37172][0m
+2022-12-11 23:39:39,014 - [INFO]    django.channels.server: [mHTTP GET /in_place/ 200 [0.51, 172.20.0.1:58680][0m
+2022-12-11 23:50:50,406 - [INFO]    django.channels.server: [mHTTP GET /in_place/ 200 [0.75, 172.20.0.1:49860][0m
+2022-12-11 23:53:11,814 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.30, 172.20.0.1:47196][0m
+2022-12-11 23:57:29,069 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [3.37, 172.20.0.1:34980][0m
+2022-12-11 23:57:31,214 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.34, 172.20.0.1:58078][0m
+2022-12-12 00:02:49,039 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.40, 172.20.0.1:42306][0m
+2022-12-12 00:02:59,127 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.25, 172.20.0.1:56404][0m
+2022-12-12 00:04:04,702 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.40, 172.20.0.1:54840][0m
+2022-12-12 00:04:54,989 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.29, 172.20.0.1:50338][0m
+2022-12-12 00:04:59,561 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.43, 172.20.0.1:50350][0m
+2022-12-12 00:05:35,751 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.28, 172.20.0.1:47992][0m
+2022-12-12 00:05:56,193 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.35, 172.20.0.1:59414][0m
+2022-12-12 00:06:10,489 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.34, 172.20.0.1:52468][0m
+2022-12-12 00:07:08,705 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.41, 172.20.0.1:59912][0m
+2022-12-12 00:07:31,100 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.30, 172.20.0.1:35206][0m
+2022-12-12 00:08:13,812 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.31, 172.20.0.1:59732][0m
+2022-12-12 00:08:26,371 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.35, 172.20.0.1:50032][0m
+2022-12-12 00:08:30,424 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.32, 172.20.0.1:57782][0m
+2022-12-12 00:13:47,346 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [1.62, 172.20.0.1:51922][0m
+2022-12-12 00:14:01,708 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.27, 172.20.0.1:33032][0m
+2022-12-12 00:15:08,957 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.34, 172.20.0.1:57820][0m
+2022-12-12 00:15:52,912 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.36, 172.20.0.1:32928][0m
+2022-12-12 00:17:05,357 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.34, 172.20.0.1:33762][0m
+2022-12-12 00:17:38,452 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.36, 172.20.0.1:33590][0m
+2022-12-12 00:17:47,767 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.31, 172.20.0.1:47306][0m
+2022-12-12 00:18:00,384 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.53, 172.20.0.1:57598][0m
+2022-12-12 00:18:30,278 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.34, 172.20.0.1:50852][0m
+2022-12-12 00:18:37,651 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.31, 172.20.0.1:50860][0m
+2022-12-12 00:18:55,100 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.28, 172.20.0.1:45618][0m
+2022-12-12 00:18:59,491 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.40, 172.20.0.1:45626][0m
+2022-12-12 00:20:41,051 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.29, 172.20.0.1:55062][0m
+2022-12-12 00:39:58,301 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.38, 172.20.0.1:40486][0m
+2022-12-12 00:41:22,308 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.29, 172.20.0.1:43452][0m
+2022-12-12 00:42:25,036 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.31, 172.20.0.1:38758][0m
+2022-12-12 00:42:30,945 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.25, 172.20.0.1:37894][0m
+2022-12-12 00:45:58,198 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.34, 172.20.0.1:43280][0m
+2022-12-12 00:46:21,443 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.50, 172.20.0.1:56108][0m
+2022-12-12 00:46:33,306 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.30, 172.20.0.1:55434][0m
+2022-12-12 00:46:47,977 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.31, 172.20.0.1:57350][0m
+2022-12-12 00:46:54,645 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.56, 172.20.0.1:43292][0m
+2022-12-12 00:48:00,025 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.29, 172.20.0.1:38032][0m
+2022-12-12 00:48:15,913 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.30, 172.20.0.1:53954][0m
+2022-12-12 00:48:53,715 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.30, 172.20.0.1:54134][0m
+2022-12-12 00:49:03,937 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.34, 172.20.0.1:55998][0m
+2022-12-12 00:49:38,729 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.28, 172.20.0.1:47072][0m
+2022-12-12 00:49:50,839 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.30, 172.20.0.1:39630][0m
+2022-12-12 00:50:29,048 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.43, 172.20.0.1:49776][0m
+2022-12-12 00:50:55,050 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.31, 172.20.0.1:39282][0m
+2022-12-12 00:50:59,149 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.31, 172.20.0.1:39284][0m
+2022-12-12 00:51:29,967 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.30, 172.20.0.1:46770][0m
+2022-12-12 00:53:01,179 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.28, 172.20.0.1:40180][0m
+2022-12-12 00:53:45,007 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.67, 172.20.0.1:40046][0m
+2022-12-12 00:53:57,512 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.28, 172.20.0.1:46094][0m
+2022-12-12 00:54:28,222 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.34, 172.20.0.1:60588][0m
+2022-12-12 00:54:36,762 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.33, 172.20.0.1:47852][0m
+2022-12-12 01:15:16,597 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.46, 172.20.0.1:49324][0m
+2022-12-12 01:15:54,109 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.33, 172.20.0.1:46092][0m
+2022-12-12 01:15:59,342 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.35, 172.20.0.1:46104][0m
+2022-12-12 01:16:11,343 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.30, 172.20.0.1:33014][0m
+2022-12-12 01:18:10,571 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.32, 172.20.0.1:45496][0m
+2022-12-12 01:20:44,373 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.44, 172.20.0.1:57232][0m
+2022-12-12 01:23:41,830 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/forms.py changed, reloading.
+2022-12-12 01:24:11,845 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-12 01:27:04,643 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/forms.py changed, reloading.
+2022-12-12 01:27:11,216 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-13 01:27:44,093 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-13 01:32:57,208 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/forms.py changed, reloading.
+2022-12-13 01:32:59,580 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-13 01:34:49,128 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [3.58, 172.20.0.1:42170][0m
+2022-12-13 01:36:14,040 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/forms.py changed, reloading.
+2022-12-13 01:36:19,967 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-13 01:36:37,408 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [2.03, 172.20.0.1:34754][0m
+2022-12-13 01:37:16,084 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.29, 172.20.0.1:44154][0m
+2022-12-13 01:37:32,622 - [INFO]    django.channels.server: [32mHTTP POST /in_place/menu/cuisine/create 302 [0.72, 172.20.0.1:59350][0m
+2022-12-13 01:37:32,987 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.31, 172.20.0.1:59362][0m
+2022-12-13 01:39:14,258 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.35, 172.20.0.1:40160][0m
+2022-12-13 01:39:23,090 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.31, 172.20.0.1:54312][0m
+2022-12-13 01:39:32,940 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.34, 172.20.0.1:56432][0m
+2022-12-13 01:39:40,143 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.43, 172.20.0.1:44736][0m
+2022-12-13 01:39:47,140 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.34, 172.20.0.1:37538][0m
+2022-12-13 01:39:48,831 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.32, 172.20.0.1:37554][0m
+2022-12-13 01:40:15,125 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.29, 172.20.0.1:48060][0m
+2022-12-13 01:40:24,358 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.35, 172.20.0.1:47452][0m
+2022-12-13 01:40:26,233 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.28, 172.20.0.1:59802][0m
+2022-12-13 01:40:45,332 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.32, 172.20.0.1:60356][0m
+2022-12-13 01:40:49,889 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.58, 172.20.0.1:57486][0m
+2022-12-13 01:42:13,066 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.30, 172.20.0.1:50402][0m
+2022-12-13 01:42:20,698 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.31, 172.20.0.1:35020][0m
+2022-12-13 01:42:30,837 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.31, 172.20.0.1:54732][0m
+2022-12-13 01:42:32,736 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.35, 172.20.0.1:54736][0m
+2022-12-13 01:42:42,202 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.31, 172.20.0.1:40240][0m
+2022-12-13 01:42:51,808 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.42, 172.20.0.1:51526][0m
+2022-12-13 01:42:53,109 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.29, 172.20.0.1:51528][0m
+2022-12-13 01:42:58,880 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.47, 172.20.0.1:38224][0m
+2022-12-13 01:45:29,354 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/forms.py changed, reloading.
+2022-12-13 01:45:38,964 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-13 01:46:05,278 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-13 01:46:08,557 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-13 01:46:27,709 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-13 01:46:30,831 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-13 01:46:48,545 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-13 01:46:51,515 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-13 01:48:24,561 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/forms.py changed, reloading.
+2022-12-13 01:48:27,850 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-13 01:50:40,094 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/forms.py changed, reloading.
+2022-12-13 01:50:42,918 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-13 01:52:47,249 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/forms.py changed, reloading.
+2022-12-13 01:52:49,500 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-13 01:53:27,048 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-13 01:53:30,367 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-13 01:55:43,326 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/forms.py changed, reloading.
+2022-12-13 01:55:46,921 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-13 01:56:18,087 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-13 01:56:21,377 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-13 01:56:47,119 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-13 01:56:50,617 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-13 01:56:56,060 - [ERROR]    django.request: Internal Server Error: /in_place/menu/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/local/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/usr/local/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/in_place/views.py", line 680, in get
+    item_form = sessions.get("item_form", NewItemForm(
+  File "/usr/src/app/apps/in_place/forms.py", line 211, in __init__
+    self.fields["cuisine"].choices = [
+  File "/usr/src/app/apps/in_place/forms.py", line 212, in <listcomp>
+    [i.name.title(), i.public_uuid]
+AttributeError: 'dict' object has no attribute 'name'
+2022-12-13 01:56:56,353 - [ERROR]    django.channels.server: [35;1mHTTP GET /in_place/menu/ 500 [1.67, 172.20.0.1:37222][0m
+2022-12-13 01:58:04,016 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/forms.py changed, reloading.
+2022-12-13 01:58:07,197 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-13 01:58:11,502 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [1.04, 172.20.0.1:58438][0m
+2022-12-13 02:00:41,912 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [1.03, 172.20.0.1:53958][0m
+2022-12-13 02:01:34,262 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.30, 172.20.0.1:45462][0m
+2022-12-13 02:01:41,318 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.37, 172.20.0.1:60074][0m
+2022-12-13 02:02:31,698 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/forms.py changed, reloading.
+2022-12-13 02:02:42,269 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-13 02:03:00,065 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.78, 172.20.0.1:39212][0m
+2022-12-13 02:04:15,057 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/forms.py changed, reloading.
+2022-12-13 02:04:18,057 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-13 02:05:13,343 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/forms.py changed, reloading.
+2022-12-13 02:05:16,290 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-13 02:05:20,917 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [1.27, 172.20.0.1:39516][0m
+2022-12-13 02:06:38,432 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.29, 172.20.0.1:35200][0m
+2022-12-13 02:07:40,749 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [1.44, 172.20.0.1:57830][0m
+2022-12-13 02:09:05,220 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.35, 172.20.0.1:43094][0m
+2022-12-13 02:10:12,253 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.32, 172.20.0.1:48518][0m
+2022-12-13 02:11:13,736 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/forms.py changed, reloading.
+2022-12-13 02:11:21,319 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-13 02:13:23,477 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.75, 172.20.0.1:54446][0m
+2022-12-13 02:14:50,059 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.34, 172.20.0.1:42310][0m
+2022-12-13 02:16:27,845 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/forms.py changed, reloading.
+2022-12-13 02:16:31,127 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-13 02:16:45,702 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.77, 172.20.0.1:47288][0m
+2022-12-13 02:17:07,905 - [ERROR]    django.request: Internal Server Error: /in_place/menu/item/create
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/local/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/usr/local/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/in_place/views.py", line 775, in post
+    form_data = NewItemForm(self.request.POST, self.request.FILES)
+  File "/usr/src/app/apps/in_place/forms.py", line 216, in __init__
+    self.fields["cuisine"].choices = [
+  File "/usr/src/app/apps/in_place/forms.py", line 217, in <listcomp>
+    [i.get("public_uuid"), i.get("name").title()]
+AttributeError: 'str' object has no attribute 'get'
+2022-12-13 02:17:08,107 - [ERROR]    django.channels.server: [35;1mHTTP POST /in_place/menu/item/create 500 [0.56, 172.20.0.1:58884][0m
+2022-12-13 02:20:01,661 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-13 02:20:05,025 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-13 02:20:14,947 - [ERROR]    django.request: Internal Server Error: /in_place/menu/item/create
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/local/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/usr/local/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/in_place/views.py", line 783, in post
+    cuisine = Cuisine.objects.get(public_uuid=cuisine_uuid)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/query.py", line 650, in get
+    raise self.model.DoesNotExist(
+restaurants.models.Cuisine.DoesNotExist: Cuisine matching query does not exist.
+2022-12-13 02:20:15,308 - [ERROR]    django.channels.server: [35;1mHTTP POST /in_place/menu/item/create 500 [1.03, 172.20.0.1:39240][0m
+2022-12-13 02:20:56,884 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-13 02:21:00,657 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-13 02:21:22,534 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-13 02:21:25,854 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-13 02:21:29,790 - [INFO]    django.channels.server: [32mHTTP POST /in_place/menu/item/create 302 [1.21, 172.20.0.1:47756][0m
+2022-12-13 02:21:30,395 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.55, 172.20.0.1:47764][0m
+2022-12-13 02:22:07,010 - [ERROR]    django.request: Internal Server Error: /in_place/menu/item/create
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/utils/deprecation.py", line 154, in __acall__
+    response = await sync_to_async(
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/local/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/usr/local/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/sessions/middleware.py", line 59, in process_response
+    request.session.save()
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/sessions/backends/db.py", line 82, in save
+    obj = self.create_model_instance(data)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/sessions/backends/db.py", line 69, in create_model_instance
+    session_data=self.encode(data),
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/sessions/backends/base.py", line 94, in encode
+    return signing.dumps(
+  File "/usr/local/lib/python3.10/site-packages/django/core/signing.py", line 150, in dumps
+    return TimestampSigner(key, salt=salt).sign_object(
+  File "/usr/local/lib/python3.10/site-packages/django/core/signing.py", line 228, in sign_object
+    data = serializer().dumps(obj)
+  File "/usr/local/lib/python3.10/site-packages/django/core/signing.py", line 125, in dumps
+    return json.dumps(obj, separators=(",", ":")).encode("latin-1")
+  File "/usr/local/lib/python3.10/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+  File "/usr/local/lib/python3.10/json/encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/local/lib/python3.10/json/encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/local/lib/python3.10/json/encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type NewItemForm is not JSON serializable
+2022-12-13 02:22:07,275 - [ERROR]    django.channels.server: [35;1mHTTP POST /in_place/menu/item/create 500 [0.40, 172.20.0.1:52600][0m
+2022-12-13 02:24:50,450 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-13 02:24:53,445 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-13 02:24:57,590 - [ERROR]    django.request: Internal Server Error: /in_place/menu/item/create
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/utils/deprecation.py", line 154, in __acall__
+    response = await sync_to_async(
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/local/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/usr/local/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/sessions/middleware.py", line 59, in process_response
+    request.session.save()
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/sessions/backends/db.py", line 82, in save
+    obj = self.create_model_instance(data)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/sessions/backends/db.py", line 69, in create_model_instance
+    session_data=self.encode(data),
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/sessions/backends/base.py", line 94, in encode
+    return signing.dumps(
+  File "/usr/local/lib/python3.10/site-packages/django/core/signing.py", line 150, in dumps
+    return TimestampSigner(key, salt=salt).sign_object(
+  File "/usr/local/lib/python3.10/site-packages/django/core/signing.py", line 228, in sign_object
+    data = serializer().dumps(obj)
+  File "/usr/local/lib/python3.10/site-packages/django/core/signing.py", line 125, in dumps
+    return json.dumps(obj, separators=(",", ":")).encode("latin-1")
+  File "/usr/local/lib/python3.10/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+  File "/usr/local/lib/python3.10/json/encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/local/lib/python3.10/json/encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "/usr/local/lib/python3.10/json/encoder.py", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type NewItemForm is not JSON serializable
+2022-12-13 02:24:57,933 - [ERROR]    django.channels.server: [35;1mHTTP POST /in_place/menu/item/create 500 [1.32, 172.20.0.1:53188][0m
+2022-12-13 02:25:28,967 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-13 02:25:32,164 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-13 02:25:36,377 - [INFO]    django.channels.server: [32mHTTP POST /in_place/menu/item/create 302 [1.07, 172.20.0.1:59000][0m
+2022-12-13 02:25:36,574 - [ERROR]    django.request: Internal Server Error: /in_place/menu/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/local/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/usr/local/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/in_place/views.py", line 680, in get
+    item_form = NewItemForm(
+  File "/usr/src/app/apps/in_place/forms.py", line 216, in __init__
+    self.fields["cuisine"].choices = [
+  File "/usr/src/app/apps/in_place/forms.py", line 217, in <listcomp>
+    [i.get("public_uuid"), i.get("name").title()]
+AttributeError: 'str' object has no attribute 'get'
+2022-12-13 02:25:36,809 - [ERROR]    django.channels.server: [35;1mHTTP GET /in_place/menu/ 500 [0.38, 172.20.0.1:43160][0m
+2022-12-13 02:26:40,390 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-13 02:26:43,388 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-13 02:26:46,486 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [1.06, 172.20.0.1:38632][0m
+2022-12-13 02:27:14,526 - [INFO]    django.channels.server: [32mHTTP POST /in_place/menu/item/create 302 [0.27, 172.20.0.1:60828][0m
+2022-12-13 02:27:14,934 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.38, 172.20.0.1:60836][0m
+2022-12-13 02:28:24,871 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-13 02:28:28,263 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-13 02:28:31,994 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [1.13, 172.20.0.1:43518][0m
+2022-12-13 02:28:46,969 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-13 02:28:50,454 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-13 02:28:53,753 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [1.12, 172.20.0.1:41392][0m
+2022-12-13 02:29:37,586 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.45, 172.20.0.1:35358][0m
+2022-12-13 02:30:02,005 - [ERROR]    django.request: Internal Server Error: /in_place/menu/itemvar/create
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/local/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/usr/local/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/in_place/views.py", line 863, in post
+    ItemVariation.objects.create(name=name,
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/query.py", line 669, in create
+    obj = self.model(**kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/base.py", line 561, in __init__
+    _setattr(self, field.name, rel_obj)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/fields/related_descriptors.py", line 235, in __set__
+    raise ValueError(
+ValueError: Cannot assign "'2dcfec1a-e481-479b-8044-8aa38eec5e09'": "ItemVariation.item" must be a "Item" instance.
+2022-12-13 02:30:02,227 - [ERROR]    django.channels.server: [35;1mHTTP POST /in_place/menu/itemvar/create 500 [0.43, 172.20.0.1:43738][0m
+2022-12-13 02:31:56,667 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-13 02:31:59,816 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-13 02:32:03,686 - [ERROR]    django.request: Internal Server Error: /in_place/menu/itemvar/create
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/local/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/usr/local/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/in_place/views.py", line 863, in post
+    ItemVariation.objects.create(name=name,
+NameError: name 'name' is not defined
+2022-12-13 02:32:04,081 - [ERROR]    django.channels.server: [35;1mHTTP POST /in_place/menu/itemvar/create 500 [0.77, 172.20.0.1:59950][0m
+2022-12-13 02:32:24,247 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-13 02:32:27,546 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-13 02:32:31,602 - [ERROR]    django.request: Internal Server Error: /in_place/menu/itemvar/create
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/local/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/usr/local/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/in_place/views.py", line 864, in post
+    ItemVariation.objects.create(name=name,
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/query.py", line 669, in create
+    obj = self.model(**kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/base.py", line 561, in __init__
+    _setattr(self, field.name, rel_obj)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/fields/related_descriptors.py", line 235, in __set__
+    raise ValueError(
+ValueError: Cannot assign "4": "ItemVariation.item" must be a "Item" instance.
+2022-12-13 02:32:32,124 - [ERROR]    django.channels.server: [35;1mHTTP POST /in_place/menu/itemvar/create 500 [1.66, 172.20.0.1:54216][0m
+2022-12-13 02:32:54,995 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-13 02:32:58,584 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-13 02:33:02,679 - [ERROR]    django.request: Internal Server Error: /in_place/menu/itemvar/create
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/local/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/usr/local/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/in_place/views.py", line 862, in post
+    ItemVariation.objects.create(name=name,
+NameError: name 'name' is not defined
+2022-12-13 02:33:03,115 - [ERROR]    django.channels.server: [35;1mHTTP POST /in_place/menu/itemvar/create 500 [1.65, 172.20.0.1:50616][0m
+2022-12-13 02:33:45,044 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-13 02:33:48,094 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-13 02:33:52,423 - [ERROR]    django.request: Internal Server Error: /in_place/menu/itemvar/create
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/local/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/usr/local/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/in_place/views.py", line 862, in post
+    ItemVariation.objects.create(name=name,
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/query.py", line 669, in create
+    obj = self.model(**kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/db/models/base.py", line 585, in __init__
+    raise TypeError(
+TypeError: ItemVariation() got unexpected keyword arguments: 'item__public_uuid'
+2022-12-13 02:33:52,914 - [ERROR]    django.channels.server: [35;1mHTTP POST /in_place/menu/itemvar/create 500 [1.66, 172.20.0.1:58804][0m
+2022-12-13 02:34:35,615 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-13 02:34:38,821 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-13 02:34:43,492 - [INFO]    django.channels.server: [32mHTTP POST /in_place/menu/itemvar/create 302 [1.52, 172.20.0.1:40784][0m
+2022-12-13 02:34:44,074 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.53, 172.20.0.1:40796][0m
+2022-12-13 02:37:32,102 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.35, 172.20.0.1:60776][0m
+2022-12-13 02:37:51,041 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.41, 172.20.0.1:59276][0m
+2022-12-13 02:37:52,877 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.41, 172.20.0.1:59290][0m
+2022-12-13 02:37:58,144 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.38, 172.20.0.1:35986][0m
+2022-12-13 02:38:07,674 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.39, 172.20.0.1:41222][0m
+2022-12-13 02:38:12,214 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.51, 172.20.0.1:41236][0m
+2022-12-13 02:38:56,900 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.40, 172.20.0.1:45202][0m
+2022-12-13 02:39:00,196 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.35, 172.20.0.1:45216][0m
+2022-12-13 02:39:07,813 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.36, 172.20.0.1:58006][0m
+2022-12-13 02:39:12,175 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.38, 172.20.0.1:58018][0m
+2022-12-13 02:39:24,338 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.45, 172.20.0.1:40974][0m
+2022-12-13 02:39:59,204 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.33, 172.20.0.1:50616][0m
+2022-12-13 02:40:07,023 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.50, 172.20.0.1:38896][0m
+2022-12-13 02:40:14,922 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.38, 172.20.0.1:38898][0m
+2022-12-13 02:40:19,771 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.49, 172.20.0.1:36446][0m
+2022-12-13 02:40:25,935 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.33, 172.20.0.1:36450][0m
+2022-12-13 02:40:46,141 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.50, 172.20.0.1:48564][0m
+2022-12-13 02:41:52,642 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.34, 172.20.0.1:42534][0m
+2022-12-13 02:42:13,881 - [INFO]    django.channels.server: [32mHTTP POST /in_place/menu/item/create 302 [0.37, 172.20.0.1:55660][0m
+2022-12-13 02:42:14,248 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.34, 172.20.0.1:55666][0m
+2022-12-13 02:42:50,425 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.45, 172.20.0.1:44306][0m
+2022-12-13 02:43:07,685 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.35, 172.20.0.1:43742][0m
+2022-12-13 02:43:10,809 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.51, 172.20.0.1:43746][0m
+2022-12-13 02:43:17,929 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.48, 172.20.0.1:47168][0m
+2022-12-13 02:43:20,979 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.42, 172.20.0.1:47174][0m
+2022-12-13 02:43:39,610 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.37, 172.20.0.1:33036][0m
+2022-12-13 02:43:52,719 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.38, 172.20.0.1:56112][0m
+2022-12-13 02:43:58,759 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.39, 172.20.0.1:57658][0m
+2022-12-13 02:44:13,127 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.37, 172.20.0.1:42296][0m
+2022-12-13 02:44:26,292 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.51, 172.20.0.1:36926][0m
+2022-12-13 02:44:52,613 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.39, 172.20.0.1:58290][0m
+2022-12-13 02:44:54,440 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.44, 172.20.0.1:58304][0m
+2022-12-13 02:45:09,558 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.38, 172.20.0.1:46014][0m
+2022-12-13 02:45:30,038 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.39, 172.20.0.1:48946][0m
+2022-12-13 02:49:04,600 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-13 02:49:08,083 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-13 02:49:45,656 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-13 02:49:48,955 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-13 02:49:56,432 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [1.30, 172.20.0.1:57942][0m
+2022-12-13 02:50:05,662 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.52, 172.20.0.1:45316][0m
+2022-12-13 02:53:38,443 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-13 02:53:42,190 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-13 02:54:00,863 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-13 02:54:04,258 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-13 22:39:00,825 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-13 22:55:21,903 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [4.30, 172.20.0.1:34108][0m
+2022-12-13 23:00:55,423 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.42, 172.20.0.1:49300][0m
+2022-12-13 23:01:41,898 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.52, 172.20.0.1:32838][0m
+2022-12-13 23:01:51,195 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.51, 172.20.0.1:60068][0m
+2022-12-13 23:02:00,896 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.36, 172.20.0.1:45918][0m
+2022-12-13 23:02:21,136 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.40, 172.20.0.1:54576][0m
+2022-12-13 23:02:30,726 - [INFO]    django.channels.server: [mHTTP GET /in_place/finance/ 200 [4.95, 172.20.0.1:54582][0m
+2022-12-13 23:02:33,679 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.49, 172.20.0.1:59602][0m
+2022-12-13 23:03:04,559 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [1.19, 172.20.0.1:42392][0m
+2022-12-13 23:04:00,415 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.48, 172.20.0.1:37612][0m
+2022-12-13 23:35:28,703 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.58, 172.20.0.1:35910][0m
+2022-12-13 23:35:37,992 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.42, 172.20.0.1:56144][0m
+2022-12-13 23:36:37,003 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.42, 172.20.0.1:40000][0m
+2022-12-13 23:36:58,127 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.34, 172.20.0.1:42022][0m
+2022-12-13 23:37:10,805 - [INFO]    django.channels.server: [32mHTTP POST /in_place/menu/cuisine/edit 302 [0.81, 172.20.0.1:38754][0m
+2022-12-13 23:37:11,197 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.36, 172.20.0.1:38770][0m
+2022-12-13 23:37:16,840 - [INFO]    django.channels.server: [32mHTTP POST /in_place/menu/cuisine/edit 302 [0.45, 172.20.0.1:38786][0m
+2022-12-13 23:37:17,259 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.39, 172.20.0.1:38798][0m
+2022-12-13 23:42:48,654 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.47, 172.20.0.1:44988][0m
+2022-12-13 23:43:33,855 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.35, 172.20.0.1:36382][0m
+2022-12-13 23:43:46,955 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.41, 172.20.0.1:33112][0m
+2022-12-13 23:44:21,853 - [INFO]    django.channels.server: [32mHTTP POST /in_place/menu/cuisine/delete 302 [0.57, 172.20.0.1:57416][0m
+2022-12-13 23:44:22,234 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.35, 172.20.0.1:57432][0m
+2022-12-13 23:46:37,698 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/models.py changed, reloading.
+2022-12-13 23:47:10,576 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-13 23:47:32,133 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-13 23:47:36,711 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-13 23:48:31,944 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/models.py changed, reloading.
+2022-12-13 23:48:35,372 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-14 00:04:16,388 - [ERROR]    django.request: Internal Server Error: /in_place/menu/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 880, in _resolve_lookup
+    current = current[bit]
+TypeError: 'Staff' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/local/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/usr/local/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 135, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/in_place/views.py", line 689, in get
+    return render(self.request, self.template_name, self.context)
+  File "/usr/local/lib/python3.10/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/usr/local/lib/python3.10/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/usr/local/lib/python3.10/site-packages/django/template/backends/django.py", line 62, in render
+    return self.template.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/test/utils.py", line 111, in instrumented_test_render
+    return self.nodelist.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/loader_tags.py", line 157, in render
+    return compiled_parent._render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/test/utils.py", line 111, in instrumented_test_render
+    return self.nodelist.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/defaulttags.py", line 315, in render
+    match = condition.eval(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/defaulttags.py", line 878, in eval
+    return self.value.resolve(context, ignore_failures=True)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 715, in resolve
+    obj = self.var.resolve(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 847, in resolve
+    value = self._resolve_lookup(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 890, in _resolve_lookup
+    current = getattr(current, bit)
+  File "/usr/src/app/apps/in_place/models.py", line 60, in can_add_items
+    return self.user.has_prem("in_place.add_items")
+AttributeError: 'UserModel' object has no attribute 'has_prem'
+2022-12-14 00:04:16,826 - [ERROR]    django.channels.server: [35;1mHTTP GET /in_place/menu/ 500 [1.34, 172.20.0.1:34686][0m
+2022-12-14 00:04:37,823 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/models.py changed, reloading.
+2022-12-14 00:04:42,065 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-14 00:04:45,759 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [1.02, 172.20.0.1:36666][0m
+2022-12-14 00:06:44,286 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.36, 172.20.0.1:56958][0m
+2022-12-14 00:06:52,292 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.36, 172.20.0.1:47772][0m
+2022-12-14 00:07:16,103 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.41, 172.20.0.1:44746][0m
+2022-12-14 00:07:58,110 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.37, 172.20.0.1:33122][0m
+2022-12-14 00:08:22,723 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.38, 172.20.0.1:42240][0m
+2022-12-14 00:15:00,853 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.46, 172.20.0.1:33698][0m
+2022-12-14 00:15:04,834 - [INFO]    django.channels.server: [32mHTTP POST /in_place/menu/cuisine/edit 302 [0.32, 172.20.0.1:33708][0m
+2022-12-14 00:15:05,211 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.35, 172.20.0.1:33714][0m
+2022-12-14 00:15:15,455 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.37, 172.20.0.1:52960][0m
+2022-12-14 00:15:32,035 - [INFO]    django.channels.server: [32mHTTP POST /in_place/menu/cuisine/edit 302 [0.25, 172.20.0.1:58214][0m
+2022-12-14 00:15:32,428 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.36, 172.20.0.1:58222][0m
+2022-12-14 00:16:11,217 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-14 00:16:17,408 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-14 00:21:28,033 - [INFO]    django.channels.server: [32mHTTP POST /in_place/menu/cuisine/edit 302 [0.88, 172.20.0.1:37344][0m
+2022-12-14 00:21:28,559 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.49, 172.20.0.1:37354][0m
+2022-12-14 00:22:25,077 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.38, 172.20.0.1:54262][0m
+2022-12-14 00:22:44,175 - [INFO]    django.channels.server: [32mHTTP POST /in_place/menu/item/edit 302 [0.58, 172.20.0.1:35940][0m
+2022-12-14 00:22:44,724 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.52, 172.20.0.1:35956][0m
+2022-12-14 00:23:55,160 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.56, 172.20.0.1:59308][0m
+2022-12-14 00:24:02,907 - [INFO]    django.channels.server: [32mHTTP POST /in_place/menu/item/edit 302 [0.44, 172.20.0.1:54530][0m
+2022-12-14 00:24:03,476 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.46, 172.20.0.1:54540][0m
+2022-12-14 00:24:16,285 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.44, 172.20.0.1:36558][0m
+2022-12-14 00:34:58,320 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.76, 172.20.0.1:40602][0m
+2022-12-14 00:35:06,790 - [INFO]    django.channels.server: [32mHTTP POST /in_place/menu/item/edit 302 [0.50, 172.20.0.1:45386][0m
+2022-12-14 00:35:07,316 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.44, 172.20.0.1:45394][0m
+2022-12-14 00:36:25,832 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.80, 172.20.0.1:56824][0m
+2022-12-14 00:37:36,363 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.54, 172.20.0.1:43876][0m
+2022-12-14 00:38:21,111 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-14 00:38:32,206 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-14 00:44:53,272 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-14 00:44:57,427 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-14 00:45:04,961 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [2.33, 172.20.0.1:52498][0m
+2022-12-14 00:45:13,875 - [INFO]    django.channels.server: [32mHTTP POST /in_place/menu/item/edit 302 [0.80, 172.20.0.1:59456][0m
+2022-12-14 00:45:14,324 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.38, 172.20.0.1:59460][0m
+2022-12-14 00:45:26,871 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-14 00:45:30,951 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-14 00:45:55,744 - [INFO]    django.channels.server: [32mHTTP POST /in_place/menu/item/edit 302 [1.36, 172.20.0.1:49764][0m
+2022-12-14 00:45:56,442 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.60, 172.20.0.1:49768][0m
+2022-12-14 00:46:27,115 - [INFO]    django.channels.server: [32mHTTP POST /in_place/menu/item/edit 302 [0.38, 172.20.0.1:54396][0m
+2022-12-14 00:46:27,515 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.37, 172.20.0.1:54400][0m
+2022-12-14 00:57:31,269 - [INFO]    django.utils.autoreload: /usr/src/app/apps/restaurants/models.py changed, reloading.
+2022-12-14 00:57:34,571 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-14 00:57:42,453 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.84, 172.20.0.1:50576][0m
+2022-12-14 00:57:47,885 - [INFO]    django.channels.server: [32mHTTP POST /in_place/menu/item/delete 302 [0.80, 172.20.0.1:50586][0m
+2022-12-14 00:57:48,325 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.40, 172.20.0.1:50592][0m
+2022-12-14 00:59:34,285 - [INFO]    django.utils.autoreload: /usr/src/app/apps/restaurants/models.py changed, reloading.
+2022-12-14 00:59:38,139 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-14 00:59:53,460 - [INFO]    django.channels.server: [32mHTTP POST /in_place/menu/item/edit 302 [1.27, 172.20.0.1:60372][0m
+2022-12-14 00:59:54,088 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.58, 172.20.0.1:60382][0m
+2022-12-14 01:00:13,011 - [INFO]    django.channels.server: [32mHTTP POST /in_place/menu/item/delete 302 [0.40, 172.20.0.1:41182][0m
+2022-12-14 01:00:13,385 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.33, 172.20.0.1:41198][0m
+2022-12-14 01:00:30,143 - [INFO]    django.utils.autoreload: /usr/src/app/apps/restaurants/models.py changed, reloading.
+2022-12-14 01:00:33,797 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-14 01:01:59,145 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-14 01:02:02,404 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-14 01:02:15,954 - [INFO]    django.channels.server: [32mHTTP POST /in_place/menu/item/create 302 [0.89, 172.20.0.1:54466][0m
+2022-12-14 01:02:16,589 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.57, 172.20.0.1:54476][0m
+2022-12-14 01:02:25,688 - [INFO]    django.channels.server: [32mHTTP POST /in_place/menu/item/delete 302 [0.47, 172.20.0.1:46444][0m
+2022-12-14 01:02:26,283 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.51, 172.20.0.1:46446][0m
+2022-12-14 01:04:34,385 - [INFO]    django.channels.server: [32mHTTP POST /in_place/menu/itemvar/create 302 [0.52, 172.20.0.1:50400][0m
+2022-12-14 01:04:34,784 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.34, 172.20.0.1:50406][0m
+2022-12-14 01:08:16,111 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.35, 172.20.0.1:35246][0m
+2022-12-14 01:08:20,737 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.42, 172.20.0.1:60682][0m
+2022-12-14 01:08:53,590 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.31, 172.20.0.1:42918][0m
+2022-12-14 01:09:42,628 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.36, 172.20.0.1:46992][0m
+2022-12-14 01:11:43,682 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.37, 172.20.0.1:53366][0m
+2022-12-14 01:17:56,557 - [INFO]    django.channels.server: [32mHTTP POST /in_place/menu/itemvar/edit 302 [0.33, 172.20.0.1:49206][0m
+2022-12-14 01:17:56,993 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.40, 172.20.0.1:49216][0m
+2022-12-14 01:18:54,741 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-14 01:18:58,259 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-14 01:19:11,701 - [INFO]    django.channels.server: [32mHTTP POST /in_place/menu/itemvar/edit 302 [0.67, 172.20.0.1:41018][0m
+2022-12-14 01:19:12,346 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.58, 172.20.0.1:41034][0m
+2022-12-14 01:19:44,587 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/urls.py changed, reloading.
+2022-12-14 01:19:46,909 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-14 01:19:56,387 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-14 01:20:00,067 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-14 01:20:27,724 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/urls.py changed, reloading.
+2022-12-14 01:20:31,129 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-14 01:20:42,821 - [INFO]    django.channels.server: [32mHTTP POST /in_place/menu/itemvar/edit 302 [1.00, 172.20.0.1:46184][0m
+2022-12-14 01:20:43,329 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.47, 172.20.0.1:46192][0m
+2022-12-14 01:20:52,697 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-14 01:20:55,970 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-14 01:22:55,657 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [1.51, 172.20.0.1:42260][0m
+2022-12-14 01:22:59,919 - [INFO]    django.channels.server: [32mHTTP POST /in_place/menu/itemvar/delete 302 [0.24, 172.20.0.1:39836][0m
+2022-12-14 01:23:00,344 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.39, 172.20.0.1:39848][0m
+2022-12-14 01:23:22,986 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-14 01:23:27,207 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-14 01:23:38,253 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-14 01:23:41,825 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-14 01:23:48,147 - [INFO]    django.channels.server: [32mHTTP POST /in_place/menu/itemvar/delete 302 [0.93, 172.20.0.1:59480][0m
+2022-12-14 01:23:49,112 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.93, 172.20.0.1:59490][0m
+2022-12-14 01:24:19,214 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-14 01:24:22,470 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-14 01:24:27,229 - [INFO]    django.channels.server: [32mHTTP POST /in_place/menu/itemvar/delete 302 [0.79, 172.20.0.1:33354][0m
+2022-12-14 01:24:27,935 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.65, 172.20.0.1:33358][0m
+2022-12-14 01:24:33,895 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
+2022-12-14 01:24:37,319 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
