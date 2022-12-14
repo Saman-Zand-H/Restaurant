@@ -24065,3 +24065,4 @@ AttributeError: 'UserModel' object has no attribute 'has_prem'
 2022-12-14 01:24:27,935 - [INFO]    django.channels.server: [mHTTP GET /in_place/menu/ 200 [0.65, 172.20.0.1:33358][0m
 2022-12-14 01:24:33,895 - [INFO]    django.utils.autoreload: /usr/src/app/apps/in_place/views.py changed, reloading.
 2022-12-14 01:24:37,319 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2022-12-14 18:56:43,737 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
