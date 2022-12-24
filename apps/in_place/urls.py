@@ -9,6 +9,9 @@ urlpatterns = [
    path(route="",
         view=views.dashboard_view,
         name="dashboard"),
+   path(route="item/new/render_template/",
+        view=views.render_new_item_view,
+        name="new_item_temp"),
    
    path(route="orders/edit/",
         view=views.edit_order_view,

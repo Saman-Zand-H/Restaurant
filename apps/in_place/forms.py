@@ -30,7 +30,6 @@ class OrderForm(forms.Form):
                                    initial="i")
     dest = forms.ChoiceField(choices=dest_choices)
     timestamp = forms.DateTimeField(required=False,
-                                    initial=timezone.now(),
                                     widget=forms.HiddenInput(attrs={
                                         "id": "newTimestamp"}))
  

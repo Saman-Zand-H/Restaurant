@@ -267,8 +267,7 @@ class Item(models.Model):
     name = models.CharField(max_length=100)
     cuisine = models.ForeignKey(Cuisine,
                                 related_name="cuisine_items",
-                                on_delete=models.SET_NULL,
-                                null=True,
+                                on_delete=models.CASCADE,
                                 to_field="id")
     picture = models.ImageField(upload_to='items/pictures', 
                                 blank=True, 
@@ -336,7 +335,11 @@ class OrderItem(models.Model):
     order = models.ForeignKey("Order",
                               on_delete=models.CASCADE,
                               related_name="order_items")
-    paid_price = models.PositiveIntegerField()
+    public_uuid = models.UUIDField(default=uuid4,
+                                   auto_created=True,
+                                   unique=True,
+                                   editable=False)
+    paid_price = models.PositiveIntegerField(default=0)
     item = models.ForeignKey(ItemVariation,
                              on_delete=models.CASCADE,
                              related_name="item_orders")
@@ -421,8 +424,7 @@ class Order(models.Model):
                                    related_name="restaurant_orders",
                                    to_field="id")
     timestamp = models.DateTimeField(default=timezone.now)
-    order_number = models.PositiveIntegerField(blank=True, 
-                                               null=True)
+    order_number = models.PositiveIntegerField(blank=True)
     
     objects = models.Manager()
     deliveries = OrderDels()
@@ -437,7 +439,7 @@ class Order(models.Model):
     def _set_order_number(self):
         q = self.__class__.objects.filter(timestamp__date=self.timestamp.date())
         if q.exists():
-            return q.first().order_number + 1
+            return q.latest("timestamp").order_number + 1
         else:
             return 1
     

@@ -1,11 +1,13 @@
 import os
-from datetime import time
+from uuid import UUID
+from datetime import time, datetime
 from logging import getLogger
 from typing import List
 
 from django.core.exceptions import ValidationError
 from django.core.paginator import (Paginator, PageNotAnInteger, 
                                    EmptyPage, InvalidPage)
+from django.db.models.query import QuerySet
 
 
 logger = getLogger(__name__)
@@ -51,3 +53,26 @@ def paginate(page, pag_object, obj_per_page):
     results = get_paginator_page(paginator, page)
     return (results, paginator)
 
+
+def json_custom_encoder(v):
+    if isinstance(v, datetime):
+        return v.isoformat()
+    elif isinstance(v, UUID):
+        return v.hex
+    elif isinstance(v, QuerySet):
+        return [*v]
+    raise TypeError(f"Object of type {type(v)} is not supported.")
+
+
+def json_custom_decoder(v):
+    if isinstance(v, str):
+        # Looking for isoformatted strs
+        try:
+            return datetime.fromisoformat(v)
+        except:
+            pass
+        try:
+            return UUID(v)
+        except:
+            pass
+    raise TypeError(f"Object of type {type(v)} is not supported.")

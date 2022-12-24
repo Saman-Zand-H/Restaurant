@@ -11,3 +11,4 @@ class RestaurantsConfig(AppConfig):
         super().ready()
         from restaurants.models import Review
         post_save.connect(restaurants.signals.update_restaurant_score, sender=Review)
+        

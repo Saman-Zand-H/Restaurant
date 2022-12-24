@@ -54,7 +54,8 @@ from restaurants.models import (ItemVariation,
 logger = getLogger(__name__)
 
 
-def prepare_order_namedtuple(restaurant, timestamp:date=timezone.now().date()):
+def prepare_order_namedtuple(restaurant, 
+                             timestamp:date=timezone.now().date()):
     item_var_qs = ItemVariation.objects.filter(
         item__cuisine__restaurant=restaurant)
     OrderItemFormset = formset_factory(
@@ -104,8 +105,10 @@ def prepare_order_namedtuple(restaurant, timestamp:date=timezone.now().date()):
                     "order_type": order.order_type
                 }),
             dinein_form=DineInForm(initial={
-                "table_number": order.order_dinein.table_number,
-                "description": order.order_dinein.description}) 
+                "table_number": order.order_dinein.table_number 
+                    if hasattr("order", "order_dinein") else None,
+                "description": order.order_dinein.description
+                    if hasattr("order", "order_dinein") else None}) 
                 if order.order_type == "i" else DineInForm())
         for order in orders]
     return data
@@ -159,7 +162,8 @@ class DashboardView(LoginRequiredMixin, UserPassesTestMixin, View):
                     restaurant = self.request.user.user_staff.restaurant
                     order_type = order_form_data.cleaned_data.get("order_type")
                     dest = order_form_data.cleaned_data.get("dest")
-                    timestamp = order_form_data.cleaned_data.get("timestamp")
+                    timestamp = order_form_data.cleaned_data.get("timestamp",
+                                                                 timezone.now())
                     item_var_qs = ItemVariation.objects.filter(
                         item__cuisine__restaurant=restaurant)
                     OrderItemFormset = formset_factory(
@@ -183,7 +187,7 @@ class DashboardView(LoginRequiredMixin, UserPassesTestMixin, View):
                               order_type, 
                               restaurant,
                               dest, 
-                              timestamp=None):
+                              timestamp):
         formset_data = formset(self.request.POST,
                                initial=[
                                   {
@@ -198,7 +202,6 @@ class DashboardView(LoginRequiredMixin, UserPassesTestMixin, View):
             order = Order.objects.create(restaurant=restaurant,
                                          order_type=order_type)
             # If provided, use a custom timestamp
-            print(timestamp)
             order.timestamp = timestamp
             order.save()
                 
@@ -281,20 +284,30 @@ class EditOrderView(LoginRequiredMixin, UserPassesTestMixin, View):
             if order_data.is_valid():
                 dest = order_data.cleaned_data.get("dest")
                 timestamp = order_data.cleaned_data.get("timestamp")
-                order = Order.objects.get(
-                    public_uuid=order_data.cleaned_data.get("public_uuid"))
+                try:
+                    order = Order.objects.get(
+                        public_uuid=order_data.cleaned_data.get("public_uuid"))
+                except Order.DoesNotExist:
+                    messages.error(self.request, "BROKEN OPERATION. Please try again.")
+                    return redirect("in_place:dashboard")
                 
                 if order.order_type == "i":
                     dinein_form = DineInForm(self.request.POST,
                                             initial={
-                                                "table_number": order.order_dinein.table_number,
-                                                "description": order.order_dinein.description})
+                                                "table_number": order.order_dinein.table_number
+                                                    if hasattr(order, "order_dine") else None,
+                                                "description": order.order_dinein.description
+                                                    if hasattr(order, "order_dinein") else None})
                     if dinein_form.is_valid() and dinein_form.has_changed():
+                        # Make sure the object exists
+                        DineInOrder.objects.get_or_create(order=order)
+                        
                         DineInOrder.objects.select_for_update().filter(
                             order__public_uuid=order.public_uuid).update(
                                 table_number=dinein_form.cleaned_data.get("table_number"),
                                 description=dinein_form.cleaned_data.get("description"),
-                                timestamp=timestamp)
+                                timestamp=timestamp if timestamp is not None 
+                                            else timezone.now())
                     elif not dinein_form.is_valid():
                         self.request.session["dinein_form"] = dinein_form
                         self._invalid_input_message()
@@ -333,15 +346,17 @@ class EditOrderView(LoginRequiredMixin, UserPassesTestMixin, View):
                                             formset_forms)]
                     for form in changed_forms:
                         item = form.cleaned_data.get("item")
-                        paid = form.cleaned_data.get("paid_price")
                         auto = form.cleaned_data.get("auto_price")
                         count = form.cleaned_data.get("count")
                         fee = item.price
-                            
-                        for o in order.order_items.filter(item=item):
-                            o.count = count
-                            o.paid_price = paid if not auto else count*fee
-                            o.save()
+                        paid = count*fee if auto else form.cleaned_data.get("paid_price", 0)
+                        print(fee , count, auto)
+                        
+                        o, _ = OrderItem.objects.get_or_create(order=order,
+                                                               item=item)
+                        o.count = count
+                        o.paid_price = paid
+                        o.save()
                     messages.success(self.request, 
                                     "The Order was updated successfully.")
                 else:
@@ -394,6 +409,7 @@ class OrdersView(LoginRequiredMixin, UserPassesTestMixin, View):
     modals_ajax_template_name = "in_place/order_modals_ajax.html"
     modals_js_template = "in_place/order_modals_js_ajax.html"
     context = dict()
+    
     class SearchData(NamedTuple):
         order_number: int
         orders_repr: str
@@ -926,3 +942,27 @@ class DeleteItemVarView(LoginRequiredMixin, UserPassesTestMixin, View):
     
 
 delete_itemvar_view = DeleteItemVarView.as_view()
+
+
+class RenderNewItemView(LoginRequiredMixin, UserPassesTestMixin, View):
+    template_name = "in_place/new_item_temp.html"
+    context = dict()
+    
+    def test_func(self):
+        return hasattr(self.request.user, "user_staff")
+    
+    def get(self, *args, **kwargs):
+        restaurant = self.request.user.user_staff.restaurant
+        revenue_chart, sale_chart = (
+            weekly_revenue_chart_data(
+                [i//1000 for i in restaurant.weekly_revenue]),
+            weekly_sale_chart_data(restaurant.weekly_sale))
+        self.context.update({
+            "orders": prepare_order_namedtuple(restaurant),
+            "sale_chart": sale_chart,
+            "revenue_chart": revenue_chart,
+        })
+        return render(self.request, self.template_name, self.context)
+
+
+render_new_item_view = RenderNewItemView.as_view()

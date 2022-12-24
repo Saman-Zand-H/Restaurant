@@ -17,8 +17,7 @@ class UserModelAdmin(UserAdmin):
                     "email",
                     "first_name",
                     "last_name",
-                    "picture",
-                    "about",
+                    "picture"
                 )
             },
         ),
@@ -44,7 +43,6 @@ class UserModelAdmin(UserAdmin):
                 "picture",
                 "password1",
                 "password2",
-                "about",
             ),
             "classes":
             "wide",

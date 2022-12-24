@@ -3,6 +3,7 @@ from django.conf import settings
 from django.contrib.auth.models import Permission, Group
 from django.core.exceptions import ValidationError
 from django.core.validators import MinValueValidator
+from django.utils import timezone
 from uuid import uuid4
 
 from restaurants.models import  Restaurant, Order
@@ -81,7 +82,10 @@ class Staff(models.Model):
     
 class DineInOrder(models.Model):
     table_number = models.PositiveIntegerField(
-        validators=[MinValueValidator(1)])
+        validators=[MinValueValidator(1)],
+        null=True,
+        blank=True
+    )
     description = models.TextField(blank=True,
                                    null=True)
     order = models.OneToOneField(Order,
@@ -91,7 +95,7 @@ class DineInOrder(models.Model):
                                    auto_created=True,
                                    editable=False,
                                    unique=True)
-    timestamp = models.DateTimeField(auto_now=True)
+    timestamp = models.DateTimeField(default=timezone.now)
     
     def __str__(self):
         return f"({self.order.timestamp}){self.order.order_number} - {self.table_number}"

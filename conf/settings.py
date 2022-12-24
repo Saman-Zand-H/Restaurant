@@ -272,3 +272,14 @@ REST_FRAMEWORK = {
     ],
 }
 
+
+# Django Channels Configuration
+REDIS_BACKEND = env.str("REDIS_BACKEND", "redis")
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [(REDIS_BACKEND, 6379)]
+        }
+    }
+}
