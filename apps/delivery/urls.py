@@ -14,5 +14,8 @@ urlpatterns = [
         name='cart'),
    path(route="discounts/",
         view=views.discount_view,
-        name="discount")
+        name="discount"),
+   path(route="cart/purchase/",
+        view=views.purchase_view,
+        name="purchase"),
 ]

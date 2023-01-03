@@ -80,8 +80,13 @@ def prepare_order_namedtuple(restaurant,
                 "fee": i.item.price or 0,
                 "paid_price": i.paid_price or 0
             } for i in order.order_items.all()]
-        empty_items =[{"count": 0, "item": i, "fee": i.price or 0, "paid_price": 0} 
-                        for i in item_diff]
+        empty_items =[
+            {
+                "count": 0, "item": i, 
+                "fee": i.price or 0, 
+                "paid_price": 0
+            } 
+                for i in item_diff]
         return order_items + empty_items
             
     min_t = datetime.combine(timestamp,
@@ -93,6 +98,7 @@ def prepare_order_namedtuple(restaurant,
     orders = restaurant.restaurant_orders.filter(
         Q(timestamp__gte=min_t) 
         & Q(timestamp__lte=max_t))
+    
     data = [
         OrderData(
             qs=order,
@@ -133,6 +139,7 @@ class DashboardView(LoginRequiredMixin, UserPassesTestMixin, View):
         OrderItemFormset = formset_factory(OrderItemForm,
                                            extra=item_var_qs.count(),
                                            max_num=item_var_qs.count())
+        
         session_form_vals = self.get_forms_from_session()
         order_form, dinein_form, order_item_formset = (
             session_form_vals.get("order_form") or OrderForm(),
@@ -144,6 +151,7 @@ class DashboardView(LoginRequiredMixin, UserPassesTestMixin, View):
                                      {"count": 0, "item": i, "fee": i.price or 0} 
                                       for i in item_var_qs]
                                  ))
+        
         self.context.update({"score_chart": score_chart,
                              "revenue_chart": revenue_chart,
                              "sale_chart": sale_chart,
@@ -288,16 +296,20 @@ class EditOrderView(LoginRequiredMixin, UserPassesTestMixin, View):
                     order = Order.objects.get(
                         public_uuid=order_data.cleaned_data.get("public_uuid"))
                 except Order.DoesNotExist:
-                    messages.error(self.request, "BROKEN OPERATION. Please try again.")
+                    messages.error(self.request, 
+                                   "BROKEN OPERATION. Please try again.")
                     return redirect("in_place:dashboard")
                 
                 if order.order_type == "i":
-                    dinein_form = DineInForm(self.request.POST,
-                                            initial={
-                                                "table_number": order.order_dinein.table_number
-                                                    if hasattr(order, "order_dine") else None,
-                                                "description": order.order_dinein.description
-                                                    if hasattr(order, "order_dinein") else None})
+                    dinein_form = DineInForm(
+                        self.request.POST,
+                        initial={
+                            "table_number": order.order_dinein.table_number
+                                if hasattr(order, "order_dine") else None,
+                            "description": order.order_dinein.description
+                                if hasattr(order, "order_dinein") else None
+                        }
+                    )
                     if dinein_form.is_valid() and dinein_form.has_changed():
                         # Make sure the object exists
                         DineInOrder.objects.get_or_create(order=order)
@@ -321,25 +333,26 @@ class EditOrderView(LoginRequiredMixin, UserPassesTestMixin, View):
                 OrderItemFormset = formset_factory(OrderItemForm,
                                                    extra=order_item_qs.count(),
                                                    max_num=order_item_qs.count())
-                formset_data = OrderItemFormset(self.request.POST,
-                                                form_kwargs={"item_qs": item_var_qs},
-                                                initial=[
-                                                    {
-                                                        "count": i.count, 
-                                                        "item": i.item, 
-                                                        "fee": i.item.price,
-                                                        "paid_price": i.paid_price,
-                                                        "auto_price": 1,
-                                                    } for i in order_item_qs]
-                                                    + [
-                                                        {
-                                                            "count": 0,
-                                                            "item": i,
-                                                            "fee": i.price,
-                                                            "paid_price": 0,
-                                                            "auto_price": 1
-                                                        } for i in items_diff
-                                                    ])
+                formset_data = OrderItemFormset(
+                    self.request.POST,
+                    form_kwargs={"item_qs": item_var_qs},
+                    initial=[
+                        {
+                            "count": i.count, 
+                            "item": i.item, 
+                            "fee": i.item.price,
+                            "paid_price": i.paid_price,
+                            "auto_price": 1,
+                        } for i in order_item_qs]
+                        + [
+                            {
+                                "count": 0,
+                                "item": i,
+                                "fee": i.price,
+                                "paid_price": 0,
+                                "auto_price": 1
+                            } for i in items_diff
+                        ])
                 if formset_data.is_valid():
                     formset_forms = [*formset_data.forms]
                     changed_forms = [*filter(lambda x: x.has_changed(), 
@@ -349,8 +362,8 @@ class EditOrderView(LoginRequiredMixin, UserPassesTestMixin, View):
                         auto = form.cleaned_data.get("auto_price")
                         count = form.cleaned_data.get("count")
                         fee = item.price
-                        paid = count*fee if auto else form.cleaned_data.get("paid_price", 0)
-                        print(fee , count, auto)
+                        paid = (count*fee if auto 
+                                else form.cleaned_data.get("paid_price", 0))
                         
                         o, _ = OrderItem.objects.get_or_create(order=order,
                                                                item=item)
@@ -440,21 +453,25 @@ class OrdersView(LoginRequiredMixin, UserPassesTestMixin, View):
             restaurant = self.request.user.user_staff.restaurant
             query = OrderQuery(restaurant.id, form_data.cleaned_data).query
             e = OrderDocument().search().sort("-timestamp").query(query).execute()
-            orders_data = [self.SearchData(
-                                order_number=i["_source"]["order_number"],
-                                orders_repr=i["_source"]["orders_repr"],
-                                timestamp=datetime.fromisoformat(
-                                    i["_source"]["timestamp"]),
-                                public_uuid=i["_source"]["public_uuid"],
-                                get_order_type_display=i["_source"]["get_order_type_display"])
-                           for i in e.hits.hits]
+            orders_data = [
+                self.SearchData(
+                    order_number=i["_source"]["order_number"],
+                    orders_repr=i["_source"]["orders_repr"],
+                    timestamp=datetime.fromisoformat(
+                        i["_source"]["timestamp"]),
+                    public_uuid=i["_source"]["public_uuid"],
+                    get_order_type_display=i["_source"]["get_order_type_display"])
+               for i in e.hits.hits]
+            
             orders_context = {
                 "orders": orders_data,
                 "daily_revenue": restaurant.get_daily_revenue(timestamp),
             }
+            
             modals_context = {
                 "orders": prepare_order_namedtuple(restaurant, timestamp),
             }
+            
             return JsonResponse({"orders_temp": render_to_string(
                                     request=self.request, 
                                     template_name=self.ajax_template_name, 
@@ -479,9 +496,10 @@ class OrdersView(LoginRequiredMixin, UserPassesTestMixin, View):
         restaurant = self.request.user.user_staff.restaurant
         item_var_qs = ItemVariation.objects.filter(
             item__cuisine__restaurant=restaurant)
-        OrderItemFormset = formset_factory(OrderItemForm,
-                                           extra=item_var_qs.count(),
-                                           max_num=item_var_qs.count())
+        OrderItemFormset = formset_factory(
+            OrderItemForm,
+            extra=item_var_qs.count(),
+            max_num=item_var_qs.count())
         session_form_vals = self.get_forms_from_session()
         return (
             session_form_vals.get("order_form") or OrderForm(),
@@ -530,7 +548,8 @@ class StaffView(LoginRequiredMixin, UserPassesTestMixin, View):
                                          income=income,
                                          description=description,
                                          role=role)
-                    messages.success(self.request, "User was successfully created.")
+                    messages.success(self.request, 
+                                     "User was successfully created.")
                     return redirect("in_place:staff")
                 except:
                     pass

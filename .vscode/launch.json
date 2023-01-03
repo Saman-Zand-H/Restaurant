@@ -1,22 +1,20 @@
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-
         {
-            "name": "Containerized Django",
+            "name": "Django Containerized",
             "type": "python",
             "request": "launch",
-            "pathMappings": [
-                {
-                    "localRoot": "${workspaceFolder}",
-                    "remoteRoot": "/usr/src/app"
-                }
+            "program": "/usr/bin/docker-compose",
+            "args": [
+                "exec",
+                "web",
+                "python",
+                "manage.py",
+                "runserver",
+                "--noreload"
             ],
-            "port": 3000,
-            "host": "localhost"
+            "django": true
         }
     ]
 }

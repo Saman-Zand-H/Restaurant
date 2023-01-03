@@ -8,7 +8,7 @@ WORKDIR /usr/src/app/
 
 RUN apt-get update && apt-get install --fix-missing -y \
     build-essential libssl-dev xvfb curl wget nginx supervisor \
-    libffi-dev libpq-dev python-dev gcc gettext unzip \
+    libffi-dev libpq-dev python-dev gcc gettext unzip nano \
     daemonize dbus-user-session fontconfig aptitude gdal-bin \
     libgdal-dev python3-gdal binutils libproj-dev
 
@@ -22,7 +22,7 @@ RUN sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable 
 RUN apt-get update && apt-get install --fix-missing -y google-chrome-stable
 
 COPY ./requirements.txt ./requirements.txt
-RUN pip install -U pip && pip install -r requirements.txt
+RUN pip install -U pip && pip --timeout=1000 install -r requirements.txt
 COPY . .
 
 # Install Chrome webdriver

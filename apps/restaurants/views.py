@@ -144,7 +144,7 @@ class RestaurantPageView(View):
         restaurant = await Restaurant.objects.aget(
             public_uuid=kwargs.get("public_uuid"))
         reviews = await sync_to_async(Review.objects.filter)(
-                item__item__cuisine__restaurant=restaurant)
+                item__cuisine__restaurant=restaurant)
         self.context.update({
             "restaurant": restaurant,
             "reviews": reviews,

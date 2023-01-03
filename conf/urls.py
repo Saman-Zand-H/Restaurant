@@ -4,6 +4,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
+from azbankgateways.urls import az_bank_gateways_urls
+
 
 urlpatterns = [
     path(route='admin/', 
@@ -15,6 +17,8 @@ urlpatterns = [
          view=include('dj_rest_auth.urls')),
     path(route='dj-rest-auth/registration/', 
          view=include('dj_rest_auth.registration.urls')),
+    path(route="bankgateways/",
+         view=az_bank_gateways_urls()),
 
     path(route="", 
          view=include("restaurants.urls", 

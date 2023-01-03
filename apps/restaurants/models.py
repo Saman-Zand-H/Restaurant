@@ -1,13 +1,14 @@
 from django.db import models
 from django.urls import reverse
 from django.conf import settings
-from django.db.models.functions import TruncDate, TruncMonth
+from django.db.models.functions import TruncDate
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.contrib.gis.db import models as gis_models
 from django.core.exceptions import ValidationError
 from django.templatetags.static import static
 from django.utils.functional import cached_property
 
+from azbankgateways.models import Bank
 from persiantools.jdatetime import JalaliDateTime
 from datetime import timedelta, datetime, time, date
 from django.utils import timezone
@@ -425,6 +426,18 @@ class Order(models.Model):
                                    to_field="id")
     timestamp = models.DateTimeField(default=timezone.now)
     order_number = models.PositiveIntegerField(blank=True)
+    # If this field and user is not null we can deduce it's created by the user,
+    # otherwise, the restaurant created this.
+    user_payment = models.OneToOneField(Bank,
+                                        on_delete=models.SET_NULL,
+                                        null=True,
+                                        blank=True,
+                                        related_name="bank_order")
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,
+                             on_delete=models.SET_NULL,
+                             null=True,
+                             blank=True,
+                             related_name="user_orders")
     
     objects = models.Manager()
     deliveries = OrderDels()

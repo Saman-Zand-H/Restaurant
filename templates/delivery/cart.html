@@ -132,7 +132,7 @@
                         <h4>Shipping Address</h4>
                     </div>
                     <div class="card-body pb-4">
-                        <form method="POST" id="shippingForm">
+                        <form method="POST" action="{% url 'delivery:purchase' %}" id="shippingForm">
                             {% csrf_token %}
                             {% if user.user_addresses.exists %}
                                 {% for address in user.user_addresses.all %}

@@ -16,6 +16,7 @@ class Staff(models.Model):
         ("s", "supplier"),
         ("w", "waiter"),
         ("m", "manager"),
+        ("d", "driver"),
     )
     public_uuid = models.UUIDField(default=uuid4,
                                    editable=False,

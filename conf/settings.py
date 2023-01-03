@@ -31,6 +31,11 @@ CSRF_TRUSTED_ORIGINS = [
 ]
 
 
+USE_X_FORWARDED_HOST = True
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", 
+                           "http" if DEBUG else "https")
+
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -47,6 +52,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'azbankgateways',
     'channels',
     'channels_redis',
     'cities_light',
@@ -189,7 +195,7 @@ LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
     'formatters': {
-        'console': {
+        'default': {
             'format': '%(asctime)s - [%(levelname)s]    %(name)s: %(message)s'
         },
     },
@@ -197,12 +203,12 @@ LOGGING = {
         'console': {
             'level': 'INFO',
             'class': 'rich.logging.RichHandler',
-            'formatter': 'console'
+            'formatter': 'default'
         },
         'file': {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
-            'formatter': 'console',
+            'formatter': 'default',
             'filename': 'logs/app/app.log'
         }
     },
@@ -282,4 +288,15 @@ CHANNEL_LAYERS = {
             "hosts": [(REDIS_BACKEND, 6379)]
         }
     }
+}
+
+# Bank Gateway Configurations
+AZ_IRANIAN_BANK_GATEWAYS = {
+    "GATEWAYS": {
+        "ZIBAL": {
+            "MERCHANT_CODE": "zibal"
+        }
+    },
+    "IS_SAMPLE_FORM_ENABLE": DEBUG,
+    "DEFAULT": "ZIBAL",
 }

@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Delivery, DeliveryCart, DeliveryCartItem, Discount, UserAddressInfo
+from .models import DeliveryMan, DeliveryCart, DeliveryCartItem, Discount, UserAddressInfo
 
 
 @admin.register(UserAddressInfo)
@@ -8,9 +8,9 @@ class UserAddressInfoAdmin(admin.ModelAdmin):
     pass
 
 
-@admin.register(Delivery)
+@admin.register(DeliveryMan)
 class DeliveryAdmin(admin.ModelAdmin):
-    list_display = ["user", "vehicle_number", "national_id"]
+    list_display = ["user", "vehicle_number", "vehicle_model", "restaurant"]
     list_display_links = ["user"]
     search_fields = ["user__username", "uuid"]
     ordering = ["user__date_joined"]
@@ -21,10 +21,9 @@ class DeliveryAdmin(admin.ModelAdmin):
     
 @admin.register(DeliveryCart)
 class DeliveryCartAdmin(admin.ModelAdmin):
-    list_display = ["user", "paid"]
+    list_display = ["user"]
     list_display_links = ["user"]
     search_fields = ["user__username", "uuid"]
-    list_filter = ["paid"]
     ordering = ["user__date_joined"]
     empty_value_display = "-empty-"
     exclude = ["uuid"]

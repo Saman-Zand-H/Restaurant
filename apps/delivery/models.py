@@ -10,7 +10,7 @@ from decimal import Decimal
 from collections import Counter
 from string import ascii_letters
 
-from restaurants.models import ItemVariation, OrderItem
+from restaurants.models import ItemVariation, Restaurant
 
 
 def generate_discount_code(length=10):
@@ -43,17 +43,22 @@ class UserAddressInfo(gis_models.Model):
         return super().save(*args, **kwargs)
 
 
-class Delivery(models.Model):
-    user = models.OneToOneField(settings.AUTH_USER_MODEL,
-                                on_delete=models.SET_NULL,
-                                null=True,
-                                related_name="user_delivery")
+class DeliveryMan(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,
+                             on_delete=models.CASCADE,
+                             related_name="user_deliveries")
+    vehicle_model = models.CharField(max_length=50)
     vehicle_number = models.CharField(max_length=20)
-    national_id = models.CharField(max_length=20)
+    unique_code = models.CharField(max_length=30)
+    restaurant = models.ForeignKey(Restaurant,
+                                   on_delete=models.CASCADE,
+                                   related_name="restaurnat_deliveries")
+    
+    def __str__(self):
+        return f"{self.restaurant.name} DELIVERY: {self.user.username}"
 
 
 class DeliveryCart(models.Model):
-    paid = models.BooleanField(default=False)
     discounts = models.ManyToManyField("Discount",
                                        related_name="discount_carts")
     user = models.OneToOneField(settings.AUTH_USER_MODEL,
