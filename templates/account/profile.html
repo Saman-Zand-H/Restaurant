@@ -23,6 +23,7 @@
 						{% if change_user_form.errors %}
 							<div class="alert alert-danger">Error!
 								{{ change_user_form.errors }}
+								{{ change_user_form.non_field_errors }}
 							</div>
 						{% endif %}
 						<div class="row mt-3">

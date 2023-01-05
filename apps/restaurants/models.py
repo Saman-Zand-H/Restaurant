@@ -74,7 +74,7 @@ class Restaurant(models.Model):
     phone_number = models.CharField(max_length=20, 
                                     blank=True, 
                                     null=True)
-    table_count = models.PositiveIntegerField()
+    table_count = models.PositiveIntegerField(default=0)
     delivery = models.ForeignKey(RestaurantDelivery,
                                  on_delete=models.SET_NULL,
                                  related_name="restaurant",

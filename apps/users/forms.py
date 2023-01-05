@@ -134,14 +134,15 @@ class ChangeUserForm(forms.Form):
             self.fields["last_name"].initial = last_name
             self.fields["first_name"].initial = first_name
             if bool((form_errors:=request.session.get("auth_form_errors"))):
-                print(form_errors)
-                self.add_error(**form_errors)
+                # Turning the form_errors in 
+                errors_kwarg = [
+                    {"field": field, "errors": error} 
+                    for field, error in dict(form_errors)]
+                map(lambda i: self.add_error(**i), errors_kwarg)
         
-    # def clean(self, *args, **kwargs):
-    #     print("testing")
-    #     data = super().clean(*args, **kwargs)
-    #     username = self.cleaned_data.get("username")
-    #     print(username)
-    #     if "username" in self.changed_data:
-    #         get_adapter().clean_username(username)
-    #     return data
+    def clean(self, *args, **kwargs):
+        data = super().clean(*args, **kwargs)
+        username = self.cleaned_data.get("username")
+        if "username" in self.changed_data:
+            get_adapter().clean_username(username)
+        return data

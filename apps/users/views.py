@@ -16,7 +16,7 @@ from .forms import (AddressForm,
                     ChangeUserForm)
 
 
-class ProfileView(View, LoginRequiredMixin):
+class ProfileView(LoginRequiredMixin, View):
     template_name = "account/profile.html"
     context = dict()
     
@@ -130,19 +130,19 @@ delete_address_view = DeleteAddressView.as_view()
 
 class ChangeUserView(LoginRequiredMixin, View):
     def post(self, *args, **kwargs):
-        form_data = ChangeUserForm(request=self.request)
+        form_data = ChangeUserForm(request=self.request, 
+                                   data=self.request.POST)
         if form_data.is_valid() and form_data.has_changed():
-            user_qs = get_user_model().objects.filter(
-                username=self.reqeust.user.username)
+            username = self.request.user.username
             changed_data = {i:form_data.cleaned_data.get(i) 
                             for i in form_data.changed_data}
-            update_arg_str = ','.join([f'{k}="{v}"' for k, v in changed_data.items()])
-            update_str = f"update({update_arg_str})"
-            exec(f"{user_qs}.{update_str}")
-            messages.success(self.reqeust, 
+            update_arg_str = ','.join([f'{k}=\'{v}\'' 
+                                       for k, v in changed_data.items()])
+            exec(f"get_user_model().objects.filter"
+                  f"(username='{username}').update({update_arg_str})")
+            messages.success(self.request, 
                              "Your informatin was successfully updated.")
         else:
-            print(form_data.is_valid(), form_data.has_changed(), form_data.errors, form_data.non_field_errors())
             messages.error(self.request, "Process was not completed. Please try again.")
             # using sessions to show the errors on the template
             self.request.session["auth_form_errors"] = form_data.errors
