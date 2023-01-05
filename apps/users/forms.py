@@ -1,7 +1,11 @@
 from django import forms
-from allauth.account.forms import LoginForm, SignupForm as AllauthSignupForm
 from django.contrib.gis.forms.fields import PointField
 from django.contrib.gis.forms.widgets import OSMWidget
+
+from allauth.account.forms import LoginForm, SignupForm as AllauthSignupForm
+from allauth.utils import get_username_max_length
+from allauth.account.adapter import get_adapter
+
 from phonenumber_field.formfields import PhoneNumberField
 from phonenumber_field.widgets import PhoneNumberInternationalFallbackWidget
 
@@ -97,3 +101,47 @@ class AddressForm(forms.Form):
 class EditAddressForm(AddressForm):
     public_uuid = forms.UUIDField()
     
+    
+class ChangeUserForm(forms.Form):
+    username = forms.CharField(max_length=get_username_max_length(),
+                               required=True,
+                               widget=forms.TextInput(attrs={
+                                   "class": "form-control"
+                               }))
+    first_name = forms.CharField(max_length=50,
+                                 min_length=1,
+                                 required=True,
+                                 widget=forms.TextInput(attrs={
+                                    "class": "form-control"
+                                 }))
+    last_name = forms.CharField(max_length=50,
+                                 min_length=1,
+                                 required=True,
+                                 widget=forms.TextInput(attrs={
+                                    "class": "form-control"
+                                 }))
+    
+    def __init__(self, request=None, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        if request is not None:
+            assert hasattr(request, "user")
+
+            username = request.user.username
+            last_name = request.user.last_name
+            first_name = request.user.first_name
+            
+            self.fields["username"].initial = username
+            self.fields["last_name"].initial = last_name
+            self.fields["first_name"].initial = first_name
+            if bool((form_errors:=request.session.get("auth_form_errors"))):
+                print(form_errors)
+                self.add_error(**form_errors)
+        
+    # def clean(self, *args, **kwargs):
+    #     print("testing")
+    #     data = super().clean(*args, **kwargs)
+    #     username = self.cleaned_data.get("username")
+    #     print(username)
+    #     if "username" in self.changed_data:
+    #         get_adapter().clean_username(username)
+    #     return data

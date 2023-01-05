@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views import View
 from django.contrib import messages
+from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.gis.geos.point import Point
 from django.http import HttpResponse
@@ -9,7 +10,10 @@ from django.db import transaction
 
 
 from delivery.models import UserAddressInfo
-from .forms import AddressForm, EditAddressForm, EditAddressRequestForm
+from .forms import (AddressForm, 
+                    EditAddressForm, 
+                    EditAddressRequestForm, 
+                    ChangeUserForm)
 
 
 class ProfileView(View, LoginRequiredMixin):
@@ -19,6 +23,7 @@ class ProfileView(View, LoginRequiredMixin):
     def get(self, *args, **kwargs):
         self.context.update({
             "sidebar": "user",
+            "change_user_form": ChangeUserForm(self.request),
             "address_form": AddressForm(),
             "address_form_action": reverse("accounts:add_address")
         })
@@ -46,30 +51,21 @@ class ProfileView(View, LoginRequiredMixin):
 
     
 profile_view = ProfileView.as_view()
-
-
-class DashboardView(View):
-    template_name = "account/dashboard.html"
-    context = dict()
     
-    def get(self, *args, **kwargs):
-        return render(self.request, self.template_name, self.context)
-    
-
-dashboard_view = DashboardView.as_view()
-
 
 class AddAddressView(View):
     context = dict()
     
     def post(self, *args, **kwargs):
         form_data = AddressForm(self.request.POST)
+        
         if form_data.is_valid():
             location = form_data.cleaned_data.get("location")
             postal_code = form_data.cleaned_data.get("postal_code")
             address = form_data.cleaned_data.get("address")
             city = form_data.cleaned_data.get("city")
             province = form_data.cleaned_data.get("province")
+            
             with transaction.atomic():
                 UserAddressInfo.objects.create(
                     user=self.request.user,
@@ -93,10 +89,12 @@ class EditAddressView(View):
     
     def post(self, *args, **kwargs):
         form_data = EditAddressForm(self.request.POST)
+        
         if form_data.is_valid():
             public_uuid = form_data.cleaned_data.get("public_uuid")
             address_ins = self.request.user.user_addresses.filter(
                 public_uuid=public_uuid)
+            
             if address_ins.exists():
                 location = form_data.cleaned_data.get("location")
                 postal_code = form_data.cleaned_data.get("postal_code")
@@ -128,3 +126,27 @@ class DeleteAddressView(View):
 
 
 delete_address_view = DeleteAddressView.as_view()
+
+
+class ChangeUserView(LoginRequiredMixin, View):
+    def post(self, *args, **kwargs):
+        form_data = ChangeUserForm(request=self.request)
+        if form_data.is_valid() and form_data.has_changed():
+            user_qs = get_user_model().objects.filter(
+                username=self.reqeust.user.username)
+            changed_data = {i:form_data.cleaned_data.get(i) 
+                            for i in form_data.changed_data}
+            update_arg_str = ','.join([f'{k}="{v}"' for k, v in changed_data.items()])
+            update_str = f"update({update_arg_str})"
+            exec(f"{user_qs}.{update_str}")
+            messages.success(self.reqeust, 
+                             "Your informatin was successfully updated.")
+        else:
+            print(form_data.is_valid(), form_data.has_changed(), form_data.errors, form_data.non_field_errors())
+            messages.error(self.request, "Process was not completed. Please try again.")
+            # using sessions to show the errors on the template
+            self.request.session["auth_form_errors"] = form_data.errors
+        return redirect("accounts:profile")
+
+
+change_user_view = ChangeUserView.as_view()

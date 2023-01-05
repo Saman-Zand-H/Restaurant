@@ -2,19 +2,16 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Django Containerized",
+            "name": "Django P",
             "type": "python",
             "request": "launch",
-            "program": "/usr/bin/docker-compose",
+            "program": "./manage.py",
             "args": [
-                "exec",
-                "web",
-                "python",
-                "manage.py",
                 "runserver",
                 "--noreload"
             ],
-            "django": true
+            "django": true,
+            "justMyCode": false
         }
     ]
 }

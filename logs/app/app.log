@@ -1158,3 +1158,1019 @@ Traceback (most recent call last):
     raise ConnectionError("N/A", str(e), e)
 elasticsearch.exceptions.ConnectionError: ConnectionError(<urllib3.connection.HTTPConnection object at 0x7f5d2eee5f90>: Failed to establish a new connection: [Errno -2] Name or service not known) caused by: NewConnectionError(<urllib3.connection.HTTPConnection object at 0x7f5d2eee5f90>: Failed to establish a new connection: [Errno -2] Name or service not known)
 2023-01-01 14:49:16,640 - [ERROR]    django.channels.server: [35;1mHTTP POST /delivery/cart/purchase/ 500 [2.39, 172.25.0.1:34610][0m
+2023-01-03 13:29:59,012 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2023-01-03 13:59:48,190 - [INFO]    django.channels.server: [mHTTP GET / 200 [5.94, 172.25.0.1:41326][0m
+2023-01-03 14:03:59,500 - [INFO]    django.channels.server: [mHTTP GET / 200 [1.74, 172.25.0.1:52894][0m
+2023-01-03 14:07:26,982 - [INFO]    django.channels.server: [mHTTP GET / 200 [0.27, 172.25.0.1:51506][0m
+2023-01-03 14:09:55,677 - [INFO]    django.channels.server: [mHTTP GET /accounts/logout/ 200 [3.87, 172.25.0.1:46680][0m
+2023-01-03 14:10:38,010 - [WARNING]    django.request: Not Found: /favicon.ico
+2023-01-03 14:10:38,067 - [WARNING]    django.channels.server: [33mHTTP GET /favicon.ico 404 [0.31, 172.25.0.1:56578][0m
+2023-01-03 14:10:56,578 - [INFO]    django.channels.server: [mHTTP GET / 200 [0.20, 172.25.0.1:37774][0m
+2023-01-03 14:12:49,790 - [INFO]    django.channels.server: [32mHTTP POST /accounts/logout/ 302 [1.05, 172.25.0.1:34430][0m
+2023-01-03 14:12:50,279 - [INFO]    django.channels.server: [mHTTP GET / 200 [0.46, 172.25.0.1:34436][0m
+2023-01-03 14:30:34,976 - [INFO]    django.channels.server: [mHTTP GET /accounts/login/ 200 [1.58, 172.25.0.1:55950][0m
+2023-01-03 14:31:06,918 - [INFO]    django.channels.server: [mHTTP POST /accounts/login/ 200 [1.78, 172.25.0.1:48826][0m
+2023-01-03 14:31:34,934 - [INFO]    django.channels.server: [32mHTTP POST /accounts/login/ 302 [1.35, 172.25.0.1:50210][0m
+2023-01-03 14:31:43,680 - [INFO]    django.channels.server: [mHTTP GET /accounts/profile/ 200 [8.71, 172.25.0.1:54248][0m
+2023-01-03 14:34:58,368 - [INFO]    django.channels.server: [mHTTP GET /accounts/profile/ 200 [0.27, 172.25.0.1:59930][0m
+2023-01-03 14:36:25,040 - [INFO]    django.channels.server: [32mHTTP POST /accounts/addresses/delete/ 302 [0.36, 172.25.0.1:47532][0m
+2023-01-03 14:36:25,397 - [INFO]    django.channels.server: [mHTTP GET /accounts/profile/ 200 [0.32, 172.25.0.1:47534][0m
+2023-01-03 14:51:11,311 - [WARNING]    django.request: Not Found: /Restaurant
+2023-01-03 14:51:11,950 - [WARNING]    django.channels.server: [33mHTTP GET /Restaurant 404 [2.70, 172.25.0.1:36920][0m
+2023-01-03 14:51:49,369 - [WARNING]    django.request: Not Found: /Restaurant/
+2023-01-03 14:51:49,373 - [WARNING]    django.channels.server: [33mHTTP GET /Restaurant/ 404 [0.18, 172.25.0.1:57984][0m
+2023-01-03 14:52:00,398 - [WARNING]    django.request: Not Found: /Restaurant/*
+2023-01-03 14:52:00,405 - [WARNING]    django.channels.server: [33mHTTP GET /Restaurant/* 404 [0.19, 172.25.0.1:47290][0m
+2023-01-05 02:36:18,271 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2023-01-05 02:57:23,131 - [INFO]    django.utils.autoreload: /home/djsadmin/Desktop/Projects/SampleProjects/Restaurant/apps/restaurants/migrations/0017_order_user_order_user_payment.py changed, reloading.
+2023-01-05 02:57:27,926 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2023-01-05 03:00:18,941 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2023-01-05 03:01:20,422 - [INFO]    django.utils.autoreload: /home/djsadmin/Desktop/Projects/SampleProjects/Restaurant/conf/settings.py changed, reloading.
+2023-01-05 03:01:22,278 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2023-01-05 03:05:01,855 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2023-01-05 03:29:16,938 - [WARNING]    django.request: Not Found: /sw.js
+2023-01-05 03:29:17,710 - [WARNING]    django.channels.server: [33mHTTP GET /sw.js 404 [6.38, 127.0.0.1:49520][0m
+2023-01-05 03:29:44,177 - [WARNING]    django.request: Not Found: /sw.js
+2023-01-05 03:29:44,203 - [WARNING]    django.channels.server: [33mHTTP GET /sw.js 404 [2.93, 127.0.0.1:60378][0m
+2023-01-05 03:31:22,881 - [INFO]    django.channels.server: [mHTTP GET / 200 [4.17, 127.0.0.1:44612][0m
+2023-01-05 03:31:24,164 - [INFO]    django.channels.server: [mHTTP GET /static/assets/css/nucleo-icons.css 200 [0.40, 127.0.0.1:44612][0m
+2023-01-05 03:31:24,291 - [INFO]    django.channels.server: [mHTTP GET /static/assets/css/nucleo-svg.css 200 [0.48, 127.0.0.1:51478][0m
+2023-01-05 03:31:24,405 - [INFO]    django.channels.server: [mHTTP GET /static/assets/css/badge.css 200 [0.59, 127.0.0.1:51494][0m
+2023-01-05 03:31:24,677 - [ERROR]    django.channels.server: [35;1mHTTP GET /static/assets/js/plugins/countup.min.js 500 [0.39, 127.0.0.1:51478][0m
+2023-01-05 03:31:24,716 - [ERROR]    django.channels.server: [35;1mHTTP GET /static/assets/js/plugins/prism.min.js 500 [0.31, 127.0.0.1:51494][0m
+2023-01-05 03:31:24,796 - [INFO]    django.channels.server: [mHTTP GET /static/assets/css/autocomplete.css 200 [0.98, 127.0.0.1:51504][0m
+2023-01-05 03:31:24,936 - [INFO]    django.channels.server: [mHTTP GET /static/assets/js/core/popper.min.js 200 [1.12, 127.0.0.1:51510][0m
+2023-01-05 03:31:25,110 - [INFO]    django.channels.server: [mHTTP GET /static/assets/js/material-kit.min.js 200 [0.89, 127.0.0.1:51526][0m
+2023-01-05 03:31:25,180 - [INFO]    django.channels.server: [mHTTP GET /static/assets/js/plugins/highlight.min.js 200 [0.41, 127.0.0.1:51478][0m
+2023-01-05 03:31:25,263 - [INFO]    django.channels.server: [mHTTP GET /static/assets/js/plugins/rellax.min.js 200 [0.49, 127.0.0.1:51494][0m
+2023-01-05 03:31:25,370 - [INFO]    django.channels.server: [36mHTTP GET /static/debug_toolbar/js/toolbar.js 304 [0.17, 127.0.0.1:51478][0m
+2023-01-05 03:31:25,539 - [INFO]    django.channels.server: [36mHTTP GET /static/debug_toolbar/js/utils.js 304 [0.06, 127.0.0.1:51478][0m
+2023-01-05 03:31:25,763 - [ERROR]    django.channels.server: [35;1mHTTP GET /static/assets/js/plugins/tilt.min.js 500 [0.97, 127.0.0.1:51504][0m
+2023-01-05 03:31:25,799 - [ERROR]    django.channels.server: [35;1mHTTP GET /static/assets/js/core/jquery.min.js 500 [0.86, 127.0.0.1:51510][0m
+2023-01-05 03:31:25,849 - [ERROR]    django.channels.server: [35;1mHTTP GET /static/debug_toolbar/css/toolbar.css 500 [0.74, 127.0.0.1:51526][0m
+2023-01-05 03:31:26,196 - [WARNING]    django.request: Not Found: /sw.js
+2023-01-05 03:31:26,206 - [WARNING]    django.channels.server: [33mHTTP GET /sw.js 404 [6.48, 127.0.0.1:44616][0m
+2023-01-05 03:31:28,450 - [INFO]    django.channels.server: [mHTTP GET /static/assets/img/apple-icon.png 200 [0.05, 127.0.0.1:51510][0m
+2023-01-05 03:31:28,515 - [INFO]    django.channels.server: [mHTTP GET /static/assets/img/favicon.png 200 [0.12, 127.0.0.1:51494][0m
+2023-01-05 03:31:29,273 - [WARNING]    django.request: Not Found: /sw.js
+2023-01-05 03:31:29,282 - [INFO]    django.channels.server: [mHTTP GET /static/assets/js/plugins/countup.min.js 200 [0.08, 127.0.0.1:51510][0m
+2023-01-05 03:31:29,297 - [WARNING]    django.channels.server: [33mHTTP GET /sw.js 404 [2.84, 127.0.0.1:51478][0m
+2023-01-05 03:31:29,886 - [INFO]    django.channels.server: [mHTTP GET /static/assets/js/plugins/prism.min.js 200 [0.10, 127.0.0.1:51494][0m
+2023-01-05 03:31:30,189 - [INFO]    django.channels.server: [mHTTP GET /static/assets/js/plugins/tilt.min.js 200 [0.25, 127.0.0.1:51494][0m
+2023-01-05 03:31:30,627 - [INFO]    django.channels.server: [mHTTP GET /static/assets/js/core/jquery.min.js 200 [0.20, 127.0.0.1:51494][0m
+2023-01-05 03:31:30,892 - [INFO]    django.channels.server: [mHTTP GET /static/debug_toolbar/css/toolbar.css 200 [0.20, 127.0.0.1:51494][0m
+2023-01-05 03:31:31,025 - [INFO]    django.channels.server: [mHTTP GET /static/debug_toolbar/css/print.css 200 [0.13, 127.0.0.1:51526][0m
+2023-01-05 03:31:32,643 - [WARNING]    django.request: Not Found: /sw.js
+2023-01-05 03:31:32,653 - [WARNING]    django.channels.server: [33mHTTP GET /sw.js 404 [3.18, 127.0.0.1:51510][0m
+2023-01-05 03:31:36,741 - [WARNING]    django.request: Not Found: /sw.js
+2023-01-05 03:31:36,750 - [WARNING]    django.channels.server: [33mHTTP GET /sw.js 404 [3.11, 127.0.0.1:51494][0m
+2023-01-05 03:31:46,533 - [WARNING]    django.request: Not Found: /sw.js
+2023-01-05 03:31:46,546 - [WARNING]    django.channels.server: [33mHTTP GET /sw.js 404 [2.86, 127.0.0.1:51504][0m
+2023-01-05 03:37:39,571 - [INFO]    django.channels.server: [mHTTP GET / 200 [4.02, 127.0.0.1:50662][0m
+2023-01-05 03:37:42,802 - [WARNING]    django.request: Not Found: /sw.js
+2023-01-05 03:37:42,815 - [WARNING]    django.channels.server: [33mHTTP GET /sw.js 404 [6.17, 127.0.0.1:50670][0m
+2023-01-05 03:37:45,541 - [WARNING]    django.request: Not Found: /sw.js
+2023-01-05 03:37:45,560 - [WARNING]    django.channels.server: [33mHTTP GET /sw.js 404 [2.63, 127.0.0.1:50682][0m
+2023-01-05 03:37:50,112 - [WARNING]    django.request: Not Found: /sw.js
+2023-01-05 03:37:50,124 - [WARNING]    django.channels.server: [33mHTTP GET /sw.js 404 [3.16, 127.0.0.1:59590][0m
+2023-01-05 03:38:15,009 - [INFO]    django.channels.server: [mHTTP GET / 200 [2.84, 127.0.0.1:44634][0m
+2023-01-05 03:38:18,505 - [WARNING]    django.request: Not Found: /sw.js
+2023-01-05 03:38:18,519 - [WARNING]    django.channels.server: [33mHTTP GET /sw.js 404 [5.32, 127.0.0.1:53434][0m
+2023-01-05 03:38:21,931 - [WARNING]    django.request: Not Found: /sw.js
+2023-01-05 03:38:21,944 - [WARNING]    django.channels.server: [33mHTTP GET /sw.js 404 [3.30, 127.0.0.1:44634][0m
+2023-01-05 03:59:48,933 - [INFO]    django.channels.server: [mHTTP GET / 200 [4.33, 127.0.0.1:46232][0m
+2023-01-05 03:59:51,455 - [INFO]    django.channels.server: [mHTTP GET /static/assets/css/nucleo-icons.css 200 [0.69, 127.0.0.1:46232][0m
+2023-01-05 03:59:51,582 - [INFO]    django.channels.server: [mHTTP GET /static/assets/css/nucleo-svg.css 200 [0.79, 127.0.0.1:34590][0m
+2023-01-05 03:59:51,682 - [INFO]    django.channels.server: [mHTTP GET /static/assets/css/badge.css 200 [0.89, 127.0.0.1:34602][0m
+2023-01-05 03:59:51,816 - [INFO]    django.channels.server: [mHTTP GET /static/assets/css/autocomplete.css 200 [1.02, 127.0.0.1:34614][0m
+2023-01-05 03:59:51,871 - [WARNING]    django.request: Not Found: /sw.js
+2023-01-05 03:59:51,888 - [WARNING]    django.channels.server: [33mHTTP GET /sw.js 404 [6.17, 127.0.0.1:46244][0m
+2023-01-05 03:59:51,901 - [INFO]    django.channels.server: [mHTTP GET /static/assets/js/core/popper.min.js 200 [1.10, 127.0.0.1:34624][0m
+2023-01-05 03:59:51,969 - [INFO]    django.channels.server: [mHTTP GET /static/assets/js/plugins/tilt.min.js 200 [0.05, 127.0.0.1:34634][0m
+2023-01-05 03:59:52,165 - [ERROR]    django.channels.server: [35;1mHTTP GET /static/assets/js/plugins/countup.min.js 500 [0.58, 127.0.0.1:34590][0m
+2023-01-05 03:59:52,191 - [ERROR]    django.channels.server: [35;1mHTTP GET /static/assets/js/plugins/prism.min.js 500 [0.51, 127.0.0.1:34602][0m
+2023-01-05 03:59:52,205 - [ERROR]    django.channels.server: [35;1mHTTP GET /static/assets/js/plugins/highlight.min.js 500 [0.39, 127.0.0.1:34614][0m
+2023-01-05 03:59:52,218 - [ERROR]    django.channels.server: [35;1mHTTP GET /static/assets/js/plugins/rellax.min.js 500 [0.32, 127.0.0.1:34624][0m
+2023-01-05 03:59:52,232 - [ERROR]    django.channels.server: [35;1mHTTP GET /static/assets/js/core/jquery.min.js 500 [0.27, 127.0.0.1:34634][0m
+2023-01-05 03:59:52,251 - [INFO]    django.channels.server: [mHTTP GET /static/debug_toolbar/css/toolbar.css 200 [0.21, 127.0.0.1:34638][0m
+2023-01-05 03:59:53,894 - [INFO]    django.channels.server: [mHTTP GET /static/assets/js/plugins/countup.min.js 200 [0.12, 127.0.0.1:34624][0m
+2023-01-05 03:59:55,755 - [INFO]    django.channels.server: [mHTTP GET /static/assets/js/plugins/prism.min.js 200 [0.24, 127.0.0.1:34634][0m
+2023-01-05 03:59:55,979 - [INFO]    django.channels.server: [mHTTP GET /static/assets/js/plugins/highlight.min.js 200 [0.18, 127.0.0.1:34634][0m
+2023-01-05 03:59:56,253 - [INFO]    django.channels.server: [mHTTP GET /static/assets/js/plugins/rellax.min.js 200 [0.21, 127.0.0.1:34634][0m
+2023-01-05 03:59:56,441 - [INFO]    django.channels.server: [mHTTP GET /static/assets/js/core/jquery.min.js 200 [0.12, 127.0.0.1:34634][0m
+2023-01-05 03:59:57,038 - [WARNING]    django.request: Not Found: /sw.js
+2023-01-05 03:59:57,049 - [WARNING]    django.channels.server: [33mHTTP GET /sw.js 404 [2.95, 127.0.0.1:34624][0m
+2023-01-05 04:00:02,327 - [WARNING]    django.request: Not Found: /sw.js
+2023-01-05 04:00:02,340 - [WARNING]    django.channels.server: [33mHTTP GET /sw.js 404 [3.38, 127.0.0.1:34634][0m
+2023-01-05 04:00:10,137 - [WARNING]    django.request: Not Found: /bankgateways/
+2023-01-05 04:00:10,169 - [WARNING]    django.channels.server: [33mHTTP GET /bankgateways/ 404 [2.91, 127.0.0.1:34638][0m
+2023-01-05 04:00:13,301 - [WARNING]    django.request: Not Found: /sw.js
+2023-01-05 04:00:13,315 - [WARNING]    django.channels.server: [33mHTTP GET /sw.js 404 [4.81, 127.0.0.1:34602][0m
+2023-01-05 04:00:20,549 - [WARNING]    django.request: Not Found: /sw.js
+2023-01-05 04:00:20,569 - [WARNING]    django.channels.server: [33mHTTP GET /sw.js 404 [2.81, 127.0.0.1:34590][0m
+2023-01-05 04:00:35,775 - [WARNING]    django.request: Not Found: /sw.js
+2023-01-05 04:00:35,806 - [WARNING]    django.channels.server: [33mHTTP GET /sw.js 404 [2.91, 127.0.0.1:40532][0m
+2023-01-05 04:00:53,844 - [INFO]    django.channels.server: [mHTTP GET /bankgateways/sample-payment/ 200 [22.06, 127.0.0.1:34614][0m
+2023-01-05 04:00:59,448 - [WARNING]    django.request: Not Found: /sw.js
+2023-01-05 04:00:59,477 - [WARNING]    django.channels.server: [33mHTTP GET /sw.js 404 [4.17, 127.0.0.1:34614][0m
+2023-01-05 04:00:59,594 - [ERROR]    django.request: Internal Server Error: /bankgateways/sample-payment/
+Traceback (most recent call last):
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/azbankgateways/views/samples.py", line 45, in sample_payment_view
+    raise e
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/azbankgateways/views/samples.py", line 27, in sample_payment_view
+    bank = factory.auto_create()
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/azbankgateways/bankfactories.py", line 60, in auto_create
+    raise BankGatewayAutoConnectionFailed()
+azbankgateways.exceptions.exceptions.BankGatewayAutoConnectionFailed
+2023-01-05 04:01:02,144 - [ERROR]    django.channels.server: [35;1mHTTP POST /bankgateways/sample-payment/ 500 [5.81, 127.0.0.1:59036][0m
+2023-01-05 04:01:07,041 - [WARNING]    django.request: Not Found: /sw.js
+2023-01-05 04:01:07,058 - [WARNING]    django.channels.server: [33mHTTP GET /sw.js 404 [3.65, 127.0.0.1:59036][0m
+2023-01-05 04:01:29,509 - [ERROR]    django.request: Internal Server Error: /bankgateways/sample-payment/
+Traceback (most recent call last):
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/azbankgateways/views/samples.py", line 45, in sample_payment_view
+    raise e
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/azbankgateways/views/samples.py", line 27, in sample_payment_view
+    bank = factory.auto_create()
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/azbankgateways/bankfactories.py", line 60, in auto_create
+    raise BankGatewayAutoConnectionFailed()
+azbankgateways.exceptions.exceptions.BankGatewayAutoConnectionFailed
+2023-01-05 04:01:33,628 - [ERROR]    django.channels.server: [35;1mHTTP POST /bankgateways/sample-payment/ 500 [5.40, 127.0.0.1:56982][0m
+2023-01-05 04:01:36,333 - [WARNING]    django.request: Not Found: /sw.js
+2023-01-05 04:01:36,344 - [WARNING]    django.channels.server: [33mHTTP GET /sw.js 404 [7.06, 127.0.0.1:56994][0m
+2023-01-05 04:02:17,384 - [WARNING]    django.request: Not Found: /sw.js
+2023-01-05 04:02:17,395 - [WARNING]    django.channels.server: [33mHTTP GET /sw.js 404 [3.43, 127.0.0.1:43168][0m
+2023-01-05 04:02:19,068 - [ERROR]    django.request: Internal Server Error: /bankgateways/sample-payment/
+Traceback (most recent call last):
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/azbankgateways/views/samples.py", line 45, in sample_payment_view
+    raise e
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/azbankgateways/views/samples.py", line 27, in sample_payment_view
+    bank = factory.auto_create()
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/azbankgateways/bankfactories.py", line 60, in auto_create
+    raise BankGatewayAutoConnectionFailed()
+azbankgateways.exceptions.exceptions.BankGatewayAutoConnectionFailed
+2023-01-05 04:02:22,147 - [ERROR]    django.channels.server: [35;1mHTTP POST /bankgateways/sample-payment/ 500 [9.43, 127.0.0.1:56982][0m
+2023-01-05 04:02:29,787 - [WARNING]    django.request: Not Found: /sw.js
+2023-01-05 04:02:29,798 - [WARNING]    django.channels.server: [33mHTTP GET /sw.js 404 [5.37, 127.0.0.1:56982][0m
+2023-01-05 04:03:37,599 - [ERROR]    django.request: Internal Server Error: /bankgateways/sample-payment/
+Traceback (most recent call last):
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/azbankgateways/views/samples.py", line 45, in sample_payment_view
+    raise e
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/azbankgateways/views/samples.py", line 27, in sample_payment_view
+    bank = factory.auto_create()
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/azbankgateways/bankfactories.py", line 60, in auto_create
+    raise BankGatewayAutoConnectionFailed()
+azbankgateways.exceptions.exceptions.BankGatewayAutoConnectionFailed
+2023-01-05 04:03:41,684 - [WARNING]    django.request: Not Found: /sw.js
+2023-01-05 04:03:41,723 - [WARNING]    django.channels.server: [33mHTTP GET /sw.js 404 [6.17, 127.0.0.1:57022][0m
+2023-01-05 04:03:43,881 - [ERROR]    django.channels.server: [35;1mHTTP POST /bankgateways/sample-payment/ 500 [9.42, 127.0.0.1:57012][0m
+2023-01-05 04:03:48,715 - [WARNING]    django.request: Not Found: /sw.js
+2023-01-05 04:03:48,737 - [WARNING]    django.channels.server: [33mHTTP GET /sw.js 404 [3.57, 127.0.0.1:57012][0m
+2023-01-05 04:04:28,588 - [ERROR]    django.request: Internal Server Error: /bankgateways/sample-payment/
+Traceback (most recent call last):
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/azbankgateways/views/samples.py", line 45, in sample_payment_view
+    raise e
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/azbankgateways/views/samples.py", line 27, in sample_payment_view
+    bank = factory.auto_create()
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/azbankgateways/bankfactories.py", line 53, in auto_create
+    bank.check_gateway(amount)
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/azbankgateways/banks/banks.py", line 283, in check_gateway
+    self.pay()
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/azbankgateways/banks/zibal.py", line 72, in pay
+    raise BankGatewayRejectPayment(self.get_transaction_status_text())
+azbankgateways.exceptions.exceptions.BankGatewayRejectPayment: callbackUrl is not valid
+2023-01-05 04:04:36,391 - [WARNING]    django.request: Not Found: /sw.js
+2023-01-05 04:04:36,405 - [WARNING]    django.channels.server: [33mHTTP GET /sw.js 404 [8.19, 127.0.0.1:36082][0m
+2023-01-05 04:04:36,419 - [ERROR]    django.channels.server: [35;1mHTTP POST /bankgateways/sample-payment/ 500 [9.28, 127.0.0.1:36080][0m
+2023-01-05 04:04:41,193 - [WARNING]    django.request: Not Found: /sw.js
+2023-01-05 04:04:41,205 - [WARNING]    django.channels.server: [33mHTTP GET /sw.js 404 [3.54, 127.0.0.1:36080][0m
+2023-01-05 04:12:14,725 - [ERROR]    django.request: Internal Server Error: /bankgateways/sample-payment/
+Traceback (most recent call last):
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/azbankgateways/views/samples.py", line 45, in sample_payment_view
+    raise e
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/azbankgateways/views/samples.py", line 27, in sample_payment_view
+    bank = factory.auto_create()
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/azbankgateways/bankfactories.py", line 53, in auto_create
+    bank.check_gateway(amount)
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/azbankgateways/banks/banks.py", line 283, in check_gateway
+    self.pay()
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/azbankgateways/banks/zibal.py", line 72, in pay
+    raise BankGatewayRejectPayment(self.get_transaction_status_text())
+azbankgateways.exceptions.exceptions.BankGatewayRejectPayment: callbackUrl is not valid
+2023-01-05 04:12:18,089 - [WARNING]    django.request: Not Found: /sw.js
+2023-01-05 04:12:18,113 - [WARNING]    django.channels.server: [33mHTTP GET /sw.js 404 [3.39, 127.0.0.1:36932][0m
+2023-01-05 04:12:18,148 - [ERROR]    django.channels.server: [35;1mHTTP POST /bankgateways/sample-payment/ 500 [4.48, 127.0.0.1:36926][0m
+2023-01-05 04:12:20,721 - [WARNING]    django.request: Not Found: /sw.js
+2023-01-05 04:12:20,741 - [WARNING]    django.channels.server: [33mHTTP GET /sw.js 404 [1.19, 127.0.0.1:36926][0m
+2023-01-05 04:14:28,669 - [ERROR]    django.request: Internal Server Error: /bankgateways/sample-payment/
+Traceback (most recent call last):
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/azbankgateways/views/samples.py", line 45, in sample_payment_view
+    raise e
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/azbankgateways/views/samples.py", line 27, in sample_payment_view
+    bank = factory.auto_create()
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/azbankgateways/bankfactories.py", line 53, in auto_create
+    bank.check_gateway(amount)
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/azbankgateways/banks/banks.py", line 283, in check_gateway
+    self.pay()
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/azbankgateways/banks/zibal.py", line 72, in pay
+    raise BankGatewayRejectPayment(self.get_transaction_status_text())
+azbankgateways.exceptions.exceptions.BankGatewayRejectPayment: callbackUrl is not valid
+2023-01-05 04:15:11,819 - [WARNING]    django.request: Not Found: /sw.js
+2023-01-05 04:15:11,836 - [WARNING]    django.channels.server: [33mHTTP GET /sw.js 404 [95.16, 127.0.0.1:36040][0m
+2023-01-05 04:15:12,858 - [ERROR]    django.channels.server: [35;1mHTTP POST /bankgateways/sample-payment/ 500 [119.74, 127.0.0.1:36032][0m
+2023-01-05 04:15:57,604 - [WARNING]    django.request: Not Found: /sw.js
+2023-01-05 04:15:57,641 - [WARNING]    django.channels.server: [33mHTTP GET /sw.js 404 [43.03, 127.0.0.1:36032][0m
+2023-01-05 04:20:27,098 - [ERROR]    django.request: Internal Server Error: /bankgateways/sample-payment/
+Traceback (most recent call last):
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/azbankgateways/views/samples.py", line 45, in sample_payment_view
+    raise e
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/azbankgateways/views/samples.py", line 27, in sample_payment_view
+    bank = factory.auto_create()
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/azbankgateways/bankfactories.py", line 53, in auto_create
+    bank.check_gateway(amount)
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/azbankgateways/banks/banks.py", line 283, in check_gateway
+    self.pay()
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/azbankgateways/banks/zibal.py", line 72, in pay
+    raise BankGatewayRejectPayment(self.get_transaction_status_text())
+azbankgateways.exceptions.exceptions.BankGatewayRejectPayment: callbackUrl is not valid
+2023-01-05 04:20:28,642 - [WARNING]    django.request: Not Found: /sw.js
+2023-01-05 04:20:28,666 - [WARNING]    django.channels.server: [33mHTTP GET /sw.js 404 [241.42, 127.0.0.1:48040][0m
+2023-01-05 04:20:29,480 - [ERROR]    django.channels.server: [35;1mHTTP POST /bankgateways/sample-payment/ 500 [245.06, 127.0.0.1:56460][0m
+2023-01-05 04:20:39,694 - [WARNING]    django.request: Not Found: /sw.js
+2023-01-05 04:20:39,715 - [WARNING]    django.channels.server: [33mHTTP GET /sw.js 404 [9.03, 127.0.0.1:56460][0m
+2023-01-05 04:25:49,969 - [WARNING]    django.request: Not Found: /sw.js
+2023-01-05 04:25:50,018 - [WARNING]    django.channels.server: [33mHTTP GET /sw.js 404 [42.53, 127.0.0.1:42598][0m
+2023-01-05 04:31:09,258 - [ERROR]    django.request: Internal Server Error: /bankgateways/sample-payment/
+Traceback (most recent call last):
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/azbankgateways/views/samples.py", line 45, in sample_payment_view
+    raise e
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/azbankgateways/views/samples.py", line 27, in sample_payment_view
+    bank = factory.auto_create()
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/azbankgateways/bankfactories.py", line 53, in auto_create
+    bank.check_gateway(amount)
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/azbankgateways/banks/banks.py", line 283, in check_gateway
+    self.pay()
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/azbankgateways/banks/zibal.py", line 72, in pay
+    raise BankGatewayRejectPayment(self.get_transaction_status_text())
+azbankgateways.exceptions.exceptions.BankGatewayRejectPayment: callbackUrl is not valid
+2023-01-05 04:31:10,446 - [ERROR]    django.channels.server: [35;1mHTTP POST /bankgateways/sample-payment/ 500 [365.70, 127.0.0.1:42584][0m
+2023-01-05 04:31:13,457 - [WARNING]    django.request: Not Found: /sw.js
+2023-01-05 04:31:13,475 - [WARNING]    django.channels.server: [33mHTTP GET /sw.js 404 [1.20, 127.0.0.1:42584][0m
+2023-01-05 04:58:23,451 - [ERROR]    django.request: Internal Server Error: /bankgateways/sample-payment/
+Traceback (most recent call last):
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/azbankgateways/views/samples.py", line 45, in sample_payment_view
+    raise e
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/azbankgateways/views/samples.py", line 27, in sample_payment_view
+    bank = factory.auto_create()
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/azbankgateways/bankfactories.py", line 53, in auto_create
+    bank.check_gateway(amount)
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/azbankgateways/banks/banks.py", line 283, in check_gateway
+    self.pay()
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/azbankgateways/banks/zibal.py", line 72, in pay
+    raise BankGatewayRejectPayment(self.get_transaction_status_text())
+azbankgateways.exceptions.exceptions.BankGatewayRejectPayment: callbackUrl is not valid
+2023-01-05 04:58:24,745 - [WARNING]    django.request: Not Found: /sw.js
+2023-01-05 04:58:24,775 - [WARNING]    django.channels.server: [33mHTTP GET /sw.js 404 [821.66, 127.0.0.1:48734][0m
+2023-01-05 04:58:25,666 - [ERROR]    django.channels.server: [35;1mHTTP POST /bankgateways/sample-payment/ 500 [837.12, 127.0.0.1:48722][0m
+2023-01-05 04:58:29,128 - [WARNING]    django.request: Not Found: /sw.js
+2023-01-05 04:58:29,157 - [WARNING]    django.channels.server: [33mHTTP GET /sw.js 404 [1.39, 127.0.0.1:48722][0m
+2023-01-05 04:58:30,509 - [INFO]    django.channels.server: [mHTTP GET /static/debug_toolbar/css/print.css 200 [0.41, 127.0.0.1:58896][0m
+2023-01-05 04:58:33,254 - [WARNING]    django.request: Not Found: /sw.js
+2023-01-05 04:58:33,276 - [WARNING]    django.channels.server: [33mHTTP GET /sw.js 404 [1.28, 127.0.0.1:58896][0m
+2023-01-05 04:58:45,002 - [ERROR]    django.request: Internal Server Error: /bankgateways/sample-payment/
+Traceback (most recent call last):
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/azbankgateways/views/samples.py", line 45, in sample_payment_view
+    raise e
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/azbankgateways/views/samples.py", line 27, in sample_payment_view
+    bank = factory.auto_create()
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/azbankgateways/bankfactories.py", line 53, in auto_create
+    bank.check_gateway(amount)
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/azbankgateways/banks/banks.py", line 283, in check_gateway
+    self.pay()
+  File "/home/djsadmin/.virtualenvs/rstrnt/lib/python3.10/site-packages/azbankgateways/banks/zibal.py", line 72, in pay
+    raise BankGatewayRejectPayment(self.get_transaction_status_text())
+azbankgateways.exceptions.exceptions.BankGatewayRejectPayment: callbackUrl is not valid
+2023-01-05 04:58:45,989 - [WARNING]    django.request: Not Found: /sw.js
+2023-01-05 04:58:46,009 - [WARNING]    django.channels.server: [33mHTTP GET /sw.js 404 [3.06, 127.0.0.1:58926][0m
+2023-01-05 04:58:46,822 - [ERROR]    django.channels.server: [35;1mHTTP POST /bankgateways/sample-payment/ 500 [12.36, 127.0.0.1:58912][0m
+2023-01-05 04:58:49,375 - [WARNING]    django.request: Not Found: /sw.js
+2023-01-05 04:58:49,400 - [WARNING]    django.channels.server: [33mHTTP GET /sw.js 404 [1.22, 127.0.0.1:58912][0m
+2023-01-05 05:18:55,167 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2023-01-05 05:22:59,224 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2023-01-05 05:26:32,797 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2023-01-05 05:31:38,501 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2023-01-05 05:32:34,904 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2023-01-05 05:34:40,567 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2023-01-05 05:42:16,038 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2023-01-05 05:42:56,438 - [INFO]    django.channels.server: [mHTTP GET / 200 [1.69, 172.20.0.1:42948][0m
+2023-01-05 05:43:24,261 - [INFO]    django.channels.server: [mHTTP GET /accounts/login/ 200 [0.85, 172.20.0.1:45200][0m
+2023-01-05 05:44:10,937 - [INFO]    django.channels.server: [32mHTTP POST /accounts/login/ 302 [1.31, 172.20.0.1:37876][0m
+2023-01-05 05:44:13,564 - [INFO]    django.channels.server: [mHTTP GET /accounts/profile/ 200 [2.33, 172.20.0.1:47726][0m
+2023-01-05 05:46:15,996 - [ERROR]    django.security.SuspiciousFileOperation: The joined path (/empty-profile.jpg) is located outside of the base path component (/usr/src/app/static)
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 880, in _resolve_lookup
+    current = current[bit]
+TypeError: 'StaticFilesPanel' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/debug_toolbar/middleware.py", line 74, in __call__
+    rendered = toolbar.render_toolbar()
+  File "/usr/local/lib/python3.10/site-packages/debug_toolbar/toolbar.py", line 79, in render_toolbar
+    return render_to_string("debug_toolbar/base.html", context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/usr/local/lib/python3.10/site-packages/django/template/backends/django.py", line 62, in render
+    return self.template.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/test/utils.py", line 111, in instrumented_test_render
+    return self.nodelist.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/defaulttags.py", line 238, in render
+    nodelist.append(node.render_annotated(context))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/loader_tags.py", line 208, in render
+    return template.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 177, in render
+    return self._render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/test/utils.py", line 111, in instrumented_test_render
+    return self.nodelist.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/defaulttags.py", line 322, in render
+    return nodelist.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/defaulttags.py", line 322, in render
+    return nodelist.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1064, in render
+    output = self.filter_expression.resolve(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 715, in resolve
+    obj = self.var.resolve(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 847, in resolve
+    value = self._resolve_lookup(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 890, in _resolve_lookup
+    current = getattr(current, bit)
+  File "/usr/local/lib/python3.10/site-packages/debug_toolbar/panels/__init__.py", line 104, in content
+    return render_to_string(self.template, self.get_stats())
+  File "/usr/local/lib/python3.10/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/usr/local/lib/python3.10/site-packages/django/template/backends/django.py", line 62, in render
+    return self.template.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/test/utils.py", line 111, in instrumented_test_render
+    return self.nodelist.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/defaulttags.py", line 322, in render
+    return nodelist.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/defaulttags.py", line 238, in render
+    nodelist.append(node.render_annotated(context))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1064, in render
+    output = self.filter_expression.resolve(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 715, in resolve
+    obj = self.var.resolve(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 847, in resolve
+    value = self._resolve_lookup(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 914, in _resolve_lookup
+    current = current()
+  File "/usr/local/lib/python3.10/site-packages/debug_toolbar/panels/staticfiles.py", line 31, in real_path
+    return finders.find(self.path)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/staticfiles/finders.py", line 298, in find
+    result = finder.find(path, all=all)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/staticfiles/finders.py", line 124, in find
+    matched_path = self.find_location(root, path, prefix)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/staticfiles/finders.py", line 141, in find_location
+    path = safe_join(root, path)
+  File "/usr/local/lib/python3.10/site-packages/django/utils/_os.py", line 31, in safe_join
+    raise SuspiciousFileOperation(
+django.core.exceptions.SuspiciousFileOperation: The joined path (/empty-profile.jpg) is located outside of the base path component (/usr/src/app/static)
+2023-01-05 05:46:16,391 - [WARNING]    django.request: Bad Request: /accounts/profile/
+2023-01-05 05:46:16,395 - [WARNING]    django.channels.server: [31;1mHTTP GET /accounts/profile/ 400 [0.59, 172.20.0.1:39266][0m
+2023-01-05 05:47:55,766 - [INFO]    django.utils.autoreload: /usr/src/app/apps/users/models.py changed, reloading.
+2023-01-05 05:47:58,259 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2023-01-05 05:48:01,755 - [ERROR]    django.security.SuspiciousFileOperation: The joined path (/static/assets/img/no_image_available.png) is located outside of the base path component (/usr/src/app/static)
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 880, in _resolve_lookup
+    current = current[bit]
+TypeError: 'StaticFilesPanel' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/debug_toolbar/middleware.py", line 74, in __call__
+    rendered = toolbar.render_toolbar()
+  File "/usr/local/lib/python3.10/site-packages/debug_toolbar/toolbar.py", line 79, in render_toolbar
+    return render_to_string("debug_toolbar/base.html", context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/usr/local/lib/python3.10/site-packages/django/template/backends/django.py", line 62, in render
+    return self.template.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/test/utils.py", line 111, in instrumented_test_render
+    return self.nodelist.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/defaulttags.py", line 238, in render
+    nodelist.append(node.render_annotated(context))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/loader_tags.py", line 208, in render
+    return template.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 177, in render
+    return self._render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/test/utils.py", line 111, in instrumented_test_render
+    return self.nodelist.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/defaulttags.py", line 322, in render
+    return nodelist.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/defaulttags.py", line 322, in render
+    return nodelist.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1064, in render
+    output = self.filter_expression.resolve(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 715, in resolve
+    obj = self.var.resolve(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 847, in resolve
+    value = self._resolve_lookup(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 890, in _resolve_lookup
+    current = getattr(current, bit)
+  File "/usr/local/lib/python3.10/site-packages/debug_toolbar/panels/__init__.py", line 104, in content
+    return render_to_string(self.template, self.get_stats())
+  File "/usr/local/lib/python3.10/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/usr/local/lib/python3.10/site-packages/django/template/backends/django.py", line 62, in render
+    return self.template.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 175, in render
+    return self._render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/test/utils.py", line 111, in instrumented_test_render
+    return self.nodelist.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/defaulttags.py", line 322, in render
+    return nodelist.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1005, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/defaulttags.py", line 238, in render
+    nodelist.append(node.render_annotated(context))
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 966, in render_annotated
+    return self.render(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 1064, in render
+    output = self.filter_expression.resolve(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 715, in resolve
+    obj = self.var.resolve(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 847, in resolve
+    value = self._resolve_lookup(context)
+  File "/usr/local/lib/python3.10/site-packages/django/template/base.py", line 914, in _resolve_lookup
+    current = current()
+  File "/usr/local/lib/python3.10/site-packages/debug_toolbar/panels/staticfiles.py", line 31, in real_path
+    return finders.find(self.path)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/staticfiles/finders.py", line 298, in find
+    result = finder.find(path, all=all)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/staticfiles/finders.py", line 124, in find
+    matched_path = self.find_location(root, path, prefix)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/staticfiles/finders.py", line 141, in find_location
+    path = safe_join(root, path)
+  File "/usr/local/lib/python3.10/site-packages/django/utils/_os.py", line 31, in safe_join
+    raise SuspiciousFileOperation(
+django.core.exceptions.SuspiciousFileOperation: The joined path (/static/assets/img/no_image_available.png) is located outside of the base path component (/usr/src/app/static)
+2023-01-05 05:48:02,095 - [WARNING]    django.request: Bad Request: /accounts/profile/
+2023-01-05 05:48:02,099 - [WARNING]    django.channels.server: [31;1mHTTP GET /accounts/profile/ 400 [1.32, 172.20.0.1:46288][0m
+2023-01-05 05:48:13,423 - [INFO]    django.utils.autoreload: /usr/src/app/apps/users/models.py changed, reloading.
+2023-01-05 05:48:15,998 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2023-01-05 05:48:34,475 - [INFO]    django.utils.autoreload: /usr/src/app/apps/users/models.py changed, reloading.
+2023-01-05 05:48:37,110 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2023-01-05 05:48:39,932 - [INFO]    django.channels.server: [mHTTP GET /accounts/profile/ 200 [0.66, 172.20.0.1:41276][0m
+2023-01-05 05:48:58,616 - [INFO]    django.channels.server: [mHTTP GET /accounts/profile/ 200 [0.35, 172.20.0.1:59076][0m
+2023-01-05 05:49:33,092 - [INFO]    django.channels.server: [mHTTP GET /accounts/profile/ 200 [0.32, 172.20.0.1:47616][0m
+2023-01-05 05:50:06,721 - [INFO]    django.channels.server: [mHTTP GET /accounts/profile/ 200 [0.31, 172.20.0.1:32936][0m
+2023-01-05 05:50:14,699 - [INFO]    django.channels.server: [mHTTP GET /accounts/profile/ 200 [0.35, 172.20.0.1:33162][0m
+2023-01-05 05:50:22,419 - [INFO]    django.channels.server: [mHTTP GET /accounts/profile/ 200 [0.38, 172.20.0.1:43556][0m
+2023-01-05 05:50:28,540 - [INFO]    django.channels.server: [mHTTP GET /accounts/profile/ 200 [0.29, 172.20.0.1:43572][0m
+2023-01-05 05:50:37,608 - [INFO]    django.channels.server: [mHTTP GET /accounts/profile/ 200 [0.85, 172.20.0.1:46646][0m
+2023-01-05 05:50:47,497 - [INFO]    django.channels.server: [mHTTP GET /accounts/profile/? 200 [0.24, 172.20.0.1:53032][0m
+2023-01-05 05:50:59,635 - [INFO]    django.channels.server: [32mHTTP GET /accounts/profile 301 [0.25, 172.20.0.1:42904][0m
+2023-01-05 05:50:59,992 - [INFO]    django.channels.server: [mHTTP GET /accounts/profile/ 200 [0.31, 172.20.0.1:42908][0m
+2023-01-05 05:51:33,905 - [INFO]    django.channels.server: [mHTTP GET /accounts/profile/ 200 [0.35, 172.20.0.1:52766][0m
+2023-01-05 05:51:45,414 - [INFO]    django.channels.server: [mHTTP GET /accounts/profile/ 200 [0.30, 172.20.0.1:60392][0m
+2023-01-05 05:52:02,459 - [INFO]    django.channels.server: [mHTTP GET /accounts/profile/ 200 [9.56, 172.20.0.1:60332][0m
+2023-01-05 05:55:13,378 - [INFO]    django.channels.server: [mHTTP GET /accounts/profile/ 200 [0.40, 172.20.0.1:34706][0m
+2023-01-05 05:55:23,703 - [INFO]    django.channels.server: [mHTTP GET /accounts/profile/ 200 [0.67, 172.20.0.1:58118][0m
+2023-01-05 05:57:25,262 - [INFO]    django.channels.server: [mHTTP GET /accounts/profile/ 200 [0.32, 172.20.0.1:37040][0m
+2023-01-05 06:02:07,262 - [INFO]    django.channels.server: [mHTTP GET /accounts/ 200 [0.55, 172.20.0.1:48370][0m
+2023-01-05 06:04:14,924 - [INFO]    django.utils.autoreload: /usr/src/app/apps/users/models.py changed, reloading.
+2023-01-05 06:04:37,456 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2023-01-05 06:06:13,805 - [INFO]    django.utils.autoreload: /usr/src/app/apps/users/views.py changed, reloading.
+2023-01-05 06:06:16,574 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2023-01-05 06:06:19,765 - [INFO]    django.utils.autoreload: /usr/src/app/apps/users/views.py changed, reloading.
+2023-01-05 06:06:22,226 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2023-01-05 06:07:25,162 - [INFO]    django.utils.autoreload: /usr/src/app/apps/users/views.py changed, reloading.
+2023-01-05 06:07:27,720 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2023-01-05 06:28:13,464 - [INFO]    django.utils.autoreload: /usr/src/app/apps/users/forms.py changed, reloading.
+2023-01-05 06:28:28,686 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2023-01-05 06:29:07,267 - [INFO]    django.utils.autoreload: /usr/src/app/apps/users/forms.py changed, reloading.
+2023-01-05 06:29:10,325 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2023-01-05 06:29:18,987 - [INFO]    django.utils.autoreload: /usr/src/app/apps/users/forms.py changed, reloading.
+2023-01-05 06:29:21,533 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2023-01-05 06:40:25,128 - [INFO]    django.utils.autoreload: /usr/src/app/apps/users/views.py changed, reloading.
+2023-01-05 06:40:27,690 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2023-01-05 06:40:40,688 - [INFO]    django.utils.autoreload: /usr/src/app/apps/users/views.py changed, reloading.
+2023-01-05 06:40:42,868 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2023-01-05 06:42:03,851 - [INFO]    django.utils.autoreload: /usr/src/app/apps/users/views.py changed, reloading.
+2023-01-05 06:42:06,360 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2023-01-05 06:44:38,774 - [INFO]    django.utils.autoreload: /usr/src/app/apps/users/views.py changed, reloading.
+2023-01-05 06:44:41,689 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2023-01-05 06:44:52,704 - [INFO]    django.utils.autoreload: /usr/src/app/apps/users/views.py changed, reloading.
+2023-01-05 06:44:55,271 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2023-01-05 06:45:45,892 - [INFO]    django.utils.autoreload: /usr/src/app/apps/users/views.py changed, reloading.
+2023-01-05 06:45:48,680 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2023-01-05 06:46:54,874 - [INFO]    django.utils.autoreload: /usr/src/app/apps/users/forms.py changed, reloading.
+2023-01-05 06:46:57,232 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2023-01-05 06:50:30,498 - [INFO]    django.utils.autoreload: /usr/src/app/apps/users/views.py changed, reloading.
+2023-01-05 06:50:33,637 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2023-01-05 06:52:43,685 - [INFO]    django.utils.autoreload: /usr/src/app/apps/users/views.py changed, reloading.
+2023-01-05 06:52:46,263 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2023-01-05 06:52:50,055 - [ERROR]    django.request: Internal Server Error: /accounts/profile/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/local/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/usr/local/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/users/views.py", line 26, in get
+    "change_user_form": ChangeUserForm(self.request),
+  File "/usr/src/app/apps/users/forms.py", line 134, in __init__
+    self.fields["last_name"].initial = last_name
+KeyError: 'last_name'
+2023-01-05 06:52:50,392 - [ERROR]    django.channels.server: [35;1mHTTP GET /accounts/profile/ 500 [1.38, 172.20.0.1:39912][0m
+2023-01-05 06:53:16,039 - [INFO]    django.utils.autoreload: /usr/src/app/apps/users/forms.py changed, reloading.
+2023-01-05 06:53:18,811 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2023-01-05 06:53:21,541 - [ERROR]    django.request: Internal Server Error: /accounts/profile/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/local/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/usr/local/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/users/views.py", line 26, in get
+    "change_user_form": ChangeUserForm(self.request),
+  File "/usr/src/app/apps/users/forms.py", line 137, in __init__
+    if (form_errors:=request.sessions.get("auth_form_errors")) is not None:
+AttributeError: 'ASGIRequest' object has no attribute 'sessions'
+2023-01-05 06:53:21,960 - [ERROR]    django.channels.server: [35;1mHTTP GET /accounts/profile/ 500 [0.92, 172.20.0.1:49882][0m
+2023-01-05 06:54:35,670 - [INFO]    django.utils.autoreload: /usr/src/app/apps/users/forms.py changed, reloading.
+2023-01-05 06:54:39,667 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2023-01-05 06:54:47,986 - [INFO]    django.channels.server: [mHTTP GET /accounts/profile/ 200 [4.03, 172.20.0.1:45596][0m
+2023-01-05 06:55:09,010 - [INFO]    django.channels.server: [mHTTP GET /accounts/profile/ 200 [0.29, 172.20.0.1:55348][0m
+2023-01-05 06:55:19,608 - [INFO]    django.channels.server: [mHTTP GET /accounts/profile/ 200 [0.31, 172.20.0.1:57042][0m
+2023-01-05 06:55:55,519 - [INFO]    django.channels.server: [mHTTP GET /accounts/profile/ 200 [0.30, 172.20.0.1:37676][0m
+2023-01-05 06:56:02,051 - [ERROR]    django.request: Internal Server Error: /accounts/change-user/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/local/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/usr/local/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/users/views.py", line 147, in post
+    self.request.sessions["auth_form_errors"] = form_data.errors
+AttributeError: 'ASGIRequest' object has no attribute 'sessions'
+2023-01-05 06:56:02,284 - [ERROR]    django.channels.server: [35;1mHTTP POST /accounts/change-user/ 500 [0.34, 172.20.0.1:45146][0m
+2023-01-05 06:58:05,528 - [INFO]    django.utils.autoreload: /usr/src/app/apps/users/forms.py changed, reloading.
+2023-01-05 06:58:33,687 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2023-01-05 06:58:52,051 - [INFO]    django.channels.server: [32mHTTP POST /accounts/change-user/ 302 [0.55, 172.20.0.1:40078][0m
+2023-01-05 06:58:52,211 - [ERROR]    django.request: Internal Server Error: /accounts/profile/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/local/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/usr/local/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/users/views.py", line 26, in get
+    "change_user_form": ChangeUserForm(self.request),
+  File "/usr/src/app/apps/users/forms.py", line 138, in __init__
+    self.add_error(**form_errors)
+TypeError: BaseForm.add_error() missing 2 required positional arguments: 'field' and 'error'
+2023-01-05 06:58:52,514 - [ERROR]    django.channels.server: [35;1mHTTP GET /accounts/profile/ 500 [0.38, 172.20.0.1:40090][0m
+2023-01-05 06:59:15,511 - [INFO]    django.utils.autoreload: /usr/src/app/apps/users/forms.py changed, reloading.
+2023-01-05 06:59:18,530 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2023-01-05 06:59:22,169 - [ERROR]    django.request: Internal Server Error: /accounts/profile/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/local/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/usr/local/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/users/views.py", line 26, in get
+    "change_user_form": ChangeUserForm(self.request),
+  File "/usr/src/app/apps/users/forms.py", line 139, in __init__
+    self.add_error(**form_errors)
+TypeError: BaseForm.add_error() missing 2 required positional arguments: 'field' and 'error'
+2023-01-05 06:59:22,508 - [ERROR]    django.channels.server: [35;1mHTTP GET /accounts/profile/ 500 [1.16, 172.20.0.1:40260][0m
+2023-01-05 07:00:39,370 - [INFO]    django.utils.autoreload: /usr/src/app/apps/users/forms.py changed, reloading.
+2023-01-05 07:00:42,028 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2023-01-05 07:00:54,887 - [ERROR]    django.request: Internal Server Error: /accounts/profile/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/local/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/usr/local/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/users/views.py", line 26, in get
+    "change_user_form": ChangeUserForm(self.request),
+  File "/usr/src/app/apps/users/forms.py", line 139, in __init__
+    self.add_error(**form_errors)
+TypeError: BaseForm.add_error() missing 2 required positional arguments: 'field' and 'error'
+2023-01-05 07:00:55,142 - [ERROR]    django.channels.server: [35;1mHTTP GET /accounts/profile/ 500 [0.76, 172.20.0.1:54126][0m
+2023-01-05 07:01:15,066 - [INFO]    django.utils.autoreload: /usr/src/app/apps/users/forms.py changed, reloading.
+2023-01-05 07:01:17,878 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2023-01-05 07:01:20,841 - [ERROR]    django.request: Internal Server Error: /accounts/profile/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 472, in thread_handler
+    raise exc_info[1]
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py", line 42, in inner
+    response = await get_response(request)
+  File "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 435, in __call__
+    ret = await asyncio.wait_for(future, timeout=None)
+  File "/usr/local/lib/python3.10/asyncio/tasks.py", line 408, in wait_for
+    return await fut
+  File "/usr/local/lib/python3.10/site-packages/asgiref/current_thread_executor.py", line 22, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.10/site-packages/asgiref/sync.py", line 476, in thread_handler
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.10/site-packages/django/views/generic/base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/app/apps/users/views.py", line 26, in get
+    "change_user_form": ChangeUserForm(self.request),
+  File "/usr/src/app/apps/users/forms.py", line 139, in __init__
+    self.add_error(**form_errors)
+TypeError: BaseForm.add_error() missing 2 required positional arguments: 'field' and 'error'
+2023-01-05 07:01:21,209 - [ERROR]    django.channels.server: [35;1mHTTP GET /accounts/profile/ 500 [0.73, 172.20.0.1:60080][0m
+2023-01-05 07:03:19,461 - [INFO]    django.utils.autoreload: /usr/src/app/apps/users/forms.py changed, reloading.
+2023-01-05 07:03:22,097 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2023-01-05 07:03:28,354 - [INFO]    django.channels.server: [mHTTP GET /accounts/profile/ 200 [0.76, 172.20.0.1:56138][0m
+2023-01-05 07:03:37,820 - [INFO]    django.channels.server: [32mHTTP POST /accounts/change-user/ 302 [0.29, 172.20.0.1:36450][0m
+2023-01-05 07:03:38,209 - [INFO]    django.channels.server: [mHTTP GET /accounts/profile/ 200 [0.36, 172.20.0.1:36460][0m
+2023-01-05 07:03:47,177 - [INFO]    django.channels.server: [32mHTTP POST /accounts/change-user/ 302 [0.30, 172.20.0.1:47558][0m
+2023-01-05 07:03:47,501 - [INFO]    django.channels.server: [mHTTP GET /accounts/profile/ 200 [0.30, 172.20.0.1:47564][0m
+2023-01-05 07:04:03,195 - [INFO]    django.utils.autoreload: /usr/src/app/apps/users/forms.py changed, reloading.
+2023-01-05 07:04:07,986 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2023-01-05 07:04:11,252 - [INFO]    django.channels.server: [mHTTP GET /accounts/profile/ 200 [0.65, 172.20.0.1:42298][0m
+2023-01-05 07:04:18,801 - [INFO]    django.channels.server: [32mHTTP POST /accounts/change-user/ 302 [0.35, 172.20.0.1:42310][0m
+2023-01-05 07:04:19,144 - [INFO]    django.channels.server: [mHTTP GET /accounts/profile/ 200 [0.31, 172.20.0.1:42314][0m
+2023-01-05 07:04:49,553 - [INFO]    django.utils.autoreload: /usr/src/app/apps/users/views.py changed, reloading.
+2023-01-05 07:04:52,244 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2023-01-05 07:04:57,809 - [INFO]    django.channels.server: [32mHTTP POST /accounts/change-user/ 302 [1.47, 172.20.0.1:46216][0m
+2023-01-05 07:04:58,369 - [INFO]    django.channels.server: [mHTTP GET /accounts/profile/ 200 [0.52, 172.20.0.1:46218][0m
+2023-01-05 07:53:08,518 - [INFO]    django.channels.server: [32mHTTP POST /accounts/change-user/ 302 [0.47, 172.20.0.1:38318][0m
+2023-01-05 07:53:08,852 - [INFO]    django.channels.server: [mHTTP GET /accounts/profile/ 200 [0.29, 172.20.0.1:38326][0m
+2023-01-05 07:54:26,585 - [INFO]    django.utils.autoreload: /usr/src/app/apps/users/views.py changed, reloading.
+2023-01-05 07:54:29,054 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2023-01-05 07:54:46,201 - [INFO]    django.channels.server: [32mHTTP POST /accounts/change-user/ 302 [0.82, 172.20.0.1:55320][0m
+2023-01-05 07:54:46,802 - [INFO]    django.channels.server: [mHTTP GET /accounts/profile/ 200 [0.57, 172.20.0.1:55324][0m
+2023-01-05 07:55:25,125 - [INFO]    django.utils.autoreload: /usr/src/app/apps/users/views.py changed, reloading.
+2023-01-05 07:55:27,408 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2023-01-05 07:55:37,429 - [INFO]    django.channels.server: [32mHTTP POST /accounts/change-user/ 302 [0.56, 172.20.0.1:36206][0m
+2023-01-05 07:55:37,888 - [INFO]    django.channels.server: [mHTTP GET /accounts/profile/ 200 [0.43, 172.20.0.1:36218][0m
+2023-01-05 07:56:22,281 - [INFO]    django.utils.autoreload: /usr/src/app/apps/users/views.py changed, reloading.
+2023-01-05 07:56:24,876 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2023-01-05 07:56:29,670 - [INFO]    django.channels.server: [32mHTTP POST /accounts/change-user/ 302 [0.65, 172.20.0.1:33950][0m
+2023-01-05 07:56:30,213 - [INFO]    django.channels.server: [mHTTP GET /accounts/profile/ 200 [0.51, 172.20.0.1:33960][0m
+2023-01-05 07:56:47,141 - [INFO]    django.utils.autoreload: /usr/src/app/apps/users/views.py changed, reloading.
+2023-01-05 07:56:49,661 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2023-01-05 07:56:54,546 - [INFO]    django.channels.server: [32mHTTP POST /accounts/change-user/ 302 [0.60, 172.20.0.1:58368][0m
+2023-01-05 07:56:55,058 - [INFO]    django.channels.server: [mHTTP GET /accounts/profile/ 200 [0.48, 172.20.0.1:58380][0m
+2023-01-05 07:59:04,690 - [INFO]    django.utils.autoreload: /usr/src/app/apps/users/views.py changed, reloading.
+2023-01-05 07:59:07,269 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2023-01-05 07:59:11,514 - [INFO]    django.channels.server: [32mHTTP POST /accounts/change-user/ 302 [0.71, 172.20.0.1:51552][0m
+2023-01-05 07:59:12,000 - [INFO]    django.channels.server: [mHTTP GET /accounts/profile/ 200 [0.45, 172.20.0.1:51568][0m
+2023-01-05 07:59:29,127 - [INFO]    django.utils.autoreload: /usr/src/app/apps/users/forms.py changed, reloading.
+2023-01-05 07:59:31,930 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2023-01-05 07:59:38,413 - [INFO]    django.channels.server: [32mHTTP POST /accounts/change-user/ 302 [0.64, 172.20.0.1:45426][0m
+2023-01-05 07:59:38,986 - [INFO]    django.channels.server: [mHTTP GET /accounts/profile/ 200 [0.54, 172.20.0.1:45430][0m
+2023-01-05 07:59:52,765 - [INFO]    django.utils.autoreload: /usr/src/app/apps/users/forms.py changed, reloading.
+2023-01-05 07:59:55,128 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2023-01-05 07:59:59,563 - [INFO]    django.utils.autoreload: /usr/src/app/apps/users/forms.py changed, reloading.
+2023-01-05 08:00:02,087 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2023-01-05 08:00:08,293 - [INFO]    django.channels.server: [32mHTTP POST /accounts/change-user/ 302 [0.67, 172.20.0.1:42552][0m
+2023-01-05 08:00:08,799 - [INFO]    django.channels.server: [mHTTP GET /accounts/profile/ 200 [0.47, 172.20.0.1:42562][0m
+2023-01-05 08:00:21,277 - [INFO]    django.utils.autoreload: /usr/src/app/apps/users/forms.py changed, reloading.
+2023-01-05 08:00:24,071 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2023-01-05 08:04:48,070 - [INFO]    django.channels.server: [32mHTTP POST /accounts/change-user/ 302 [0.59, 172.20.0.1:47116][0m
+2023-01-05 08:04:48,629 - [INFO]    django.channels.server: [mHTTP GET /accounts/profile/ 200 [0.52, 172.20.0.1:47120][0m
+2023-01-05 08:05:06,812 - [INFO]    django.utils.autoreload: /usr/src/app/apps/users/forms.py changed, reloading.
+2023-01-05 08:05:14,786 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2023-01-05 08:05:23,406 - [INFO]    django.channels.server: [32mHTTP POST /accounts/change-user/ 302 [0.66, 172.20.0.1:37194][0m
+2023-01-05 08:05:23,930 - [INFO]    django.channels.server: [mHTTP GET /accounts/profile/ 200 [0.45, 172.20.0.1:37206][0m
+2023-01-05 08:05:45,193 - [INFO]    django.utils.autoreload: /usr/src/app/apps/users/forms.py changed, reloading.
+2023-01-05 08:05:47,889 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2023-01-05 08:05:51,161 - [INFO]    django.channels.server: [32mHTTP POST /accounts/change-user/ 302 [0.89, 172.20.0.1:48852][0m
+2023-01-05 08:05:51,691 - [INFO]    django.channels.server: [mHTTP GET /accounts/profile/ 200 [0.50, 172.20.0.1:48854][0m
+2023-01-05 08:06:55,734 - [INFO]    django.utils.autoreload: /usr/src/app/apps/users/views.py changed, reloading.
+2023-01-05 08:06:58,527 - [INFO]    django.utils.autoreload: Watching for file changes with StatReloader
+2023-01-05 08:07:03,306 - [INFO]    django.channels.server: [32mHTTP POST /accounts/change-user/ 302 [0.82, 172.20.0.1:46024][0m
+2023-01-05 08:07:03,780 - [INFO]    django.channels.server: [mHTTP GET /accounts/profile/ 200 [0.44, 172.20.0.1:46026][0m

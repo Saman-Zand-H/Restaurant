@@ -142,7 +142,7 @@ class PurchaseView(LoginRequiredMixin, View):
         phone_number = user.phone_number
         
         try:
-            bank = bankfactories.BankFactory().auto_create(self.request)
+            bank = bankfactories.BankFactory().auto_create()
             
             bank.set_amount(amount)
             bank.set_mobile_number(phone_number)

@@ -114,10 +114,10 @@ class UserModel(AbstractBaseUser, PermissionsMixin):
     
     def get_picture_url(self):
         return self.picture.url if self.picture else static(
-            "/empty-profile.jpg" or None)
+            "assets/img/no_image_available.png" or None)
     
     def get_dashboard_url(self):
-        if self.user_staff:
+        if hasattr(self, "user_staff"):
             return reverse("in_place:dashboard")
         else:
             return reverse("accounts:dashboard")

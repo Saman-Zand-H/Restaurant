@@ -8,7 +8,7 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('azbankgateways', '0005_alter_bank_bank_type_alter_bank_created_at_and_more'),
+        ('azbankgateways', '0004_auto_20211115_1500'),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
         ('restaurants', '0016_alter_orderitem_paid_price'),
     ]

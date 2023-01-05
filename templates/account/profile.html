@@ -18,24 +18,35 @@
 					<p class="card-category">Complete your profile</p>
 				</div>
 				<div class="card-body">
-					<form>
+					<form action="{% url 'accounts:change-user' %}" method="POST">
+						{% csrf_token %}
+						{% if change_user_form.errors %}
+							<div class="alert alert-danger">Error!
+								{{ change_user_form.errors }}
+							</div>
+						{% endif %}
 						<div class="row mt-3">
 							<div class="col-md-6">
 								<div class="form-group">
-									<label class="bmd-label-floating"
-										>Fist Name</label
-									>
-									<input type="text" class="form-control" value="{{ user.first_name }}">
+									<label class="bmd-label-floating">First Name</label>
+									{{ change_user_form.first_name }}
+									{{ change_user_form.first_name.errors }}
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
-									<label class="bmd-label-floating"
-										>Last Name</label
-									>
-									<input type="text" class="form-control" value="{{ user.last_name }}">
+									<label class="bmd-label-floating">Last Name</label>
+									{{ change_user_form.last_name }}
+									{{ change_user_form.last_name.errors }}
 								</div>
 							</div>
+						</div>
+						<div class="my-4">
+							<div class="form-group">
+									<label class="bmd-label-floating">Username</label>
+									{{ change_user_form.username }}
+									{{ change_user_form.username.errors }}
+								</div>
 						</div>
 						<button type="submit" class="btn btn-primary pull-right">
 							Update
@@ -51,19 +62,15 @@
 					<a href="#pablo">
 						<img
 							class="img"
-							src="{% static 'dash_assets/img/faces/marc.jpg' %}"
-						/>
+							src="{{ user.get_picture_url }}"
+						>
 					</a>
 				</div>
-				<div class="card-body">
-					<h6 class="card-category">CEO / Co-Founder</h6>
-					<h4 class="card-title">Alec Thompson</h4>
-					<p class="card-description">
-						Don't be scared of the truth because we need to restart the
-						human foundation in truth And I love you like Kanye loves
-						Kanye I love Rick Owens' bed design but the back is...
-					</p>
-					<a href="#pablo" class="btn btn-primary btn-round">Follow</a>
+				<div class="card-body" style="height:7.3rem">
+					<h6 class="card-category">
+						{{ user.user_staff.get_role_display|default:"Customer"|title }}
+					</h6>
+					<h4 class="card-title">{{ user.name|title }}</h4>
 				</div>
 			</div>
 		</div>
