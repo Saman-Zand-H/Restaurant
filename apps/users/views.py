@@ -1,13 +1,15 @@
 from django.shortcuts import render, redirect
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy, reverse
 from django.views import View
+from django.views.generic import FormView
 from django.contrib import messages
-from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.gis.geos.point import Point
-from django.http import HttpResponse
+from django.http import HttpResponseRedirect
 from django.db import transaction
 
+from allauth.account.forms import ChangePasswordForm
+from allauth.account.views import (PasswordChangeView as AllauthChangePasswordView,
+                                   EmailView as AllauthEmailView)
 
 from delivery.models import UserAddressInfo
 from .forms import (AddressForm, 
@@ -21,9 +23,19 @@ class ProfileView(LoginRequiredMixin, View):
     context = dict()
     
     def get(self, *args, **kwargs):
+        form_kwargs = {"request": self.request}
+        session_form_data = self.request.session.pop("auth_form_post", None)
+        if session_form_data:
+            form_kwargs.update({"data": session_form_data})
+        # use the data transmitted through session and then 
+        # to regenrate the errors dict validate the data with is_valid()
+        change_user_form = ChangeUserForm(**form_kwargs)
+        change_user_form.is_valid()
+        
         self.context.update({
             "sidebar": "user",
-            "change_user_form": ChangeUserForm(self.request),
+            "change_user_form": change_user_form,
+            "change_password_form": ChangePasswordForm(),
             "address_form": AddressForm(),
             "address_form_action": reverse("accounts:add_address")
         })
@@ -145,8 +157,24 @@ class ChangeUserView(LoginRequiredMixin, View):
         else:
             messages.error(self.request, "Process was not completed. Please try again.")
             # using sessions to show the errors on the template
-            self.request.session["auth_form_errors"] = form_data.errors
+            self.request.session["auth_form_post"] = form_data.data
         return redirect("accounts:profile")
 
 
 change_user_view = ChangeUserView.as_view()
+
+
+class ChangePasswordView(AllauthChangePasswordView):
+    def __init__(self, **kwargs):
+        super(FormView, self).__init__(**kwargs)
+        self.success_url = reverse_lazy("accounts:profile")
+
+    def render_to_response(self, context, **response_kwargs):
+        if not self.request.user.has_usable_password():
+            return HttpResponseRedirect(reverse("account_set_password"))
+        return super().render_to_response(
+            context, **response_kwargs
+        )
+        
+
+change_password_view = ChangePasswordView.as_view()

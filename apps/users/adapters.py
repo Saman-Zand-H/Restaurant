@@ -3,6 +3,10 @@ from phonenumber_field.phonenumber import PhoneNumber
 
 
 class AccountAdapter(DefaultAccountAdapter):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.error_messages["username_taken"] = ("This username has already "
+                                                 "been taken. Try another one")
     
     def save_user(self, request, user, form, commit=True):
         from allauth.account.utils import user_field

@@ -20,5 +20,8 @@ urlpatterns = [
         name="edit_address"),
    path(route="addresses/delete/",
         view=views.delete_address_view,
-        name="delete_address")
+        name="delete_address"),
+   path(route="password_change/",
+        view=views.change_password_view,
+        name="change_password")
 ]

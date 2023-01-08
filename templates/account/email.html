@@ -1,0 +1,96 @@
+{% extends "base/layout/base.html" %}
+{% load crispy_forms_tags i18n %}
+
+
+{% block title %}Emails{% endblock %}
+
+
+{% block content %}
+
+<body class="sign-in-basic">
+    <!-- Navbar Transparent -->
+    {% include "base/includes/navbar_transparent.html" %}
+    <!-- End Navbar -->
+    <div class="page-header align-items-start min-vh-100"
+        style="background-image: url('https://images.unsplash.com/photo-1497294815431-9365093b7331?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1950&q=80');"
+        loading="lazy">
+        <span class="mask bg-gradient-dark opacity-6"></span>
+        <div class="container my-auto">
+            <div class="row">
+                <div class="col-lg-4 col-md-8 col-12 mx-auto">
+                    <div class="card z-index-0 fadeIn3 fadeInBottom">
+                        <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                            <div class="bg-gradient-primary shadow-primary border-radius-lg py-3 pe-1">
+                                <h4 class="text-white font-weight-bolder text-center mt-2 mb-0">Email Addresses</h4>
+                            </div>
+                        </div>
+                        <div class="card-body mt-5">
+                            <form method="POST">
+                                {% csrf_token %}
+                                {{ form|crispy }}
+                                <div class="row col-4 offset-7">
+                                    <button type="submit" class="btn btn-primary">
+                                        Add
+                                    </button>
+                                </div>
+                            </form>
+                        </div><hr class="bg-dark">
+                        <div class="mx-3 my-3">
+                            <form action="{% url 'account_email' %}" method="POST">
+                                {% csrf_token %}
+                                {% for emailaddress in user.emailaddress_set.all %}
+                                    <div class="form-check">
+                                        <input 
+                                               class="form-check-input" 
+                                               id="email_{{ forloop.counter }}"
+                                               type="radio" 
+                                               name="email" 
+                                               value="{{ emailaddress.email }}"
+                                               {% if emailaddress.primary or user.emailaddress_set.count == 1 %}
+                                                   checked
+                                               {% endif %}
+                                              >
+                                        <label class="custom-control-label" for="email_{{ forloop.counter }}">
+                                            {{ emailaddress.email }}
+                                        </label>
+                                        <span class="mx-1 d-inline-block">
+                                            {% if emailaddress.verified %}
+                                                <span class="badge bg-gradient-success text-light">Verified</span>
+                                            {% endif %}
+                                            {% if emailaddress.primary %}
+                                                <span class="badge bg-gradient-primary text-light">Primary</span>
+                                            {% endif %}
+                                        </span>
+                                    </div>
+                                {% endfor %}
+                                <div class="mt-5 mb-3 mx-2">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <button type="submit" name="action_send" class="btn btn-info w-100 d-block">
+                                                Verify
+                                            </button>
+                                        </div>
+                                        <div class="col-6">
+                                            <button type="submit" name="action_remove" class="btn btn-info w-100 d-block">
+                                                Remove
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="row mx-4">
+                                        <button type="submit" name="action_primary" class="btn btn-info d-block w-100">
+                                            Make Primary
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+        {% include 'base/includes/footer_transparent.html' %}
+    </div>
+</body>
+
+{% endblock %}

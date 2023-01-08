@@ -17,8 +17,8 @@
             <div class="card card-body bg-light my-2 w-75 
                         mx-auto">
                 <div class="d-flex flex-row justify-content-between">
-                    <div class="text-dark"><h4>Median: {{ median }}</h4></div>
                     <div class="text-dark"><h4>Quantile 1: {{ q1 }}</h4></div>
+                    <div class="text-dark"><h4>Median: {{ median }}</h4></div>
                     <div class="text-dark"><h4>Quantile 3: {{ q3 }}</h4></div>
                 </div>
                 <div class="d-flex flex-row justify-content-between">
@@ -26,10 +26,7 @@
                         <h4>Mean: {{ mean }}</h4>
                     </div>
                     <div class="text-dark">
-                        <h4>Standard Deviation: {{ mean }}</h4>
-                    </div>
-                    <div class="text-dark">
-                        <h4>Population Standard Deviation: {{ mean }}</h4>
+                        <h4>Standard Deviation: {{ stdev }}</h4>
                     </div>
                 </div>
                 <div class="d-flex flex-row justify-content-between">
@@ -42,7 +39,7 @@
                 </div>
             </div>
             <div class="text-light mx-4 my-4">
-                <h4>Export Data To:</h4>
+                <h4>Export All the Data to:</h4>
                 <a class="btn btn-success mx-3" href="{% url 'in_place:sells_excel' %}">
                     Excel
                 </a>

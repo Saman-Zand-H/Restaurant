@@ -558,6 +558,7 @@ class StaffView(LoginRequiredMixin, UserPassesTestMixin, View):
         self.context.update({"new_form": form_data})
         return render(self.request, self.template_name, self.context)
 
+
 staff_view = StaffView.as_view()
 
 
@@ -577,13 +578,13 @@ class FinanceView(LoginRequiredMixin, UserPassesTestMixin, View):
         self.context.update({"gamma_data": json.dumps(gamma_data),
                              "regression_data": json.dumps(regression_data),
                              "map_data": json.dumps(map_data),
-                             "mean": gamma_data.get("mean"),
-                             "median": gamma_data.get("med"),
-                             "q1": gamma_data.get("q1"),
-                             "q3": gamma_data.get("q3"),
-                             "stdev": gamma_data.get("stdev"),
-                             "mse": regression_data.get("mse"),
-                             "r2": regression_data.get("r2")})
+                             "mean": round(gamma_data.get("mean"), 3),
+                             "median": round(gamma_data.get("med"), 3),
+                             "q1": round(gamma_data.get("q1"), 3),
+                             "q3": round(gamma_data.get("q3"), 3),
+                             "stdev": round(gamma_data.get("stdev"), 3),
+                             "mse": round(regression_data.get("mse"), 3),
+                             "r2": round(regression_data.get("r2"), 3)})
         return render(self.request, 
                       self.template_name, 
                       self.context)

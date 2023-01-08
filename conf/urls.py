@@ -2,7 +2,10 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.views.defaults import page_not_found
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+
+from functools import partial
 
 from azbankgateways.urls import az_bank_gateways_urls
 
@@ -11,7 +14,9 @@ urlpatterns = [
     path(route='admin/', 
          view=admin.site.urls),
     
-    path(route="accounts/", 
+    # Using regex, exclude password/change/, so we can override it in 
+    # users.
+    path(route=r"accounts/", 
          view=include("allauth.urls")),
     path(route='dj-rest-auth/', 
          view=include('dj_rest_auth.urls')),

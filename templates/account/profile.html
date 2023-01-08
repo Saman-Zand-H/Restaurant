@@ -1,6 +1,6 @@
 {% extends 'base/layout/dash_base.html' %} 
 
-{% load static %}
+{% load static crispy_forms_tags %}
 
 
 {% block title %}{{ user.username|title }}'s Profile{% endblock %} 
@@ -10,23 +10,31 @@
 {% endblock %}
 
 {% block content %}
-	<div class="row">
-		<div class="col-md-8">
+	<div class="row d-flex">
+		<div class="col-md-8 flex-column">
 			<div class="card">
 				<div class="card-header card-header-primary">
 					<h4 class="card-title">Edit Profile</h4>
 					<p class="card-category">Complete your profile</p>
 				</div>
-				<div class="card-body">
+				<div class="card-body py-3">
 					<form action="{% url 'accounts:change-user' %}" method="POST">
 						{% csrf_token %}
-						{% if change_user_form.errors %}
-							<div class="alert alert-danger">Error!
-								{{ change_user_form.errors }}
-								{{ change_user_form.non_field_errors }}
+						{% if change_user_form.errors or change_user_form.non_field_errors %}
+							<div class="alert alert-rose">
+								<ul>
+									{% for field in change_user_form %}
+										{% for error in field.errors %}
+											<li>{{ field }}: {{ error }}</li>
+										{% endfor %}
+									{% endfor %}
+									{% for errors in change_user_form.non_field_errors %}
+										<li>{{ errors }}</li>
+									{% endfor %}
+								</ul>
 							</div>
 						{% endif %}
-						<div class="row mt-3">
+						<div class="row my-4">
 							<div class="col-md-6">
 								<div class="form-group">
 									<label class="bmd-label-floating">First Name</label>
@@ -42,11 +50,11 @@
 								</div>
 							</div>
 						</div>
-						<div class="my-4">
+						<div class="my-4 mt-5">
 							<div class="form-group">
 									<label class="bmd-label-floating">Username</label>
 									{{ change_user_form.username }}
-									{{ change_user_form.username.errors }}
+									{{ change_user_form.username.errors|join:'' }}
 								</div>
 						</div>
 						<button type="submit" class="btn btn-primary pull-right">
@@ -57,81 +65,101 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-md-4">
+		<div class="col-md-4 flex-column">
 			<div class="card card-profile">
 				<div class="card-avatar">
-					<a href="#pablo">
+					<a href="#">
 						<img
 							class="img"
 							src="{{ user.get_picture_url }}"
 						>
 					</a>
 				</div>
-				<div class="card-body" style="height:7.3rem">
+				<div class="card-body">
 					<h6 class="card-category">
 						{{ user.user_staff.get_role_display|default:"Customer"|title }}
 					</h6>
 					<h4 class="card-title">{{ user.name|title }}</h4>
 				</div>
 			</div>
+			<div class="flex-column">
+				<form action="{% url 'account_logout' %}" method="POST">
+					{% csrf_token %}
+					<button type="submit" class="btn btn-danger d-block w-100">Log Out</button>
+				</form>
+			</div>
+			<div class="flex-column">
+				<a href="{% url 'accounts:change_password' %}" class="btn btn-info d-block w-100">
+					Change Password
+				</a>
+			</div>
+			<div class="flex-column mt-4">
+				<a href="{% url 'account_email' %}" class="btn btn-success d-block w-100">
+					Change emails
+				</a>
+			</div>
 		</div>
+	</div>
+	<div style="margin-top:3.5rem">
         <div class="card" id="addressesCard">
 				<div class="card-header card-header-primary">
 					<h4 class="card-title">Edit Addresses</h4>
 					<p class="card-category">Complete your list of addresses</p>
 				</div>
 				<div class="card-body">
-					<div class="mx-3">
-						{% for address in user.user_addresses.all %}
-						<div class="d-flex" style="gap: .3rem">
-							<i class="material-icons text-success">check_circle</i>
-							<span class="align-self-baseline">
-								<h6>
-									{{ address.province }},
-									{{ address.city }},
-									{{ address.address }} - {{ address.postal_code }}
-								</h6>
-							</span>
-							<span class="align-self-baseline">
-								<form method="POST" id="form-{{ address.public_uuid }}">
-									{% csrf_token %}
-									<input 
-										   type="hidden" 
-										   name="public_uuid" 
-										   value="{{ address.public_uuid }}"
-										  >
-									<a 
-									   href="#addressesCard" 
-									   onclick="document.getElementById('form-{{ address.public_uuid }}').submit()"
-									  >
-									  Edit
-									</a>
-								</form>
-							</span>
-							<span class="align-self-baseline">
-								<form 
-									  method="POST" 
-									  id="form-delete-{{ address.public_uuid }}"
-									  action="{% url 'accounts:delete_address' %}"
-									 >
-									{% csrf_token %}
-									<input 
-										   type="hidden" 
-										   name="public_uuid" 
-										   value="{{ address.public_uuid }}"
-										  >
-									<a 
-									   href="#addressesCard" 
-									   onclick="document.getElementById('form-delete-{{ address.public_uuid }}').submit()"
-									  >
-									  Delete
-									</a>
-								</form>
-							</span>
-						</div>
-						{% endfor %}
-					</div>
-					<hr><div>
+					{% if user.user_addresses.exists %}
+						<div class="mx-3">
+							{% for address in user.user_addresses.all %}
+								<div class="d-flex" style="gap: .3rem">
+									<i class="material-icons text-success">check_circle</i>
+									<span class="align-self-baseline">
+										<h6>
+											{{ address.province }},
+											{{ address.city }},
+											{{ address.address }} - {{ address.postal_code }}
+										</h6>
+									</span>
+									<span class="align-self-baseline">
+										<form method="POST" id="form-{{ address.public_uuid }}">
+											{% csrf_token %}
+											<input 
+												type="hidden" 
+												name="public_uuid" 
+												value="{{ address.public_uuid }}"
+												>
+											<a 
+											href="#addressesCard" 
+											onclick="document.getElementById('form-{{ address.public_uuid }}').submit()"
+											>
+											Edit
+											</a>
+										</form>
+									</span>
+									<span class="align-self-baseline">
+										<form 
+											method="POST" 
+											id="form-delete-{{ address.public_uuid }}"
+											action="{% url 'accounts:delete_address' %}"
+											>
+											{% csrf_token %}
+											<input 
+												type="hidden" 
+												name="public_uuid" 
+												value="{{ address.public_uuid }}"
+												>
+											<a 
+											href="#addressesCard" 
+											onclick="document.getElementById('form-delete-{{ address.public_uuid }}').submit()"
+											>
+											Delete
+											</a>
+										</form>
+									</span>
+								</div>
+							{% endfor %}
+						</div><hr>
+					{% endif %}
+					<div class="my-5">
 						<form 
 							  enctype="multipart/form-data" 
 							  action="{{ address_form_action }}"
@@ -139,7 +167,7 @@
 							{% csrf_token %}
 
 							{% comment %} 
-								This if statement helps us recognize if the form 
+								This if-statement helps us recognize if the form 
 								is to create a new record or update a previously created one.
 							{% endcomment %}
 

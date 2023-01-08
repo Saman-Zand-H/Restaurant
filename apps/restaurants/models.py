@@ -13,7 +13,7 @@ from persiantools.jdatetime import JalaliDateTime
 from datetime import timedelta, datetime, time, date
 from django.utils import timezone
 from dateutil.relativedelta import relativedelta
-from functools import reduce
+from typing import List
 from operator import attrgetter
 from itertools import groupby
 from uuid import uuid4
@@ -208,7 +208,12 @@ class Restaurant(models.Model):
         return self._get_daily_orders_data()
     
     @cached_property
-    def all_revenues(self):
+    def all_revenues(self) -> List[int]:
+        """
+            A function that takes all the paid orders of a restaurant and 
+            gourps them by their date of creation, by day, and returns the sum
+            of the total revenue of each they.
+        """
         orders = self.restaurant_orders.annotate(
             date_created=TruncDate(
                 'timestamp')).order_by('timestamp') 
@@ -230,8 +235,7 @@ class Restaurant(models.Model):
                              "weekly_score",
                              "most_popular_food",
                              "orders_today",
-                             "all_revenues",
-                             "monthly_revenue_ls"]
+                             "all_revenues"]
         for i in cached_properties:
             try:
                 del self.__dict__[i]
