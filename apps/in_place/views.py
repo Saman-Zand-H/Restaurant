@@ -43,7 +43,8 @@ from .forms import (OrderForm,
                     EditItemVarForm,
                     DeleteItemVarForm,
                     ChangeStaffForm,
-                    StaffUsernameForm)
+                    StaffUsernameForm,
+                    EditRestaurantForm)
 from .models import DineInOrder, Staff
 from search_index.es_queries import OrderQuery
 from search_index.documents import OrderDocument
@@ -1059,3 +1060,32 @@ class RenderNewItemView(LoginRequiredMixin, UserPassesTestMixin, View):
 
 
 render_new_item_view = RenderNewItemView.as_view()
+
+
+class EditRestaurantView(LoginRequiredMixin, UserPassesTestMixin, View):
+    def test_func(self):
+        return (hasattr(self.request.user, "user_staff")
+                and self.request.user.has_perm("in_place:change_restaurant"))
+    
+    def post(self, *args, **kwargs):
+        form = EditRestaurantForm(data=self.request.POST,
+                                  files=self.request.FILES,
+                                  initial={"name": self.request.user.user_staff.restaurant.name})
+        if form.is_valid() and form.has_changed():
+            if 'name' in form.changed_data:
+                name = form.cleaned_data["name"]
+                Restaurant.objects.filter(
+                    restaurant_staff__user=self.request.user).update(name=name)
+            
+            if 'picture' in form.changed_data:
+                restaurant = self.request.user.user_staff.restaurant
+                restaurant.picture = form.files.get("picture")
+                restaurant.save()
+            
+            messages.success(self.request, "Restaurant was updated successfully.")
+        else:
+            messages.error(self.request, "Something unexpected happened. Please try again.")
+        return redirect("accounts:profile")
+    
+    
+edit_restaurant_view = EditRestaurantView.as_view()

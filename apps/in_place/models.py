@@ -46,6 +46,8 @@ class Staff(models.Model):
             ("mod_staff", "can add, modify, or delete members for the staff")
         ]
         
+    ######### Permission Properties #########
+        
     @property
     def can_delete_orders(self):
         return self.user.has_perm("in_place.delete_orders")
@@ -73,6 +75,12 @@ class Staff(models.Model):
     @property
     def can_delete_staff(self):
         return self.user.has_perm("in_place.delete_staff")
+    
+    @property
+    def can_edit_restaurant(self):
+        return self.user.has_perm("in_place.edit_restaurant")
+    
+    ####################
     
     def get_restaurant_url(self):
         return reverse("restaurants:restaurant", 

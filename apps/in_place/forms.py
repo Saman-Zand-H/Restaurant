@@ -334,3 +334,10 @@ class ChangeStaffForm(forms.Form):
     income = forms.IntegerField(validators=[MinValueValidator(0)])
     address = forms.CharField(required=False)
     phonenumber = PhoneNumberField(required=False)
+
+
+class EditRestaurantForm(forms.Form):
+    name = forms.CharField()
+    picture = forms.ImageField(required=False,
+                               widget=forms.ClearableFileInput(
+                                   attrs={"class": "form-control"}))

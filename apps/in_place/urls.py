@@ -72,5 +72,8 @@ urlpatterns = [
         name="edit_itemvar"),
    path(route="menu/itemvar/delete",
         view=views.delete_itemvar_view,
-        name="delete_itemvar")
+        name="delete_itemvar"),
+   path(route="restaurant/edit/",
+        view=views.edit_restaurant_view,
+        name="edit_restaurant")
 ]

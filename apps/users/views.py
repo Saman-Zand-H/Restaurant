@@ -12,6 +12,7 @@ from allauth.account.views import (PasswordChangeView as AllauthChangePasswordVi
                                    EmailView as AllauthEmailView)
 
 from delivery.models import UserAddressInfo
+from in_place.forms import EditRestaurantForm
 from .forms import (AddressForm, 
                     EditAddressForm, 
                     EditAddressRequestForm, 
@@ -36,6 +37,7 @@ class ProfileView(LoginRequiredMixin, View):
             "sidebar": "user",
             "change_user_form": change_user_form,
             "change_password_form": ChangePasswordForm(),
+            "edit_restaurant_form": EditRestaurantForm(),
             "address_form": AddressForm(),
             "address_form_action": reverse("accounts:add_address")
         })

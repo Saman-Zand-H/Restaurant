@@ -100,6 +100,52 @@
 			</div>
 		</div>
 	</div>
+	{% if user.user_staff.can_edit_restaurant %}
+		<div class="my-4">
+			<div class="card">
+				<div class="card-header card-header-warning">
+					<h4 class="card-title">Change Picture</h4>
+					<p class="card-category">Change the profile picture of your restaurant.</p>
+				</div>
+				<div class="card-body">
+					<div class="row">
+						<div class="col-md-8 img-container my-2 mx-3">
+							<img 
+								 class="img-fluid w-50"
+								 alt="profile picture" 
+								 src="{{ user.user_staff.restaurant.get_picture_url }}"
+								>
+						</div>
+						<div class="col-md-3 mt-3 mx-2">
+							<form 
+								  action="{% url 'in_place:edit_restaurant' %}" 
+								  method="POST" 
+								  enctype="multipart/form-data"
+								 >
+								{% csrf_token %}
+								<div class="my-2 form-group">
+									<label class="bmd-label-floating">Name</label>
+									<input 
+										   class="form-control"
+										   type="text" 
+										   name="name" 
+										   value="{{ user.user_staff.restaurant.name }}"
+										  > 
+								</div>
+								<div class="my-2">
+									<label>Picture</label>
+									{{ edit_restaurant_form.picture }}
+								</div>
+								<div class="row col-3 offset-8 mt-4">
+									<button type="submit" class="btn btn-info">Edit</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	{% endif %}
 	<div style="margin-top:3.5rem">
         <div class="card" id="addressesCard">
 				<div class="card-header card-header-primary">
