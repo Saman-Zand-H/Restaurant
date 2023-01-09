@@ -142,3 +142,10 @@ class ChangeUserForm(forms.Form):
             username = self.cleaned_data.get("username")
             get_adapter().clean_username(username)
         return data
+
+
+class EditProfilePicForm(forms.Form):
+    picture = forms.ImageField(required=False,
+                               widget=forms.ClearableFileInput(
+                                   attrs={"class": "form-control",
+                                       "id": "changeProfileInput"}))

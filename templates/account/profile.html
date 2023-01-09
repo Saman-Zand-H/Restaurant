@@ -75,6 +75,17 @@
 						>
 					</a>
 				</div>
+				<form 
+					  action="{% url 'accounts:edit_picture' %}" 
+					  method="POST" 
+					  enctype="multipart/form-data"
+					  id="profileForm"
+					  class="mx-auto"
+					 >
+					{% csrf_token %}
+					{{ edit_profile_picture_form.picture }}
+					<button type="submit" class="btn btn-sm btn-danger">clear</button>
+				</form>
 				<div class="card-body">
 					<h6 class="card-category">
 						{{ user.user_staff.get_role_display|default:"Customer"|title }}
@@ -462,6 +473,12 @@
 					}, 1000);
 				});
 			});
+		});
+	</script>
+	<script>
+		var $profile= $("#changeProfileInput");
+		$profile.change((e) => {
+			$("#profileForm").submit();
 		});
 	</script>
 {% endblock %}

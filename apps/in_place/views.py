@@ -146,6 +146,7 @@ class DashboardView(LoginRequiredMixin, UserPassesTestMixin, View):
                                            max_num=item_var_qs.count())
         
         session_form_vals = self.get_forms_from_session()
+        # todo: change these!!!! session can't hold forms.
         order_form, dinein_form, order_item_formset = (
             session_form_vals.get("order_form") or OrderForm(),
             session_form_vals.get("dinein_form") or DineInForm(),
@@ -1084,7 +1085,8 @@ class EditRestaurantView(LoginRequiredMixin, UserPassesTestMixin, View):
             
             messages.success(self.request, "Restaurant was updated successfully.")
         else:
-            messages.error(self.request, "Something unexpected happened. Please try again.")
+            messages.error(self.request, 
+                           "Something unexpected happened. Please try again.")
         return redirect("accounts:profile")
     
     

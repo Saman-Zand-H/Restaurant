@@ -23,5 +23,8 @@ urlpatterns = [
         name="delete_address"),
    path(route="password_change/",
         view=views.change_password_view,
-        name="change_password")
+        name="change_password"),
+   path(route="picture/edit/",
+        view=views.edit_profile_picture_view,
+        name="edit_picture")
 ]

@@ -3,6 +3,7 @@ from django.urls import reverse, reverse_lazy, reverse
 from django.views import View
 from django.views.generic import FormView
 from django.contrib import messages
+from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect
 from django.db import transaction
@@ -16,7 +17,8 @@ from in_place.forms import EditRestaurantForm
 from .forms import (AddressForm, 
                     EditAddressForm, 
                     EditAddressRequestForm, 
-                    ChangeUserForm)
+                    ChangeUserForm,
+                    EditProfilePicForm)
 
 
 class ProfileView(LoginRequiredMixin, View):
@@ -37,6 +39,7 @@ class ProfileView(LoginRequiredMixin, View):
             "sidebar": "user",
             "change_user_form": change_user_form,
             "change_password_form": ChangePasswordForm(),
+            "edit_profile_picture_form": EditProfilePicForm(),
             "edit_restaurant_form": EditRestaurantForm(),
             "address_form": AddressForm(),
             "address_form_action": reverse("accounts:add_address")
@@ -150,10 +153,7 @@ class ChangeUserView(LoginRequiredMixin, View):
             username = self.request.user.username
             changed_data = {i:form_data.cleaned_data.get(i) 
                             for i in form_data.changed_data}
-            update_arg_str = ','.join([f'{k}=\'{v}\'' 
-                                       for k, v in changed_data.items()])
-            exec(f"get_user_model().objects.filter"
-                  f"(username='{username}').update({update_arg_str})")
+            get_user_model().objects.filter(username=username).update(**changed_data)
             messages.success(self.request, 
                              "Your informatin was successfully updated.")
         else:
@@ -164,6 +164,25 @@ class ChangeUserView(LoginRequiredMixin, View):
 
 
 change_user_view = ChangeUserView.as_view()
+
+
+class EditProfilePictureView(LoginRequiredMixin, View):
+    context = dict()
+    
+    def post(self, *args, **kwargs):
+        form = EditProfilePicForm(data=self.request.POST,
+                                  files=self.request.FILES)
+        if form.is_valid():
+            user = self.request.user
+            user.picture = form.files.get("picture")
+            user.save()
+            messages.success(self.request, "Your picture was updated successfully.")
+        else:
+            messages.error(self.request, "Something went wrong. Try again.")
+        return redirect("accounts:profile")
+    
+
+edit_profile_picture_view = EditProfilePictureView.as_view()
 
 
 class ChangePasswordView(AllauthChangePasswordView):
