@@ -65,6 +65,14 @@ class Staff(models.Model):
     def can_edit_items(self):
         return self.user.has_perm("in_place.edit_items")
     
+    @property
+    def can_change_staff(self):
+        return self.user.has_perm("in_place.change_staff")
+    
+    @property
+    def can_delete_staff(self):
+        return self.user.has_perm("in_place.delete_staff")
+    
     def save(self, *args, **kwargs):
         sup_save = super().save(*args, **kwargs)
         managers_g, created = Group.objects.get_or_create(

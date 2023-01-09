@@ -26,6 +26,12 @@ urlpatterns = [
    path(route="staff/",
         view=views.staff_view,
         name="staff"),
+   path(route="staff/change/",
+        view=views.edit_staff_view,
+        name="edit_staff"),
+   path(route="staff/delete/",
+        view=views.delete_staff_view,
+        name="delete_staff"),
    
    path(route="finance/",
         view=views.finance_view,

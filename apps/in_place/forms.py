@@ -1,11 +1,13 @@
 from django import forms
-from django.utils import timezone
+from django.contrib.auth import get_user_model
 from django.core.validators import MinValueValidator
+from phonenumber_field.formfields import PhoneNumberField
+from phonenumber_field.widgets import PhoneNumberInternationalFallbackWidget
 
-from typing import Any
 from abc import abstractmethod
 
 from restaurants.models import ItemVariation, Order, Item, Cuisine
+from .models import Staff
 from users.forms import SignupForm
 
 
@@ -299,3 +301,36 @@ class DeleteItemVarForm(_BaseDeleteForm):
             raise forms.ValidationError(
                 {"public_uuid": "This itemvar doesn't exist."})
         return sup
+    
+
+class StaffUsernameForm(forms.Form):
+    username = forms.CharField(max_length=50)
+    
+    def clean(self, *args, **kwargs):
+        cleaned_data = super().clean(*args, **kwargs)
+        username = cleaned_data.get("username")
+        assert username is not None
+        if not (get_user_model().objects.filter(username=username).exists()
+                and Staff.objects.filter(user__username=username).exists()):
+            self.add_error("username", "This user doesn't exist or has no staff record. "
+                                        "Please don't change the initial data.")
+            raise forms.ValidationError("Invalid user detected.",
+                                        "invalid_user")
+        return cleaned_data
+
+
+class ChangeStaffForm(forms.Form):
+    role_choices = (
+        ("ca", "cashier"),
+        ("ch", "chef"),
+        ("s", "supplier"),
+        ("w", "waiter"),
+        ("m", "manager"),
+        ("d", "driver"),
+    )
+    role = forms.ChoiceField(choices=role_choices)
+    description = forms.CharField(required=False)
+    date_created = forms.DateField()
+    income = forms.IntegerField(validators=[MinValueValidator(0)])
+    address = forms.CharField(required=False)
+    phonenumber = PhoneNumberField(required=False)

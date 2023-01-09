@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.forms import formset_factory
 from django.contrib import messages
 from django.core.exceptions import ValidationError
+from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import (LoginRequiredMixin, 
                                         UserPassesTestMixin)
 from django.utils import timezone
@@ -14,6 +15,7 @@ from django.views import View
 import json
 import xlwt
 import numpy as np
+from operator import is_not
 from itertools import chain
 from functools import reduce
 from datetime import datetime, date, time
@@ -39,7 +41,9 @@ from .forms import (OrderForm,
                     DeleteItemForm,
                     NewItemVarForm,
                     EditItemVarForm,
-                    DeleteItemVarForm)
+                    DeleteItemVarForm,
+                    ChangeStaffForm,
+                    StaffUsernameForm)
 from .models import DineInOrder, Staff
 from search_index.es_queries import OrderQuery
 from search_index.documents import OrderDocument
@@ -522,11 +526,12 @@ class StaffView(LoginRequiredMixin, UserPassesTestMixin, View):
     def test_func(self):
         return (self.request.user.has_perm("in_place.mod_staff")
                 and hasattr(self.request.user, "user_staff"))
-    
+        
     def get(self, *args, **kwargs):
         restaurant = self.request.user.user_staff.restaurant
-        self.context.update({"staff": restaurant.restaurant_staff,
-                             "new_form": CreateStaffForm()})
+        self.context.update({"staff": restaurant.restaurant_staff.order_by("user__last_name"),
+                             "new_form": CreateStaffForm(),
+                             "change_staff_form": ChangeStaffForm()})
         return render(self.request, self.template_name, self.context)
     
     def post(self, *args, **kwargs):
@@ -560,6 +565,74 @@ class StaffView(LoginRequiredMixin, UserPassesTestMixin, View):
 
 
 staff_view = StaffView.as_view()
+
+
+class EditStaffView(LoginRequiredMixin, UserPassesTestMixin, View):
+    context = dict()
+    
+    def test_func(self):
+        return (hasattr(self.request.user, "user_staff")
+                and self.request.user.has_perm("in_place.staff"))
+        
+    def _prepare_initial(self, username):
+        staff = Staff.objects.get(user__username=username)
+        return {
+            "role": staff.role,
+            "address": staff.address,
+            "description": staff.description,
+            "income": staff.income,
+            "phone_number": staff.user.phone_number,
+            "date_created": staff.date_created
+        }
+        
+    def post(self, *args, **kwargs):
+        username_form = StaffUsernameForm(self.request.POST)
+        if username_form.is_valid():
+            username = username_form.cleaned_data.get("username")
+            staff_form = ChangeStaffForm(data=self.request.POST,
+                                         initial=self._prepare_initial(username))
+            if staff_form.is_valid() and staff_form.has_changed():
+                with transaction.atomic():
+                    phonenumber = staff_form.cleaned_data.pop("phonenumber", None)
+                    update_args = {i: staff_form.cleaned_data.get(i)
+                                   for i in staff_form.changed_data}
+                    try:
+                        if (phonenumber is not None 
+                            and phonenumber in staff_form.changed_data):
+                            get_user_model().objects.select_for_update().update(phone_number=phonenumber)
+                        Staff.objects.select_for_update().filter(
+                            user__username=username).update(**update_args)
+                        messages.success(self.request, "Staff record was updated successfully.")
+                    except:
+                        pass
+            else:
+                messages.error(self.request, "Something went wrong. Please try again.")
+        else:
+            messages.warning(self.request, "Invalid username was provided. Try again.")
+        return redirect("in_place:staff")
+        
+    
+edit_staff_view = EditStaffView.as_view()
+
+
+class DeleteStaffView(LoginRequiredMixin, UserPassesTestMixin, View):
+    def test_func(self):
+        return (hasattr(self.request.user, "user_staff")
+                and self.request.user.has_perm("in_place.delete_staff"))
+        
+    def post(self, *args, **kwargs):
+        username_form = StaffUsernameForm(self.request.POST)
+        if username_form.is_valid():
+            username = username_form.cleaned_data.get("username")
+            Staff.objects.filter(user__username=username).delete()
+            messages.success(self.request, f"{username} was deleted successfully.")
+        else:
+            messages.error(self.request, 
+                           "Something unexpected happened. Please try again.")
+        return redirect("in_place:staff")
+    
+    
+delete_staff_view = DeleteStaffView.as_view()
 
 
 class FinanceView(LoginRequiredMixin, UserPassesTestMixin, View):

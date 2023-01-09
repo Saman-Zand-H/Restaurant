@@ -3,6 +3,24 @@
 {% load static humanize tz dash_utils crispy_forms_tags %}
 
 
+{% block stylesheet %}
+    <link 
+          href="https://unpkg.com/persian-datepicker@latest/dist/css/persian-datepicker.min.css" 
+          rel="stylesheet" 
+         >
+    <style>
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+    </style>
+{% endblock %}
+
 {% block title %}
     {{ user.user_staff.restaurant.name|title }} | Staff
 {% endblock %}
@@ -120,6 +138,205 @@
             </div>
         </div>
     </div>
+    
+    {% for member in staff.all %}
+        <div 
+             class="modal fade" 
+             id="change_staff_{{ member.user.username }}" 
+             tabindex="-1" 
+             role="dialog"
+            >
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content bg-dark">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-light">
+                            Change {{ member.user.username }}
+                        </h5>
+                        <button 
+                                type="button" 
+                                class="close" 
+                                data-dismiss="modal" 
+                                aria-label="Close"
+                            >
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body text-light">
+                        <div class="my-3">
+                            <form 
+                                  method="POST" 
+                                  action="{% url 'in_place:edit_staff' %}"
+                                  id="change_{{ member.user.username }}_form"
+                                  class="mx-5"
+                                 >
+                                {% csrf_token %}
+                                <input type="hidden" name="username" value="{{ member.user.username }}">
+                                <div class="row">
+                                    <div class="col-md-8 form-group">
+                                        <label class="bmd-label-floating">Income</label>
+                                        <input 
+                                               type="number" 
+                                               name="income" 
+                                               value="{{ member.income }}" 
+                                               class="form-control"
+                                              >
+                                    </div>
+                                    <div class="col-md-4 form-group">
+                                        <label class="bmd-label-floating">Employment Date</label>
+                                        <input 
+                                               type="hidden"
+                                               id="change_staff_datetime_{{ member.user.username }}_alt" 
+                                               name="date_created" 
+                                               value="{{ member.date_created.isoformat }}"
+                                              >
+                                        <input 
+                                               type="text" 
+                                               class="form-control"
+                                               value="{{ member.date_created.isoformat }}"
+                                               id="change_staff_datetime_{{ member.user.username }}"
+                                               onclick="generateDatepicker('{{ member.user.username }}')"
+                                              >
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6 form-group">
+                                        <label class="bmd-label-floating">Address</label>
+                                        <input 
+                                               type="text"
+                                               class="form-control"
+                                               name="address"
+                                               value="{{ member.address|default:'' }}"
+                                              >
+                                    </div>
+                                    <div class="col-6 form-group">
+                                        <label class="bmd-label-floating">Description</label>
+                                        <input
+                                               type="text"
+                                               class="form-control"
+                                               name="description"
+                                               value="{{ member.description|default:'' }}"
+                                              > 
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <label class="bmd-label-floating">Phonenumber</label>
+                                    <input 
+                                           type="text" 
+                                           class="form-control" 
+                                           name="phonenumber" 
+                                           value="{{ member.user.phone_number|default:'' }}"
+                                          >
+                                </div>
+                                <hr>
+                                <div>
+                                    <div class="mx-3 my-4">
+                                        <label>Role:</label>
+                                        <div class="mx-3">
+                                            {% for val, choice in change_staff_form.role.field.choices %}
+                                                <div class="form-check form-check-radio">
+                                                    <label class="form-check-label">
+                                                        <input 
+                                                               type="radio" 
+                                                               id="{{ member.user.username }}_change_role_{{ val }}"
+                                                               class="form-check-input" 
+                                                               name="role"
+                                                               value="{{ val }}"
+                                                               {% if val == member.role %}
+                                                                   checked
+                                                               {% endif %}
+                                                              >
+                                                            {{ choice|upper }}
+                                                        <span class="circle">
+                                                            <span class="check"></span>
+                                                        </span>
+                                                    </label>
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button 
+                                type="button" 
+                                class="btn btn-secondary" 
+                                data-dismiss="modal"
+                            >
+                            Close
+                        </button>
+                        <button 
+                                type="button" 
+                                id="new_staff_btn"
+                                class="btn btn-success"
+                                onclick="javascript:$('#change_{{ member.user.username }}_form').submit()"
+                            >
+                            Change
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div 
+             class="modal fade" 
+             id="delete_staff_{{ member.user.username }}" 
+             tabindex="-1" 
+             role="dialog"
+            >
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content bg-dark">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-light">
+                            Delete {{ member.user.username }}
+                        </h5>
+                        <button 
+                                type="button" 
+                                class="close" 
+                                data-dismiss="modal" 
+                                aria-label="Close"
+                            >
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body text-light">
+                        <div class="my-3">
+                            <form 
+                                  method="POST" 
+                                  action="{% url 'in_place:delete_staff' %}" 
+                                  id="delete_{{ member.user.username }}_form"
+                                 >
+                                {% csrf_token %}
+                                <input name="username" type="hidden" value="{{ member.user.username }}"
+                                <h2 class="diplay-3">
+                                    Are you sure you want to delete {{ member.user.username }}?
+                                </h2>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button 
+                                type="button" 
+                                class="btn btn-secondary" 
+                                data-dismiss="modal"
+                            >
+                            Close
+                        </button>
+                        <button 
+                                type="button" 
+                                id="new_staff_btn"
+                                class="btn btn-danger"
+                                onclick="javascript:$('#delete_{{ member.user.username }}_form').submit()"
+                            >
+                            Delete
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
 {% endblock %}
 
 {% block content %}
@@ -141,13 +358,67 @@
                     <div class="card-body">
                         <div class="mx-3">
                             <h3>{{ member.user.name|title }}</h3><br>
+                            <h6>@{{ member.user.username }}</h6>
                             <h6>Phone Number: {{ member.phone_number|default:"Not Set" }}</h6>
                             <h6>Address: {{ member.address|default:"Not Set" }}</h6>
                             <h6>Role: {{ member.get_role_display }}</h6>
+                            <h6>Employed at: {{ member.date_created|date:'l M jS Y' }}</h6>
+                            <h6>Salary: {{ member.income }}</h6>
+                            {% if member.description %}
+                                <h6>Desceiption: {{ member.description }}</h6>
+                            {% endif %}
                         </div>
-                        <div class="d-flex justify-content-end">
-                            <a class="btn btn-dark" href="#">more...</a>
-                        </div>
+                        
+                        {% if user.user_staff.can_change_staff and user.user_staff.can_delete_staff %}
+                            <div class="d-flex justify-content-end">
+                                <div class="dropdown">
+                                    <button 
+                                            class="btn btn-warning dropdown-toggle" 
+                                            type="button" 
+                                            id="staff_{{ member.user.username }}_options" 
+                                            data-toggle="dropdown"
+                                            aria-haspopup="true" 
+                                            aria-expanded="false"
+                                        >
+                                        options
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="staff_{{ member.user.username }}_options">
+                                        <button 
+                                                type="button" 
+                                                id="staff_edit_button_{{ member.user.username }}"
+                                                class="d-none" 
+                                                data-toggle="modal" 
+                                                data-target="#change_staff_{{ member.user.username }}"
+                                            >
+                                        </button>
+                                        <a 
+                                        class="dropdown-item" 
+                                        href="#" 
+                                        onclick="$('#staff_edit_button_{{ member.user.username }}').click()"
+                                        >
+                                        Edit
+                                        </a>
+
+                                        <button 
+                                                type="button" 
+                                                id="staff_delete_button_{{ member.user.username }}"
+                                                class="d-none" 
+                                                data-toggle="modal" 
+                                                data-target="#delete_staff_{{ member.user.username }}"
+                                            >
+                                        </button>
+                                        <a 
+                                        class="dropdown-item" 
+                                        href="#" 
+                                        onclick="$('#staff_delete_button_{{ member.user.username }}').click()"
+                                        >
+                                            Delete
+                                        </a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        {% endif %}
                     </div>
                 </div>
             {% endfor %}
@@ -164,4 +435,19 @@
 {% endblock %}
 
 {% block script %}
+    <script src="https://unpkg.com/persian-date@latest/dist/persian-date.min.js"></script>
+    <script src="https://unpkg.com/persian-datepicker@latest/dist/js/persian-datepicker.min.js"></script>
+    <script>
+        var generateDatepicker = (username) => {
+            $(`#change_staff_datetime_${username}`).pDatepicker({
+                format: 'YYYY-MM-DD',
+                calendarType: 'persian',
+                onSelect: (unix) => {
+                    var isoString = new persianDate(unix).toCalendar(
+                        'gregorian').State.gDate.toISOString();
+                    $(`#change_staff_datetime_${username}_alt`).val(isoString.split("T")[0]);
+                }
+            })
+        };
+    </script>
 {% endblock %}
