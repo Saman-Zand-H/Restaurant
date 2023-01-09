@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+from django.urls import reverse
 from django.contrib.auth.models import Permission, Group
 from django.core.exceptions import ValidationError
 from django.core.validators import MinValueValidator
@@ -72,6 +73,10 @@ class Staff(models.Model):
     @property
     def can_delete_staff(self):
         return self.user.has_perm("in_place.delete_staff")
+    
+    def get_restaurant_url(self):
+        return reverse("restaurants:restaurant", 
+                       kwargs={"public_uuid": self.restaurant.public_uuid})
     
     def save(self, *args, **kwargs):
         sup_save = super().save(*args, **kwargs)
