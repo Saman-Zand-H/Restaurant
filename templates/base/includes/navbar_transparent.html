@@ -61,23 +61,11 @@
                             <ul class="list-group">
                                 <li class="nav-item list-group-item border-0 p-0">
                                     <a class="dropdown-item py-2 ps-3 border-radius-md"
-                                        href=" https://www.creative-tim.com/learning-lab/bootstrap/overview/material-kit ">
+                                        href="{% url 'restaurants:new_partner' %}">
                                         <h6
                                             class="dropdown-header text-dark font-weight-bolder d-flex justify-content-cente align-items-center p-0">
                                             For Restaurants</h6>
-                                        <span class="text-sm">Become a restaurant partner with us.</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item list-group-item border-0 p-0">
-                                    <a class="dropdown-item py-2 ps-3 border-radius-md"
-                                        href=" https://www.creative-tim.com/learning-lab/bootstrap/colors/material-kit ">
-                                        <h6
-                                            class="dropdown-header text-dark 
-                                                   font-weight-bolder d-flex 
-                                                   justify-content-cente align-items-center p-0"
-                                           >
-                                            For Drivers</h6>
-                                        <span class="text-sm">become a driver partner with us.</span>
+                                        <span class="text-sm">Bring your restaurant to Rubik.</span>
                                     </a>
                                 </li>
                             </ul>
@@ -126,7 +114,7 @@
                         <img src="{% static 'assets/img/down-arrow-dark.svg' %}" alt="down-arrow" class="arrow ms-2 d-lg-none d-block">
                     </a>
                     <ul class="dropdown-menu dropdown-menu-animation dropdown-menu-end dropdown-md dropdown-md-responsive mt-0 mt-lg-3 p-3 border-radius-lg"
-                        aria-labelledby="dropdownMenuDocs">
+                        aria-labelledby="dropdownMenuDocs" id="auth_nav">
                         <div class="d-none d-lg-block">
                             <ul class="list-group">
                                 {% if user.is_authenticated %}

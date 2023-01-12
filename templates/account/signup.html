@@ -52,6 +52,7 @@
                                     </div>
                                     <div class="col">
                                         {{ form.password2|as_crispy_field }}
+                                    </div>
                                 </div>
                                 {{ form.picture|as_crispy_field }}
                                 <button type="submit" class="btn btn-primary mt-2">
@@ -69,6 +70,10 @@
         </div>
         
         {% include "base/includes/footer_transparent.html" %}
+
+        <script>
+            $("input").addClass('bg-gray-300');
+        </script>
     </div>
 </body>
 

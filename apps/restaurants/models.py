@@ -66,7 +66,7 @@ class RestaurantType(models.Model):
     
 
 class Restaurant(models.Model):
-    public_uuid =models.UUIDField(default=uuid4,
+    public_uuid = models.UUIDField(default=uuid4,
                                   editable=False,
                                   auto_created=True,
                                   unique=True)

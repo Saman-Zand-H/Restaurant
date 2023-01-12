@@ -17,4 +17,10 @@ urlpatterns = [
     path(route="restaurants/<uuid:public_uuid>/",
          view=views.restaurant_page_view,
          name="restaurant"),
+    path(route="restaurants/new/",
+         view=views.new_partner_view,
+         name="new_partner"),
+    path(route="restaurants/add/auth/",
+         view=views.new_partner_ajax,
+         name="partner_ajax")
 ]

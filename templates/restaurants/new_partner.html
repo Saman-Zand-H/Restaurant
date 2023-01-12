@@ -1,0 +1,176 @@
+{% extends "base/layout/base.html" %}
+{% load crispy_forms_tags %}
+
+
+{% block title %}New Partner{% endblock %}
+
+
+{% block stylesheet %}
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/clockpicker/0.0.7/jquery-clockpicker.min.css'
+        integrity='sha512-Dh9t60z8OKsbnVsKAY3RcL2otV6FZ8fbZjBrFENxFK5H088Cdf0UVQaPoZd/E0QIccxqRxaSakNlmONJfiDX3g=='
+        crossorigin='anonymous' />
+{% endblock %}
+
+{% block content %}
+
+<body class="sign-in-basic">
+    <!-- Navbar Transparent -->
+    {% include "base/includes/navbar_transparent.html" %}
+    <!-- End Navbar -->
+    <div class="page-header align-items-start min-vh-100"
+        style="background-image: url('https://images.unsplash.com/photo-1497294815431-9365093b7331?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1950&q=80');"
+        loading="lazy">
+        <span class="mask bg-gradient-dark opacity-6"></span>
+        <div class="container my-auto">
+            <div class="row">
+                <div class="col-lg-4 col-md-8 col-12 mx-auto">
+                    <div class="card z-index-0 fadeIn3 fadeInBottom my-6">
+                        <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                            <div class="bg-gradient-primary shadow-primary border-radius-lg py-3 pe-1">
+                                <h4 class="text-white font-weight-bolder text-center mt-2 mb-0">New Restaurant</h4>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            {% if not user.is_authenticated %}
+                                <form id="auth_form" class="my-2">
+                                    {% csrf_token %}
+                                    <div class="row">
+                                        <div class="col">
+                                            {{ form.username|as_crispy_field }}
+                                        </div>
+                                        <div class="col">
+                                            {{ form.email|as_crispy_field }}
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            {{ form.first_name|as_crispy_field }}
+                                        </div>
+                                        <div class="col">
+                                            {{ form.last_name|as_crispy_field }}
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            {{ form.password1|as_crispy_field }}
+                                        </div>
+                                        <div class="col">
+                                            {{ form.password2|as_crispy_field }}
+                                        </div>
+                                    </div>
+                                    {{ form.picture|as_crispy_field }}
+                                    <button type="submit" class="btn btn-primary mt-3">Sign Up</button>
+                                </form>
+                                <div id="partner_form"></div>
+                            {% else %}
+                                <form method="POST">
+                                    {% csrf_token %}
+                                    {{ form|crispy }}
+                                    <div class="row">
+                                        <button class="btn btn-success mt-3 col-3 offset-8" type="submit">Submit</button>
+                                    </div>
+                                </form>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+        {% include 'base/includes/footer_transparent.html' %}
+    </div>
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/clockpicker/0.0.7/jquery-clockpicker.min.js'
+        integrity='sha512-x0qixPCOQbS3xAQw8BL9qjhAh185N7JSw39hzE/ff71BXg7P1fkynTqcLYMlNmwRDtgdoYgURIvos+NJ6g0rNg=='
+        crossorigin='anonymous'></script>
+    <script>
+        $("input:not([type=radio]), textarea").addClass("bg-gray-300 px-3");
+        if ($("#opens_at").length > 0 && $("#closes_at").length > 0) {
+            $("#opens_at").clockpicker({
+                autoclose: true
+            });
+            $("#closes_at").clockpicker({
+                autoclose: true
+            });
+        }
+    </script>
+    <script>
+        const $authForm = $("#auth_form"),
+              csrf_token = $("input[name=csrfmiddlewaretoken]")[0].value,
+              formUrl = "{% url 'restaurants:partner_ajax' %}",
+              createFormData = (form_id) => {
+                  // in order to handle files as well, we need to pass FormData to ajax.
+                  var formData = new FormData();
+                  $(`#${form_id}`).find(":input").each((_, elem) => {
+                    if (elem.type === "file") {
+                        for (let i; i < elem.files.length; i++) {
+                            formData.append(elem.name, elem.files[i]);
+                        }
+                    } else {
+                        formData.append(elem.name, $(elem).val());
+                    }
+                  });
+                  return formData
+              };
+
+        $authForm.submit((e) => {
+            e.preventDefault();
+            $.ajax({
+                url: window.location.origin+formUrl,
+                method: "post",
+                headers: {
+                    "X-CSRFToken": csrf_token
+                },
+                data: createFormData("auth_form"),
+                contentType: false,
+                processData: false,
+                success: (raw_data) => {
+                    var data = JSON.parse(raw_data.html);
+                    if (data.status_code == 200) {
+                        var newAuthHtml = `
+                            <div class="d-none d-lg-block">
+                                <ul class="list-group">
+                                    
+                                        <li class="nav-item list-group-item border-0 p-0">
+                                            <a class="dropdown-item py-2 ps-3 border-radius-md" href="{% url 'account_logout' %}">
+                                                <h6 class="dropdown-header text-dark font-weight-bolder d-flex justify-content-cente align-items-center p-0">
+                                                    Logout</h6>
+                                                <span class="text-sm">Log out of your account.</span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item list-group-item border-0 p-0">
+                                            <a class="dropdown-item py-2 ps-3 border-radius-md" href="{% url 'accounts:profile' %}">
+                                                <h6 class="dropdown-header text-dark font-weight-bolder d-flex justify-content-cente align-items-center p-0">
+                                                    Profile</h6>
+                                                <span class="text-sm">Take a look at your profile.</span>
+                                            </a>
+                                        </li>
+                                    
+                                </ul>
+                            </div>
+                        `;
+                        $("#auth_form").remove();
+                        $("#partner_form").html($.parseHTML(data.template));
+                        $("input:not([type=radio]), textarea").not(".bg-gray-300").addClass("bg-gray-300 px-3");
+                        $("#auth_nav").html($.parseHTML(newAuthHtml));
+
+                        $("#opens_at").clockpicker({
+                            autoclose: true
+                        });
+                        $("#closes_at").clockpicker({
+                            autoclose: true
+                        });
+                    } else {
+                        alert("It's likely that this email or username has already been taken. Please retry.");
+                        console.log(data.status_code);
+                    }
+                },
+                error: (data) => {
+                    alert("It's likely that this email or username has already been taken. Please retry.");
+                }
+            })
+        });
+    </script>
+</body>
+
+{% endblock %}

@@ -1,23 +1,29 @@
-from genericpath import exists
 from django.shortcuts import render, redirect, reverse
-from django.db.models import Max, Min, F, Avg
-from django.http.response import (HttpResponse, 
-                                  JsonResponse, 
+from django.db.models import F
+from django.db import transaction
+from django.http.response import (JsonResponse, 
                                   HttpResponseBadRequest)
+from django.template.loader import get_template
 from django.views import View
 from django.contrib import messages
+from django.views.decorators.csrf import csrf_exempt
+from django.utils.decorators import method_decorator
 from django.contrib.gis.geos import Point
 from django.contrib.gis.db.models.functions import Distance
 
-from uuid import UUID
-from functools import partial
+from allauth.account.views import SignupView
+from allauth.account import app_settings
+from allauth.account.utils import complete_signup
+from allauth.exceptions import ImmediateHttpResponse
+
 from logging import getLogger
 from asgiref.sync import sync_to_async
 
-from delivery.models import DeliveryCart
-from .models import Restaurant, Cuisine, Item, RestaurantType, Review
-from .forms import FilterItems, FilterRestaurants
+from .models import Restaurant, RestaurantType, Review
+from .forms import FilterItems, FilterRestaurants, NewPartnerForm
 from .utils import paginate
+from in_place.models import Staff
+from users.forms import SignupForm
 from search_index.es_queries import RestaurantQuery
 from search_index.documents import RestaurantDocument
 
@@ -69,7 +75,7 @@ class ListRestaurantsView(View):
                     
             paginated_data = await sync_to_async(paginate)(page, values, 6)
             
-            await sync_to_async(self.context.update)({
+            self.context.update({
                 "page": paginated_data[0],
                 "paginator": paginated_data[1],
                 "types": types,
@@ -140,18 +146,94 @@ class RestaurantPageView(View):
     template_name = "restaurants/restaurant.html"
     context = dict()
     
-    async def get(self, *args, **kwargs):
-        restaurant = await Restaurant.objects.aget(
+    def get(self, *args, **kwargs):
+        restaurant = Restaurant.objects.get(
             public_uuid=kwargs.get("public_uuid"))
-        reviews = await sync_to_async(Review.objects.filter)(
+        reviews = Review.objects.filter(
                 item__cuisine__restaurant=restaurant)
         self.context.update({
             "restaurant": restaurant,
             "reviews": reviews,
         })
-        return await sync_to_async(render)(self.request, 
-                                           self.template_name, 
-                                           self.context)
+        return render(self.request, 
+                      self.template_name, 
+                      self.context)
 
 
 restaurant_page_view = RestaurantPageView.as_view()
+
+
+
+# todo: this has to become csrf exempt.
+class NewPartnerAjax(SignupView):
+    form_template_name = "restaurants/new_partner_form.html"
+    
+    @method_decorator(csrf_exempt)
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
+    
+    def form_valid(self, form):
+        print("at form.")
+        # By assigning the User to a property on the view, we allow subclasses
+        # of SignupView to access the newly created User instance
+        self.user = form.save(self.request)
+        try:
+            print("position one.")
+            template = get_template(self.form_template_name)
+            complete_signup(
+                self.request,
+                self.user,
+                app_settings.EMAIL_VERIFICATION,
+                self.get_success_url(),
+            )
+            data = {"status_code": 200,
+                    "template": str(template.render({"form": NewPartnerForm()}))}
+        except ImmediateHttpResponse:
+            data = {"status_code": 403}
+        return JsonResponse(data)
+    
+    
+new_partner_ajax = NewPartnerAjax.as_view()
+        
+
+
+class NewPartnerView(View):
+    template_name = "restaurants/new_partner.html"
+    context = dict()
+    
+    def get(self, *args, **kwargs):
+        if (self.request.user.is_authenticated
+            and not hasattr(self.request.user, "user_staff")):
+            self.context.update({"form": NewPartnerForm()})
+        else:
+            self.context.update({
+                "form": SignupForm()
+            })
+        return render(self.request, self.template_name, self.context)
+    
+    def post(self, *args, **kwargs):
+        form = NewPartnerForm(self.request.POST)
+        if (form.is_valid() 
+            and self.request.user.is_authenticated
+            and not hasattr(self.request.user, "user_staff")):
+            role = form.cleaned_data.pop("role")
+            with transaction.atomic():
+                try:
+                    restaurant = Restaurant.objects.create(**form.cleaned_data)
+                    Staff.objects.create(
+                        user=self.request.user,
+                        restaurant=restaurant,
+                        role=role,
+                        income=0
+                    )
+                except Exception as e: 
+                    logger.debug("[!] Exception occurred: ", e)
+                    self.context.update({"form": form})
+                    return render(self.request, self.template_name, self.context)
+            messages.success(self.request, "Congratualations! You're now one of our partners.")
+            return redirect("in_place:dashboard")
+        self.context.update({"form": form})
+        return render(self.request, self.template_name, self.context)
+
+
+new_partner_view = NewPartnerView.as_view()
