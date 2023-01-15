@@ -11,21 +11,25 @@
         </a></div>
     <div class="sidebar-wrapper">
         <ul class="nav">
-            {% if user.user_staff %}
-                <li class="nav-item {% if request.path == '/in_place/' %}active{% endif %}">
-                    <a 
-                       class="nav-link" 
-                       href="{% url 'in_place:dashboard' %}"
-                      >
-                        <i class="material-icons">dashboard</i>
-                        <p>Dashboard</p>
-                    </a>
-                </li>
-            {% endif %}
+            <li class="nav-item {% if request.path == '/in_place/' %}active{% endif %}">
+                <a 
+                   class="nav-link" 
+                   href="{% url 'in_place:dashboard' %}"
+                  >
+                    <i class="material-icons">dashboard</i>
+                    <p>Dashboard</p>
+                </a>
+            </li>
             <li class="nav-item {% if 'profile' in request.path %}active{% endif %}">
                 <a class="nav-link" href="{% url 'accounts:profile' %}">
                     <i class="material-icons">person</i>
                     <p>Profile</p>
+                </a>
+            </li>
+            <li class="nav-item {% if 'location' in request.path %}active{% endif %}">
+                <a class="nav-link" href="{% url 'in_place:location' %}">
+                    <i class="material-icons">map</i>
+                    <p>Location</p>
                 </a>
             </li>
             {% if user.user_staff.can_read_salaries %}

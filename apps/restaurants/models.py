@@ -9,6 +9,7 @@ from django.templatetags.static import static
 from django.utils.functional import cached_property
 
 from azbankgateways.models import Bank
+from iranian_cities.fields import ProvinceField, CityField
 from persiantools.jdatetime import JalaliDateTime
 from datetime import timedelta, datetime, time, date
 from django.utils import timezone
@@ -23,8 +24,8 @@ from .utils import validate_extension, validate_size
 
 class RestaurantLocation(gis_models.Model):
     address = gis_models.CharField(max_length=255)
-    province = gis_models.CharField(max_length=50)
-    city = gis_models.CharField(max_length=50)
+    province = ProvinceField()
+    city = CityField()
     geo_address = gis_models.PointField()
     
     def __str__(self):
@@ -97,11 +98,11 @@ class Restaurant(models.Model):
                               null=True, 
                               auto_created=True, 
                               default=0)
-    info = models.OneToOneField(RestaurantLocation, 
-                                blank=True,
-                                null=True,
-                                on_delete=models.CASCADE,
-                                related_name="location_restaurant")
+    location = models.OneToOneField(RestaurantLocation, 
+                                    blank=True,
+                                    null=True,
+                                    on_delete=models.CASCADE,
+                                    related_name="location_restaurant")
     
     def __str__(self):
         return self.name

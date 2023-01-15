@@ -1,8 +1,10 @@
 from django import forms
 from django.contrib.auth import get_user_model
 from django.core.validators import MinValueValidator
+from django.contrib.gis.forms import (fields as gis_fields, 
+                                      widgets as gis_widgets)
 from phonenumber_field.formfields import PhoneNumberField
-from phonenumber_field.widgets import PhoneNumberInternationalFallbackWidget
+from iranian_cities.models import Province, City
 
 from abc import abstractmethod
 
@@ -341,3 +343,37 @@ class EditRestaurantForm(forms.Form):
     picture = forms.ImageField(required=False,
                                widget=forms.ClearableFileInput(
                                    attrs={"class": "form-control"}))
+
+
+class LocationForm(forms.Form):
+    province_choices = (
+        (i["id"], i["name"]) for i in Province.objects.values("name", "id")
+    )
+    city_choices = (
+        (i["id"], i["name"]) for i in City.objects.values("id", "name")
+    )
+    
+    geo_address = gis_fields.PointField(widget=gis_widgets.OSMWidget(),
+                                        srid=4326)
+    address = forms.CharField(max_length=255)
+    province = forms.ChoiceField(choices=province_choices,
+                                 widget=forms.Select())
+    city = forms.ChoiceField(choices=city_choices,
+                             widget=forms.Select())
+    
+    def clean(self, *args, **kwargs):
+        cleaned_data = super().clean(*args, **kwargs)
+        city = cleaned_data.get("city")
+        province = cleaned_data.get("province")
+        
+        if not (city_qs:=City.objects.filter(id=city)).exists():
+            self.add_error("city", "No record of this city was found. Try again.")
+            raise forms.ValidationError("Invalid city.")
+        if not (province_qs:=Province.objects.filter(id=province)).exists():
+            self.add_error("province", "No record of this province was found. Try again.")
+            raise forms.ValidationError("Invalid province.")
+        
+        cleaned_data.update({"province": province_qs.first(),
+                             "city": city_qs.first()})
+        return cleaned_data
+        

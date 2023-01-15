@@ -7,10 +7,12 @@ from django.contrib.auth.mixins import (LoginRequiredMixin,
                                         UserPassesTestMixin)
 from django.utils import timezone
 from django.http import JsonResponse, HttpResponse
+from django.template.loader import get_template
 from django.template.loader import render_to_string
 from django.db import transaction, IntegrityError
 from django.db.models import Q
 from django.views import View
+from iranian_cities.models import Province
 
 import json
 import xlwt
@@ -44,7 +46,8 @@ from .forms import (OrderForm,
                     DeleteItemVarForm,
                     ChangeStaffForm,
                     StaffUsernameForm,
-                    EditRestaurantForm)
+                    EditRestaurantForm,
+                    LocationForm)
 from .models import DineInOrder, Staff
 from search_index.es_queries import OrderQuery
 from search_index.documents import OrderDocument
@@ -53,6 +56,7 @@ from restaurants.models import (ItemVariation,
                                 Cuisine,
                                 Order, 
                                 OrderItem, 
+                                RestaurantLocation,
                                 Restaurant)
 
 
@@ -1091,3 +1095,62 @@ class EditRestaurantView(LoginRequiredMixin, UserPassesTestMixin, View):
     
     
 edit_restaurant_view = EditRestaurantView.as_view()
+
+
+class LocationView(LoginRequiredMixin, UserPassesTestMixin, View):
+    template_name = "in_place/location.html"
+    context = dict()
+    
+    def test_func(self):
+        return (hasattr(self.request.user, "user_staff")
+                and self.request.user.has_perm("in_place.read_location"))
+    
+    def get(self, *args, **kwargs):
+        location_initial = {}
+        restaurant = self.request.user.user_staff.restaurant
+        if (info:=restaurant.location) is not None:
+            location_initial = {"geo_address": info.geo_address,
+                                "address": info.address,
+                                "city": info.city.id,
+                                "province": info.province.id}
+        self.context.update({
+            "form": LocationForm(initial=location_initial)
+        })
+        return render(self.request, self.template_name, self.context)
+    
+    def post(self, *args, **kwargs):
+        form = LocationForm(self.request.POST)
+        if form.is_valid() and form.has_changed:
+            restaurant = self.request.user.user_staff.restaurant
+            changed = {i: form.cleaned_data.get(i) for i in form.changed_data}
+            if restaurant.location is not None:
+                RestaurantLocation.objects.filter(
+                    location_restaurant=restaurant).update(**changed)
+            else:
+                restaurant.location = RestaurantLocation.objects.create(**changed)
+                restaurant.save()
+            messages.success(self.request, "Your location was successfully added.")
+            return redirect("in_place:location")
+        self.context.update({"form": form})
+        return render(self.request, self.template_name, self.context)
+    
+    
+location_view = LocationView.as_view()
+
+
+class ProvinceAjax(View):
+    template_name = "in_place/cities_form_ajax.html"
+    
+    def get(self, *args, **kwargs):
+        if ((province_id:=self.request.GET.get("province")) is not None
+            and (province:=Province.objects.filter(id=province_id)).exists()):
+            template = get_template(self.template_name)
+            return JsonResponse({
+                "status_code": 200,
+                "template": template.render(
+                    {"cities": province.first().cities.values("name", "id")})
+                })
+        return JsonResponse({"status_code": 404})
+
+
+province_ajax = ProvinceAjax.as_view()

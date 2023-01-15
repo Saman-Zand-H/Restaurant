@@ -7,9 +7,10 @@ async-timeout==4.0.2
 attrs==21.4.0
 autobahn==22.5.1
 Automat==20.2.0
-az-iranian-bank-gateways==1.8.2
+az-iranian-bank-gateways @ git+https://github.com/Saman-Zand-H/az-iranian-bank-gateways@648395d78440b152c364125fce515672fd2a1336
 Babel==2.11.0
 baron==0.10.1
+bcrypt==4.0.1
 billiard==3.6.4.0
 Brotli==1.0.9
 celery==5.2.7
@@ -30,6 +31,7 @@ cryptography==37.0.2
 daphne==3.0.2
 debugpy==1.6.3
 defusedxml==0.7.1
+distro==1.8.0
 dj-database-url==0.5.0
 dj-email-url==1.0.5
 dj-rest-auth==2.2.4
@@ -39,7 +41,6 @@ django-autoslug==1.9.8
 django-cache-url==3.4.2
 django-celery==3.1.17
 django-channels==0.7.0
-django-cities-light==3.9.0
 django-compression-middleware==0.4.1
 django-crispy-forms==1.14.0
 django-debug-toolbar==3.5.0
@@ -47,12 +48,17 @@ django-disqus==0.5
 django-elasticsearch-dsl==7.2.2
 django-environs==0.1.1
 django-extensions==3.2.1
+django-iranian-cities @ git+https://github.com/sageteam-org/django-iranian-cities.git@b4d5f63a19acb8555e54b9116c54cb3e1723c7e9
 django-phonenumber-field==6.3.0
 django-selenium-login==2.0.0
 django-timezone-field==5.0
 django-webpush==0.3.4
 djangorestframework==3.13.1
 djangorestframework-simplejwt==5.2.0
+docker==6.0.1
+docker-compose==1.29.2
+dockerpty==0.4.1
+docopt==0.6.2
 drf-yasg==1.21.3
 elasticsearch==7.17.4
 elasticsearch-dsl==7.4.0
@@ -69,6 +75,7 @@ isodate==0.6.1
 itypes==1.2.0
 Jinja2==3.1.2
 joblib==1.2.0
+jsonschema==3.2.0
 kombu==5.2.4
 lxml==4.9.2
 MarkupSafe==2.1.1
@@ -79,6 +86,7 @@ numpy==1.23.5
 oauthlib==3.2.0
 outcome==1.2.0
 packaging==21.3
+paramiko==2.12.0
 persiantools==3.0.1
 phonenumbers==8.13.0
 Pillow==9.1.1
@@ -96,8 +104,10 @@ pycparser==2.21
 pycryptodome==3.16.0
 Pygments==2.12.0
 PyJWT==2.4.0
+PyNaCl==1.5.0
 pyOpenSSL==22.0.0
 pyparsing==3.0.9
+pyrsistent==0.19.3
 PySocks==1.7.1
 pytest==7.1.2
 pytest-django==4.5.2
@@ -108,6 +118,7 @@ python-utils==3.3.3
 python3-openid==3.2.0
 pytz==2022.1
 pywebpush==1.9.4
+PyYAML==5.4.1
 redbaron==0.9.2
 requests==2.28.0
 requests-file==1.5.1
@@ -125,6 +136,7 @@ six==1.16.0
 sniffio==1.2.0
 sortedcontainers==2.4.0
 sqlparse==0.4.2
+texttable==1.6.7
 threadpoolctl==3.1.0
 tomli==2.0.1
 trio==0.21.0
@@ -140,6 +152,7 @@ uuid==1.30
 vine==5.0.0
 wcwidth==0.2.5
 webdriver-manager==3.7.0
+websocket-client==0.59.0
 whitenoise==6.2.0
 wsproto==1.1.0
 xlrd==2.0.1

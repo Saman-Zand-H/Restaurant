@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install --fix-missing -y \
     build-essential libssl-dev xvfb curl wget nginx supervisor \
     libffi-dev libpq-dev python-dev gcc gettext unzip nano \
     daemonize dbus-user-session fontconfig aptitude gdal-bin \
-    libgdal-dev python3-gdal binutils libproj-dev postgis
+    libgdal-dev python3-gdal binutils libproj-dev postgis git
 
 # Adding trusting keys to apt for repositories
 RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -

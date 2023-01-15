@@ -16,7 +16,7 @@ from .models import (Restaurant,
 @admin.register(Restaurant)
 class RestaurantAdmin(admin.ModelAdmin):
     list_display = ["name", 
-                    "info", 
+                    "location", 
                     "phone_number", 
                     "table_count", 
                     "delivery", 
@@ -40,13 +40,13 @@ class RestaurantAdmin(admin.ModelAdmin):
         }),
         ("Contact Info", {
             "fields": ("phone_number", 
-                       "info"),
+                       "location"),
             "classes": ("collapse",)
         })
     )
     ordering = ["name"]
     sortable_by = ["name", "date_created", "table_count"]
-    list_filter = ["table_count", "info__city", "info__province"]
+    list_filter = ["table_count", "location__city", "location__province"]
     search_fields = ["name", "phone_number", "uuid"]
 
 

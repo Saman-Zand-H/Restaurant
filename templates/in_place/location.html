@@ -1,0 +1,85 @@
+{% extends 'base/layout/dash_base.html' %} 
+
+{% load static crispy_forms_tags %}
+
+
+{% block title %}{{ user.username|title }}'s Profile{% endblock %} 
+
+{% block stylesheet %}
+    {{ form.media }}
+{% endblock %}
+
+{% block content %}
+	<div class="row d-flex">
+		<div class="col-md-12 flex-column">
+			<div class="card">
+				<div class="card-header card-header-info">
+					<h4 class="card-title">Address</h4>
+					<p class="card-category">Modify the information of your restaurant.</p>
+				</div>
+				<div class="card-body py-3">
+					<form method="POST" enctype="multipart/form-data">
+						{% csrf_token %}
+						{% if change_user_form.errors or change_user_form.non_field_errors %}
+							<div class="alert alert-rose">
+								<ul>
+									{% for field in change_user_form %}
+										{% for error in field.errors %}
+											<li>{{ field }}: {{ error }}</li>
+										{% endfor %}
+									{% endfor %}
+									{% for errors in change_user_form.non_field_errors %}
+										<li>{{ errors }}</li>
+									{% endfor %}
+								</ul>
+							</div>
+						{% endif %}
+                        
+                        <div class="row">
+                            <div class="my-3 mx-3">
+                                {{ form.geo_address }}
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="row mx-2">
+                            <div class="col-6">
+                                {{ form.province|as_crispy_field }}
+                            </div>
+                            <div class="col-6" id="city_div">
+                                {{ form.city|as_crispy_field }}
+                            </div>
+                        </div>
+                        <div class="my-4 mx-4">
+                            {{ form.address|as_crispy_field }}
+                        </div>
+                        <button type="submit" class="btn btn-primary pull-right">
+                            Update
+                        </button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
+{% block script %}
+    <script>
+        const $provinceField = $("#id_province").change(e => {
+            var province = e.target.value,
+                url = window.location.origin+"{% url 'in_place:province_ajax' %}";
+            $.ajax({
+                url: url,
+                method: "GET",
+                data: {province: province},
+                success: data => {
+                    if (data.status_code === 200) {
+                        var city_html = $.parseHTML(data.template);
+                        $("#city_div").html(city_html)
+                    } else {
+                        alert("Something's gone wrong. Please try again.")
+                    }
+                }
+            })
+        })
+    </script>
+{% endblock %}

@@ -55,13 +55,13 @@ INSTALLED_APPS = [
     'azbankgateways',
     'channels',
     'channels_redis',
-    'cities_light',
     'crispy_forms',
     'debug_toolbar',
     'django_elasticsearch_dsl',
     'django_extensions',
     'dj_rest_auth',
     'dj_rest_auth.registration',
+    'iranian_cities',
     'rest_framework',
     'rest_framework.authtoken',
     'webpush',
@@ -252,16 +252,10 @@ CELERY_TIMEZONE = "Asia/Tehran"
 CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
 
 
-# cities_light configurations
-CITIES_LIGHT_TRANSLATION_LANGUAGES = ['en', 'fa']
-CITIES_LIGHT_INCLUDE_COUNTRIES = ['IR']
-CITIES_LIGHT_INDEX_SEARCH_NAMES = False
-
-
 # elasticsearch configuration
 ELASTICSEARCH_DSL = {
     'default': {
-        'hosts': 'elasticsearch:9200',
+        'hosts': env.str('ELASTICSEARCH_SOCKET', 'elasticsearch:9200'),
         'refresh_interval': 10
     },
 }

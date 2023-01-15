@@ -75,5 +75,11 @@ urlpatterns = [
         name="delete_itemvar"),
    path(route="restaurant/edit/",
         view=views.edit_restaurant_view,
-        name="edit_restaurant")
+        name="edit_restaurant"),
+   path(route="location/",
+        view=views.location_view,
+        name="location"),
+   path(route="location/ajax/",
+        view=views.province_ajax,
+        name="province_ajax")
 ]
