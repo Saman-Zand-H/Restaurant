@@ -31,10 +31,12 @@ class UserAddressInfo(gis_models.Model):
                                  on_delete=models.CASCADE,
                                  related_name="user_addresses")
     
-    # TODO: Implement str dunder
-    
     class Meta:
         verbose_name_plural = "User Address Info"
+        
+    @property
+    def address_str(self):
+        return f"{self.province}, {self.city}, {self.location}"
         
     def save(self, *args, **kwargs):
         self.address = self.address.lower()

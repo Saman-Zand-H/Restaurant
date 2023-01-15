@@ -165,9 +165,14 @@ class PurchaseView(LoginRequiredMixin, View):
             
             grouped = group_delivery_items(cart.cart_items.all())
             for restaurant, cart_items in grouped:
+                description = (f"Order for mr./mrs./miss {user.name.title()}, "
+                               f"with phone number: {user.phone_number}, "
+                               f"and address: {cart.user_address.address_str}.\n"
+                               f"More details in: {reverse('in_place:dashboard')}") # todo: change this!
                 order = Order.objects.create(restaurant=restaurant,
                                              order_type="d",
-                                             cart=cart)
+                                             cart=cart,
+                                             description=description)
                 OrderItem.objects.bulk_create([
                     OrderItem(
                         item=i.item,
