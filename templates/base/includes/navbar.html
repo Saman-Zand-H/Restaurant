@@ -46,48 +46,50 @@
             id="navigation"
         >
             <ul class="navbar-nav navbar-nav-hover w-100 pt-4 justify-content-lg-end align-items-baseline align-content-around">
-                <li class="nav-item dropdown dropdown-hover mx-2">
-                    <a
-                        class="nav-link ps-2 d-flex cursor-pointer align-items-center"
-                        id="dropdownMenuPatrnership"
-                        data-bs-toggle="dropdown"
-                        aria-expanded="false"
-                    >
-                        <i class="fa fa-handshake">&nbsp; </i>
-                        Patrnership
-                        <img
-                            src="{% static 'assets/img/down-arrow-dark.svg' %}"
-                            alt="down-arrow"
-                            class="arrow ms-auto ms-md-2"
-                        />
-                    </a>
-                    <ul
-                        class="dropdown-menu dropdown-menu-end dropdown-menu-animation dropdown-md dropdown-md-responsive mt-0 mt-lg-3 p-3 border-radius-lg"
-                        aria-labelledby="dropdownMenuPatrnership"
-                    >
-                        <div class="d-none d-lg-block">
-                            <ul class="list-group">
-                                <li
-                                    class="nav-item list-group-item border-0 p-0"
-                                >
-                                    <a
-                                        class="dropdown-item py-2 ps-3 border-radius-md"
-                                        href="{% url 'restaurants:new_partner' %}"
+                {% if not user.user_staff %}
+                    <li class="nav-item dropdown dropdown-hover mx-2">
+                        <a
+                            class="nav-link ps-2 d-flex cursor-pointer align-items-center"
+                            id="dropdownMenuPatrnership"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                        >
+                            <i class="fa fa-handshake">&nbsp; </i>
+                            Patrnership
+                            <img
+                                src="{% static 'assets/img/down-arrow-dark.svg' %}"
+                                alt="down-arrow"
+                                class="arrow ms-auto ms-md-2"
+                            />
+                        </a>
+                        <ul
+                            class="dropdown-menu dropdown-menu-end dropdown-menu-animation dropdown-md dropdown-md-responsive mt-0 mt-lg-3 p-3 border-radius-lg"
+                            aria-labelledby="dropdownMenuPatrnership"
+                        >
+                            <div class="d-none d-lg-block">
+                                <ul class="list-group">
+                                    <li
+                                        class="nav-item list-group-item border-0 p-0"
                                     >
-                                        <h6
-                                            class="dropdown-header text-dark font-weight-bolder d-flex justify-content-cente align-items-center p-0"
+                                        <a
+                                            class="dropdown-item py-2 ps-3 border-radius-md"
+                                            href="{% url 'restaurants:new_partner' %}"
                                         >
-                                            For Restaurants
-                                        </h6>
-                                        <span class="text-sm"
-                                            >Bring your restaurant to
-                                            Rubik.</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </ul>
-                </li>
+                                            <h6
+                                                class="dropdown-header text-dark font-weight-bolder d-flex justify-content-cente align-items-center p-0"
+                                            >
+                                                For Restaurants
+                                            </h6>
+                                            <span class="text-sm"
+                                                >Bring your restaurant to
+                                                Rubik.</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </ul>
+                    </li>
+                {% endif %}
 
                 <li class="nav-item dropdown dropdown-hover mx-2">
                     <a

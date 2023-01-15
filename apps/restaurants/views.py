@@ -58,7 +58,7 @@ class ListRestaurantsView(View):
             if lat and lon:
                 point = Point(lon, lat, srid=4326)                
                 values = await sync_to_async(Restaurant.objects.alias)(
-                    loc=F("info__geo_address"))
+                    loc=F("location__geo_address"))
                 values = await sync_to_async(values.alias)(
                     loc_distance=Distance(point, "loc"))
                 values = values.order_by("-loc_distance")

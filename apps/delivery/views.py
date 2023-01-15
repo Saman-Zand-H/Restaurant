@@ -9,6 +9,7 @@ from django.views import View
 
 from logging import getLogger
 from datetime import datetime
+from collections import deque
 from azbankgateways import (bankfactories, 
                             models as bank_models, 
                             default_settings as settings)
@@ -30,15 +31,18 @@ class AddToCartView(View, LoginRequiredMixin):
             cart, _ = DeliveryCart.objects.get_or_create(user=self.request.user)
             item_var = ItemVariation.objects.filter(
                 public_uuid=form_data.cleaned_data.get("public_uuid"))
+            
             if item_var.exists():
                 _, created = DeliveryCartItem.objects.get_or_create(
                     cart=cart,
                     item=item_var.first(),
                     count=1)
+                
                 if created:
                     message = "Item was added to your cart."
                 else:
                     message = "Item was already present in your cart."
+                    
                 return JsonResponse({
                     "user_cart_count": self.request.user.user_cart.cart_items.count(),
                     "message": message,
@@ -71,18 +75,19 @@ class CartView(View):
             
             if cart_item.exists():
                 cart_item = cart_item.first()
-                if op == "i":
-                    cart_item.count = F("count") + 1
-                    cart_item.save()
-                    return HttpResponse(content="incremented.")
-                else:
-                    count = cart_item.count
-                    if count > 1:
-                        cart_item.count = F("count") - 1
+                match op:
+                    case "i":
+                        cart_item.count = F("count") + 1
                         cart_item.save()
-                        return HttpResponse(content="decremented.")
-                    cart_item.delete()
-                    return HttpResponse(content="deleted.")
+                        return HttpResponse(content="incremented.")
+                    case _:
+                        count = cart_item.count
+                        if count > 1:
+                            cart_item.count = F("count") - 1
+                            cart_item.save()
+                            return HttpResponse(content="decremented.")
+                        cart_item.delete()
+                        return HttpResponse(content="deleted.")
             else:
                 return HttpResponseBadRequest("item does not exists.")
         else:
@@ -104,25 +109,31 @@ class DiscountView(View):
                     if promo_obj.exists():
                         try:
                             promo_obj = promo_obj.first()
+                            
                             if (promo_obj.expiration_date is None  
                                 or datetime.now().isoformat() 
                                     < promo_obj.expiration_date.isoformat()):
+                                
                                 self.request.user.user_cart.discounts.add(promo_obj)
                                 messages.success(self.request, 
                                                  "Discount was added to your cart.")
                             else:
                                 messages.error(self.request, "This promo code is expired.")
+                                
                         except ValidationError:
                             messages.error(self.request, 
                                         "You can't have multiple_discounts for the same item.")
+                            
                     else:
                         messages.error(self.request, "This promo code does not exist.")
                     return redirect("delivery:cart")
+                
                 case "d":
                     if promo_obj.exists():
                         self.request.user.user_cart.discounts.remove(
                             promo_obj.first())
                     return redirect("delivery:cart")
+                
         messages.warning(self.request, "Invalid input was provided.")   
         return redirect("delivery:cart")
             
@@ -138,11 +149,12 @@ class PurchaseView(LoginRequiredMixin, View):
         user = self.request.user
         cart, _ = DeliveryCart.objects.get_or_create(user=user)
         
-        amount = cart.get_estimated_price()
+        # multiply by ten to get the cost in Toman
+        amount = cart.get_estimated_price() * 10
         phone_number = user.phone_number
         
         try:
-            bank = bankfactories.BankFactory().auto_create()
+            bank = bankfactories.BankFactory().auto_create(self.request)
             
             bank.set_amount(amount)
             bank.set_mobile_number(phone_number)
@@ -153,22 +165,24 @@ class PurchaseView(LoginRequiredMixin, View):
             order_items = cart.cart_items.all()
             grouped = group_delivery_items(order_items)
             
+            # todo: avoid duplication
             for restaurant, cart_items in grouped:
                 order = Order.objects.create(restaurant=restaurant,
                                              order_type="d",
                                              user=user,
                                              user_payment=record)
-                map(
-                    lambda i: OrderItem.objects.create(
-                        item=i.item,
-                        count=i.count,
-                        order=order,
-                        paid_price=i.item*i.count
-                    ),
-                    cart_items
-                )
+                deque(
+                    map(
+                        lambda i: OrderItem.objects.create(
+                            item=i.item,
+                            count=i.count,
+                            order=order,
+                            paid_price=i.item.price*i.count
+                        ),
+                        cart_items
+                ))
                 
-            bank.redirect_gateway()
+            return bank.redirect_gateway()
 
         except AZBankGatewaysException as e:
             logger.critical(e, stack_info=True)
