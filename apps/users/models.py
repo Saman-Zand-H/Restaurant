@@ -112,6 +112,10 @@ class UserModel(AbstractBaseUser, PermissionsMixin):
     def name(self):
         return f"{self.first_name} {self.last_name}"
     
+    @property
+    def user_cart(self):
+        return self.user_carts.latest("date_created")
+    
     def get_picture_url(self):
         return self.picture.url if self.picture else static(
             "assets/img/no_image_available.png" or None)

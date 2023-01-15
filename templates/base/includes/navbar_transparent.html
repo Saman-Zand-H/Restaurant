@@ -108,6 +108,22 @@
                         </ul>
                     </li>
                 {% endif %}
+                <li class="nav-item mx-3">
+                    <a class="d-flex flex-row flex-nowrap gap-2 align-items-center" href="{% url 'delivery:cart' %}">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="badge badge-primary badge-pill">
+                            <small id="cart-count">
+                                {{ user.user_cart.cart_items.count|default:'0' }}
+                            </small>
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-items mx-3">
+                    <a href="{% url 'restaurants:list_restaurants' %}" class="d-flex flex-row flex-nowrap align-items-baseline">
+                        <i class="fas fa-utensils"></i>&nbsp;
+                        <span>Restaurants</span>
+                    </a>
+                </li>
                 <li class="nav-item dropdown dropdown-hover mx-2">
                     <a class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center" id="dropdownMenuDocs"
                         data-bs-toggle="dropdown" aria-expanded="false">

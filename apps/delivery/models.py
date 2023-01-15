@@ -2,7 +2,7 @@ from django.db import models
 from django.conf import settings
 from django.core.exceptions import ValidationError
 from django.contrib.gis.db import models as gis_models
-from django.contrib.contenttypes.fields import GenericRelation
+from azbankgateways.models import Bank
 
 from uuid import uuid4
 from random import choices
@@ -61,13 +61,22 @@ class DeliveryMan(models.Model):
 class DeliveryCart(models.Model):
     discounts = models.ManyToManyField("Discount",
                                        related_name="discount_carts")
-    user = models.OneToOneField(settings.AUTH_USER_MODEL,
-                                related_name="user_cart",
-                                on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,
+                             related_name="user_carts",
+                             on_delete=models.SET_NULL,
+                             blank=True,
+                             null=True)
+    payment = models.OneToOneField(Bank,
+                                   related_name="payment_cart",
+                                   on_delete=models.SET_NULL,
+                                   null=True,
+                                   blank=True)
     user_address = models.OneToOneField(UserAddressInfo,
                                          on_delete=models.SET_NULL,
                                          null=True,
                                          related_name="address_cart")
+    date_created = models.DateTimeField(auto_now_add=True)
+    date_submitted = models.DateTimeField(blank=True, null=True)
     
     def get_discounts_price_diff(self):
         return sum([i.price_diff for i in self.discounts.all()])
@@ -77,6 +86,7 @@ class DeliveryCart(models.Model):
                 - self.get_discounts_price_diff())
     
     def clean(self, *args, **kwargs):
+        # Make sure there won't be more than one discounts.
         items = [i.values("item") for i in self.discounts]
         counts = Counter(items)
         mul_items = [k for k, v in counts.items() if v > 1]
@@ -85,6 +95,14 @@ class DeliveryCart(models.Model):
             return ValidationError({
                 "discounts": "you can't have multiple discounts for a single item."
                 })
+        
+        # Make sure that the cart is up to date and is not 
+        # an old one. If there is a 'date_submitted', it means
+        # it's an old cart.
+        if (self.id == self.user.user_carts.latest("date_created")
+            and self.date_submitted is not None):
+            self.__class__.objects.create(user=self.user)
+            
         return super().clean(*args, **kwargs)
         
     

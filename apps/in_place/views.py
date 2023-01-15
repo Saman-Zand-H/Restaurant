@@ -48,14 +48,12 @@ from .forms import (OrderForm,
                     StaffUsernameForm,
                     EditRestaurantForm,
                     LocationForm)
-from .models import DineInOrder, Staff
+from .models import DineInOrder, Staff, OrderItem, Order
 from search_index.es_queries import OrderQuery
 from search_index.documents import OrderDocument
 from restaurants.models import (ItemVariation, 
                                 Item,
                                 Cuisine,
-                                Order, 
-                                OrderItem, 
                                 RestaurantLocation,
                                 Restaurant)
 

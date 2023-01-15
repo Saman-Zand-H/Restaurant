@@ -5,6 +5,7 @@ from django.db.models import F
 from django.contrib import messages
 from django.core.exceptions import ValidationError
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.utils import timezone
 from django.views import View
 
 from logging import getLogger
@@ -17,7 +18,8 @@ from azbankgateways.exceptions import AZBankGatewaysException
 
 from .models import DeliveryCart, DeliveryCartItem, Discount
 from .utils import group_delivery_items
-from restaurants.models import ItemVariation, Order, OrderItem
+from restaurants.models import ItemVariation
+from in_place.models import Order, OrderItem
 from .forms import AddItemToCartForm, SetItemCountForm, DiscountForm
 
 
@@ -113,7 +115,6 @@ class DiscountView(View):
                             if (promo_obj.expiration_date is None  
                                 or datetime.now().isoformat() 
                                     < promo_obj.expiration_date.isoformat()):
-                                
                                 self.request.user.user_cart.discounts.add(promo_obj)
                                 messages.success(self.request, 
                                                  "Discount was added to your cart.")
@@ -147,7 +148,8 @@ class PurchaseView(LoginRequiredMixin, View):
     
     def post(self, *args, **kwargs):
         user = self.request.user
-        cart, _ = DeliveryCart.objects.get_or_create(user=user)
+        cart_qs = DeliveryCart.objects.filter(user=user)
+        cart = cart_qs.last()
         
         # multiply by ten to get the cost in Toman
         amount = cart.get_estimated_price() * 10
@@ -155,39 +157,39 @@ class PurchaseView(LoginRequiredMixin, View):
         
         try:
             bank = bankfactories.BankFactory().auto_create(self.request)
-            
             bank.set_amount(amount)
             bank.set_mobile_number(phone_number)
             # todo: payment-result
             bank.set_client_callback_url(reverse("delivery:cart"))
+            payment = bank.ready()
             
-            record = bank.ready()
-            order_items = cart.cart_items.all()
-            grouped = group_delivery_items(order_items)
-            
-            # todo: avoid duplication
+            grouped = group_delivery_items(cart.cart_items.all())
             for restaurant, cart_items in grouped:
                 order = Order.objects.create(restaurant=restaurant,
                                              order_type="d",
-                                             user=user,
-                                             user_payment=record)
-                deque(
-                    map(
-                        lambda i: OrderItem.objects.create(
-                            item=i.item,
-                            count=i.count,
-                            order=order,
-                            paid_price=i.item.price*i.count
-                        ),
-                        cart_items
-                ))
+                                             cart=cart)
+                OrderItem.objects.bulk_create([
+                    OrderItem(
+                        item=i.item,
+                        count=i.count,
+                        order=order,
+                        paid_price=i.item.price*i.count
+                    ) for i in cart_items
+                ])
+                
+            cart_qs.update(date_submitted=timezone.now(),
+                           payment=payment)
+            
+            # create the new cart. This way the cart is refreshed
+            # and also we still keep track of previous orders.
+            DeliveryCart.objects.create(user=user)
                 
             return bank.redirect_gateway()
 
         except AZBankGatewaysException as e:
             logger.critical(e, stack_info=True)
             # todo: redirect to error page
-            return reverse("delivery:cart")
+            return redirect("delivery:cart")
     
     
 purchase_view = PurchaseView.as_view()

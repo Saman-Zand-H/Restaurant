@@ -8,8 +8,8 @@ from iranian_cities.models import Province, City
 
 from abc import abstractmethod
 
-from restaurants.models import ItemVariation, Order, Item, Cuisine
-from .models import Staff
+from restaurants.models import ItemVariation, Item, Cuisine
+from .models import Staff, Order
 from users.forms import SignupForm
 
 

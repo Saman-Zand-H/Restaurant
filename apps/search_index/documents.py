@@ -3,7 +3,8 @@ from django_elasticsearch_dsl import Document, fields
 from django.templatetags.static import static
 from django.utils import timezone
 
-from restaurants.models import Restaurant, Order, RestaurantType
+from restaurants.models import Restaurant, RestaurantType
+from in_place.models import Order
 
 
 @registry.register_document

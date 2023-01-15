@@ -10,7 +10,8 @@ from uuid import UUID
 from asgiref.sync import sync_to_async
 from logging import getLogger
 
-from restaurants.models import Restaurant, Order
+from restaurants.models import Restaurant
+from in_place.models import Order
 from restaurants.utils import json_custom_decoder
 from in_place.utils import (weekly_revenue_chart_data, 
                             weekly_sale_chart_data)
