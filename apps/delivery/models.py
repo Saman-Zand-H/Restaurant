@@ -3,6 +3,7 @@ from django.conf import settings
 from django.core.exceptions import ValidationError
 from django.contrib.gis.db import models as gis_models
 from azbankgateways.models import Bank
+from iranian_cities.fields import ProvinceField, CityField
 
 from uuid import uuid4
 from random import choices
@@ -25,8 +26,8 @@ class UserAddressInfo(gis_models.Model):
     postal_code = gis_models.CharField(max_length=30)
     address = gis_models.TextField()
     location = gis_models.PointField()
-    city = gis_models.CharField(max_length=50)
-    province = gis_models.CharField(max_length=50)
+    city = CityField()
+    province = ProvinceField()
     user = gis_models.ForeignKey(settings.AUTH_USER_MODEL,
                                  on_delete=models.CASCADE,
                                  related_name="user_addresses")
@@ -36,12 +37,10 @@ class UserAddressInfo(gis_models.Model):
         
     @property
     def address_str(self):
-        return f"{self.province}, {self.city}, {self.location}"
+        return f"{self.province}, {self.city}, {self.address}"
         
     def save(self, *args, **kwargs):
         self.address = self.address.lower()
-        self.city = self.city.lower()
-        self.province = self.province.lower()
         return super().save(*args, **kwargs)
 
 
@@ -63,6 +62,10 @@ class DeliveryMan(models.Model):
 class DeliveryCart(models.Model):
     discounts = models.ManyToManyField("Discount",
                                        related_name="discount_carts")
+    public_uuid = models.UUIDField(auto_created=True,
+                                   unique=True,
+                                   default=uuid4(),
+                                   blank=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL,
                              related_name="user_carts",
                              on_delete=models.SET_NULL,
@@ -73,10 +76,11 @@ class DeliveryCart(models.Model):
                                    on_delete=models.SET_NULL,
                                    null=True,
                                    blank=True)
-    user_address = models.OneToOneField(UserAddressInfo,
-                                         on_delete=models.SET_NULL,
-                                         null=True,
-                                         related_name="address_cart")
+    user_address = models.ForeignKey(UserAddressInfo,
+                                     on_delete=models.SET_NULL,
+                                     null=True,
+                                     blank=True,
+                                     related_name="address_carts")
     date_created = models.DateTimeField(auto_now_add=True)
     date_submitted = models.DateTimeField(blank=True, null=True)
     

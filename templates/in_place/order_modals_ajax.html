@@ -1,3 +1,5 @@
+{% load crispy_forms_tags %}
+
     <!-- edit orders -->
     {% for order in orders %}
         <div 
@@ -93,6 +95,14 @@
                                            value="{{ order.qs.public_uuid }}"
                                           >
                                 </div>
+                                <div class="my-4">
+                                    {{ order.order_form.description|as_crispy_field }}
+                                </div>
+                                {% if order.qs.cart.user_address is not None %}
+                                    <div class="my-4" id="delivery_location-{{ order.qs.public_uuid }}">
+                                        {{ order.order_form.location }}
+                                    </div>
+                                {% endif %}
                                 <div class="dinein_info" id="dinein_info-{{ order.qs.public_uuid }}">
                                     <hr>
                                     <div class="mt-5 mx-3">

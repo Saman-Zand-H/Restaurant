@@ -17,6 +17,7 @@ python manage.py search_index --rebuild -f
 python manage.py compilemessages
 python manage.py update_permissions
 python manage.py shell < populate_type_subtype.py
+python manage.py generate_city
 if [ "$DJANGO_ENV" = "production" ]
 then
   echo "Starting daphne..."

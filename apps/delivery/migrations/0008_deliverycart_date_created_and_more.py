@@ -9,7 +9,7 @@ import django.utils.timezone
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('azbankgateways', '0005_alter_bank_bank_type_alter_bank_created_at_and_more'),
+        ('azbankgateways', '0004_auto_20211115_1500'),
         ('restaurants', '0021_remove_order_user_remove_order_user_payment_and_more'),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
         ('delivery', '0007_remove_deliverycart_paid'),

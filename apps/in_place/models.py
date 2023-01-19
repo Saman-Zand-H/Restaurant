@@ -112,8 +112,6 @@ class DineInOrder(models.Model):
         null=True,
         blank=True
     )
-    description = models.TextField(blank=True,
-                                   null=True)
     order = models.OneToOneField('Order',
                                  on_delete=models.CASCADE,
                                  related_name="order_dinein")

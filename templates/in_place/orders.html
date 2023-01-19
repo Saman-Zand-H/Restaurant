@@ -20,6 +20,7 @@
             -moz-appearance: textfield;
         }
     </style>
+    {{ order_form.media }}
 {% endblock %}
 
 {% block modals %}
@@ -120,6 +121,9 @@
                                     </div>
                                 {% endfor %}
                             </div>
+                            <div class="my-4">
+                                {{ order_form.description|as_crispy_field }}
+                            </div>
                             <div id="new_dinein_info">
                                 <hr>
                                 <div class="mt-5 mx-3">
@@ -130,15 +134,6 @@
                                         {{ dinein_form.table_number }}
                                         <span class="text-warning my-2">
                                             {{ dinein_form.table_number.errors }}
-                                        </span>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="dinein_desc" class="bmd-label-floating">
-                                            {{ dinein_form.description.label|title }}
-                                        </label>
-                                        {{ dinein_form.description }}
-                                        <span class="text-warning my-2">
-                                            {{ dinein_form.description.errors }}
                                         </span>
                                     </div>
                                 </div>
@@ -258,6 +253,14 @@
                                             value="{{ order.qs.public_uuid }}"
                                             >
                                     </div>
+                                    <div class="my-4">
+                                        {{ order.order_form.description|as_crispy_field }}
+                                    </div>
+                                    {% if order.qs.cart.user_address is not None %}
+                                        <div id="delivery_location-{{ order.qs.public_uuid }}" class="my-4">
+                                            {{ order.order_form.location }}
+                                        </div>
+                                    {% endif %}
                                     <div class="dinein_info" id="dinein_info-{{order.qs.public_uuid}}">
                                         <hr>
                                         <div class="mt-5 mx-3">
@@ -268,15 +271,6 @@
                                                 {{ order.dinein_form.table_number }}
                                                 <span class="text-warning my-2">
                                                     {{ order.dinein_form.table_number.errors }}
-                                                </span>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="dinein_desc" class="bmd-label-floating">
-                                                    {{ order.dinein_form.description.label|title }}
-                                                </label>
-                                                {{ order.dinein_form.description }}
-                                                <span class="text-warning my-2">
-                                                    {{ order.dinein_form.description.errors }}
                                                 </span>
                                             </div>
                                         </div>
@@ -305,10 +299,10 @@
         {% if user.user_staff.can_delete_orders %}
             {% for order in orders %}
                 <div 
-                    class="modal fade" 
-                    id="delete-order-{{ order.qs.public_uuid }}" 
-                    tabindex="-1" 
-                    role="dialog" 
+                     class="modal fade" 
+                     id="delete-order-{{ order.qs.public_uuid }}" 
+                     tabindex="-1" 
+                     role="dialog" 
                     >
                     <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content bg-dark">
@@ -537,17 +531,24 @@
             }
             var $edit_form,
                 $edit_dinein,
+                $edit_location,
                 $edit_order_type;
             {% for order in orders %}
-                $edit_form = $("#editOrderForm-{{ order.qs.public_uuid }}"),
-                $edit_dinein = $edit_form.find(".dinein_info"),
+                $edit_form = $("#editOrderForm-{{ order.qs.public_uuid }}");
+                $edit_dinein = $edit_form.find(".dinein_info");
+                $edit_location = $("#delivery_location-{{ order.qs.public_uuid }}");
                 $edit_order_type = $edit_form.find("input[name=order_type]");
                 if ($edit_order_type.filter(':checked').val() === "d") {
                     $edit_dinein.hide();
+                    $edit_location.show();
+                } else {
+                    $edit_dinein.show();
+                    $edit_location.hide();
                 }
-                $edit_order_type.change((e) => {
-                        $("#dinein_info-{{ order.qs.public_uuid }}").toggle()
-                    });
+                $edit_order_type.change(e => {
+                    $("#dinein_info-{{ order.qs.public_uuid }}").toggle();
+                    $edit_location.toggle();
+                });
             {% endfor %}
         });
         $autoPrice.click((e) => {

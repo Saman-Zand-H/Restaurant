@@ -1,0 +1,51 @@
+{% extends 'base/layout/base.html' %}
+
+{% load static humanize %}
+
+{% block title %}
+    {% if cart.payment.is_success %}Successful{% else %}Failed{% endif %} Payment
+{% endblock %}
+
+{% block content %}
+    <body class="index-page bg-gray-200">
+        {% include 'base/includes/navbar.html' %}
+        {% include 'base/includes/alerts.html' %}
+
+        <section class="row bg-white shadow shadow-blur text-left ms-lg-1">
+            <center class="my-4 card">
+                <center class="card-header">
+                    <h4 class="cart-title">
+                        {% if cart.payment.is_success %}Successful{% else %}Failed{% endif %} Payment
+                    </h4>
+                    <small>Submitted at: {{ cart.date_submitted|date:'l N jS\, Y \- P' }}</small>
+                </center>
+                <center class="card-body">
+                    <p>
+                        {% if cart.payment.is_success %}
+                            Congratualations! Your payment was successful.
+                            You got a list, here's the order of your list that it's in.
+                            It goes:
+                        {% else %}
+                            Yo man, your payment wasn't successful... You disappointed me man.
+                            Here's your list:
+                        {% endif %}
+                    </p>
+                    <ul>
+                        {% for cart_item in cart.cart_items.all %}
+                            <li>
+                                {{ cart_item.count }} × {{ cart_item.item.full_name }} 
+                                - {{ cart_item.price|intcomma }}
+                                , From {{ cart_item.item.item.cuisine.restaurant.name|title }}
+                            </li>
+                        {% endfor %}
+                        <li>
+                            <b>
+                                Total: {{ cart.get_estimated_price|intcomma }} T
+                            </b>
+                        </li>
+                    </ul>
+                </center>
+            </center>
+        </section>
+    </body>
+{% endblock %}

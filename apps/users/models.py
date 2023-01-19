@@ -124,7 +124,7 @@ class UserModel(AbstractBaseUser, PermissionsMixin):
         if hasattr(self, "user_staff"):
             return reverse("in_place:dashboard")
         else:
-            return reverse("accounts:dashboard")
+            return reverse("accounts:profile")
     
     def save(self, *args, **kwargs):
         if not self.email:

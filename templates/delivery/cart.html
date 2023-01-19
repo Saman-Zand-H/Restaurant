@@ -131,6 +131,14 @@
                     <div class="card-header text-center py-1">
                         <h4>Shipping Address</h4>
                     </div>
+                    <div class="alert alert-warning text-light">
+                        <i class="material-icons">warning</i>
+                        <h6>
+                            Pay attention to this field. Your 
+                            orders are going to be shipped to your
+                            chosen place.
+                        </h6>
+                    </div>
                     <div class="card-body pb-4">
                         <form method="POST" action="{% url 'delivery:purchase' %}" id="shippingForm">
                             {% csrf_token %}
@@ -138,12 +146,12 @@
                                 {% for address in user.user_addresses.all %}
                                     <div class="form-check mb-3">
                                         <input 
-                                            class="form-check-input" 
-                                            type="radio" 
-                                            name="shippingAddress" 
-                                            value="{{ address.public_uuid }}"
-                                            id="address-{{ address.public_uuid }}"
-                                            >
+                                               class="form-check-input" 
+                                               type="radio" 
+                                               name="address" 
+                                               value="{{ address.public_uuid }}"
+                                               id="address-{{ address.public_uuid }}"
+                                              >
                                         <label 
                                             class="custom-control-label" 
                                             for="address-{{ address.public_uuid }}"

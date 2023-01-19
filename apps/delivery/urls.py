@@ -18,4 +18,10 @@ urlpatterns = [
    path(route="cart/purchase/",
         view=views.purchase_view,
         name="purchase"),
+   path(route="purchase/status/<uuid:public_uuid>/",
+        view=views.purchase_status_view,
+        name="payment_status"),
+   path(route="orders/",
+        view=views.orders_view,
+        name="orders")
 ]

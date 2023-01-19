@@ -16,6 +16,10 @@
             -moz-appearance: textfield;
         }
     </style>
+    {{ order_form.media }}
+    {% for order in orders %}
+        {{ order.order_form.media }}
+    {% endfor %}
 {% endblock %}
 
 {% block modals %}
@@ -106,6 +110,9 @@
                                     </div>
                                 {% endfor %}
                             </div>
+                            <div class="my-4">
+                                {{ order_form.description }}
+                            </div>
                             <div id="new_dinein_info">
                                 <hr>
                                 <div class="mt-5 mx-3">
@@ -116,15 +123,6 @@
                                         {{ dinein_form.table_number }}
                                         <span class="text-warning my-2">
                                             {{ dinein_form.table_number.errors }}
-                                        </span>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="dinein_desc" class="bmd-label-floating">
-                                            {{ dinein_form.description.label|title }}
-                                        </label>
-                                        {{ dinein_form.description }}
-                                        <span class="text-warning my-2">
-                                            {{ dinein_form.description.errors }}
                                         </span>
                                     </div>
                                 </div>
@@ -174,11 +172,11 @@
                         </div>
                         <div class="modal-body">
                             <form 
-                                method="POST" 
-                                action="{% url 'in_place:edit_order' %}"
-                                class="edit_form"
-                                id="editOrderForm-{{ order.qs.public_uuid }}"
-                                >
+                                  method="POST" 
+                                  action="{% url 'in_place:edit_order' %}"
+                                  class="edit_form"
+                                  id="editOrderForm-{{ order.qs.public_uuid }}"
+                                 >
                                 {% csrf_token %}
                                 {{ order.formset.management_form }}
                                 <input type="hidden" name="dest" value="dashboard">
@@ -248,6 +246,14 @@
                                             value="{{ order.qs.public_uuid }}"
                                             >
                                     </div>
+                                    <div class="my-4">
+                                        {{ order.order_form.description|as_crispy_field }}
+                                    </div>
+                                    {% if order.qs.cart.user_address is not None %}
+                                        <div class="my-4" id="delivery_location-{{order.qs.public_uuid}}">
+                                            {{ order.order_form.location }}
+                                        </div>
+                                    {% endif %}
                                     <div class="dinein_info" id="dinein_info-{{order.qs.public_uuid}}">
                                         <hr>
                                         <div class="mt-5 mx-3">
@@ -258,15 +264,6 @@
                                                 {{ order.dinein_form.table_number }}
                                                 <span class="text-warning my-2">
                                                     {{ order.dinein_form.table_number.errors }}
-                                                </span>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="dinein_desc" class="bmd-label-floating">
-                                                    {{ order.dinein_form.description.label|title }}
-                                                </label>
-                                                {{ order.dinein_form.description }}
-                                                <span class="text-warning my-2">
-                                                    {{ order.dinein_form.description.errors }}
                                                 </span>
                                             </div>
                                         </div>
@@ -759,16 +756,23 @@
         }
         var $edit_form,
             $edit_dinein,
+            $edit_location,
             $edit_order_type;
             {% for order in orders %}
                 $edit_form = $("#editOrderForm-{{ order.qs.public_uuid }}");
                 $edit_dinein = $edit_form.find(".dinein_info");
+                $edit_location = $("#delivery_location-{{ order.qs.public_uuid }}");
                 $edit_order_type = $edit_form.find("input[name=order_type]");
                 if ($edit_order_type.filter(':checked').val() === "d") {
                     $edit_dinein.hide();
+                    $edit_location.show();
+                } else {
+                    $edit_dinein.show();
+                    $edit_location.hide();
                 }
                 $edit_order_type.change((e) => {
-                    $("#dinein_info-{{ order.qs.public_uuid }}").toggle()
+                    $("#dinein_info-{{ order.qs.public_uuid }}").toggle();
+                    $("#delivery_location-{{ order.qs.public_uuid }}").toggle();
                 });
             {% endfor %}
         $(document).ready(() => {
@@ -815,17 +819,19 @@
                         count;
 
                     if (formType == "id_form") {
-                        fee = parseInt($(`#${e.currentTarget.closest("form").id} #id_form-${formNumber}-fee`).val());
+                        fee = parseInt(
+                            $(`#${e.currentTarget.closest("form").id} #id_form-${formNumber}-fee`).val());
                         $autoPriceLoc = $(`#id_form-${formNumber}-auto_price`);
-                        count = parseInt($(`#${e.currentTarget.closest("form").id} #id_form-${formNumber}-count`).val() | 0);
+                        count = parseInt(
+                            $(`#${e.currentTarget.closest("form").id} #id_form-${formNumber}-count`).val() | 0);
                         $paidPriceLoc = $(`#${e.currentTarget.closest("form").id} #id_form-${formNumber}-paid_price`);
                     } else {
                         fee = parseInt($(`#${e.currentTarget.closest("form"
-                        ).getAttribute("id")} #edit_form-${formNumber}-fee-${formUuid}`).val());
+                          ).getAttribute("id")} #edit_form-${formNumber}-fee-${formUuid}`).val());
                         count = parseInt($(`#${e.currentTarget.closest("form"
-                        ).getAttribute("id")} #edit_form-${formNumber}-count-${formUuid}`).val() | 0);
+                          ).getAttribute("id")} #edit_form-${formNumber}-count-${formUuid}`).val() | 0);
                         $paidPriceLoc = $(`#${e.currentTarget.closest("form"
-                        ).getAttribute("id")} #edit_form-${formNumber}-paid_price-${formUuid}`);
+                          ).getAttribute("id")} #edit_form-${formNumber}-paid_price-${formUuid}`);
                         $autoPriceLoc = $(`#edit_form-${formNumber}-auto_price-${formUuid}`);
                     }
                     $autoPriceLoc.prop("checked", (_, v) => {

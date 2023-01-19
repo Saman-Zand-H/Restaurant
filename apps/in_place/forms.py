@@ -33,6 +33,15 @@ class OrderForm(forms.Form):
     order_type = forms.ChoiceField(choices=type_choices,
                                    initial="i")
     dest = forms.ChoiceField(choices=dest_choices)
+    location = gis_fields.PointField(srid=4326,
+                                     disabled=True,
+                                     required=False,
+                                     widget=gis_widgets.OSMWidget(
+                                         attrs={"id": "id_location",
+                                                "class": "delivery_location"}
+                                     ))
+    description = forms.CharField(widget=forms.Textarea(),
+                                  required=False)
     timestamp = forms.DateTimeField(required=False,
                                     widget=forms.HiddenInput(attrs={
                                         "id": "newTimestamp"}))
@@ -41,12 +50,19 @@ class OrderForm(forms.Form):
 class OrderEditForm(OrderForm):
     public_uuid = forms.UUIDField()
     
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["location"].widget = gis_widgets.OSMWidget(
+            attrs={"id": "id_location_edit", "class": "delivery_location"}
+        )
+    
     def clean(self, *args, **kwargs):
-        public_uuid = self.cleaned_data.get("public_uuid")
+        cleaned_data = super().clean(*args, **kwargs)
+        public_uuid = cleaned_data.get("public_uuid")
         if not Order.objects.filter(public_uuid=public_uuid).exists():
             raise forms.ValidationError({
                 "public_uuid": "Nothing was found with this identifier."})
-        return super().clean(*args, **kwargs)
+        return cleaned_data
     
     
 class DineInForm(forms.Form):
@@ -54,11 +70,6 @@ class DineInForm(forms.Form):
                                       widget=forms.NumberInput(attrs={
                                           "class": "dinein_table_num form-control text-light",
                                           "id": "dinein_table_num"}))
-    description = forms.CharField(
-        required=False,
-        widget=forms.Textarea(
-            attrs={"class": "dinein_desc form-control text-light",
-                "id": "dinin_desc"}))
     
 
 class OrderDeleteForm(forms.Form):
@@ -175,20 +186,20 @@ class EditCuisineForm(forms.Form):
     name = forms.CharField(max_length=30)
     
     def clean(self, *args, **kwargs):
-        sup = super().clean(*args, **kwargs)
-        public_uuid = self.cleaned_data.get("public_uuid")
+        cleaned_data = super().clean(*args, **kwargs)
+        public_uuid = cleaned_data.get("public_uuid")
         if not Cuisine.objects.filter(public_uuid=public_uuid).exists():
             raise forms.ValidationError({"public_uuid": "This cuisine doesn't exist."})
-        return sup
+        return cleaned_data
     
     
 class DeleteCuisineForm(_BaseDeleteForm):
     def clean(self, *args, **kwargs):
-        sup = super().clean(*args, **kwargs)
-        public_uuid = self.cleaned_data.get("public_uuid")
+        cleaned_data = super().clean(*args, **kwargs)
+        public_uuid = cleaned_data.get("public_uuid")
         if not Cuisine.objects.filter(public_uuid=public_uuid).exists():
             raise forms.ValidationError({"public_uuid": "This cuisine doesn't exist."})
-        return sup
+        return cleaned_data
     
     
 class NewItemForm(forms.Form):
@@ -229,20 +240,20 @@ class EditItemForm(forms.Form):
     description = forms.CharField(required=False)
     
     def clean(self, *args, **kwargs):
-        sup = super().clean(*args, **kwargs)
-        public_uuid = self.cleaned_data.get("public_uuid")
+        cleaned_data = super().clean(*args, **kwargs)
+        public_uuid = cleaned_data.get("public_uuid")
         if not Item.objects.filter(public_uuid=public_uuid).exists():
             raise forms.ValidationError({"public_uuid": "This item doesn't exist."})
-        return sup
+        return cleaned_data
     
     
 class DeleteItemForm(_BaseDeleteForm):
     def clean(self, *args, **kwargs):
-        sup = super().clean(*args, **kwargs)
-        public_uuid = self.cleaned_data.get("public_uuid")
+        cleaned_data = super().clean(*args, **kwargs)
+        public_uuid = cleaned_data.get("public_uuid")
         if not Item.objects.filter(public_uuid=public_uuid).exists():
             raise forms.ValidationError({"public_uuid": "This Item Doesn't Exist."})
-        return sup
+        return cleaned_data
 
 
 class NewItemVarForm(forms.Form):
@@ -287,22 +298,22 @@ class EditItemVarForm(forms.Form):
     price = forms.IntegerField(validators=[MinValueValidator(0)])
     
     def clean(self, *args, **kwargs):
-        sup = super().clean(*args, **kwargs)
-        public_uuid = self.cleaned_data.get("public_uuid")
+        cleaned_data = super().clean(*args, **kwargs)
+        public_uuid = cleaned_data.get("public_uuid")
         if not ItemVariation.objects.filter(public_uuid=public_uuid).exists():
             raise forms.ValidationError(
                 {"public_uuid": "This itemvar doesn't exist."})
-        return sup
+        return cleaned_data
     
     
 class DeleteItemVarForm(_BaseDeleteForm):
     def clean(self, *args, **kwargs):
-        sup = super().clean(*args, **kwargs)
-        public_uuid = self.cleaned_data.get("public_uuid")
+        cleaned_data = super().clean(*args, **kwargs)
+        public_uuid = cleaned_data.get("public_uuid")
         if not ItemVariation.objects.filter(public_uuid=public_uuid).exists():
             raise forms.ValidationError(
                 {"public_uuid": "This itemvar doesn't exist."})
-        return sup
+        return cleaned_data
     
 
 class StaffUsernameForm(forms.Form):

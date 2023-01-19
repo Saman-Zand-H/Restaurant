@@ -242,18 +242,13 @@
 								</div>
 							</div>
 							<div class="row my-2 mx-3">
-								<div class="col-lg-4 col-12 form-group">
-									<label class="bmd-label-floating">
-										City
-									</label>
-									{{ address_form.city }}
+								<div class="col-lg-4" id="city_div">
+									{{ address_form.city|as_crispy_field }}
 								</div>
-								<div class="col-lg-4 col-12 form-group">
-									<label class="bmd-label-floating">
-										Province
-									</label>
-									{{ address_form.province }}
+								<div class="col-lg-4">
+									{{ address_form.province|as_crispy_field }}
 								</div>
+								
 								<div class="col-lg-4 col-12 form-group">
 									<label class="bmd-label-floating">
 										Postal Code
@@ -480,5 +475,31 @@
 		$profile.change((e) => {
 			$("#profileForm").submit();
 		});
+	</script>
+	<script>
+		const getCities = province => {
+			url = window.location.origin + "{% url 'in_place:province_ajax' %}";
+			$.ajax({
+				url: url,
+				method: "GET",
+				data: { province: province },
+				success: data => {
+					if (data.status_code === 200) {
+						var city_html = $.parseHTML(data.template);
+						$("#city_div").html(city_html)
+					} else {
+						alert("Something's gone wrong. Please try again.")
+					}
+				}
+			});
+		}
+		const $provinceField = $("#id_province").change(e => {
+			var province = e.target.value;
+			getCities(province);
+		});
+		$(document).ready(() => {
+			province = $("#id_province").val();
+			getCities(province);
+		})
 	</script>
 {% endblock %}

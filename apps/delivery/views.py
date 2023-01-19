@@ -5,22 +5,28 @@ from django.db.models import F
 from django.contrib import messages
 from django.core.exceptions import ValidationError
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import TemplateView
 from django.utils import timezone
 from django.views import View
 
 from logging import getLogger
 from datetime import datetime
-from collections import deque
 from azbankgateways import (bankfactories, 
                             models as bank_models, 
                             default_settings as settings)
 from azbankgateways.exceptions import AZBankGatewaysException
 
-from .models import DeliveryCart, DeliveryCartItem, Discount
+from .models import (DeliveryCart, 
+                     DeliveryCartItem, 
+                     Discount, 
+                     UserAddressInfo)
 from .utils import group_delivery_items
 from restaurants.models import ItemVariation
 from in_place.models import Order, OrderItem
-from .forms import AddItemToCartForm, SetItemCountForm, DiscountForm
+from .forms import (AddItemToCartForm, 
+                    SetItemCountForm, 
+                    DiscountForm, 
+                    LocationForm)
 
 
 logger = getLogger(__file__)
@@ -28,9 +34,17 @@ logger = getLogger(__file__)
 
 class AddToCartView(View, LoginRequiredMixin):
     def post(self, *args, **kwargs):
+        user = self.request.user
         form_data = AddItemToCartForm(self.request.POST)
         if form_data.is_valid():
-            cart, _ = DeliveryCart.objects.get_or_create(user=self.request.user)
+            cart_qs = DeliveryCart.objects.filter(user=user)
+            
+            if (
+                not cart_qs.exists()
+                or (cart:=cart_qs.latest("date_created")).date_submitted is not None
+            ):
+                cart = DeliveryCart.objects.create(user=user)
+            
             item_var = ItemVariation.objects.filter(
                 public_uuid=form_data.cleaned_data.get("public_uuid"))
             
@@ -148,31 +162,39 @@ class PurchaseView(LoginRequiredMixin, View):
     
     def post(self, *args, **kwargs):
         user = self.request.user
-        cart_qs = DeliveryCart.objects.filter(user=user)
-        cart = cart_qs.last()
+        cart = user.user_cart
+        form = LocationForm(data=self.request.POST, user=user)
+        cart_qs = DeliveryCart.objects.filter(user=user, id=cart.id)
         
-        # multiply by ten to get the cost in Toman
+        if not (form.is_valid() or cart.user_address is not None):
+            messages.error(self.request, 
+                           "Please make sure you have chosen a shipping address.")
+            return redirect("delivery:cart")
+        elif form.is_valid():
+            location = form.cleaned_data["address"]
+            cart_qs.update(user_address=location)
+            cart = cart_qs.first()
+            
         amount = cart.get_estimated_price() * 10
         phone_number = user.phone_number
-        
+            
         try:
             bank = bankfactories.BankFactory().auto_create(self.request)
             bank.set_amount(amount)
             bank.set_mobile_number(phone_number)
-            # todo: payment-result
-            bank.set_client_callback_url(reverse("delivery:cart"))
+            bank.set_client_callback_url(
+                reverse("delivery:payment_status", args=[cart.public_uuid]))
             payment = bank.ready()
             
             grouped = group_delivery_items(cart.cart_items.all())
             for restaurant, cart_items in grouped:
                 description = (f"Order for mr./mrs./miss {user.name.title()}, "
                                f"with phone number: {user.phone_number}, "
-                               f"and address: {cart.user_address.address_str}.\n"
-                               f"More details in: {reverse('in_place:dashboard')}") # todo: change this!
+                               f"and address: {cart.user_address.address_str}.")
                 order = Order.objects.create(restaurant=restaurant,
-                                             order_type="d",
-                                             cart=cart,
-                                             description=description)
+                                            order_type="d",
+                                            cart=cart,
+                                            description=description)
                 OrderItem.objects.bulk_create([
                     OrderItem(
                         item=i.item,
@@ -181,21 +203,76 @@ class PurchaseView(LoginRequiredMixin, View):
                         paid_price=i.item.price*i.count
                     ) for i in cart_items
                 ])
-                
+                    
             cart_qs.update(date_submitted=timezone.now(),
-                           payment=payment)
+                           payment=payment,
+                           user_address=location)
             
             # create the new cart. This way the cart is refreshed
             # and also we still keep track of previous orders.
             DeliveryCart.objects.create(user=user)
-                
+                    
             return bank.redirect_gateway()
 
         except AZBankGatewaysException as e:
             logger.critical(e, stack_info=True)
-            # todo: redirect to error page
-            return redirect("delivery:cart")
-    
+            
+        return redirect("delivery:payment_status", args=[cart.public_uuid])
+        
     
 purchase_view = PurchaseView.as_view()
+
+
+class PurchaseStatusView(LoginRequiredMixin, View):
+    template_name = "delivery/payment_status.html"
+    context = dict()
     
+    def get(self, *args, **kwargs):
+        public_uuid = kwargs.get("public_uuid")
+        cart_qs = (
+            DeliveryCart
+            .objects
+            .filter(user=self.request.user)
+        )
+        if (
+            public_uuid is not None
+            and (cart_qs:=cart_qs.filter(public_uuid=public_uuid)).exists()
+            and (cart:=cart_qs.first()).date_submitted is not None
+        ):
+            self.context.update(
+                {
+                    "cart": cart
+                }
+            )
+            return render(self.request,
+                          self.template_name,
+                          self.context)
+        messages.error(self.request,
+                       "Requested cart is invalid.")
+        return redirect("delivery:cart") # todo: change
+    
+
+purchase_status_view = PurchaseStatusView.as_view()
+
+
+class OrdersView(LoginRequiredMixin, View):
+    template_name = "delivery/orders.html"
+    context = dict()
+    
+    def get(self, *args, **kwargs):
+        self.context.update(
+            {
+                "carts": (
+                    DeliveryCart
+                    .objects
+                    .filter(user=self.request.user)
+                    .exclude(date_submitted=None)
+                )
+            }
+        )
+        return render(self.request,
+                      self.template_name,
+                      self.context)
+
+
+orders_view = OrdersView.as_view()

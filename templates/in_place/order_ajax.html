@@ -31,7 +31,9 @@
                     <td style="width:10%" class="text-center">
                         {{ order.timestamp|localtime|date:'H\:i' }}
                     </td>
-                    <td style="width:10%" class="text-center">{{ order.get_order_type_display|title }}</td>
+                    <td style="width:10%" class="text-center">
+                        {{ order.get_order_type_display|title }}
+                    </td>
                     <td style="width:4%">
                         <div class="d-flex flex-row flex-grow-0">
                                 <button 

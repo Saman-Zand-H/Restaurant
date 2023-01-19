@@ -63,6 +63,7 @@ logger = getLogger(__name__)
 
 def prepare_order_namedtuple(restaurant, 
                              timestamp:date=timezone.now().date()):
+    # Initialize formset and make the query of itemvars.
     item_var_qs = ItemVariation.objects.filter(
         item__cuisine__restaurant=restaurant)
     OrderItemFormset = formset_factory(
@@ -70,15 +71,21 @@ def prepare_order_namedtuple(restaurant,
         extra=item_var_qs.count(),
         max_num=item_var_qs.count())
         
+    # define the namedtuple used on the frontend
     class OrderData(NamedTuple):
         formset: OrderItemFormset
         qs: Order
         order_form: OrderEditForm
         dinein_form: DineInForm = None
         
+    # prepare the required initials for the formset
     def formset_initials(order):
+        # take all the itemvars that are presenet in the order.
         items = ItemVariation.objects.filter(
             item_orders__in=order.order_items.all())
+        
+        # take the difference of all the itemvars of the restaurant
+        # and itemvars in the order.
         item_diff = item_var_qs.difference(items)
         order_items = [
             {
@@ -94,8 +101,13 @@ def prepare_order_namedtuple(restaurant,
                 "paid_price": 0
             } 
                 for i in item_diff]
+        
+        # after preparing the initials, add them up together. in
+        # this way we can have a complete initials list and no itemvar
+        # would be ignored.
         return order_items + empty_items
             
+    # make sure all the orders are within this day entirely.
     min_t = datetime.combine(timestamp,
                              time.min,
                              timezone.utc)
@@ -106,6 +118,7 @@ def prepare_order_namedtuple(restaurant,
         Q(timestamp__gte=min_t) 
         & Q(timestamp__lte=max_t))
     
+    # make the namedtuples with the proposed initials.
     data = [
         OrderData(
             qs=order,
@@ -115,15 +128,24 @@ def prepare_order_namedtuple(restaurant,
                 initial=formset_initials(order)),
             order_form=OrderEditForm(
                 initial={
-                    "order_type": order.order_type
+                    "order_type": order.order_type,
+                    "description": order.description,
+                    "location": (
+                        order.cart.user_address.location
+                        if (hasattr(order, "cart") 
+                            and hasattr(order.cart, "user_address"))
+                        else None
+                    ) 
                 }),
-            dinein_form=DineInForm(initial={
+            dinein_form=DineInForm(
+                initial={
                 "table_number": order.order_dinein.table_number 
                     if hasattr("order", "order_dinein") else None,
                 "description": order.order_dinein.description
-                    if hasattr("order", "order_dinein") else None}) 
-                if order.order_type == "i" else DineInForm())
-        for order in orders]
+                    if hasattr("order", "order_dinein") else None
+            }) 
+            if order.order_type == "i" else DineInForm()
+        ) for order in orders]
     return data
 
 
@@ -136,29 +158,29 @@ class DashboardView(LoginRequiredMixin, UserPassesTestMixin, View):
      
     def get(self, *args, **kwargs):
         restaurant = self.request.user.user_staff.restaurant
+        
         score_chart, revenue_chart, sale_chart = (
             weekly_score_chart_data(restaurant.weekly_score),
             weekly_revenue_chart_data(
                 [i//1000 for i in restaurant.weekly_revenue]),
             weekly_sale_chart_data(restaurant.weekly_sale))
+        
         item_var_qs = ItemVariation.objects.filter(
             item__cuisine__restaurant=restaurant)
         OrderItemFormset = formset_factory(OrderItemForm,
                                            extra=item_var_qs.count(),
                                            max_num=item_var_qs.count())
         
-        session_form_vals = self.get_forms_from_session()
-        # todo: change these!!!! session can't hold forms.
+        
         order_form, dinein_form, order_item_formset = (
-            session_form_vals.get("order_form") or OrderForm(),
-            session_form_vals.get("dinein_form") or DineInForm(),
-            session_form_vals.get("order_item_formset") 
-                or OrderItemFormset(
-                                 form_kwargs={"item_qs": item_var_qs},
-                                 initial=[
-                                     {"count": 0, "item": i, "fee": i.price or 0} 
-                                      for i in item_var_qs]
-                                 ))
+            OrderForm(),
+            DineInForm(),
+            OrderItemFormset(
+                             form_kwargs={"item_qs": item_var_qs},
+                             initial=[
+                                {"count": 0, "item": i, "fee": i.price or 0} 
+                                  for i in item_var_qs]
+                             ))
         
         self.context.update({"score_chart": score_chart,
                              "revenue_chart": revenue_chart,
@@ -177,22 +199,29 @@ class DashboardView(LoginRequiredMixin, UserPassesTestMixin, View):
                 if order_form_data.is_valid():
                     restaurant = self.request.user.user_staff.restaurant
                     order_type = order_form_data.cleaned_data.get("order_type")
+                    # we have used a choicefield for dest; so no one can 
+                    # take advantage of it and the code remains secure.
+                    location = order_form_data.cleaned_data.get("location")
                     dest = order_form_data.cleaned_data.get("dest")
                     timestamp = order_form_data.cleaned_data.get("timestamp",
                                                                  timezone.now())
+                    
                     item_var_qs = ItemVariation.objects.filter(
                         item__cuisine__restaurant=restaurant)
                     OrderItemFormset = formset_factory(
                         OrderItemForm,
                         extra=item_var_qs.count(),
                         max_num=item_var_qs.count())
+                    
                     response = self.handle_formset_create(
                         OrderItemFormset, 
                         item_var_qs, 
                         order_type,
                         restaurant,
                         dest,
-                        timestamp)
+                        timestamp,
+                        location)
+                    
                     return response
         except (ValidationError, IntegrityError):
             return self.render_or_redirect()
@@ -203,7 +232,8 @@ class DashboardView(LoginRequiredMixin, UserPassesTestMixin, View):
                               order_type, 
                               restaurant,
                               dest, 
-                              timestamp):
+                              timestamp,
+                              location):
         formset_data = formset(self.request.POST,
                                initial=[
                                   {
@@ -216,50 +246,50 @@ class DashboardView(LoginRequiredMixin, UserPassesTestMixin, View):
                                    "item_qs": item_var_qs})
         if formset_data.is_valid():
             order = Order.objects.create(restaurant=restaurant,
-                                         order_type=order_type)
-            # If provided, use a custom timestamp
-            order.timestamp = timestamp
-            order.save()
-                
-            if order_type == "i":
-                dinein_form = DineInForm(self.request.POST)
-                if dinein_form.is_valid():
-                    d_cleaned = dinein_form.cleaned_data
-                    # At this point, if the data provided isn't valid,
-                    # we're gonna have a callback, which since we're using
-                    # an atomic transaction here will make a complete rollback
-                    self._validate_table_number(order, 
-                                                d_cleaned.get("table_number"), 
-                                                dinein_form)
-                    DineInOrder.objects.create(
-                        table_number=d_cleaned.get("table_number"),
-                        description=d_cleaned.get("description"),
-                        order=order)
-                else:
-                    self.request.session["dinein_form"] = dinein_form
-                    messages.error(self.request,
-                                   "Invalid data was provided. Try again.") 
-                    raise ValidationError(f"Form validation failed {dinein_form.errors}")
+                                         order_type=order_type,
+                                         timestamp=timestamp)
+            
+            dinein_form = DineInForm(self.request.POST)
+            if order_type == "i" and dinein_form.is_valid():
+                d_cleaned = dinein_form.cleaned_data
+                self._validate_table_number(order, 
+                                            d_cleaned.get("table_number"), 
+                                            dinein_form)
+                DineInOrder.objects.create(
+                    table_number=d_cleaned.get("table_number"),
+                    description=d_cleaned.get("description"),
+                    order=order)
+            elif order_type == "i" and not dinein_form.is_valid():
+                self.request.session["DineInOrder_data"] = dinein_form.data
+                messages.error(self.request,
+                              "Invalid data was provided. Try again.") 
+                raise ValidationError(f"Form validation failed {dinein_form.errors}")
+            
+            # get the filled form out of all the forms within the formset
             filled_forms = [*filter(lambda x: x.cleaned_data.get("count"), 
                                     formset_data.forms)]
+            
             OrderItem.objects.bulk_create(
-                [OrderItem(
-                    item=i.cleaned_data.get("item"),
-                    order=order,
-                    count=i.cleaned_data.get("count"),
-                    paid_price=(
-                        i.cleaned_data.get("paid_price") 
-                        if not i.cleaned_data.get("auto_price") 
-                        else i.cleaned_data.get("item").price
-                            * i.cleaned_data.get("count")))
-                for i in filled_forms]
+                [
+                    OrderItem(
+                        item=i.cleaned_data.get("item"),
+                        order=order,
+                        count=i.cleaned_data.get("count"),
+                        paid_price=(
+                            i.cleaned_data.get("paid_price") 
+                            if not i.cleaned_data.get("auto_price") 
+                            else i.cleaned_data.get("item").price
+                                * i.cleaned_data.get("count"))
+                    ) for i in filled_forms
+                ]
             )
+            
             messages.success(self.request, 
                              "Order was submitted successfully.")
             return redirect(f"in_place:{dest}")
+        
         messages.error(self.request,
-                       "Order was not submitted. "
-                       "We recognized invalid inputs here.")
+                       "Invalid input was detected. Try again.")
         self.context.update({"order_item_formset": formset_data})
         return self.render_or_redirect(dest) 
     
@@ -267,20 +297,25 @@ class DashboardView(LoginRequiredMixin, UserPassesTestMixin, View):
         if table_number > order.restaurant.table_count:
             form_data.add_error(
                 "table_number",  
-                f"Table number exceeded the total number of the tables({order.restaurant.table_count}).")
+                f"Expected: less than or equal to {order.restaurant.table_count}.")
             messages.error(self.request, 
-                           "Order was not submitted. We recognized an invalid input.")
+                           "Invalid input was detected. Try again.")
             self.context.update({"dinein_form": form_data})
             
     def get_forms_from_session(self):
-        keys = ["order_form", "dinein_form"]
-        vals = [self.request.session.get(i) for i in keys]
-        cleaned = [*filter(lambda x: x[1], zip(keys, vals))]
-        return {i[0]: i[1] for i in cleaned}
+        forms = ["OrderForm_data", "DineInOrder_data"]
+        sessions = [
+            {i: self.request.session.get(i)} 
+            for i in forms
+            if self.request.session.get(i) is not None
+        ]
+        return sessions
             
     def render_or_redirect(self, dest="dashboard"):
         if len(self.context.keys()) == 8 and dest != "orders":
-            return render(self.request, self.template_name, self.context)
+            return render(self.request, 
+                          self.template_name, 
+                          self.context)
         return redirect(f"in_place:{dest}")
     
     

@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.gis.forms.fields import PointField
 from django.contrib.gis.forms.widgets import OSMWidget
-
+from iranian_cities.models import City, Province
 from allauth.account.forms import (LoginForm, 
                                    SignupForm as AllauthSignupForm)
 from allauth.utils import get_username_max_length
@@ -83,20 +83,42 @@ class EditAddressRequestForm(forms.Form):
         
         
 class AddressForm(forms.Form):
+    city_choices = (
+        (i["id"], i["name"]) 
+        for i in City.objects.values("id", "name"))
+    province_choices = (
+        (i["id"], i["name"])
+        for i in Province.objects.values("id", "name")
+    )
+    
     location = PointField(srid=4326,
                           widget=OSMWidget())
     address = forms.CharField(max_length=255, 
                               widget=forms.TextInput(
                                 attrs={"class": "form-control"}))
     postal_code = forms.CharField(max_length=30, 
-                              widget=forms.TextInput(
-                                attrs={"class": "form-control"}))
-    city = forms.CharField(max_length=30, 
-                              widget=forms.TextInput(
-                                attrs={"class": "form-control"}))
-    province = forms.CharField(max_length=30, 
-                              widget=forms.TextInput(
-                                attrs={"class": "form-control"}))
+                                    widget=forms.TextInput(
+                                    attrs={"class": "form-control"}))
+    city = forms.ChoiceField(choices=city_choices,
+                             widget=forms.Select())
+    province = forms.ChoiceField(choices=province_choices,
+                                 widget=forms.Select())
+    
+    def clean(self, *args, **kwargs):
+        cleaned_data = super().clean(*args, **kwargs)
+        city = cleaned_data.get("city")
+        province = cleaned_data.get("province")
+        
+        if not (city_qs:=City.objects.filter(id=city)).exists():
+            self.add_error("city", "No record of this city was found. Try again.")
+            raise forms.ValidationError("Invalid city.")
+        if not (province_qs:=Province.objects.filter(id=province)).exists():
+            self.add_error("province", "No record of this province was found. Try again.")
+            raise forms.ValidationError("Invalid province.")
+        
+        cleaned_data.update({"province": province_qs.first(),
+                             "city": city_qs.first()})
+        return cleaned_data
     
     
 class EditAddressForm(AddressForm):
