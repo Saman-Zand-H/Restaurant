@@ -21,7 +21,6 @@ class Staff(models.Model):
         ("s", "supplier"),
         ("w", "waiter"),
         ("m", "manager"),
-        ("d", "driver"),
     )
     public_uuid = models.UUIDField(default=uuid4,
                                    editable=False,
@@ -44,47 +43,16 @@ class Staff(models.Model):
      
     class Meta:
         permissions = [
-            ("delete_orders", "is authorized to delete order records."),
+            ("delete_orders", "is authorized to delete order records"),
             ("read_salaries", "is authorized to read other staff's salaries"),
             ("read_staff", "has access to details of the staff"),
-            ("mod_staff", "can add, modify, or delete members for the staff")
+            ("mod_staff", "can add, modify, or delete members for the staff"),
+            ("edit_restaurant", "can modify the restaurant"),
+            ("add_items", "can add items to the restaurant"),
+            ("edit_items", "can edit items of the restaurant"),
+            ("delete_items", "can delete items of the restaurant"),
+            ("edit_staff", "can edit other staff"),
         ]
-        
-    ######### Permission Properties #########
-        
-    @property
-    def can_delete_orders(self):
-        return self.user.has_perm("in_place.delete_orders")
-    
-    @property
-    def can_read_salaries(self):
-        return self.user.has_perm("in_place.read_salaries")
-    
-    @property
-    def can_delete_items(self):
-        return self.user.has_perm("in_place.delete_items")
-    
-    @property
-    def can_add_items(self):
-        return self.user.has_perm("in_place.add_items")
-    
-    @property
-    def can_edit_items(self):
-        return self.user.has_perm("in_place.edit_items")
-    
-    @property
-    def can_change_staff(self):
-        return self.user.has_perm("in_place.change_staff")
-    
-    @property
-    def can_delete_staff(self):
-        return self.user.has_perm("in_place.delete_staff")
-    
-    @property
-    def can_edit_restaurant(self):
-        return self.user.has_perm("in_place.edit_restaurant")
-    
-    ####################
     
     def get_restaurant_url(self):
         return reverse("restaurants:restaurant", 
@@ -92,17 +60,20 @@ class Staff(models.Model):
     
     def save(self, *args, **kwargs):
         sup_save = super().save(*args, **kwargs)
+        
         managers_g, created = Group.objects.get_or_create(
-            name=f"{self.restaurant.name.lower()}_managers")
+            name="managers")
         if created:
             perms = Permission.objects.filter(
-                codename__in=["delete_orders", 
-                              "read_salaries", 
-                              "read_staff", 
-                              "mod_staff"])
+                codename__in=["in_place."+i[0] 
+                              for i in self._meta.permissions+"delete_staff"])
             managers_g.permissions.set(perms)
-        if self.role == "m":
-            self.user.groups.add(managers_g)
+        
+        match self.role:
+            case "m":
+                self.user.groups.add(managers_g)
+            case _:
+                pass
         return sup_save
     
     

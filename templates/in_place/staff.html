@@ -1,6 +1,6 @@
 {% extends 'base/layout/dash_base.html' %}
 
-{% load static humanize tz dash_utils crispy_forms_tags %}
+{% load static humanize tz dash_tags crispy_forms_tags %}
 
 
 {% block stylesheet %}
@@ -369,7 +369,7 @@
                             {% endif %}
                         </div>
                         
-                        {% if user.user_staff.can_change_staff and user.user_staff.can_delete_staff %}
+                        {% if user|check_perm:'in_place.edit_staff' and user|check_perm:'in_place.delete_staff' %}
                             <div class="d-flex justify-content-end">
                                 <div class="dropdown">
                                     <button 

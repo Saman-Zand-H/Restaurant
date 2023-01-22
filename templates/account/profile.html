@@ -18,7 +18,7 @@
 					<p class="card-category">Complete your profile</p>
 				</div>
 				<div class="card-body py-3">
-					<form action="{% url 'accounts:change-user' %}" method="POST">
+					<form action="{% url 'accounts:change_user' %}" method="POST">
 						{% csrf_token %}
 						{% if change_user_form.errors or change_user_form.non_field_errors %}
 							<div class="alert alert-rose">
@@ -111,7 +111,7 @@
 			</div>
 		</div>
 	</div>
-	{% if user.user_staff.can_edit_restaurant %}
+	{% if user|check_perm:"in_place.edit_restaurant" %}
 		<div class="my-4">
 			<div class="card">
 				<div class="card-header card-header-warning">

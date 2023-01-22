@@ -1,5 +1,5 @@
 {% extends 'base/layout/dash_base.html' %}
-{% load static humanize crispy_forms_tags dash_utils tz %}
+{% load static humanize crispy_forms_tags dash_tags tz %}
 
 
 {% block title %}{{ user.user_staff.restaurant.name|title }} | Orders{% endblock %}
@@ -296,7 +296,7 @@
         {% endfor %}
 
         <!-- delete orders -->
-        {% if user.user_staff.can_delete_orders %}
+        {% if user|check_perm:"in_place.delete_orders" %}
             {% for order in orders %}
                 <div 
                      class="modal fade" 
@@ -430,7 +430,7 @@
                                                    >
                                                 <i class="material-icons text-warning">edit</i>
                                             </button>
-                                            {% if user.user_staff.can_delete_orders %}
+                                            {% if user|check_perm:"in_place.delete_orders" %}
                                                 <button 
                                                         type="button" 
                                                         rel="tooltip" 

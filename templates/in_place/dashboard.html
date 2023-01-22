@@ -1,6 +1,6 @@
 {% extends 'base/layout/dash_base.html' %}
 
-{% load static humanize crispy_forms_tags dash_utils %}
+{% load static humanize crispy_forms_tags dash_tags %}
 
 {% block title %}{{ user.name|title }} | Dashboard{% endblock %}
 
@@ -289,7 +289,7 @@
         {% endfor %}
 
         <!-- delete order -->
-        {% if user.user_staff.can_delete_orders %}
+        {% if user|check_perm:"in_place.delete_orders" %}
             {% for order in orders %}
                 <div 
                     class="modal fade" 
@@ -496,7 +496,7 @@
             <div class="card">
                 <div class="card-header card-header-primary">
                     <h4 class="card-title">
-                        Employee{% if user.user_staff.can_read_salaries %}s{% endif %} Stats
+                        Employee{% if user|check_perm:"in_place.read_salaries" %}s{% endif %} Stats
                     </h4>
                     <p class="card-category">Employees Stats on {% now "jS\, F o" %}</p>
                 </div>
@@ -510,7 +510,7 @@
                         </thead>
                         <tbody>
                             {% if restaurant.restaurant_staff.exists %}
-                                {% if user.user_staff.can_read_salaries %}
+                                {% if user|check_perm:'in_place.read_salaries' %}
                                     {% for staff in restaurant.restaurant_staff.all %}
                                         <tr>
                                             <td>{{ forloop.counter }}</td>
@@ -619,7 +619,7 @@
                                                         >
                                                         <i class="material-icons">edit</i>
                                                     </button>
-                                                    {% if user.user_staff.can_delete_orders %}
+                                                    {% if user|check_perm:"in_place.delete_orders" %}
                                                         <button 
                                                                 type="button" 
                                                                 rel="tooltip" 
@@ -690,7 +690,7 @@
                                                         >
                                                         <i class="material-icons">edit</i>
                                                     </button>
-                                                    {% if user.user_staff.can_delete_orders %}
+                                                    {% if user|check_perm:"in_place.delete_orders" %}
                                                         <button 
                                                                 type="button" 
                                                                 rel="tooltip" 
@@ -873,7 +873,7 @@
         const item_ws = new WebSocket(`${ws_scheme}://${window.location.host}/ws/dinein/new_item/`),
               edit_order_url = "{% url 'in_place:edit_order' %}",
               csrf_token_elem = '{% csrf_token %}',
-              canDeleteOrders = Boolean("{{ user.user_staff.can_delete_orders|escapejs }}");
+              canDeleteOrders = Boolean("{{ user|check_perm:'in_place.delete_orders'|escapejs }}");
 
         item_ws.onmessage = e => {
             var temp = JSON.parse(e.data).response;

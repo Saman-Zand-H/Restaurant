@@ -17,7 +17,8 @@ from iranian_cities.models import Province
 import json
 import xlwt
 import numpy as np
-from operator import is_not
+from operator import methodcaller
+from collections import deque
 from itertools import chain
 from functools import reduce
 from datetime import datetime, date, time
@@ -171,16 +172,24 @@ class DashboardView(LoginRequiredMixin, UserPassesTestMixin, View):
                                            extra=item_var_qs.count(),
                                            max_num=item_var_qs.count())
         
-        
+        session_data = self.get_forms_from_session()
         order_form, dinein_form, order_item_formset = (
-            OrderForm(),
-            DineInForm(),
+            OrderForm(data=session_data.get("OrderForm_data")),
+            DineInForm(data=session_data.get("DineInForm_data")),
             OrderItemFormset(
                              form_kwargs={"item_qs": item_var_qs},
                              initial=[
                                 {"count": 0, "item": i, "fee": i.price or 0} 
-                                  for i in item_var_qs]
+                                  for i in item_var_qs],
+                             data=session_data.get("OrderItemFormset_data")
                              ))
+        # to validate data we need to call is_valid()
+        deque(
+            map(
+                methodcaller("is_valid"), 
+                [order_form, dinein_form, order_item_formset]
+            )
+        )
         
         self.context.update({"score_chart": score_chart,
                              "revenue_chart": revenue_chart,
@@ -201,7 +210,6 @@ class DashboardView(LoginRequiredMixin, UserPassesTestMixin, View):
                     order_type = order_form_data.cleaned_data.get("order_type")
                     # we have used a choicefield for dest; so no one can 
                     # take advantage of it and the code remains secure.
-                    location = order_form_data.cleaned_data.get("location")
                     dest = order_form_data.cleaned_data.get("dest")
                     timestamp = order_form_data.cleaned_data.get("timestamp",
                                                                  timezone.now())
@@ -219,8 +227,7 @@ class DashboardView(LoginRequiredMixin, UserPassesTestMixin, View):
                         order_type,
                         restaurant,
                         dest,
-                        timestamp,
-                        location)
+                        timestamp)
                     
                     return response
         except (ValidationError, IntegrityError):
@@ -232,8 +239,7 @@ class DashboardView(LoginRequiredMixin, UserPassesTestMixin, View):
                               order_type, 
                               restaurant,
                               dest, 
-                              timestamp,
-                              location):
+                              timestamp):
         formset_data = formset(self.request.POST,
                                initial=[
                                   {
@@ -260,7 +266,7 @@ class DashboardView(LoginRequiredMixin, UserPassesTestMixin, View):
                     description=d_cleaned.get("description"),
                     order=order)
             elif order_type == "i" and not dinein_form.is_valid():
-                self.request.session["DineInOrder_data"] = dinein_form.data
+                self.request.session["DineInForm_data"] = dinein_form.data
                 messages.error(self.request,
                               "Invalid data was provided. Try again.") 
                 raise ValidationError(f"Form validation failed {dinein_form.errors}")
@@ -290,7 +296,7 @@ class DashboardView(LoginRequiredMixin, UserPassesTestMixin, View):
         
         messages.error(self.request,
                        "Invalid input was detected. Try again.")
-        self.context.update({"order_item_formset": formset_data})
+        self.context.update({"OrderItemFormset_data": formset_data.data})
         return self.render_or_redirect(dest) 
     
     def _validate_table_number(self, order, table_number, form_data):
@@ -303,12 +309,12 @@ class DashboardView(LoginRequiredMixin, UserPassesTestMixin, View):
             self.context.update({"dinein_form": form_data})
             
     def get_forms_from_session(self):
-        forms = ["OrderForm_data", "DineInOrder_data"]
-        sessions = [
-            {i: self.request.session.get(i)} 
+        forms = ["OrderForm_data", "DineInForm_data", "OrderItemFormset_data"]
+        sessions = {
+            i: self.request.session.pop(i, None)
             for i in forms
             if self.request.session.get(i) is not None
-        ]
+        }
         return sessions
             
     def render_or_redirect(self, dest="dashboard"):
@@ -364,7 +370,7 @@ class EditOrderView(LoginRequiredMixin, UserPassesTestMixin, View):
                                 timestamp=timestamp if timestamp is not None 
                                             else timezone.now())
                     elif not dinein_form.is_valid():
-                        self.request.session["dinein_form"] = dinein_form
+                        self.request.session["DineinForm_data"] = dinein_form.data
                         self._invalid_input_message()
                         return redirect(f"in_place:{dest}")
                     
@@ -419,8 +425,8 @@ class EditOrderView(LoginRequiredMixin, UserPassesTestMixin, View):
                     self._invalid_input_message()
                 return redirect(f"in_place:{dest}")
             
-        self.request.session["order_form"] = order_data
-        self.request.session["order_item_formset"] = formset_data
+        self.request.session["OrderForm_data"] = order_data.data
+        self.request.session["OrderItemFormset_data"] = formset_data.data
         self._invalid_input_message()
         return redirect(f"in_place:{dest}")
         
@@ -479,6 +485,8 @@ class OrdersView(LoginRequiredMixin, UserPassesTestMixin, View):
     def get(self, *args, **kwargs):
         restaurant = self.request.user.user_staff.restaurant
         order_form, dinein_form, order_item_formset = self.get_modals_context()
+        # to validate data we need to call is_valid()
+        deque(map(methodcaller("is_valid"), [order_form, dinein_form, order_item_formset]))
         self.context.update({
             "orders": prepare_order_namedtuple(restaurant),
             "order_form": order_form,
@@ -530,10 +538,13 @@ class OrdersView(LoginRequiredMixin, UserPassesTestMixin, View):
         return JsonResponse({"error": "Invalid Data Detected."})
     
     def get_forms_from_session(self):
-        keys = ["order_form", "dinein_form"]
-        vals = [self.request.session.get(i) for i in keys]
-        cleaned = [*filter(lambda x: x[1], zip(keys, vals))]
-        return {i[0]: i[1] for i in cleaned}
+        forms = ["OrderForm_data", "DineInForm_data", "OrderItemFormset_data"]
+        sessions = [
+            {i: self.request.session.pop(i, None)} 
+            for i in forms
+            if self.request.session.get(i) is not None
+        ]
+        return sessions
     
     def get_modals_context(self):
         restaurant = self.request.user.user_staff.restaurant
@@ -545,15 +556,16 @@ class OrdersView(LoginRequiredMixin, UserPassesTestMixin, View):
             max_num=item_var_qs.count())
         session_form_vals = self.get_forms_from_session()
         return (
-            session_form_vals.get("order_form") or OrderForm(),
-            session_form_vals.get("dinein_form") or DineInForm(),
-            session_form_vals.get("order_item_formset") 
-                or OrderItemFormset(
-                                 form_kwargs={"item_qs": item_var_qs},
-                                 initial=[
-                                     {"count": 0, "item": i, "fee": i.price or 0} 
-                                      for i in item_var_qs]
-                                 ))
+            OrderForm(data=session_form_vals.get("OrderForm_data")),
+            DineInForm(data=session_form_vals.get("DineinForm_data")),
+            OrderItemFormset(
+                             form_kwargs={"item_qs": item_var_qs},
+                             initial=[
+                                {"count": 0, "item": i, "fee": i.price or 0} 
+                                  for i in item_var_qs],
+                             data=session_form_vals.get("OrderItemFormset_data")
+                            )
+            )
             
             
 orders_view = OrdersView.as_view()
@@ -856,7 +868,7 @@ class CreateCuisineView(LoginRequiredMixin, UserPassesTestMixin, View):
         else:
             messages.error(self.request, 
                            "There was an error during the process. Try again.")
-            self.request.session["cuisine_form"] = form_data
+            self.request.session["cuisine_form"] = form_data.data
         return redirect("in_place:menu")
         
         
@@ -935,7 +947,7 @@ class CreateItemView(LoginRequiredMixin, UserPassesTestMixin, View):
         else:
             messages.error(self.request, 
                            "There was an error during the process. Please try again.")
-            self.request.session["item_form"] = self.request.POST
+            self.request.session["item_form"] = form_data.data
         return redirect("in_place:menu")
     
     
@@ -1022,7 +1034,7 @@ class CreateItemVarView(LoginRequiredMixin, UserPassesTestMixin, View):
         else:
             messages.error(self.request, 
                            "There was an error during the process. Please try again.")
-            self.request.session["itemvar_form"] = self.request.POST
+            self.request.session["itemvar_form"] = form_data.data
         return redirect("in_place:menu")
     
 

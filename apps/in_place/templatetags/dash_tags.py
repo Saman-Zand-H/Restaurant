@@ -1,5 +1,7 @@
 from django import template
 
+from users.models import UserModel
+
 
 register = template.Library()
 
@@ -7,9 +9,11 @@ register = template.Library()
 def qs_exists(reverse_desc, manager_name="objects"):
     return reverse_desc(manager=manager_name).within().exists()
 
+
 @register.filter
 def reverse_manager_using(reverse_desc, manager_name="objects"):
     return reverse_desc(manager=manager_name).within()
+
 
 @register.filter
 def trunc_number(val:str|int):
@@ -23,3 +27,7 @@ def trunc_number(val:str|int):
     else:
         return f"{val//10**5/10}m"
     
+
+@register.filter
+def check_perm(user:UserModel, code_name:str):
+    return user.has_perm(code_name)

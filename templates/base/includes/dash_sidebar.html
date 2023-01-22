@@ -1,4 +1,4 @@
-{% load static %}
+{% load static dash_tags %}
 
 <div 
      class="sidebar" 
@@ -32,7 +32,7 @@
                     <p>Location</p>
                 </a>
             </li>
-            {% if user.user_staff.can_read_salaries %}
+            {% if user|check_perm:"in_place.read_salaries" %}
                 <li class="nav-item {% if 'staff' in request.path %}active{% endif %}">
                     <a 
                        class="nav-link" 

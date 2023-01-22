@@ -46,7 +46,7 @@
                                    >
                                 <i class="material-icons text-warning">edit</i>
                             </button>
-                            {% if user.user_staff.can_delete_orders %}
+                            {% if user|check_perm:"in_place.delete_orders" %}
                                 <button 
                                         type="button" 
                                         rel="tooltip" 

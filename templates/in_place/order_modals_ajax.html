@@ -147,7 +147,7 @@
     {% endfor %}
 
     <!-- delete orders -->
-    {% if user.user_staff.can_delete_orders %}
+    {% if user|check_perm:"in_place.delete_orders" %in_place.delete_orders}
         {% for order in orders %}
             <div 
                  class="modal fade" 

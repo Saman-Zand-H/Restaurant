@@ -1,4 +1,4 @@
-{% load dash_utils %}
+{% load dash_tags %}
 
 
 const $eatinsElem = $("#eatinsTable"),
@@ -39,7 +39,7 @@ const $eatinsElem = $("#eatinsTable"),
                                 >
                                 <i class="material-icons">edit</i>
                             </button>
-                            {% if user.user_staff.can_delete_orders %}
+                            {% if user|check_perm:"in_place.delete_orders" %}
                                 <button 
                                         type="button" 
                                         rel="tooltip" 
@@ -105,7 +105,7 @@ const $eatinsElem = $("#eatinsTable"),
                                                         >
                                                         <i class="material-icons">edit</i>
                                                     </button>
-                                                    {% if user.user_staff.can_delete_orders %}
+                                                    {% if user|check_perm:"in_place.delete_orders" %}
                                                         <button 
                                                                 type="button" 
                                                                 rel="tooltip" 
@@ -280,7 +280,7 @@ const $eatinsElem = $("#eatinsTable"),
             {% endfor %}
         `,
          deleteModalTemp = `
-            {% if user.user_staff.can_delete_orders %}
+            {% if user|check_perm:"in_place.delete_orders" %}
                 {% for order in orders %}
                     <div 
                          class="modal fade" 

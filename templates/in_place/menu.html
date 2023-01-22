@@ -1,5 +1,5 @@
 {% extends 'base/layout/dash_base.html' %}
-{% load static humanize tz dash_utils %}
+{% load static humanize perms tz dash_tags %}
 
 {% block title %}
     {{ user.user_staff.restaurant }} | Menu
@@ -21,7 +21,7 @@
 
 {% block modals %}
     <!-- New Cuisine -->
-    {% if user.user_staff.can_add_items %}
+    {% if user|check_perm:"in_place.add_items" %}
         <div 
             class="modal fade" 
             id="newCuisineM" 
@@ -77,7 +77,7 @@
     {% endif %}
     
     {% for cuisine in cuisines %}
-        {% if user.user_staff.can_edit_items %}
+        {% if user|check_perm:"in_place.edit_items" %}
             <!-- Edit Cuisine -->
             <div 
                 class="modal fade" 
@@ -315,7 +315,7 @@
             {% endfor %}
         {% endif %}
 
-        {% if user.user_staff.can_delete_items %}
+        {% if user|check_perm:"in_place.delete_items" %}
             <!-- Delete Cuisine -->
             <div 
                 class="modal fade" 
@@ -481,7 +481,7 @@
         {% endif %}
     {% endfor %}
 
-    {% if user.user_staff.can_add_items %}
+    {% if user|check_perm:"in_place.add_items" %}
         <!-- New Item -->
         <div 
              class="modal fade" 
@@ -559,7 +559,7 @@
         </div>
     {% endif %}
 
-    {% if user.user_staff.can_add_items %}
+    {% if user|check_perm:"in_place.add_items" %}
         <!-- New Itemvar -->
         <div 
             class="modal fade" 
@@ -711,7 +711,7 @@
                 <div class="card card-body bg-light text-dark text-center">
                     <h2>
                         ----- {{ cuisine.name|title }} -----
-                        {% if user.user_staff.can_edit_items %}
+                        {% if user|check_perm:'in_place.edit_items' %}
                             <button 
                                     class="btn btn-link"
                                     type="button"
@@ -722,7 +722,7 @@
                                 <i class="material-icons text-warning">edit_square</i>
                             </button>
                         {% endif %}
-                        {% if user.user_staff.can_delete_items %}
+                        {% if user|check_perm:'in_place.delete_items' %}
                             <button
                                     class="btn btn-link"
                                     type="button"
@@ -745,13 +745,13 @@
                                     <div class="card-header text-center">
                                         <h3 class="card-title text-light">
                                             {{ item.name|title }}
-                                            {% if user.user_staff.can_edit_items %}
+                                            {% if user|check_perm:'in_place.edit_items' %}
                                                 <button class="btn btn-link" type="button" title="Edit" data-toggle="modal"
                                                     data-target="#editItem-{{ item.public_uuid }}-M">
                                                     <i class="material-icons text-warning">edit_square</i>
                                                 </button>
                                             {% endif %}
-                                            {% if user.user_staff.can_delete_items %}
+                                            {% if user|check_perm:'in_place.delete_items' %}
                                                 <button class="btn btn-link" type="button" title="Delete" data-toggle="modal"
                                                     data-target="#deleteItem-{{ item.public_uuid }}-M">
                                                     <i class="material-icons text-danger">delete</i>
@@ -776,7 +776,7 @@
                                                     <h5 class="text-light">
                                                         {{ item_var.name|title }} 
                                                         | {{ item_var.price|intcomma }} T
-                                                        {% if user.user_staff.can_edit_items %}
+                                                        {% if user|check_perm:"in_place.edit_items" %}
                                                             <button 
                                                                     class="btn btn-link" 
                                                                     type="button" 
@@ -787,7 +787,7 @@
                                                                 <i class="material-icons text-warning">edit_square</i>
                                                             </button>
                                                         {% endif %}
-                                                        {% if user.user_staff.can_delete_items %}
+                                                        {% if user|check_perm:'in_place.delete_items' %}
                                                             <button     
                                                                     class="btn btn-link" 
                                                                     type="button" 
@@ -809,13 +809,13 @@
                                     <div class="card-header text-center">
                                         <h3 class="card-title">
                                             {{ item.name|title }}
-                                            {% if user.user_staff.can_edit_items %}
+                                            {% if user|check_perm:'in_place.edit_items' %}
                                                 <button class="btn btn-link" type="button" title="Edit" data-toggle="modal"
                                                     data-target="#editItem-{{ item.public_uuid }}-M">
                                                     <i class="material-icons text-warning">edit_square</i>
                                                 </button>
                                             {% endif %}
-                                            {% if user.user_staff.can_delete_items %}
+                                            {% if user|check_perm:'in_place.delete_items' %}
                                                 <button class="btn btn-link" type="button" title="Delete" data-toggle="modal"
                                                     data-target="#deleteItem-{{ item.public_uuid }}-M">
                                                     <i class="material-icons text-danger">delete</i>
