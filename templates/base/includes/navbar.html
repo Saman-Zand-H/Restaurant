@@ -209,7 +209,20 @@
                     </ul>
                 </li>
 
-                <li class="nav-items mx-3">
+                <li class="nav-item mx-3">
+                    <a 
+                            class="d-flex flex-row flex-nowrap align-items-baseline"
+                            id="webpush-subscribe-button" 
+                            data-url="/webpush/save_information"
+                            href="#"
+                           >
+                            <i class="far fa-bell"></i>
+                            Subscribe to Push Messaging
+                    </a>
+
+                </li> &nbsp;
+
+                <li class="nav-item mx-3">
                     <a 
                        href="{% url 'restaurants:list_restaurants' %}"
                        class="d-flex flex-row flex-nowrap align-items-baseline"

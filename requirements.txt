@@ -48,12 +48,14 @@ django-disqus==0.5
 django-elasticsearch-dsl==7.2.2
 django-environs==0.1.1
 django-extensions==3.2.1
+django-filter==22.1
 django-iranian-cities @ git+https://github.com/sageteam-org/django-iranian-cities.git@b4d5f63a19acb8555e54b9116c54cb3e1723c7e9
 django-phonenumber-field==6.3.0
 django-selenium-login==2.0.0
 django-timezone-field==5.0
 django-webpush==0.3.4
-djangorestframework==3.13.1
+djangorestframework==3.14.0
+djangorestframework-gis==1.0
 djangorestframework-simplejwt==5.2.0
 docker==6.0.1
 docker-compose==1.29.2

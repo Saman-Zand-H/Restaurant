@@ -5,14 +5,14 @@ from django.contrib.auth.models import Permission, Group
 from django.core.exceptions import ValidationError
 from django.core.validators import MinValueValidator
 from django.utils import timezone
+from webpush.models import Group as WebpushGroup, PushInformation
 
-from datetime import datetime, time
 from uuid import uuid4
 
-from restaurants.models import  Restaurant, ItemVariation
+from restaurants.models import Restaurant, ItemVariation
 from delivery.models import DeliveryCart
 from .managers import OrderDels, OrderEatIns
-    
+
 
 class Staff(models.Model):
     roles_choices = (
@@ -22,25 +22,24 @@ class Staff(models.Model):
         ("w", "waiter"),
         ("m", "manager"),
     )
-    public_uuid = models.UUIDField(default=uuid4,
-                                   editable=False,
-                                   auto_created=True,
-                                   unique=True)
+    public_uuid = models.UUIDField(
+        default=uuid4, editable=False, auto_created=True, unique=True
+    )
     role = models.CharField(max_length=2, choices=roles_choices)
     description = models.TextField(blank=True, null=True)
     date_created = models.DateTimeField(auto_now_add=True)
     income = models.PositiveIntegerField()
-    address = models.CharField(max_length=255,
-                               blank=True,
-                               null=True)
-    restaurant = models.ForeignKey(Restaurant,
-                                   on_delete=models.CASCADE,
-                                   related_name="restaurant_staff",
-                                   to_field="id")
-    user = models.OneToOneField(settings.AUTH_USER_MODEL,
-                                on_delete=models.CASCADE,
-                                related_name="user_staff")
-     
+    address = models.CharField(max_length=255, blank=True, null=True)
+    restaurant = models.ForeignKey(
+        Restaurant,
+        on_delete=models.CASCADE,
+        related_name="restaurant_staff",
+        to_field="id",
+    )
+    user = models.OneToOneField(
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="user_staff"
+    )
+
     class Meta:
         permissions = [
             ("delete_orders", "is authorized to delete order records"),
@@ -53,102 +52,116 @@ class Staff(models.Model):
             ("delete_items", "can delete items of the restaurant"),
             ("edit_staff", "can edit other staff"),
         ]
-    
+
     def get_restaurant_url(self):
-        return reverse("restaurants:restaurant", 
-                       kwargs={"public_uuid": self.restaurant.public_uuid})
-    
+        return reverse(
+            "restaurants:restaurant",
+            kwargs={"public_uuid": self.restaurant.public_uuid},
+        )
+
     def save(self, *args, **kwargs):
         sup_save = super().save(*args, **kwargs)
-        
-        managers_g, created = Group.objects.get_or_create(
-            name="managers")
+
+        if (push_qs := PushInformation.objects.filter(user=self.user)).exists():
+            restaurant_group, _ = WebpushGroup.objects.get_or_create(
+                name=f"{self.public_uuid}_staff"
+            )
+            push_qs.update(group=restaurant_group)
+
+        managers_g, created = Group.objects.get_or_create(name="managers")
         if created:
             perms = Permission.objects.filter(
-                codename__in=["in_place."+i[0] 
-                              for i in self._meta.permissions+"delete_staff"])
+                codename__in=[
+                    "in_place." + i[0] for i in self._meta.permissions + "delete_staff"
+                ]
+            )
             managers_g.permissions.set(perms)
-        
+
         match self.role:
             case "m":
                 self.user.groups.add(managers_g)
             case _:
                 pass
         return sup_save
-    
-    
+
+
 class DineInOrder(models.Model):
     table_number = models.PositiveIntegerField(
-        validators=[MinValueValidator(1)],
-        null=True,
-        blank=True
+        validators=[MinValueValidator(1)], null=True, blank=True
     )
-    order = models.OneToOneField('Order',
-                                 on_delete=models.CASCADE,
-                                 related_name="order_dinein")
-    public_uuid = models.UUIDField(default=uuid4,
-                                   auto_created=True,
-                                   editable=False,
-                                   unique=True)
+    order = models.OneToOneField(
+        "Order", on_delete=models.CASCADE, related_name="order_dinein"
+    )
+    public_uuid = models.UUIDField(
+        default=uuid4, auto_created=True, editable=False, unique=True
+    )
     timestamp = models.DateTimeField(default=timezone.now)
-    
+
     def __str__(self):
-        return f"({self.order.timestamp}){self.order.order_number} - {self.table_number}"
-    
+        return (
+            f"({self.order.timestamp}){self.order.order_number} - {self.table_number}"
+        )
+
     def clean(self, *args, **kwargs):
         table_count = self.order.restaurant.table_count
         if self.table_number > table_count:
             raise ValidationError(
-                {"table_number": "you sure this table number is correct? "
-                                 "it appears to exceed the total number of the tables..."})
+                {
+                    "table_number": "you sure this table number is correct? "
+                    "it appears to exceed the total number of the tables..."
+                }
+            )
         return super().clean(*args, **kwargs)
-    
-    
+
+
 class Order(models.Model):
     order_type_choices = (
         ("d", "delivery"),
         ("i", "dine-in"),
-    ) 
-    public_uuid = models.UUIDField(default=uuid4,
-                                   auto_created=True,
-                                   unique=True,
-                                   editable=False)
+    )
+    public_uuid = models.UUIDField(
+        default=uuid4, auto_created=True, unique=True, editable=False
+    )
     done = models.BooleanField(default=False)
     description = models.TextField(blank=True, null=True)
     order_type = models.CharField(max_length=1, choices=order_type_choices)
-    restaurant = models.ForeignKey(Restaurant,
-                                   on_delete=models.CASCADE,
-                                   related_name="restaurant_orders",
-                                   to_field="id")
+    restaurant = models.ForeignKey(
+        Restaurant,
+        on_delete=models.CASCADE,
+        related_name="restaurant_orders",
+        to_field="id",
+    )
     timestamp = models.DateTimeField(default=timezone.now)
     order_number = models.PositiveIntegerField(blank=True)
-    cart = models.ForeignKey(DeliveryCart,
-                             on_delete=models.SET_NULL,
-                             null=True,
-                             blank=True,
-                             related_name="order_cart")
-    
+    cart = models.ForeignKey(
+        DeliveryCart,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="order_cart",
+    )
+
     objects = models.Manager()
     deliveries = OrderDels()
     eatins = OrderEatIns()
 
     class Meta:
         ordering = ["-timestamp"]
-    
+
     def __str__(self):
         return f"{self.restaurant}-{self.order_type}:{self.order_number}({self.id})"
-    
+
     def _set_order_number(self):
         q = self.__class__.objects.filter(timestamp__date=self.timestamp.date())
         if q.exists():
             return q.latest("timestamp").order_number + 1
         else:
             return 1
-    
+
     @property
     def total_price(self) -> int:
         return sum([item.paid_price for item in self.order_items.all()])
-    
+
     @property
     def orders_repr(self):
         related = self.order_items.select_related("item")
@@ -157,7 +170,7 @@ class Order(models.Model):
         paids = [i.paid_price for i in related]
         assert len(items) == len(counts) == len(paids)
         return [f"{c} x {i.title()} ({p})" for i, c, p in zip(items, counts, paids)]
-        
+
     def save(self, *args, **kwargs):
         self.order_number = self._set_order_number()
         super().save(*args, **kwargs)
@@ -165,23 +178,22 @@ class Order(models.Model):
 
 
 class OrderItem(models.Model):
-    order = models.ForeignKey(Order,
-                              on_delete=models.CASCADE,
-                              related_name="order_items")
-    public_uuid = models.UUIDField(default=uuid4,
-                                   auto_created=True,
-                                   unique=True,
-                                   editable=False)
+    order = models.ForeignKey(
+        Order, on_delete=models.CASCADE, related_name="order_items"
+    )
+    public_uuid = models.UUIDField(
+        default=uuid4, auto_created=True, unique=True, editable=False
+    )
     paid_price = models.PositiveIntegerField(default=0)
-    item = models.ForeignKey(ItemVariation,
-                             on_delete=models.CASCADE,
-                             related_name="item_orders")
+    item = models.ForeignKey(
+        ItemVariation, on_delete=models.CASCADE, related_name="item_orders"
+    )
     count = models.PositiveIntegerField(default=1)
     timestamp = models.DateTimeField(auto_now=True)
-    
+
     def __str__(self):
         return f"{self.order}: {self.count} {self.item}"
-    
+
     def save(self, *args, **kwargs):
         if self.count > 0:
             s = super().save(*args, **kwargs)
@@ -189,10 +201,7 @@ class OrderItem(models.Model):
             # In order for ElasticSearch to detect changes in the value of orders_repr,
             # we need to send a signal from Order to update the index.
             models.signals.post_save.send(
-                sender=Order,
-                instance=self.order,
-                *args,
-                **kwargs
+                sender=Order, instance=self.order, *args, **kwargs
             )
             return s
         # If this is the last order item remained, delete the order entirely
@@ -200,9 +209,6 @@ class OrderItem(models.Model):
         if not keep_parents:
             self.order.delete()
         super().delete(*args, **kwargs)
-    
-    class Meta:
-        unique_together = (
-            ("order", "item"),
-        )
 
+    class Meta:
+        unique_together = (("order", "item"),)

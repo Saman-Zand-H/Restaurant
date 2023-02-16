@@ -109,6 +109,14 @@
                     </li>
                 {% endif %}
                 <li class="nav-item mx-3">
+                    <a class="d-flex flex-row flex-nowrap align-items-baseline" id="webpush-subscribe-button"
+                        data-url="/webpush/save_information" href="#">
+                        <i class="far fa-bell"></i>
+                        Subscribe to Push Messaging
+                    </a>
+                
+                </li> &nbsp;
+                <li class="nav-item mx-3">
                     <a class="d-flex flex-row flex-nowrap gap-2 align-items-center" href="{% url 'delivery:cart' %}">
                         <i class="fas fa-shopping-cart"></i>
                         <span class="badge badge-primary badge-pill">

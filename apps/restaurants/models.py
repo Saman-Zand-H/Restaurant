@@ -13,9 +13,10 @@ from persiantools.jdatetime import JalaliDateTime
 from datetime import timedelta, datetime, time, date
 from django.utils import timezone
 from dateutil.relativedelta import relativedelta
-from typing import List
+from typing import List, Tuple
 from operator import attrgetter
 from itertools import groupby
+from copy import deepcopy
 from uuid import uuid4
 
 from .utils import validate_extension, validate_size
@@ -208,7 +209,7 @@ class Restaurant(models.Model):
         return self._get_daily_orders_data()
     
     @cached_property
-    def all_revenues(self) -> List[int]:
+    def all_revenues(self) -> List[Tuple[datetime, int]]:
         """
             A function that takes all the paid orders of a restaurant and 
             gourps them by their date of creation, by day, and returns the sum
@@ -216,14 +217,17 @@ class Restaurant(models.Model):
         """
         orders = self.restaurant_orders.annotate(
             date_created=TruncDate(
-                'timestamp')).order_by('timestamp') 
-        grouped = [*map(lambda i: [*i[1]], 
-                        groupby(orders, attrgetter("date_created")))]
+                'timestamp')).order_by('timestamp')
+        # in order to reuse this iterable, we need to take a deepcopy
+        iterable = groupby(orders, attrgetter("date_created"))
+        iterable_copy = deepcopy(iterable)
+        grouped = [*map(lambda i: [*i[1]], iterable)]
+        dates = [i[0].isoformat() for i in iterable_copy]
         revenues = [
             *map(lambda i: sum(
                 map(lambda j: j.total_price, i)), 
             grouped)]
-        return revenues
+        return [*zip(dates, revenues)]
     
     def refresh_from_db(self, *args, **kwargs):
         super().refresh_from_db(*args, **kwargs)
@@ -333,4 +337,4 @@ class Review(models.Model):
     
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
-        self.item.item.cuisine.restaurant.refresh_from_db()
+        self.item.cuisine.restaurant.refresh_from_db()

@@ -64,7 +64,7 @@ class DeliveryCart(models.Model):
                                        related_name="discount_carts")
     public_uuid = models.UUIDField(auto_created=True,
                                    unique=True,
-                                   default=uuid4(),
+                                   default=uuid4,
                                    blank=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL,
                              related_name="user_carts",
@@ -116,8 +116,8 @@ class DeliveryCart(models.Model):
 class DeliveryCartItem(models.Model):
     _price = 0
     public_uuid = models.UUIDField(default=uuid4,
-                                   editable=False,
                                    auto_created=True,
+                                   editable=False,
                                    unique=True)
     item = models.ForeignKey(ItemVariation,
                              on_delete=models.CASCADE,

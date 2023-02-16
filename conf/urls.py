@@ -3,24 +3,49 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from drf_yasg.views import get_schema_view
+from drf_yasg import openapi
 
 from azbankgateways.urls import az_bank_gateways_urls
+
+
+schema_view = get_schema_view(
+     info=openapi.Info(
+          title="Rubik Food API",
+          default_version="1.0.0",
+          contact=openapi.Contact(email="tnsperuse@gmail.com",
+                                  name="Saman Zand Haghighi")
+     ),
+     public=True
+)
 
 
 urlpatterns = [
     path(route='admin/', 
          view=admin.site.urls),
     
-    # Using regex, exclude password/change/, so we can override it in 
-    # users.
-    path(route=r"accounts/", 
+    path(route="accounts/", 
          view=include("allauth.urls")),
     path(route='dj-rest-auth/', 
          view=include('dj_rest_auth.urls')),
     path(route='dj-rest-auth/registration/', 
          view=include('dj_rest_auth.registration.urls')),
+    path(route="swagger/",
+         view=schema_view.with_ui(
+              renderer="swagger", cache_timeout=0),
+         name="schema-swagger-ui"),
+    path(route="openapi/",
+         view=schema_view.with_ui(),
+         name="openapi-schema"),
+    path(route="redoc/",
+         view=schema_view.with_ui(
+              renderer="redoc", cache_timeout=0),
+         name="schema-redoc"),
     path(route="bankgateways/",
          view=az_bank_gateways_urls()),
+    path(
+        route="webpush/",
+        view=include("webpush.urls")),
 
     path(route="", 
          view=include("restaurants.urls", 

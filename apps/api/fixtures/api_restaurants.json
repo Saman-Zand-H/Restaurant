@@ -1,0 +1,75 @@
+[
+    {
+        "model": "restaurants.restauranttype",
+        "pk": 1,
+        "fields": {
+            "public_uuid": "1b2af6ca-ac9b-4501-aae2-229e67f68721",
+            "name": "کافه",
+            "icon": "restaurants/type_icons/coffee-cup_eo6CxFy.png"
+        }
+    },
+    {
+        "model": "restaurants.restauranttype",
+        "pk": 2,
+        "fields": {
+            "public_uuid": "e7edad33-80b1-4444-9653-335fb3a9c3b0",
+            "name": "شیرینی",
+            "icon": "restaurants/type_icons/bakery-shop_aQOH1Tt.png"
+        }
+    },
+    {
+        "model": "restaurants.restauranttype",
+        "pk": 3,
+        "fields": {
+            "public_uuid": "0b55d2c1-2dc1-421e-b420-63d4c60607a7",
+            "name": "رستوران",
+            "icon": "restaurants/type_icons/restaurant_9rBjTPN.png"
+        }
+    },
+    {
+        "model": "restaurants.restauranttype",
+        "pk": 4,
+        "fields": {
+            "public_uuid": "c9430809-cd63-4f43-a061-6720ddb05f9a",
+            "name": "آبمیو بستنی",
+            "icon": "restaurants/type_icons/ice-cream_BruyGDZ.png"
+        }
+    },
+    {
+        "model": "restaurants.restaurant",
+        "pk": 1,
+        "fields": {
+            "score": 0.0,
+            "public_uuid": "6d99e928-5bb6-4751-9048-842214427bca",
+            "name": "testest",
+            "phone_number": "",
+            "table_count": 6,
+            "delivery": null,
+            "restaurant_type": 3,
+            "opens_at": "04:04:00",
+            "closes_at": "05:09:00",
+            "date_created": "2023-01-31T08:44:58.732Z",
+            "description": "",
+            "logo": "",
+            "location": null
+        }
+    }, 
+    {
+        "model": "restaurants.cuisine",
+        "pk": 1,
+        "fields": {
+            "public_uuid": "58c0a1e1-b4e6-467e-827b-c3fd8e3ad704",
+            "name": "test cuisine bro",
+            "restaurant": 1
+        }
+    },
+    {
+        "model": "restaurants.item",
+        "pk": 1,
+        "fields": {
+            "cuisine": 1,
+            "public_uuid": "1c9cfe55-3a26-47a3-9e60-548aa64b7a95",
+            "name": "hello var var"
+        }
+    }
+]

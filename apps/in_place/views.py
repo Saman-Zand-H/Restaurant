@@ -28,7 +28,7 @@ from typing import NamedTuple
 from .utils import (weekly_revenue_chart_data, 
                     weekly_sale_chart_data, 
                     weekly_score_chart_data)
-from .utils import sells_gamma, reg_data, orders_geos
+from .utils import sales_gamma, reg_data, orders_geos
 from .forms import (OrderForm, 
                     OrderItemForm, 
                     OrderEditForm, 
@@ -696,7 +696,7 @@ class FinanceView(LoginRequiredMixin, UserPassesTestMixin, View):
 
     def get(self, *args, **kwargs):
         restaurant = self.request.user.user_staff.restaurant
-        gamma_data = sells_gamma(restaurant.id)
+        gamma_data = sales_gamma(restaurant.id)
         regression_data = reg_data(restaurant.id)
         map_data = orders_geos(restaurant.id)
         self.context.update({"gamma_data": json.dumps(gamma_data),

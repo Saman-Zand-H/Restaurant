@@ -6,5 +6,5 @@ from .models import Review
 
 @receiver(post_save, sender=Review)
 def update_restaurant_score(sender, instance, **kwargs):
-    a = instance.item.item.cuisine.restaurant
+    a = instance.item.cuisine.restaurant
     a.update_score()

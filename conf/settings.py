@@ -59,12 +59,15 @@ INSTALLED_APPS = [
     'debug_toolbar',
     # 'django_elasticsearch_dsl',
     'django_extensions',
+    'django_filters',
     'dj_rest_auth',
     'dj_rest_auth.registration',
     'iranian_cities',
     'rest_framework',
     'rest_framework.authtoken',
+    'rest_framework_gis',
     'webpush',
+    'drf_yasg',
     
     'api',
     'delivery',
@@ -262,16 +265,26 @@ ELASTICSEARCH_DSL = {
 
 
 # DRF configurations
+JWT_AUTH_COOKIE = "rubik"
+JWT_AUTH_REFRESH_COOKIE = "rubik-refresh"
 REST_USE_JWT = True
-JWT_AUTH_COOKIE = 'rubik-food-token'
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated',
+        'rest_framework.permissions.IsAuthenticated'
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.SessionAuthentication',
         'dj_rest_auth.jwt_auth.JWTCookieAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
     ],
+    'DEFAULT_FILTER_BACKENDS': [
+        'django_filters.rest_framework.DjangoFilterBackend'
+    ],
+    'DEFAULT_AUTO_SCHEMA_CLASS': 'rest_framework_gis.schema.GeoFeatureAutoSchema',
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework_gis.schema.GeoFeatureAutoSchema',
+}
+SWAGGER_SETTINGS = {
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework_gis.schema.GeoFeatureAutoSchema'
 }
 
 
@@ -295,4 +308,12 @@ AZ_IRANIAN_BANK_GATEWAYS = {
     },
     "IS_SAMPLE_FORM_ENABLE": DEBUG,
     "DEFAULT": "ZIBAL",
+}
+
+
+# webpush settings
+WEBPUSH_SETTINGS = {
+    "VAPID_PUBLIC_KEY": "BIHR8fVG1h2R9EQ5uXqbclNBXGPTKMVYLRnI8LRbiEfLtHlt2z1qb9JQIGEoiun_ePgfM8ZyBgPs_ay7mzd5Qpo",
+    "VAPID_PRIVATE_KEY": "tCVSwR-YUViy2xwdl4BXgwwO_hMUS5m9qGSn_xAVt5w",
+    "VAPID_ADMIN_EMAIL": "tnsperuse@gmail.com"
 }
