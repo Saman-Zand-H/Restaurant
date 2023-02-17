@@ -1,5 +1,5 @@
 {% extends "base/layout/base.html" %}
-{% load static %}
+{% load static humanize %}
 
 {% block title %}Rubik Food{% endblock %}
 
@@ -12,7 +12,7 @@
     <header class="header-2">
         <div 
              class="page-header min-vh-75 relative" 
-             style="background-image: url('../../static/assets/img/bg2.jpg')"
+             style="background-image: url('../../static/assets/img/craiyon-3.webp')"
             >
             <span class="mask bg-gradient-primary opacity-4"></span>
             <div class="container">
@@ -20,9 +20,8 @@
                     <div class="col-lg-7 text-center mx-auto">
                         <h1 class="text-white pt-3 mt-n5">Rubik Food</h1>
                         <p class="lead text-white mt-3">
-                            Free & Open Source Web UI Kit built over Bootstrap 5. <br>
-                            Join over 1.6
-                            million developers around the world. 
+                            24/7 Food ordering service with complete support 
+                            for every single spot in Iran.
                         </p>
                     </div>
                 </div>
@@ -51,32 +50,38 @@
                         <div class="row">
                             <div class="col-md-4 position-relative">
                                 <div class="p-3 text-center">
-                                    <h1 class="text-gradient text-primary"><span id="state1" countTo="70">0</span>+</h1>
-                                    <h5 class="mt-3">Coded Elements</h5>
-                                    <p class="text-sm font-weight-normal">From buttons, to inputs, navbars, alerts or
-                                        cards, you are
-                                        covered</p>
+                                    <h1 class="text-gradient text-primary"><span id="state1" countTo="{{ restaurant_num }}">0</span>+</h1>
+                                    <h5 class="mt-3">Restaurants</h5>
+                                    <p class="text-sm font-weight-normal">
+                                        With a country-covered service, we are honored to
+                                        host {{ restaurant_num|default:'0'|intcomma }} restaurants here.
+                                    </p>
                                 </div>
                                 <hr class="vertical dark">
                             </div>
                             <div class="col-md-4 position-relative">
                                 <div class="p-3 text-center">
-                                    <h1 class="text-gradient text-primary"> <span id="state2" countTo="15">0</span>+
+                                    <h1 class="text-gradient text-primary"> 
+                                        <span id="state2" countTo="{{ item_num }}">0</span>+
                                     </h1>
-                                    <h5 class="mt-3">Design Blocks</h5>
-                                    <p class="text-sm font-weight-normal">Mix the sections, change the colors and
-                                        unleash your creativity
+                                    <h5 class="mt-3">Items</h5>
+                                    <p class="text-sm font-weight-normal">
+                                        With {{ restaurant_num|default:'0'|intcomma }} restaurants accomponying us, 
+                                        we have a total of {{ item_num|default:'0'|intcomma }} items to present to you.
                                     </p>
                                 </div>
                                 <hr class="vertical dark">
                             </div>
                             <div class="col-md-4">
                                 <div class="p-3 text-center">
-                                    <h1 class="text-gradient text-primary" id="state3" countTo="4">0</h1>
-                                    <h5 class="mt-3">Pages</h5>
-                                    <p class="text-sm font-weight-normal">Save 3-4 weeks of work when you use our
-                                        pre-made pages for your
-                                        website</p>
+                                    <h1 class="text-gradient text-primary">
+                                        <span id="state3" countTo="{{ user_num }}">0</span>+
+                                    </h1>
+                                    <h5 class="mt-3">Users</h5>
+                                    <p class="text-sm font-weight-normal">
+                                        We are strongly glad to announce that we have 
+                                        {{ user_num|default:'0'|intcomma }} users that have trusted us.
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -92,26 +97,29 @@
                     <div class="col-lg-4 ms-auto me-auto p-lg-4 mt-lg-0 mt-4">
                         <div class="rotating-card-container">
                             <div
-                                class="card card-rotate card-background card-background-mask-primary shadow-primary mt-md-0 mt-5">
+                                class="card card-rotate card-background card-background-mask-dark shadow-dark mt-md-0 mt-5">
                                 <div class="front front-background"
-                                    style="background-image: url(https://images.unsplash.com/photo-1569683795645-b62e50fbf103?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80); background-size: cover;">
+                                    style="background-image: url('../../static/assets/img/craiyon-4.webp'); background-size: cover;">
                                     <div class="card-body py-7 text-center">
                                         <i class="material-icons text-white text-4xl my-3">touch_app</i>
-                                        <h3 class="text-white">Feel the <br /> Material Kit</h3>
-                                        <p class="text-white opacity-8">All the Bootstrap components that you need in a
-                                            development have
-                                            been re-design with the new look.</p>
+                                        <h3 class="text-white">Feel the <br /> Difference</h3>
+                                        <p class="text-white opacity-8">
+                                            Register your restaurant, add items to your restaurant, 
+                                            receive your daily and weekly data, have your data visualized
+                                            through charts and maps, and even more!
+                                        </p>
                                     </div>
                                 </div>
                                 <div class="back back-background"
-                                    style="background-image: url(https://images.unsplash.com/photo-1498889444388-e67ea62c464b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1365&q=80); background-size: cover;">
+                                    style="background-image: url('../../static/assets/img/craiyon-5.webp'); background-size: cover;">
                                     <div class="card-body pt-7 text-center">
                                         <h3 class="text-white">Discover More</h3>
-                                        <p class="text-white opacity-8"> You will save a lot of time going from
-                                            prototyping to
-                                            full-functional code because all elements are implemented.</p>
+                                        <p class="text-white opacity-8"> Take a look at our guide 
+                                            in order to gain a better understanding of how 
+                                            things work here =)
+                                        </p>
                                         <a href=".//sections/page-sections/hero-sections.html" target="_blank"
-                                            class="btn btn-white btn-sm w-50 mx-auto mt-3">Start with Headers</a>
+                                            class="btn btn-white btn-sm w-50 mx-auto mt-3">Step-by-Step Guide</a>
                                     </div>
                                 </div>
                             </div>
@@ -122,19 +130,23 @@
                             <div class="col-md-6">
                                 <div class="info">
                                     <i class="material-icons text-gradient text-primary text-3xl">content_copy</i>
-                                    <h5 class="font-weight-bolder mt-3">Full Documentation</h5>
-                                    <p class="pe-5">Built by developers for developers. Check the foundation and you
-                                        will find everything
-                                        inside our documentation.</p>
+                                    <h5 class="font-weight-bolder mt-3">Comprehensive Guide</h5>
+                                    <p class="pe-5">
+                                        Accomponied by a quite comprehensive guide, 
+                                        the answer to your possible problems will be covered,
+                                        and you won't need to worry about side cases and facing problems.
+                                    </p>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="info">
                                     <i class="material-icons text-gradient text-primary text-3xl">flip_to_front</i>
-                                    <h5 class="font-weight-bolder mt-3">Bootstrap 5 Ready</h5>
-                                    <p class="pe-3">The world's most popular front-end open source toolkit, featuring
-                                        Sass variables and
-                                        mixins.</p>
+                                    <h5 class="font-weight-bolder mt-3">Pleasing UI</h5>
+                                    <p class="pe-3">
+                                        A useful website needs to have an acceptable user interface.
+                                        This website is built by a back-end developer, yet you got 
+                                        a quite pleasing and simple UI for you.
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -142,17 +154,22 @@
                             <div class="col-md-6 mt-3">
                                 <i class="material-icons text-gradient text-primary text-3xl">price_change</i>
                                 <h5 class="font-weight-bolder mt-3">Save Time & Money</h5>
-                                <p class="pe-5">Creating your design from scratch with dedicated designers can be very
-                                    expensive. Start
-                                    with our Design System.</p>
+                                <p class="pe-5">
+                                    This is a free platform for restaurants. So you won't 
+                                    need to worry about the loss a paid subscription would 
+                                    impose on you.
+                                </p>
                             </div>
                             <div class="col-md-6 mt-3">
                                 <div class="info">
                                     <i class="material-icons text-gradient text-primary text-3xl">devices</i>
-                                    <h5 class="font-weight-bolder mt-3">Fully Responsive</h5>
-                                    <p class="pe-3">Regardless of the screen size, the website content will naturally
-                                        fit the given
-                                        resolution.</p>
+                                    <h5 class="font-weight-bolder mt-3">Thorough Dashboard</h5>
+                                    <p class="pe-3">
+                                        Registering your restaurant here gives you access to a thorough 
+                                        dashboard panel, where you presented different sections to manage 
+                                        your items and staff, your monetary manners, sell data, and 
+                                        lots of charts to help you analyze data.
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -209,7 +226,7 @@
                 $("#addressLon").val(data.lon);
                 $("#addressForm").submit();
             }, {
-                placeholder: "Enter an address to search among the nearest restaurants, then choose from the provided results."
+                placeholder: "Wanna take a look at nearby restaurants? Just tell me your address champ: "
             });
     </script>
 </body>

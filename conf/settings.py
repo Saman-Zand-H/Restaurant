@@ -57,7 +57,7 @@ INSTALLED_APPS = [
     'channels_redis',
     'crispy_forms',
     'debug_toolbar',
-    # 'django_elasticsearch_dsl',
+    'django_elasticsearch_dsl',
     'django_extensions',
     'django_filters',
     'dj_rest_auth',

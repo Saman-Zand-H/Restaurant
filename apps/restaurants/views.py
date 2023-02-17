@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, reverse
+from django.contrib.auth import get_user_model
 from django.db.models import F
 from django.db import transaction
 from django.http.response import (JsonResponse, 
@@ -19,8 +20,8 @@ from allauth.exceptions import ImmediateHttpResponse
 from logging import getLogger
 from asgiref.sync import sync_to_async
 
-from .models import Restaurant, RestaurantType, Review
-from .forms import FilterItems, FilterRestaurants, NewPartnerForm
+from .models import Restaurant, RestaurantType, Review, Item
+from .forms import FilterRestaurants, NewPartnerForm
 from .utils import paginate
 from in_place.models import Staff
 from users.forms import SignupForm
@@ -36,6 +37,11 @@ class HomePageView(View):
     context = dict()
     
     def get(self, *args, **kwargs):
+        self.context.update({
+            "restaurant_num": Restaurant.objects.count(),
+            "item_num": Item.objects.count(),
+            "user_num": get_user_model().objects.count()
+        })
         return render(self.request, self.template_name, self.context)
 
 
