@@ -39,6 +39,8 @@ SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO",
 # Application definition
 
 INSTALLED_APPS = [
+    'djangocms_admin_style',
+    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -48,6 +50,8 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.humanize',
     'django.contrib.gis',
+    
+    'users.apps.UsersConfig',
     
     'allauth',
     'allauth.account',
@@ -69,16 +73,32 @@ INSTALLED_APPS = [
     'webpush',
     'drf_yasg',
     
+    # django-cms
+    'cms',
+    'djangocms_text_ckeditor',
+    'menus',
+    'sekizai',
+    'treebeard',
+    'filer',
+    'easy_thumbnails',
+    'aldryn_apphooks_config',
+    'parler',
+    'taggit',
+    'taggit_autosuggest',
+    'meta',
+    'sortedm2m',
+    'djangocms_blog',
+    
     'api',
     'delivery',
     'in_place',
     'restaurants',
     'search_index',
-    'users.apps.UsersConfig',
 ]
 
 MIDDLEWARE = [
     "debug_toolbar.middleware.DebugToolbarMiddleware",
+    'cms.middleware.utils.ApphookReloadMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -88,6 +108,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'cms.middleware.user.CurrentUserMiddleware',
+    'cms.middleware.page.CurrentPageMiddleware',
+    'cms.middleware.toolbar.ToolbarMiddleware',
+    'cms.middleware.language.LanguageCookieMiddleware',
 ]
 
 ROOT_URLCONF = 'conf.urls'
@@ -103,10 +127,12 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
+                'sekizai.context_processors.sekizai',
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'cms.context_processors.cms_settings',
             ],
         },
     },
@@ -163,7 +189,10 @@ ADMINS = (
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en'
+LANGUAGES = [
+    ('en', 'English'),
+]
 
 TIME_ZONE = 'Asia/Tehran'
 
@@ -317,3 +346,20 @@ WEBPUSH_SETTINGS = {
     "VAPID_PRIVATE_KEY": "tCVSwR-YUViy2xwdl4BXgwwO_hMUS5m9qGSn_xAVt5w",
     "VAPID_ADMIN_EMAIL": "tnsperuse@gmail.com"
 }
+
+
+# django-cms configurations
+CMS_TEMPLATES = [
+    ('cms/home.html', 'Home page template'),
+]
+THUMBNAIL_HIGH_RESOLUTION = True
+CMS_PAGE_CACHE = False
+THUMBNAIL_PROCESSORS = (
+    'easy_thumbnails.processors.colorspace',
+    'easy_thumbnails.processors.autocrop',
+    'filer.thumbnail_processors.scale_and_crop_with_subject_location',
+    'easy_thumbnails.processors.filters'
+)
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+META_SITE_PROTOCOL = 'https'  # set 'http' for non ssl enabled websites
+META_USE_SITES = True
