@@ -30,9 +30,6 @@ urlpatterns = [
          view=include('dj_rest_auth.urls')),
     path(route='dj-rest-auth/registration/', 
          view=include('dj_rest_auth.registration.urls')),
-#     path(route="blog/",
-#          view=include("cms.urls")),
-#     path('taggit_autosuggest/', include('taggit_autosuggest.urls')),
 
     path(route="swagger/",
          view=schema_view.with_ui(
@@ -47,6 +44,10 @@ urlpatterns = [
          name="schema-redoc"),
     path(route="bankgateways/",
          view=az_bank_gateways_urls()),
+    path(route="cms/",
+         view=include("cms.urls")),
+    path(route="taggit_autosuggest/",
+         view=include("taggit_autosuggest.urls")),
     path(route="webpush/",
          view=include("webpush.urls")),
 

@@ -1,0 +1,24 @@
+{% load menu_tags %}
+
+<!-- <div class="jumbotron w-100 my-4 mx-3 text-xs"> -->
+    {% for child in children %}
+        <li
+            class="child
+                   {% if child.selected %}selected{% endif %}
+                   {% if child.ancestor %}ancestor{% endif %}
+                   {% if child.sibling %}sibling{% endif %}
+                   {% if child.descendant %}descendant{% endif %}"
+           >
+            <a href="{{ child.attr.redirect_url|default:child.get_absolute_url }}">
+                {{ child.get_menu_title }}
+            </a>
+            {% if child.children %}
+                <small>
+                    <ol>
+                        {% show_menu from_level to_level extra_inactive extra_active template "" "" child %}
+                    </ol>
+                </small>
+            {% endif %}
+        </li>
+    {% endfor %}
+<!-- </div> -->
