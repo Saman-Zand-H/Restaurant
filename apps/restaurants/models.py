@@ -71,7 +71,7 @@ class Restaurant(models.Model):
                                   editable=False,
                                   auto_created=True,
                                   unique=True)
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, unique=True)
     phone_number = models.CharField(max_length=20, 
                                     blank=True, 
                                     null=True)
@@ -245,6 +245,10 @@ class Restaurant(models.Model):
                 del self.__dict__[i]
             except KeyError:
                 pass
+            
+    def save(self, *args, **kwargs):
+        self.name = self.name.lower()
+        super().save(*args, **kwargs)
             
     def clean(self, *args, **kwargs):
         if self.score:

@@ -163,7 +163,7 @@ class Discount(models.Model):
     expiration_date = models.DateTimeField(blank=True, null=True)
     
     @classmethod
-    def from_precent(cls, item:ItemVariation, percent:int):
+    def from_percent(cls, item:ItemVariation, percent:int):
         return cls.objects.create(item=item,
                                   new_price=item.price*(1-percent/100))
     

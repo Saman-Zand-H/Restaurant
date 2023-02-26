@@ -92,8 +92,12 @@ class UserModel(AbstractBaseUser, PermissionsMixin):
     picture = models.ImageField(upload_to='media/profiles/', 
                                 blank=True, 
                                 null=True)
-    first_name = models.CharField(max_length=50)
-    last_name = models.CharField(max_length=50)
+    first_name = models.CharField(max_length=50, 
+                                  default="not set", 
+                                  blank=True)
+    last_name = models.CharField(max_length=50, 
+                                 default="not set", 
+                                 blank=True)
     date_joined = models.DateTimeField(auto_now_add=True)
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
@@ -129,5 +133,11 @@ class UserModel(AbstractBaseUser, PermissionsMixin):
     def save(self, *args, **kwargs):
         if not self.email:
             self.email = None
+        
+        if self.first_name is None:
+            self.first_name = "not_set"
+        
+        if self.last_name is None:
+            self.last_name = "not_set"
         super().save(*args, **kwargs)
         

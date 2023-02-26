@@ -163,7 +163,7 @@ class DashboardView(LoginRequiredMixin, UserPassesTestMixin, View):
         score_chart, revenue_chart, sale_chart = (
             weekly_score_chart_data(restaurant.weekly_score),
             weekly_revenue_chart_data(
-                [i//1000 for i in restaurant.weekly_revenue]),
+                [i for i in restaurant.weekly_revenue]),
             weekly_sale_chart_data(restaurant.weekly_sale))
         
         item_var_qs = ItemVariation.objects.filter(
@@ -539,11 +539,11 @@ class OrdersView(LoginRequiredMixin, UserPassesTestMixin, View):
     
     def get_forms_from_session(self):
         forms = ["OrderForm_data", "DineInForm_data", "OrderItemFormset_data"]
-        sessions = [
-            {i: self.request.session.pop(i, None)} 
+        sessions = {
+            i: self.request.session.pop(i, None)
             for i in forms
             if self.request.session.get(i) is not None
-        ]
+        }
         return sessions
     
     def get_modals_context(self):

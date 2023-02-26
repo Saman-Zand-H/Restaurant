@@ -44,16 +44,14 @@
                             <span class="dark horizontal my-0">
                                 <small>
                                     <i class="material-icons position-relative text-sm mx-2 my-auto">place</i>
-                                    {{ restaurant.info.address }}
+                                    {{ restaurant.location.address }}
                                 </small>
                             </span>
                         </div>
                         <hr class="bg-dark">
                         <div class="my-4">
                             <h2>
-                                {% if restaurant.delivery %}
-                                    <i class="fas fa-2xl fa-motorcycle"></i>
-                                {% else %}
+                                {% if restaurant.location is None %}
                                     <i class="fas fa-2xl fa-ban"></i>
                                     Delivery is not available for the searched area.
                                 {% endif %}

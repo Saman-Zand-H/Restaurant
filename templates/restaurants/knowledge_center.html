@@ -1,0 +1,1687 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Rubik Food</title>
+    <style>
+        /* cspell:disable-file */
+        /* webkit printing magic: print all background colors */
+        html {
+            -webkit-print-color-adjust: exact;
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-print-color-adjust: exact;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        @media only screen {
+            body {
+                margin: 2em auto;
+                max-width: 900px;
+                color: rgb(55, 53, 47);
+            }
+        }
+
+        body {
+            line-height: 1.5;
+        }
+
+        a,
+        a.visited {
+            color: inherit;
+            text-decoration: underline;
+        }
+
+        .pdf-relative-link-path {
+            font-size: 80%;
+            color: #444;
+        }
+
+        h1,
+        h2,
+        h3 {
+            letter-spacing: -0.01em;
+            line-height: 1.2;
+            font-weight: 600;
+            margin-bottom: 0;
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-top: 0;
+            margin-bottom: 0.75em;
+        }
+
+        h1 {
+            font-size: 1.875rem;
+            margin-top: 1.875rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            margin-top: 1.25rem;
+        }
+
+        .source {
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            padding: 1.5em;
+            word-break: break-all;
+        }
+
+        .callout {
+            border-radius: 3px;
+            padding: 1rem;
+        }
+
+        figure {
+            margin: 1.25em 0;
+            page-break-inside: avoid;
+        }
+
+        figcaption {
+            opacity: 0.5;
+            font-size: 85%;
+            margin-top: 0.5em;
+        }
+
+        mark {
+            background-color: transparent;
+        }
+
+        .indented {
+            padding-left: 1.5em;
+        }
+
+        hr {
+            background: transparent;
+            display: block;
+            width: 100%;
+            height: 1px;
+            visibility: visible;
+            border: none;
+            border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        @media only print {
+            img {
+                max-height: 100vh;
+                object-fit: contain;
+            }
+        }
+
+        @page {
+            margin: 1in;
+        }
+
+        .collection-content {
+            font-size: 0.875rem;
+        }
+
+        .column-list {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .column {
+            padding: 0 1em;
+        }
+
+        .column:first-child {
+            padding-left: 0;
+        }
+
+        .column:last-child {
+            padding-right: 0;
+        }
+
+        .table_of_contents-item {
+            display: block;
+            font-size: 0.875rem;
+            line-height: 1.3;
+            padding: 0.125rem;
+        }
+
+        .table_of_contents-indent-1 {
+            margin-left: 1.5rem;
+        }
+
+        .table_of_contents-indent-2 {
+            margin-left: 3rem;
+        }
+
+        .table_of_contents-indent-3 {
+            margin-left: 4.5rem;
+        }
+
+        .table_of_contents-link {
+            text-decoration: none;
+            opacity: 0.7;
+            border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid rgba(55, 53, 47, 0.09);
+            border-collapse: collapse;
+        }
+
+        table {
+            border-left: none;
+            border-right: none;
+        }
+
+        th,
+        td {
+            font-weight: normal;
+            padding: 0.25em 0.5em;
+            line-height: 1.5;
+            min-height: 1.5em;
+            text-align: left;
+        }
+
+        th {
+            color: rgba(55, 53, 47, 0.6);
+        }
+
+        ol,
+        ul {
+            margin: 0;
+            margin-block-start: 0.6em;
+            margin-block-end: 0.6em;
+        }
+
+        li>ol:first-child,
+        li>ul:first-child {
+            margin-block-start: 0.6em;
+        }
+
+        ul>li {
+            list-style: disc;
+        }
+
+        ul.to-do-list {
+            text-indent: -1.7em;
+        }
+
+        ul.to-do-list>li {
+            list-style: none;
+        }
+
+        .to-do-children-checked {
+            text-decoration: line-through;
+            opacity: 0.375;
+        }
+
+        ul.toggle>li {
+            list-style: none;
+        }
+
+        ul {
+            padding-inline-start: 1.7em;
+        }
+
+        ul>li {
+            padding-left: 0.1em;
+        }
+
+        ol {
+            padding-inline-start: 1.6em;
+        }
+
+        ol>li {
+            padding-left: 0.2em;
+        }
+
+        .mono ol {
+            padding-inline-start: 2em;
+        }
+
+        .mono ol>li {
+            text-indent: -0.4em;
+        }
+
+        .toggle {
+            padding-inline-start: 0em;
+            list-style-type: none;
+        }
+
+        /* Indent toggle children */
+        .toggle>li>details {
+            padding-left: 1.7em;
+        }
+
+        .toggle>li>details>summary {
+            margin-left: -1.1em;
+        }
+
+        .selected-value {
+            display: inline-block;
+            padding: 0 0.5em;
+            background: rgba(206, 205, 202, 0.5);
+            border-radius: 3px;
+            margin-right: 0.5em;
+            margin-top: 0.3em;
+            margin-bottom: 0.3em;
+        }
+
+        .collection-title {
+            display: inline-block;
+            margin-right: 1em;
+        }
+
+        .simple-table {
+            margin-top: 1em;
+            font-size: 0.875rem;
+            empty-cells: show;
+        }
+
+        .simple-table td {
+            height: 29px;
+            min-width: 120px;
+        }
+
+        .simple-table th {
+            height: 29px;
+            min-width: 120px;
+        }
+
+        .simple-table-header-color {
+            background: rgb(247, 246, 243);
+            color: black;
+        }
+
+        .simple-table-header {
+            font-weight: 500;
+        }
+
+        time {
+            opacity: 0.5;
+        }
+
+        .icon {
+            display: inline-block;
+            max-width: 1.2em;
+            max-height: 1.2em;
+            text-decoration: none;
+            vertical-align: text-bottom;
+            margin-right: 0.5em;
+        }
+
+        img.icon {
+            border-radius: 3px;
+        }
+
+        .user-icon {
+            width: 1.5em;
+            height: 1.5em;
+            border-radius: 100%;
+            margin-right: 0.5rem;
+        }
+
+        .user-icon-inner {
+            font-size: 0.8em;
+        }
+
+        .text-icon {
+            border: 1px solid #000;
+            text-align: center;
+        }
+
+        .page-cover-image {
+            display: block;
+            object-fit: cover;
+            width: 100%;
+            max-height: 30vh;
+        }
+
+        .page-header-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .page-header-icon-with-cover {
+            margin-top: -0.72em;
+            margin-left: 0.07em;
+        }
+
+        .page-header-icon img {
+            border-radius: 3px;
+        }
+
+        .link-to-page {
+            margin: 1em 0;
+            padding: 0;
+            border: none;
+            font-weight: 500;
+        }
+
+        p>.user {
+            opacity: 0.5;
+        }
+
+        td>.user,
+        td>time {
+            white-space: nowrap;
+        }
+
+        input[type="checkbox"] {
+            transform: scale(1.5);
+            margin-right: 0.6em;
+            vertical-align: middle;
+        }
+
+        p {
+            margin-top: 0.5em;
+            margin-bottom: 0.5em;
+        }
+
+        .image {
+            border: none;
+            margin: 1.5em 0;
+            padding: 0;
+            border-radius: 0;
+            text-align: center;
+        }
+
+        .code,
+        code {
+            background: rgba(135, 131, 120, 0.15);
+            border-radius: 3px;
+            padding: 0.2em 0.4em;
+            border-radius: 3px;
+            font-size: 85%;
+            tab-size: 2;
+        }
+
+        code {
+            color: #eb5757;
+        }
+
+        .code {
+            padding: 1.5em 1em;
+        }
+
+        .code-wrap {
+            word-break: break-all;
+        }
+
+        .code>code {
+            background: none;
+            padding: 0;
+            font-size: 100%;
+            color: inherit;
+        }
+
+        blockquote {
+            font-size: 1.25em;
+            margin: 1em 0;
+            padding-left: 1em;
+            border-left: 3px solid rgb(55, 53, 47);
+        }
+
+        .bookmark {
+            text-decoration: none;
+            max-height: 8em;
+            padding: 0;
+            display: flex;
+            width: 100%;
+            align-items: stretch;
+        }
+
+        .bookmark-title {
+            font-size: 0.85em;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            height: 1.75em;
+        }
+
+        .bookmark-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .bookmark-info {
+            flex: 4 1 180px;
+            padding: 12px 14px 14px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .bookmark-image {
+            width: 33%;
+            flex: 1 1 180px;
+            display: block;
+            position: relative;
+            object-fit: cover;
+            border-radius: 1px;
+        }
+
+        .bookmark-description {
+            color: rgba(55, 53, 47, 0.6);
+            font-size: 0.75em;
+            overflow: hidden;
+            max-height: 4.5em;
+            word-break: break-word;
+        }
+
+        .bookmark-href {
+            font-size: 0.75em;
+            margin-top: 0.25em;
+        }
+
+        .sans {
+            font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+        }
+
+        .code {
+            font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace;
+        }
+
+        .serif {
+            font-family: Lyon-Text, Georgia, ui-serif, serif;
+        }
+
+        .mono {
+            font-family: iawriter-mono, Nitti, Menlo, Courier, monospace;
+        }
+
+        .pdf .sans {
+            font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP';
+        }
+
+        .pdf:lang(zh-CN) .sans {
+            font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC';
+        }
+
+        .pdf:lang(zh-TW) .sans {
+            font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC';
+        }
+
+        .pdf:lang(ko-KR) .sans {
+            font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR';
+        }
+
+        .pdf .code {
+            font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP';
+        }
+
+        .pdf:lang(zh-CN) .code {
+            font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC';
+        }
+
+        .pdf:lang(zh-TW) .code {
+            font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC';
+        }
+
+        .pdf:lang(ko-KR) .code {
+            font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR';
+        }
+
+        .pdf .serif {
+            font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP';
+        }
+
+        .pdf:lang(zh-CN) .serif {
+            font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC';
+        }
+
+        .pdf:lang(zh-TW) .serif {
+            font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC';
+        }
+
+        .pdf:lang(ko-KR) .serif {
+            font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR';
+        }
+
+        .pdf .mono {
+            font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP';
+        }
+
+        .pdf:lang(zh-CN) .mono {
+            font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC';
+        }
+
+        .pdf:lang(zh-TW) .mono {
+            font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC';
+        }
+
+        .pdf:lang(ko-KR) .mono {
+            font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR';
+        }
+
+        .highlight-default {
+            color: rgba(55, 53, 47, 1);
+        }
+
+        .highlight-gray {
+            color: rgba(120, 119, 116, 1);
+            fill: rgba(120, 119, 116, 1);
+        }
+
+        .highlight-brown {
+            color: rgba(159, 107, 83, 1);
+            fill: rgba(159, 107, 83, 1);
+        }
+
+        .highlight-orange {
+            color: rgba(217, 115, 13, 1);
+            fill: rgba(217, 115, 13, 1);
+        }
+
+        .highlight-yellow {
+            color: rgba(203, 145, 47, 1);
+            fill: rgba(203, 145, 47, 1);
+        }
+
+        .highlight-teal {
+            color: rgba(68, 131, 97, 1);
+            fill: rgba(68, 131, 97, 1);
+        }
+
+        .highlight-blue {
+            color: rgba(51, 126, 169, 1);
+            fill: rgba(51, 126, 169, 1);
+        }
+
+        .highlight-purple {
+            color: rgba(144, 101, 176, 1);
+            fill: rgba(144, 101, 176, 1);
+        }
+
+        .highlight-pink {
+            color: rgba(193, 76, 138, 1);
+            fill: rgba(193, 76, 138, 1);
+        }
+
+        .highlight-red {
+            color: rgba(212, 76, 71, 1);
+            fill: rgba(212, 76, 71, 1);
+        }
+
+        .highlight-gray_background {
+            background: rgba(241, 241, 239, 1);
+        }
+
+        .highlight-brown_background {
+            background: rgba(244, 238, 238, 1);
+        }
+
+        .highlight-orange_background {
+            background: rgba(251, 236, 221, 1);
+        }
+
+        .highlight-yellow_background {
+            background: rgba(251, 243, 219, 1);
+        }
+
+        .highlight-teal_background {
+            background: rgba(237, 243, 236, 1);
+        }
+
+        .highlight-blue_background {
+            background: rgba(231, 243, 248, 1);
+        }
+
+        .highlight-purple_background {
+            background: rgba(244, 240, 247, 0.8);
+        }
+
+        .highlight-pink_background {
+            background: rgba(249, 238, 243, 0.8);
+        }
+
+        .highlight-red_background {
+            background: rgba(253, 235, 236, 1);
+        }
+
+        .block-color-default {
+            color: inherit;
+            fill: inherit;
+        }
+
+        .block-color-gray {
+            color: rgba(120, 119, 116, 1);
+            fill: rgba(120, 119, 116, 1);
+        }
+
+        .block-color-brown {
+            color: rgba(159, 107, 83, 1);
+            fill: rgba(159, 107, 83, 1);
+        }
+
+        .block-color-orange {
+            color: rgba(217, 115, 13, 1);
+            fill: rgba(217, 115, 13, 1);
+        }
+
+        .block-color-yellow {
+            color: rgba(203, 145, 47, 1);
+            fill: rgba(203, 145, 47, 1);
+        }
+
+        .block-color-teal {
+            color: rgba(68, 131, 97, 1);
+            fill: rgba(68, 131, 97, 1);
+        }
+
+        .block-color-blue {
+            color: rgba(51, 126, 169, 1);
+            fill: rgba(51, 126, 169, 1);
+        }
+
+        .block-color-purple {
+            color: rgba(144, 101, 176, 1);
+            fill: rgba(144, 101, 176, 1);
+        }
+
+        .block-color-pink {
+            color: rgba(193, 76, 138, 1);
+            fill: rgba(193, 76, 138, 1);
+        }
+
+        .block-color-red {
+            color: rgba(212, 76, 71, 1);
+            fill: rgba(212, 76, 71, 1);
+        }
+
+        .block-color-gray_background {
+            background: rgba(241, 241, 239, 1);
+        }
+
+        .block-color-brown_background {
+            background: rgba(244, 238, 238, 1);
+        }
+
+        .block-color-orange_background {
+            background: rgba(251, 236, 221, 1);
+        }
+
+        .block-color-yellow_background {
+            background: rgba(251, 243, 219, 1);
+        }
+
+        .block-color-teal_background {
+            background: rgba(237, 243, 236, 1);
+        }
+
+        .block-color-blue_background {
+            background: rgba(231, 243, 248, 1);
+        }
+
+        .block-color-purple_background {
+            background: rgba(244, 240, 247, 0.8);
+        }
+
+        .block-color-pink_background {
+            background: rgba(249, 238, 243, 0.8);
+        }
+
+        .block-color-red_background {
+            background: rgba(253, 235, 236, 1);
+        }
+
+        .select-value-color-pink {
+            background-color: rgba(245, 224, 233, 1);
+        }
+
+        .select-value-color-purple {
+            background-color: rgba(232, 222, 238, 1);
+        }
+
+        .select-value-color-green {
+            background-color: rgba(219, 237, 219, 1);
+        }
+
+        .select-value-color-gray {
+            background-color: rgba(227, 226, 224, 1);
+        }
+
+        .select-value-color-opaquegray {
+            background-color: rgba(255, 255, 255, 0.0375);
+        }
+
+        .select-value-color-orange {
+            background-color: rgba(250, 222, 201, 1);
+        }
+
+        .select-value-color-brown {
+            background-color: rgba(238, 224, 218, 1);
+        }
+
+        .select-value-color-red {
+            background-color: rgba(255, 226, 221, 1);
+        }
+
+        .select-value-color-yellow {
+            background-color: rgba(253, 236, 200, 1);
+        }
+
+        .select-value-color-blue {
+            background-color: rgba(211, 229, 239, 1);
+        }
+
+        .checkbox {
+            display: inline-flex;
+            vertical-align: text-bottom;
+            width: 16;
+            height: 16;
+            background-size: 16px;
+            margin-left: 2px;
+            margin-right: 5px;
+        }
+
+        .checkbox-on {
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+        }
+
+        .checkbox-off {
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+        }
+    </style>
+</head>
+
+<body>
+    <article id="da1f46c9-8923-4b3d-8b8c-303fac716409" class="page sans">
+        <header><img class="page-cover-image" src="{% static 'assets/img/doc/craiyon-2.webp' %}"
+                style="object-position:center 50%" />
+            <div class="page-header-icon page-header-icon-with-cover"><span class="icon">🍔</span></div>
+            <h1 class="page-title">
+                <a href="{% url 'restaurants:home' %}">
+                    Rubik Food
+                </a>
+            </h1>
+        </header>
+        <div class="page-body">
+            <figure class="block-color-gray_background callout" style="display:flex"
+                id="48b6c37f-4bd4-4f49-b841-9876da40ebad">
+                <div style="font-size:1.5em"><span class="icon">💡</span></div>
+                <div style="width:100%"><strong>Note: </strong>This knowledge center is merely considered to be for
+                    client. For technical documentation, you can take a look at &#x27;Documentation&#x27; page.</div>
+            </figure>
+            <div id="0a07e628-5983-4a2d-acda-f49ee89461d2" class="column-list">
+                <div id="ef4c47c6-b0a8-41d9-b256-aca9699a8a03" style="width:68.75%" class="column">
+                    <figure class="block-color-gray_background callout" style="display:flex"
+                        id="b9988dde-12d7-4919-b103-ce4fbef5bb99">
+                        <div style="font-size:1.5em"><span class="icon">👋</span></div>
+                        <div style="width:100%">Hello dear customer. Welcome to Rubik Food. Rubik food is an app meant
+                            for food delivery and a management system for restaurants, so they can manage their product
+                            for efficiently. We sincerely appreciate your presence here. Here together we are going to
+                            walk through how to get started with this app and how to use it to its full potential. Are
+                            you ready? </div>
+                    </figure>
+                </div>
+                <div id="e969ba01-505e-4b62-ac1c-0595b47d3194" style="width:31.249999999999993%" class="column">
+                    <blockquote id="bd0684f6-1abe-47c3-9d92-ce961aa2eba7" class=""><strong>Table of contents</strong>
+                        <nav id="95462657-e527-43ee-a880-4b7a7761662b" class="block-color-gray table_of_contents">
+                            <div class="table_of_contents-item table_of_contents-indent-0"><a
+                                    class="table_of_contents-link" href="#100a43b2-2b26-4221-ad69-9815dc1e8fb6"><mark
+                                        class="highlight-gray_background"> Overviews </mark></a></div>
+                            <div class="table_of_contents-item table_of_contents-indent-1"><a
+                                    class="table_of_contents-link"
+                                    href="#a25cc49c-ba7e-46c1-9f12-959cbe94df6e">Restaurants</a></div>
+                            <div class="table_of_contents-item table_of_contents-indent-1"><a
+                                    class="table_of_contents-link"
+                                    href="#509f140a-8bd4-46a4-88a2-736d6d1caaa7">Customers</a></div>
+                            <div class="table_of_contents-item table_of_contents-indent-0"><a
+                                    class="table_of_contents-link"
+                                    href="#21b82593-9f9b-4068-a1ae-67ae8516952f">Notifications</a></div>
+                            <div class="table_of_contents-item table_of_contents-indent-0"><a
+                                    class="table_of_contents-link" href="#589046c6-11af-4b5c-b92d-b5dbdac919fe"><mark
+                                        class="highlight-gray_background"> Authentication </mark></a></div>
+                            <div class="table_of_contents-item table_of_contents-indent-1"><a
+                                    class="table_of_contents-link"
+                                    href="#424a801c-0a3a-4f23-bbae-2d11df7bdf29">Login</a></div>
+                            <div class="table_of_contents-item table_of_contents-indent-2"><a
+                                    class="table_of_contents-link" href="#7402c038-118d-4186-989a-f8a59f4658fe">Google
+                                    and GitHub</a></div>
+                            <div class="table_of_contents-item table_of_contents-indent-1"><a
+                                    class="table_of_contents-link"
+                                    href="#dcbd164f-72a1-4a8b-9b59-6fd0d9e7dd48">Signup</a></div>
+                            <div class="table_of_contents-item table_of_contents-indent-0"><a
+                                    class="table_of_contents-link"
+                                    href="#02b4fa8e-fce0-4fc3-b6b1-1730e98b13ea">Partnership</a></div>
+                            <div class="table_of_contents-item table_of_contents-indent-1"><a
+                                    class="table_of_contents-link" href="#a75cfa7d-cd8e-474a-ac7a-4b322451c3b3">For
+                                    Restaurants</a></div>
+                            <div class="table_of_contents-item table_of_contents-indent-0"><a
+                                    class="table_of_contents-link"
+                                    href="#17924a0b-27f8-4e55-8af3-90dc5d2cde62">Profile</a></div>
+                            <div class="table_of_contents-item table_of_contents-indent-0"><a
+                                    class="table_of_contents-link" href="#a69f3212-b5bf-43d9-a83a-8c7fab1d9ef2"><mark
+                                        class="highlight-gray_background"> Restaurants </mark></a></div>
+                            <div class="table_of_contents-item table_of_contents-indent-1"><a
+                                    class="table_of_contents-link"
+                                    href="#281ab268-07c0-408c-a06e-4856ce91ec59">Navigation Bar</a></div>
+                            <div class="table_of_contents-item table_of_contents-indent-1"><a
+                                    class="table_of_contents-link"
+                                    href="#38120203-bac0-484a-829d-9d922955c3fe">Dashboard</a></div>
+                            <div class="table_of_contents-item table_of_contents-indent-1"><a
+                                    class="table_of_contents-link"
+                                    href="#c5ec1db0-a413-4ded-abe2-f4ac2191ab8e">Profile</a></div>
+                            <div class="table_of_contents-item table_of_contents-indent-1"><a
+                                    class="table_of_contents-link"
+                                    href="#af1744d0-b5fc-4e6f-8036-ba3acea86b76">Location</a></div>
+                            <div class="table_of_contents-item table_of_contents-indent-1"><a
+                                    class="table_of_contents-link"
+                                    href="#5e5635f0-0355-4f1f-a224-31456a96fb4c">Staff</a></div>
+                            <div class="table_of_contents-item table_of_contents-indent-1"><a
+                                    class="table_of_contents-link"
+                                    href="#3e54fe25-abd1-4755-ba11-63839259b700">Orders</a></div>
+                            <div class="table_of_contents-item table_of_contents-indent-1"><a
+                                    class="table_of_contents-link"
+                                    href="#514330ec-1ef6-4e12-b283-8d8b207e23f0">Financials</a></div>
+                            <div class="table_of_contents-item table_of_contents-indent-1"><a
+                                    class="table_of_contents-link" href="#2c8b5c32-9f1e-41c7-b657-50c07e592619">Menu</a>
+                            </div>
+                            <div class="table_of_contents-item table_of_contents-indent-0"><a
+                                    class="table_of_contents-link" href="#afefbdf5-736b-404d-b426-ffe5d1ca1cee"><mark
+                                        class="highlight-gray_background"> Customer </mark></a></div>
+                            <div class="table_of_contents-item table_of_contents-indent-1"><a
+                                    class="table_of_contents-link"
+                                    href="#4a75f550-ec8c-4992-b73e-6d8b771f9a12">Restaurant</a></div>
+                            <div class="table_of_contents-item table_of_contents-indent-1"><a
+                                    class="table_of_contents-link"
+                                    href="#03efc81a-d11c-4831-a4b5-ab34bbb16faa">Restaurants</a></div>
+                        </nav>
+                        <p id="28a379f7-0bfe-4105-b176-2050118fe7f4" class="">
+                        </p>
+                    </blockquote>
+                </div>
+            </div>
+            <h1 id="100a43b2-2b26-4221-ad69-9815dc1e8fb6" class=""><mark class="highlight-gray_background"> Overviews
+                </mark></h1>
+            <h2 id="a25cc49c-ba7e-46c1-9f12-959cbe94df6e" class="">
+                <details open="">
+                    <summary>Restaurants</summary>
+                </details>
+            </h2>
+            <div class="indented">
+                <p id="fa11a43b-75ef-4229-afb0-755e526f068f" class="">If you are a partner of us, as a restaurant, after
+                    your registration is complete you will be redirected to a dashboard from which you can manage your
+                    restaurant. In your dashboard, you&#x27;ll see the following panels:</p>
+                <ul id="5f8c7703-a792-4b69-bbb7-742d3874c4dc" class="bulleted-list">
+                    <li style="list-style-type:disc">Dashboard</li>
+                </ul>
+                <ul id="20d6e824-9f35-4d25-bddc-5d362476c988" class="bulleted-list">
+                    <li style="list-style-type:disc">Profile</li>
+                </ul>
+                <ul id="9f6490ec-2d38-4a56-aacf-867bd933abf0" class="bulleted-list">
+                    <li style="list-style-type:disc">Location</li>
+                </ul>
+                <ul id="175499a9-751c-42b8-9ad8-2c37a95c8e1e" class="bulleted-list">
+                    <li style="list-style-type:disc">Staff</li>
+                </ul>
+                <ul id="2608dcd2-adbc-4246-ae84-1ebbfb2e60ba" class="bulleted-list">
+                    <li style="list-style-type:disc">Orders</li>
+                </ul>
+                <ul id="9dd19a54-9ead-4ce1-839a-079aba36f73a" class="bulleted-list">
+                    <li style="list-style-type:disc">Finance</li>
+                </ul>
+                <ul id="7e7f0f88-7869-4519-90e5-f68e66543cea" class="bulleted-list">
+                    <li style="list-style-type:disc">Menu</li>
+                </ul>
+                <p id="cad2701c-38fe-4177-876a-0e21251749f7" class="">Each panel is allocated to a certain task. Your
+                    dashboard page will show you an overview of almost everything. In order to have your admin panel,
+                    you&#x27;ll have to register your restaurant first. To do so, use the &#x27;Partnership&#x27; item
+                    of the navigation bar and then choose &#x27;As Restaurant&#x27;. For more information on registering
+                    your restaurant, take a look at:</p>
+                <p id="c868443f-b68b-4eaa-9f73-a43542cce9e2" class="">
+                </p>
+                <p id="9626f001-e6d3-41d7-bf8f-ca231ad04434" class="">Also, for more information on the specifics of the
+                    admin panel of restaurants, have a trip to:</p>
+                <p id="7107ed4a-6f5f-4284-877b-8dc983078f8f" class="">
+                </p>
+            </div>
+            <h2 id="509f140a-8bd4-46a4-88a2-736d6d1caaa7" class="">
+                <details open="">
+                    <summary>Customers</summary>
+                </details>
+            </h2>
+            <div class="indented">
+                <p id="2dce123c-6add-4a51-a6ee-c1e71e7e227d" class="">As a client, the service allocated to you is
+                    ordering food, searching through restaurants and leaving your reviews. In order to do so, you should
+                    first enter ‘Restaurants’ page, where restaurants are listed, and you can filter the restaurants to
+                    find your perfect restaurant. You can read more on:</p>
+                <p id="23378033-54ac-40b9-941a-f508fa1af7ef" class="">
+                </p>
+                <p id="ecb874fa-8526-447a-ac7f-f248f40f30e2" class="">
+                </p>
+            </div>
+            <div>
+                <p id="a136edfa-d1d7-43d7-bf2f-aab8b749e887" class="">
+                </p>
+            </div>
+            <hr id="7cfe2c20-cb43-4fa0-b26b-0d15ccd7650c" />
+            <h1 id="21b82593-9f9b-4068-a1ae-67ae8516952f" class="">Notifications</h1>
+            <p id="8074315b-f875-4631-ab01-73444d448167" class="">We use notifications for both our partners and our
+                customers. But we can’t send you notifications until you give us permission and enable our
+                notifications. To do so, on the navigation bar, click on ‘Notifications’. </p>
+            <p id="11b47f08-5b27-4598-8df3-72c3aa830e40" class="">If notifications are enabled it will look like this:
+            </p>
+            <p id="eebd769f-5a30-4b08-8964-8d5d5b3c24f1" class="">
+            </p>
+            <figure id="6da0a707-8f80-499a-899e-bb047a0cda27" class="image"><a
+                    href="{% static 'assets/img/doc/Screenshot_from_2023-02-26_21-23-37.png' %}"><img
+                        style="width:148px"
+                        src="{% static 'assets/img/doc/Screenshot_from_2023-02-26_21-23-37.png' %}" /></a>
+            </figure>
+            <p id="1cfc5f7e-da30-4af6-8570-d6bbbb521ca3" class="">
+            </p>
+            <p id="19d9650f-09ef-4f31-bbae-7e45807865e0" class="">And if for any reason it is not enabled, it will look
+                like this:</p>
+            <p id="6351f2ee-bd0f-47d3-b679-8527a958219e" class="">
+            </p>
+            <figure id="59815d75-ca9a-496b-ac86-2a0909a87f5d" class="image"><a
+                    href="{% static 'assets/img/doc/Screenshot_from_2023-02-26_21-23-44.png' %}"><img
+                        style="width:148px"
+                        src="{% static 'assets/img/doc/Screenshot_from_2023-02-26_21-23-44.png' %}" /></a>
+            </figure>
+            <p id="dc3a81ba-583d-471c-98e8-04696ea481ca" class="">We strongly recommend you to enable notifications,
+                especially if you’re one of our partners.</p>
+            <p id="91bd3162-16db-45ed-93b7-501a405a4e05" class="">
+            </p>
+            <hr id="4eb2983b-9186-40f2-a0af-76b33d4ddb97" />
+            <p id="526a974c-0f52-4510-bad5-e227e1b39a84" class="">
+            </p>
+            <p id="cf8beb80-5f15-49f6-8355-eff14d327c5e" class="">
+            </p>
+            <h1 id="589046c6-11af-4b5c-b92d-b5dbdac919fe" class=""><mark class="highlight-gray_background">
+                    Authentication </mark></h1>
+            <p id="1d5a3cd2-8493-4675-923f-8df7f3c72c83" class="">Authentication is the basis of almost everything in
+                this app. So, it’d be quite useful to have it in this knowledge base.</p>
+            <p id="94774166-7800-4e97-aad2-477f5b0d2e46" class="">When you open the homepage, you’ll see a navigation
+                bar with several options. Something like:</p>
+            <figure id="359d55cc-cb04-4eb8-a14e-4742d055e9f4" class="image"><a
+                    href="{% static 'assets/img/doc/Screenshot_from_2023-02-24_12-51-53.png' %}"><img
+                        style="width:1163px"
+                        src="{% static 'assets/img/doc/Screenshot_from_2023-02-24_12-51-53.png' %}" /></a>
+            </figure>
+            <p id="31fcdf81-5b33-40a5-8841-3d7d54b99dea" class="">When you move your cursor over or click on
+                ‘Authentication’, a menu will show up. Based on whether you’re already logged in, it’ll be different. So
+                that if you are authenticated, it’d look like this:</p>
+            <figure id="972bf12d-5637-4270-8090-df66b61bc03d" class="image"><a
+                    href="{% static 'assets/img/doc/Screenshot_from_2023-02-24_12-57-46.png' %}"><img
+                        style="width:258px"
+                        src="{% static 'assets/img/doc/Screenshot_from_2023-02-24_12-57-46.png' %}" /></a>
+            </figure>
+            <p id="81d5a456-1906-4314-a9cf-14763a20c160" class="">And if you aren’t already logged in, it’d look like
+                this:</p>
+            <p id="54ea8db2-b354-49c5-b4cd-e52583050390" class="">
+            </p>
+            <figure id="3fc88c4c-0f69-416a-910c-fde21584965d" class="image"><a
+                    href="{% static 'assets/img/doc/Screenshot_from_2023-02-24_13-00-27.png' %}"><img
+                        style="width:332px"
+                        src="{% static 'assets/img/doc/Screenshot_from_2023-02-24_13-00-27.png' %}" /></a>
+            </figure>
+            <p id="86af786c-9690-413e-88d3-304bccbda505" class="">We’ll start our journey with ‘Login’.</p>
+            <p id="530a1392-7f7c-4bc6-a763-fd66e838016c" class="">
+            </p>
+            <h2 id="424a801c-0a3a-4f23-bbae-2d11df7bdf29" class="">Login</h2>
+            <p id="f0b693c7-708a-48bf-8297-b40f69a4a2b2" class="">After the ‘Authentication’ menu showed up, click on
+                ‘Login’. You’ll be redirected to another page that looks like this:</p>
+            <p id="49490baa-272c-4196-8b9c-6d4b935ae462" class="">
+            </p>
+            <figure id="97c36bb1-f819-4590-80d6-5118a5c13261" class="image"><a
+                    href="{% static 'assets/img/doc/Screenshot_from_2023-02-25_01-19-05.png' %}"><img
+                        style="width:1365px"
+                        src="{% static 'assets/img/doc/Screenshot_from_2023-02-25_01-19-05.png' %}" /></a>
+            </figure>
+            <p id="67052aab-4c17-4854-a8d0-eaf54b012689" class="">
+            </p>
+            <p id="a6c36e25-5268-48d5-95b9-4cbbb148a736" class="">You can either fill the form or, if you are willing
+                to, you can simply log in using Google or GitHub.</p>
+            <p id="b225fb67-9b63-459f-bca1-27152b81954e" class="">If you’ve forgotten your password, there’s a link
+                under the form: ‘You forgot your password?’, click on it, and you’ll be redirected to another page where
+                it asks you for your email address you used for registration. After submitting your email, we will send
+                you a link by clicking on which you can reset your password.</p>
+            <p id="2b013150-8c3b-4635-9981-e0ca7f7f5bda" class="">
+            </p>
+            <h3 id="7402c038-118d-4186-989a-f8a59f4658fe" class="">Google and GitHub</h3>
+            <p id="3b58cefe-e735-4705-814a-5d51a2c9c1da" class="">We use OAuth to let you log in using your Google
+                account. In order to do so, click on the ‘G’ icon:</p>
+            <p id="99cab733-56a4-4392-9a50-2d3ca0bc9870" class="">
+            </p>
+            <figure id="87cabc97-c62d-4e7c-9db2-3f46d71e2172" class="image"><a
+                    href="{% static 'assets/img/doc/Screenshot_from_2023-02-25_01-25-27.png' %}"><img
+                        style="width:385px"
+                        src="{% static 'assets/img/doc/Screenshot_from_2023-02-25_01-25-27.png' %}" /></a>
+            </figure>
+            <p id="3f82eda2-60af-41e2-abb3-da62b82cb2bd" class="">
+            </p>
+            <p id="6897d750-6205-4a97-b5e1-929282eeb4ff" class="">You’ll be redirected to another page that asks you if
+                you’re sure you want to use Google to sign in; click on ‘Continue’ if you want to:</p>
+            <p id="88d4aede-fa18-4551-8e6b-75b9ee2cd69d" class="">
+            </p>
+            <figure id="a1c2d84e-ebfe-4d6d-b37d-527fdb67439e" class="image"><a
+                    href="{% static 'assets/img/doc/Screenshot_from_2023-02-25_01-26-55.png' %}"><img
+                        style="width:440px"
+                        src="{% static 'assets/img/doc/Screenshot_from_2023-02-25_01-26-55.png' %}" /></a>
+            </figure>
+            <p id="d4dc8be2-c0b5-4f7b-ad9e-f37e4cb29efb" class="">
+            </p>
+            <p id="50e94f00-3498-4b1a-94d6-d912ca032063" class="">After you click on continue, you’ll be sent to another
+                page that belongs to google and shows you a list of your accounts, along with an option to create a new
+                account. Choose your account. After you do so, if everything is alright, your registration will be
+                complete, and you’ll be taken to your profile page. If not so, either your username or email has been
+                previously used, and you’ll be taken to another page where we’d ask you to choose another username or
+                email:</p>
+            <p id="deaa3de4-bdb1-404a-bcc8-695693c10292" class="">
+            </p>
+            <figure id="2f514926-cf3f-4bab-8f90-0395f95e5815" class="image"><a
+                    href="{% static 'assets/img/doc/Screenshot_from_2023-02-25_01-33-44.png' %}"><img
+                        style="width:425px"
+                        src="{% static 'assets/img/doc/Screenshot_from_2023-02-25_01-33-44.png' %}" /></a>
+            </figure>
+            <p id="647eb016-3b0b-4729-8d08-079875385852" class="">
+            </p>
+            <p id="ef8fb694-ba72-4b48-a5f3-7a0fc9db563a" class="">After filling in a valid username or email, you’ll be
+                redirected to your profile.</p>
+            <p id="40a7a821-4681-4030-b46e-e33583640ca7" class="">The procedure for login using GitHub is similar. You
+                should click on GitHub icon:</p>
+            <p id="384fc66b-71ee-40bb-8a82-29dbffd97ac7" class="">
+            </p>
+            <figure id="a30502ed-d725-45ee-9e70-5386e9fbd66b" class="image"><a
+                    href="{% static 'assets/img/doc/Screenshot_from_2023-02-25_01-27-10.png' %}"><img
+                        style="width:440px"
+                        src="{% static 'assets/img/doc/Screenshot_from_2023-02-25_01-27-10.png' %}" /></a>
+            </figure>
+            <p id="71708671-0c5a-497e-8c93-300344380b24" class="">
+            </p>
+            <h2 id="dcbd164f-72a1-4a8b-9b59-6fd0d9e7dd48" class="">Signup</h2>
+            <p id="54f0d8d2-ca03-473e-9ffa-3a032297f03a" class="">If you are not willing to use your social media
+                accounts, you can simply sign up manually. In the ‘Authentication’ menu, click on ‘Signup’:</p>
+            <p id="14a542e1-c295-4cf3-a633-e9610baacc19" class="">
+            </p>
+            <figure id="f99715b6-204b-4610-b60d-98c06ba47357" class="image"><a
+                    href="{% static 'assets/img/doc/Screenshot_from_2023-02-25_02-27-30.png' %}"><img
+                        style="width:1365px"
+                        src="{% static 'assets/img/doc/Screenshot_from_2023-02-25_02-27-30.png' %}" /></a>
+            </figure>
+            <p id="92cb2cab-2405-4113-92cb-cdd27807149d" class="">
+            </p>
+            <p id="6b352e99-a72f-4d11-9049-a1856d719fc9" class="">Fill in the form. You can also optionally choose a
+                profile picture. After successfully submitting this form, you’ll be taken to your profile page.</p>
+            <p id="9dfbba37-382b-4f45-b56c-2f0fbf0c9434" class="">
+            </p>
+            <h1 id="02b4fa8e-fce0-4fc3-b6b1-1730e98b13ea" class="">Partnership</h1>
+            <h2 id="a75cfa7d-cd8e-474a-ac7a-4b322451c3b3" class="">For Restaurants</h2>
+            <p id="4672cead-cc9f-4e15-8871-2810e7459e70" class="">In order for you to be able to work with us, you first
+                need to become a partner of us. In the navigation bar, there’s an option ‘Partnership’, hovering or
+                clicking on which shows you a menu:</p>
+            <p id="934765d3-10c2-4120-9643-4dfe850fbdaf" class="">
+            </p>
+            <figure id="5408b980-62aa-497e-9902-0d7939dd3076" class="image"><a
+                    href="{% static 'assets/img/doc/Screenshot_from_2023-02-25_02-50-30.png' %}"><img
+                        style="width:266px"
+                        src="{% static 'assets/img/doc/Screenshot_from_2023-02-25_02-50-30.png' %}" /></a>
+            </figure>
+            <p id="6a937e37-7749-471d-979c-2cdd0ca7049f" class="">
+            </p>
+            <p id="a513220e-8d9c-47e4-873e-02d44e2ed603" class="">Click on ‘For Restaurants’. If you aren’t already
+                logged in, when you enter the page you’ll be presented with a signup form, just like the one in the
+                signup page. Fill it in or log in. Afterward, you’ll be presented with another form:</p>
+            <p id="0e88fa92-3499-4dc2-931d-99f039a6401b" class="">
+            </p>
+            <figure id="ddd86880-cdc2-477a-9aa3-7399f510c16f" class="image"><a
+                    href="{% static 'assets/img/doc/Firefox_Screenshot_2023-02-24T23-35-21.879Z.png' %}"><img
+                        style="width:1372px"
+                        src="{% static 'assets/img/doc/Firefox_Screenshot_2023-02-24T23-35-21.879Z.png' %}" /></a>
+            </figure>
+            <p id="c23f8105-5179-4f5c-b83a-6dc768b30147" class="">
+            </p>
+            <p id="3dc215f7-05cf-40e6-a5e7-0650a751cfa7" class="">The form asks you your role, whether you’re a manager
+                etc. It asks for the name of your restaurant, when it opens and when it closes, an optional description
+                to be shown, the type of your restaurant, an optional phone number, and the number of tables you have.
+                If you don’t have any, just pass 0. It’s used in recording your dine-in orders.</p>
+            <p id="db3b1868-e84a-42c4-9948-a7515bffebe0" class="">After you submitted the form successfully, you’ll be
+                taken to your admin panel. You can read more about it on ‘Admin Panel’ section of this knowledge center.
+            </p>
+            <p id="93259f81-94dc-4975-8570-41f3b326a571" class="">
+            </p>
+            <h1 id="17924a0b-27f8-4e55-8af3-90dc5d2cde62" class="">Profile</h1>
+            <p id="3e0ae366-62f7-4a23-9dad-18d826dbdae8" class="">The profile page is almost similar for customers and
+                our partners, but there are a few more sections for the partners. In general, the profile page looks
+                something like this:</p>
+            <p id="82c7efd4-7819-45b2-bdc7-aadcaa8b0936" class="">
+            </p>
+            <figure id="1ae16280-5a9d-4fd0-ba13-88344d6ccb54" class="image"><a
+                    href="{% static 'assets/img/doc/Firefox_Screenshot_2023-02-24T23-43-28.980Z.png' %}"><img
+                        style="width:1372px"
+                        src="{% static 'assets/img/doc/Firefox_Screenshot_2023-02-24T23-43-28.980Z.png' %}" /></a>
+            </figure>
+            <p id="ba873cb0-8a5d-40e5-a249-efe21c7fedef" class="">The first section, Edit Profile, lets you change the
+                first name and last name you chose for your account, along with your username. On the right side, you
+                see another section, where you can add, modify, and delete your profile picture.</p>
+            <p id="c45cd467-4400-4a21-a7f4-8947136ebd08" class="">On the bottom, there’s another section, ‘Edit
+                Addresses’. The idea is that you may have multiple addresses you want to add, so that each time you want
+                to make an order, you can choose from these provided addresses. To add an address, you should first
+                click on ‘Province’ field, which shows you a dropdown with every province in Iran. Choose your province
+                and go to the field next to it, ‘City’, which is another dropdown. You must enter a postal code as well
+                and a descriptive address on the ‘Address’ field. There’s also a map. Use the map to select your
+                location, and then click on ‘ADD’. If you provide all the necessary data, your address will be added on
+                the top of the section:</p>
+            <p id="49d36239-5e65-485e-8ab7-482a5ff30dfd" class="">
+            </p>
+            <figure id="4448a42f-5e54-400b-a18a-62e010ebcfe3" class="image"><a
+                    href="{% static 'assets/img/doc/Screenshot_from_2023-02-25_03-27-18.png' %}"><img
+                        style="width:1272px"
+                        src="{% static 'assets/img/doc/Screenshot_from_2023-02-25_03-27-18.png' %}" /></a>
+            </figure>
+            <p id="e601f92e-14f8-4565-a53e-b3e5fb5e0721" class="">
+            </p>
+            <hr id="fd50a4f3-c8f3-49fb-925b-0dcfbfb69c94" />
+            <h1 id="a69f3212-b5bf-43d9-a83a-8c7fab1d9ef2" class=""><mark class="highlight-gray_background"> Restaurants
+                </mark></h1>
+            <h2 id="281ab268-07c0-408c-a06e-4856ce91ec59" class="">Navigation Bar</h2>
+            <p id="f6acdf12-5b93-4fbb-aa8f-86faafd60965" class="">the navigation bar for your admin panel is different
+                from the one you saw on the home page:</p>
+            <p id="b09721e6-06e7-4115-892f-4de5da2fe8f2" class="">
+            </p>
+            <figure id="64faf8d0-2ad9-4431-9b92-bf2d53821379" class="image"><a
+                    href="{% static 'assets/img/doc/Screenshot_from_2023-02-25_04-15-35.png' %}"><img
+                        style="width:1138px"
+                        src="{% static 'assets/img/doc/Screenshot_from_2023-02-25_04-15-35.png' %}" /></a>
+            </figure>
+            <p id="8e83c48f-40fa-424d-a9da-1d5a3b7c3371" class="">
+            </p>
+            <p id="df5aab80-ae49-423c-bd8f-8a078efcb2f2" class="">The cart icon will take you to your cart page, and the
+                icon next to it, the shop icon, will take you to the frontal page of your restaurant.</p>
+            <h2 id="38120203-bac0-484a-829d-9d922955c3fe" class="">Dashboard</h2>
+            <p id="16f8e156-6fdb-4b2b-a72a-87d20e477edc" class="">Your dashboard is your summary. Everything you need to
+                have a quick look at is gathered on there. At the top of the page, you’ll see three charts:</p>
+            <p id="6ab4b2e9-da5c-4ba6-b121-dc4ce9558d73" class="">
+            </p>
+            <figure id="8f159960-ee00-485b-a9f4-4d5d3dbba6e7" class="image"><a
+                    href="{% static 'assets/img/doc/Screenshot_from_2023-02-25_03-48-42.png' %}"><img
+                        style="width:1102px"
+                        src="{% static 'assets/img/doc/Screenshot_from_2023-02-25_03-48-42.png' %}" /></a>
+            </figure>
+            <p id="a1cad655-1776-40b7-b614-1e794aeaf959" class="">These charts come in handy when analyzing your data.
+            </p>
+            <p id="2ac18a4e-bbc0-4eda-9f2c-b767a997deab" class="">In the following, there’s another section composed of
+                three elements, that gives you another type of overview:</p>
+            <p id="57ef8d5b-c541-46a5-b06c-a7018c8e55a9" class="">
+            </p>
+            <figure id="eb913bd8-f48b-45b4-bd3b-57169a0672da" class="image"><a
+                    href="{% static 'assets/img/doc/Screenshot_from_2023-02-25_03-49-04.png' %}"><img
+                        style="width:1102px"
+                        src="{% static 'assets/img/doc/Screenshot_from_2023-02-25_03-49-04.png' %}" /></a>
+            </figure>
+            <p id="a139883b-6a08-47d3-8e4c-291bad3abc7a" class="">
+            </p>
+            <p id="e5923505-13f1-44d2-9f77-72203b4a7b60" class="">Orders in this app are categorized into two types:
+                Delivery and Dine-in orders. The third section is allocated to orders and staff:</p>
+            <p id="bc9e1279-696f-4c01-9ec6-ffec716184ee" class="">
+            </p>
+            <figure id="da7f15d2-ade3-4045-9a1a-63b9093d5eb9" class="image"><a
+                    href="{% static 'assets/img/doc/Screenshot_from_2023-02-25_03-58-51.png' %}"><img
+                        style="width:1104px"
+                        src="{% static 'assets/img/doc/Screenshot_from_2023-02-25_03-58-51.png' %}" /></a>
+            </figure>
+            <p id="48d2a82a-184e-42aa-9c48-677c487a7b36" class="">
+            </p>
+            <p id="50d3c57b-a715-421c-b5b9-83af62827bb6" class="">The right list show you the orders. You can switch
+                between Delivery and Dine-in orders. Using the plus button, you can make new orders. When you click on
+                it, a menu will show up:</p>
+            <p id="980823b9-4bcf-406f-a2e3-9b5d9144b5df" class="">
+            </p>
+            <figure id="7524e10d-ed7f-4aef-b1a7-8ac51c22cea0" class="image"><a
+                    href="{% static 'assets/img/doc/Screenshot_from_2023-02-25_04-07-35.png' %}"><img
+                        style="width:761px"
+                        src="{% static 'assets/img/doc/Screenshot_from_2023-02-25_04-07-35.png' %}" /></a>
+            </figure>
+            <p id="fcb639e5-a534-4035-8114-5f09f08ea990" class="">
+            </p>
+            <p id="66c2a2e7-07de-4ed7-ab07-62d150697a4f" class="">The first table asks you which items must be included
+                and how many of them. There’s another row ‘auto price’ that automatically calculates the price, but if
+                you want to customize the paid price, you must turn it off and enter the paid price manually.</p>
+            <p id="9f1646b4-e19c-4be6-8947-b852772fc830" class="">Also, based on your order type, you will be presented
+                with different fields. If you choose ‘Dine-in’, there will be an additional field that you must fill in:
+            </p>
+            <p id="635bcde0-7cb3-47d6-89fc-4c78d3756731" class="">
+            </p>
+            <figure id="cad4f214-8916-47e2-97e1-56232684fb49" class="image"><a
+                    href="{% static 'assets/img/doc/Screenshot_from_2023-02-25_04-07-47.png' %}"><img
+                        style="width:762px"
+                        src="{% static 'assets/img/doc/Screenshot_from_2023-02-25_04-07-47.png' %}" /></a>
+            </figure>
+            <p id="4e198084-62b6-4d12-988a-1c368ebb5088" class="">
+            </p>
+            <p id="579270fb-d790-4bf6-98a2-9907f2d70b53" class="">This is the number of the table that has ordered this.
+                If, for any reason, you don’t want to enter any value, just enter 0.</p>
+            <p id="603a525e-de07-4326-b90b-e8001e004110" class="">Also, you can edit orders by clicking on the pencil
+                icon next to them, that will show a menu just like the one you see when adding a new order, and if you
+                want to delete the order, click on the trash-can icon.</p>
+            <p id="eadb0ea3-8c5d-4d72-ad69-e8466239b919" class="">
+            </p>
+            <h2 id="c5ec1db0-a413-4ded-abe2-f4ac2191ab8e" class="">Profile</h2>
+            <p id="aed53c2d-a3dc-48b3-93e2-09f90c282b4e" class="">The profile page for our partners is slightly
+                different from the general profile we showed earlier. It has an additional section where you can change
+                the information provided for your restaurant, including the opening and closing time, the name, and the
+                picture of it:</p>
+            <figure id="846be293-1ad1-42eb-9fe6-619f4d0b14ad" class="image"><a
+                    href="{% static 'assets/img/doc/Screenshot_from_2023-02-25_04-18-51.png' %}"><img
+                        style="width:1115px"
+                        src="{% static 'assets/img/doc/Screenshot_from_2023-02-25_04-18-51.png' %}" /></a>
+            </figure>
+            <p id="c6ad95fb-85fa-4027-bfdd-fe76eed2ff20" class="">
+            </p>
+            <h2 id="af1744d0-b5fc-4e6f-8036-ba3acea86b76" class="">Location</h2>
+            <p id="12fbc6a2-addc-404d-80eb-97588e9a2d15" class="">The ‘location’ page is where you can set the location
+                of your restaurant, that will be used for delivery orders. It’s a simple and is similar to the location
+                section of your profile:</p>
+            <p id="5bfb2d44-fdbe-4fa4-a7eb-422185ef3a7d" class="">
+            </p>
+            <figure id="11b2fbfb-7140-4f67-9513-1705e2c642ce" class="image"><a
+                    href="{% static 'assets/img/doc/Firefox_Screenshot_2023-02-26T14-53-59.467Z.png' %}"><img
+                        style="width:1372px"
+                        src="{% static 'assets/img/doc/Firefox_Screenshot_2023-02-26T14-53-59.467Z.png' %}" /></a>
+            </figure>
+            <p id="e7937966-4b25-48a0-a12a-9e5a0377229d" class="">
+            </p>
+            <p id="8d8e05e4-5812-4b41-bb98-0e8ce706d7ad" class="">Again, just choose your location from the provided
+                map, choose your province and your city from the provided dropdown, write down a descriptive address,
+                and click on ‘Update’.</p>
+            <p id="5372ea86-0147-4013-a37a-bc6d3462d76a" class="">
+            </p>
+            <h2 id="5e5635f0-0355-4f1f-a224-31456a96fb4c" class="">Staff</h2>
+            <p id="69efb8e6-813f-4161-a538-6a8864e23025" class="">This page is used for staff management. Here is where
+                you can define new staff and register them. When you first enter the page, it looks like this:</p>
+            <p id="2d4101de-06d0-4af4-a3cc-f40a7c38aa6f" class="">
+            </p>
+            <figure id="3b8c73a3-7665-4963-b3ae-ce79ff301eaf" class="image"><a
+                    href="{% static 'assets/img/doc/Screenshot_from_2023-02-26_18-25-03.png' %}"><img
+                        style="width:1365px"
+                        src="{% static 'assets/img/doc/Screenshot_from_2023-02-26_18-25-03.png' %}" /></a>
+            </figure>
+            <p id="d5390fcc-d583-46a2-8ca6-73f6a3637cb4" class="">
+            </p>
+            <p id="9cc897fc-c5d1-4671-be0f-4c4a4a849a8a" class="">You will be presented with a list of your staff. You
+                can edit or delete your staff members by clicking ‘OPTIONS’ button at the bottom of the section
+                allocated to them:</p>
+            <p id="f9ba89e2-40e7-48a8-9ac0-3b935c4210db" class="">
+            </p>
+            <figure id="36fdab5c-d2bc-452c-a3ac-e849ac967e5a" class="image"><a
+                    href="{% static 'assets/img/doc/Screenshot_from_2023-02-26_18-26-08.png' %}"><img
+                        style="width:1117px"
+                        src="{% static 'assets/img/doc/Screenshot_from_2023-02-26_18-26-08.png' %}" /></a>
+            </figure>
+            <p id="b35a98cb-458a-4a15-94e1-e8371345e652" class="">
+            </p>
+            <p id="50c5091a-bd64-4b9e-9766-413e38d33d5f" class="">There’s a ‘plus’ button at the top of the page, where
+                you can define new staff members. When you click on it, a new form will show up that you’d need to fill
+                in:</p>
+            <p id="43703778-6bd8-4fd0-92d1-04bda4025f8c" class="">
+            </p>
+            <figure id="efaa7821-48da-41fb-9b4e-20de601becac" class="image"><a
+                    href="{% static 'assets/img/doc/Screenshot_from_2023-02-26_18-25-45.png' %}"><img
+                        style="width:858px"
+                        src="{% static 'assets/img/doc/Screenshot_from_2023-02-26_18-25-45.png' %}" /></a>
+            </figure>
+            <p id="59c10e2d-662b-465e-8d41-28404f70a3ae" class="">
+            </p>
+            <p id="f0cd8b8d-92e7-48a3-83e3-9badb10e2d80" class="">After you successfully created their account, they can
+                peacefully log in to their account.</p>
+            <p id="b5f1c085-6b23-49db-b534-27f2588d714e" class="">
+            </p>
+            <h2 id="3e54fe25-abd1-4755-ba11-63839259b700" class="">Orders</h2>
+            <p id="16440b73-2d2f-4a4d-8f3b-9d2f000d96d7" class="">This page is allocated to order management. Here is
+                where you can have a look at all the recorded orders. When you first enter this page, it looks something
+                like this:</p>
+            <p id="2d2cc3ff-b2b6-4ae6-9361-cfe109210809" class="">
+            </p>
+            <figure id="722372e7-b750-47a5-83d8-ab28ed9d4a39" class="image"><a
+                    href="{% static 'assets/img/doc/Screenshot_from_2023-02-26_19-20-26.png' %}"><img
+                        style="width:1128px"
+                        src="{% static 'assets/img/doc/Screenshot_from_2023-02-26_19-20-26.png' %}" /></a>
+            </figure>
+            <p id="30054f16-8e90-44eb-b611-68b42db1c576" class="">
+            </p>
+            <p id="66efe6fd-99f8-412b-a55d-fb52d953f224" class="">Click on the ‘plus’ button to create a new item. A
+                form will show up that looks identical to the one shown in the dashboard page. </p>
+            <p id="485239b3-4a15-4ae2-ac94-8af7e763582e" class="">Here, orders are sorted by date. In order to have a
+                look at orders from a specific date, click on the dark section that contains the date:</p>
+            <p id="c87fa2a1-9c90-4332-b59d-bb7dce6d0774" class="">
+            </p>
+            <figure id="117d6f21-c73b-4c42-bd72-5939fa54f65c" class="image"><a
+                    href="{% static 'assets/img/doc/Screenshot_from_2023-02-26_19-20-38.png' %}"><img
+                        style="width:1128px"
+                        src="{% static 'assets/img/doc/Screenshot_from_2023-02-26_19-20-38.png' %}" /></a>
+            </figure>
+            <p id="eb5bf4b0-d75f-45da-a652-084e91a30ee0" class="">
+            </p>
+            <p id="2d8885ab-8a15-40ce-afb0-5837ccb9b139" class="">Then choose a date from the provided calendar. Based
+                on whether that specific day has any orders, a page that looks like the following will show up:</p>
+            <p id="917b2339-3d45-42b9-9f48-e4f3ccd7aa66" class="">
+            </p>
+            <figure id="055075dd-aecf-4752-a97e-3b36005a5fd3" class="image"><a
+                    href="{% static 'assets/img/doc/Screenshot_from_2023-02-26_19-30-03.png' %}"><img
+                        style="width:1128px"
+                        src="{% static 'assets/img/doc/Screenshot_from_2023-02-26_19-30-03.png' %}" /></a>
+            </figure>
+            <p id="4dab5b8d-4ab7-49f3-8825-a4752fc74f3e" class="">
+            </p>
+            <p id="a5dbc515-bbee-4d2f-bb42-5f427ec5d30e" class="">By clicking on the ‘pencil’ icon, you can edit the
+                orders, and by clicking on the ‘trash can’ icon, you can delete a specific order.</p>
+            <p id="48e6e04a-c351-4536-a8a6-5bb5e9010549" class="">
+            </p>
+            <h2 id="514330ec-1ef6-4e12-b283-8d8b207e23f0" class="">Financials</h2>
+            <p id="bda78dec-535a-4e8a-a0c4-c8abb400648c" class="">This section provides you some practical data about
+                how you’ve been doing economically. At the top of the page, you will be presented with some statistical
+                data. You can also download all the data about your orders in an Excel file.</p>
+            <p id="7adbe9a6-9b9c-4ab2-8fdd-6ebf3dd87949" class="">The two next sections will provide you two charts. The
+                first one is the ‘Gamma Distribution’ of your revenue. And the second one is the ‘Linear Regression’ of
+                your revenue.</p>
+            <p id="d4d0ffd0-88e1-4ff7-b8f4-0fa0445f8a83" class="">Finally, there’s a map that shows you the places
+                you’ve had orders from.</p>
+            <p id="b493c7d9-64e4-46f8-aabc-921ae00e577a" class="">
+            </p>
+            <figure id="342c8590-ad41-41dc-8a97-84a7eb989bf5" class="image"><a
+                    href="{% static 'assets/img/doc/Firefox_Screenshot_2023-02-26T16-06-59.539Z.png' %}"><img
+                        style="width:1372px"
+                        src="{% static 'assets/img/doc/Firefox_Screenshot_2023-02-26T16-06-59.539Z.png' %}" /></a>
+            </figure>
+            <p id="e46832e3-4002-4872-b367-f11c2741c0df" class="">
+            </p>
+            <h2 id="2c8b5c32-9f1e-41c7-b657-50c07e592619" class="">Menu</h2>
+            <p id="137870fe-6aba-430e-b83a-8fe0cb7cf361" class="">This section is all about the foods provided by your
+                restaurant. Before we jump into the details about this section, you’ll need to be introduced to some
+                terms.</p>
+            <p id="29b19746-ae97-49ac-a886-a90974ff3796" class="">Cuisine: is the most fundamental categorization for
+                foods. For instance, if your restaurant provides different foods like Steaks, Vegetarian Food, Kebabs,
+                Pizzas, etc. these categorizations are considered to be different cuisines.</p>
+            <p id="4c929a05-6969-43d2-9c43-811a051ca9f6" class="">Items: This categorization is a little more specific
+                and are subsets of cuisines. For instance, Your steaks may include Beef steaks, or your Vegetarian Foods
+                may include Cesar Salad, etc. This categorization is called items here.</p>
+            <p id="abd1eb8b-cb00-4928-812a-a4fbda5e150f" class="">Item Variations: Lastly, the most specific
+                categorization is item variation here. For instance, you may have your beef steak available in two
+                sizes, say medium and large beef steak. This specific categorization is an item variation.</p>
+            <p id="9ac3574d-5129-41b7-86fc-c345dc94e619" class="">Now that you now what each of these words are supposed
+                to mean, we can get back to our guide.</p>
+            <p id="f0f42c29-4799-4fad-bc13-c314803200aa" class="">When you first enter this page, it will look like
+                this:</p>
+            <p id="9ca7c2c5-962f-4a5f-8f4c-6d2fc3362745" class="">
+            </p>
+            <figure id="8cceb7bf-bebc-4d66-bc41-05a741be6a55" class="image"><a
+                    href="{% static 'assets/img/doc/Screenshot_from_2023-02-26_19-41-06.png' %}"><img
+                        style="width:1363px"
+                        src="{% static 'assets/img/doc/Screenshot_from_2023-02-26_19-41-06.png' %}" /></a>
+            </figure>
+            <p id="89cc1236-63eb-4ed5-9bed-84f3e91a3125" class="">
+            </p>
+            <p id="91f5b608-7433-4726-9015-1b1bdcea47ad" class="">The outer most section is the cuisine. The inner
+                section is the item, and within the item you can witness the item variations. </p>
+            <p id="7d231d3e-3ef7-4838-8f9c-57a8d4f35c5c" class="">In order to create a new item, again click on the plus
+                button. It will open a dropdown:</p>
+            <p id="59e27ce7-5c00-47d7-b1db-50e3dbfb0a69" class="">
+            </p>
+            <figure id="34139d66-52db-4097-bb56-75f7e31fb942" class="image"><a
+                    href="{% static 'assets/img/doc/Screenshot_from_2023-02-26_19-41-17.png' %}"><img
+                        style="width:219px"
+                        src="{% static 'assets/img/doc/Screenshot_from_2023-02-26_19-41-17.png' %}" /></a>
+            </figure>
+            <p id="aeff79b4-fd7d-4a12-b05b-c3b29096ff5f" class="">
+            </p>
+            <p id="042d1465-2071-4bc9-9f58-9a7134021fbf" class="">If you choose ‘New Cuisine’, it will bring you this
+                form:</p>
+            <p id="07c305c9-5fbc-447b-8f37-f5e8826210ee" class="">
+            </p>
+            <figure id="22555815-1001-440e-81b0-3f618abc37dc" class="image"><a
+                    href="{% static 'assets/img/doc/Screenshot_from_2023-02-26_19-41-28.png' %}"><img
+                        style="width:765px"
+                        src="{% static 'assets/img/doc/Screenshot_from_2023-02-26_19-41-28.png' %}" /></a>
+            </figure>
+            <p id="cf958265-ea5e-458e-8315-fda0626f3fae" class="">
+            </p>
+            <p id="13752393-49bf-47f7-a5eb-d703947460b3" class="">If you click on ‘New Item’ or ‘New Item Variation’, it
+                will bring you either of these forms accordingly:</p>
+            <p id="f8b413f6-5d19-470f-b3f9-4116bece1ed6" class="">
+            </p>
+            <figure id="4f2efb76-9c00-4742-9fd6-fd7082f760b1" class="image"><a
+                    href="{% static 'assets/img/doc/Screenshot_from_2023-02-26_19-41-41.png' %}"><img
+                        style="width:765px"
+                        src="{% static 'assets/img/doc/Screenshot_from_2023-02-26_19-41-41.png' %}" /></a>
+            </figure>
+            <p id="ccbf2ef7-43d3-4a66-9287-8ea54de6a15b" class="">
+            </p>
+            <figure id="12dd3a55-ce63-4808-8a8e-3721531a12c0" class="image"><a
+                    href="{% static 'assets/img/doc/Screenshot_from_2023-02-26_19-41-50.png' %}"><img
+                        style="width:765px"
+                        src="{% static 'assets/img/doc/Screenshot_from_2023-02-26_19-41-50.png' %}" /></a>
+            </figure>
+            <p id="5bfe937d-c73e-42ac-a1a3-17e845db46f4" class="">
+            </p>
+            <p id="60bace64-c146-45a9-901f-536577e7fed3" class="">Also, by clicking on the ‘pencil’ icon next to each
+                section you can edit it, and by clicking on the ‘trash can’ icon next to each section you can delete it.
+            </p>
+            <p id="f968fc5c-72e5-41ac-8b32-c5b228f1cd32" class="">
+            </p>
+            <h1 id="afefbdf5-736b-404d-b426-ffe5d1ca1cee" class=""><mark class="highlight-gray_background"> Customer
+                </mark></h1>
+            <p id="a6025112-63e2-4168-9437-9448d501d2cb" class="">This about works about the axis of interaction between
+                customers and restaurants. Therefore, even though the reciepe for customers is quite straightforward, we
+                felt that it’s necessary to walk you through a step-by-step guide.</p>
+            <p id="0c3a56b3-a238-4290-a656-0ded19930bcb" class="">
+            </p>
+            <h2 id="4a75f550-ec8c-4992-b73e-6d8b771f9a12" class="">Restaurant</h2>
+            <p id="c8de1178-b22e-40cf-8f8f-da8ced8af521" class="">Before ordering anything, you’d need to find a
+                restaurant, right? To do so, there are two ways.</p>
+            <p id="42c5574a-1d02-4f95-a6a6-f7422b8f2804" class="">First, when you enter the home page, this is usually
+                what you’ll face:</p>
+            <p id="ba32ed63-5d2e-40b1-9692-6f3f14b8da46" class="">
+            </p>
+            <figure id="b05d37e7-5994-498f-a8dc-c08ebdde4eb9" class="image"><a
+                    href="{% static 'assets/img/doc/Screenshot_from_2023-02-26_20-23-10.png' %}"><img
+                        style="width:1174px"
+                        src="{% static 'assets/img/doc/Screenshot_from_2023-02-26_20-23-10.png' %}" /></a>
+            </figure>
+            <p id="35354349-68d7-4ace-a44f-311daf79435c" class="">
+            </p>
+            <h2 id="03efc81a-d11c-4831-a4b5-ab34bbb16faa" class="">Restaurants</h2>
+            <p id="ed47885c-48c8-4c21-be14-94e389963739" class="">Before ordering anything, you’d need to have a look at
+                restaurants to choose a food right? You can do this in two ways. </p>
+            <p id="6b69c6c3-a051-458b-b39d-cad23ae2c18a" class="">
+            </p>
+            <p id="1a7832b6-a767-42ab-826e-d026e40cf291" class="">As you can see, there are two search bars. They are
+                actually identical. If you want to search among restaurants near to a certain place, enter your desired
+                address (in English). After you do so, a dropdown will show up from which you must choose. After you
+                chose your address, you’ll be redirected to a list of restaurants sorted by their distance to the place.
+                This is one way you can do it. You can also simply click on ‘Restaurants’ on the navigation bar.</p>
+            <p id="c019fb30-3907-4f88-8824-83f1b47a08c0" class="">The page containing list of restaurants is composed of
+                two main sections. First, you can see a section that helps you filter your results:</p>
+            <p id="c686a8c9-fb69-4352-9d5f-bab8a69936bb" class="">
+            </p>
+            <figure id="a417576b-26a0-4fcb-98e3-8322495949d3" class="image"><a
+                    href="{% static 'assets/img/doc/Screenshot_from_2023-02-26_20-23-51.png' %}"><img
+                        style="width:309px"
+                        src="{% static 'assets/img/doc/Screenshot_from_2023-02-26_20-23-51.png' %}" /></a>
+            </figure>
+            <p id="f85fda19-78f5-46bc-8cc1-6e9d8465aa28" class="">
+            </p>
+            <p id="7ffd16ea-434a-467b-8b9e-7a85de60b316" class="">Next to this filter menu, you can see the actual list:
+            </p>
+            <p id="26dc0c80-0942-404f-8b2c-d80004cc8260" class="">
+            </p>
+            <figure id="9336f2a8-7475-4769-aede-6afa6d7bc0c4" class="image"><a
+                    href="{% static 'assets/img/doc/Firefox_Screenshot_2023-02-26T16-58-45.081Z.png' %}"><img
+                        style="width:2080px"
+                        src="{% static 'assets/img/doc/Firefox_Screenshot_2023-02-26T16-58-45.081Z.png' %}" /></a>
+            </figure>
+            <p id="9c647304-d7f8-4c71-b496-46bc81529325" class="">
+            </p>
+            <p id="8825e83d-6020-490e-8fd7-4142efff5143" class="">Choose your desired restaurant by clicking on it, and
+                you’ll be redirected to its page.</p>
+            <p id="8bbbc0bd-7b7d-4736-acba-8ed001da210b" class="">
+            </p>
+            <figure id="281b8eb8-eaf7-4f7b-980b-f8c5f44671b3" class="image"><a
+                    href="{% static 'assets/img/doc/Screenshot_from_2023-02-26_21-08-12.png' %}"><img
+                        style="width:1357px"
+                        src="{% static 'assets/img/doc/Screenshot_from_2023-02-26_21-08-12.png' %}" /></a>
+            </figure>
+            <p id="35721faa-97c0-4d31-8932-8adb3ab1cc9b" class="">
+            </p>
+            <p id="c70555ec-472a-4d44-bb7f-04955bed1f64" class="">Here, for items tab, you can see the menu of this
+                restaurant. It’s categorized by it’s cuisines:</p>
+            <p id="73802e2c-e1da-4a4d-8787-3841777da6e5" class="">
+            </p>
+            <figure id="240c27e7-332b-4ef7-9491-72300d83fbe1" class="image"><a
+                    href="{% static 'assets/img/doc/Screenshot_from_2023-02-26_21-08-29.png' %}"><img
+                        style="width:1357px"
+                        src="{% static 'assets/img/doc/Screenshot_from_2023-02-26_21-08-29.png' %}" /></a>
+            </figure>
+            <p id="679a358b-1887-44e0-9168-d2a87fd77934" class="">
+            </p>
+            <p id="30bd264b-15bf-47cd-8e8e-883989d04cf5" class="">
+            </p>
+            <p id="1020aba4-c235-4028-936f-5f9e73259352" class="">These are the foods. Click on one you want and a menu
+                like this will show up:</p>
+            <p id="a05a0e09-c56a-4a63-a508-22326f144655" class="">
+            </p>
+            <figure id="fd5e984a-564b-4a8e-be81-4d10f75f3829" class="image"><a
+                    href="{% static 'assets/img/doc/Screenshot_from_2023-02-26_21-08-46.png' %}"><img
+                        style="width:520px"
+                        src="{% static 'assets/img/doc/Screenshot_from_2023-02-26_21-08-46.png' %}" /></a>
+            </figure>
+            <p id="f1a2cde7-069a-4072-8aaf-5855b7bc8fbb" class="">
+            </p>
+            <p id="f8b7bf13-5ae9-44cd-abae-ecfebdc9bdff" class="">Where a list of item variations will be listed. Choose
+                one you desire, then click on the ‘plus’ button. If there isn’t any problem, you will see this response:
+            </p>
+            <p id="cb172b4f-dc02-4213-8e75-0eef587d5a81" class="">
+            </p>
+            <figure id="020f6c63-d652-4f97-8b73-c927f8760ed8" class="image"><a
+                    href="{% static 'assets/img/doc/Screenshot_from_2023-02-26_21-09-55.png' %}"><img
+                        style="width:520px"
+                        src="{% static 'assets/img/doc/Screenshot_from_2023-02-26_21-09-55.png' %}" /></a>
+            </figure>
+            <p id="64265b61-871a-46d8-bb54-f466aee2540c" class="">
+            </p>
+            <p id="206dac82-0539-46ae-b1f9-be5a5839ce4e" class="">If anything goes wrong, you’ll be presented with the
+                error.</p>
+            <p id="856a59f9-6aad-457e-978a-a5f309ee49c4" class="">When it’s successfully added, you’ll see a new item
+                added to your cart:</p>
+            <p id="d854eaff-d36e-4976-8040-9ea499e01384" class="">
+            </p>
+            <figure id="35b64c1f-d3bb-45b1-82f6-1ddd089f50ba" class="image"><a
+                    href="{% static 'assets/img/doc/Screenshot_from_2023-02-26_21-10-43.png' %}"><img
+                        style="width:67px"
+                        src="{% static 'assets/img/doc/Screenshot_from_2023-02-26_21-10-43.png' %}" /></a>
+            </figure>
+            <p id="f585767e-b92d-45f1-a013-762f642e9969" class="">Click on the cart icon, an you’ll be taken to your
+                cart page:</p>
+            <p id="4bb0aeca-d5aa-48af-88be-3197c33f79ff" class="">
+            </p>
+            <figure id="562055d6-9237-4a46-8ce2-579d8ef67fec" class="image"><a
+                    href="{% static 'assets/img/doc/Screenshot_from_2023-02-26_21-14-00.png' %}"><img
+                        style="width:1366px"
+                        src="{% static 'assets/img/doc/Screenshot_from_2023-02-26_21-14-00.png' %}" /></a>
+            </figure>
+            <p id="3530cb95-b382-4d16-b740-4543b9d173ba" class="">
+            </p>
+            <p id="8bd4505f-d203-4cd8-89e9-84113e2cef8a" class="">Change the counts if you want to. On the right side,
+                you can see several sections. If you have a promo code, enter it and click on submit. If everyting goes
+                right, you’ll see this message:</p>
+            <p id="4c588101-8012-410f-b5a2-f0874ede225c" class="">
+            </p>
+            <figure id="4efcd345-517b-42b6-9daf-5c9b04e9e5f9" class="image"><a
+                    href="{% static 'assets/img/doc/Screenshot_from_2023-02-26_21-17-22.png' %}"><img
+                        style="width:426px"
+                        src="{% static 'assets/img/doc/Screenshot_from_2023-02-26_21-17-22.png' %}" /></a>
+            </figure>
+            <p id="728b399a-e91f-4016-a29f-f67b890a9949" class="">
+            </p>
+            <p id="6484813b-9056-437f-a060-c9214273c01f" class="">And on that same place, a new section will be added:
+            </p>
+            <p id="669570e1-f62c-4717-916c-23a93ceb3676" class="">
+            </p>
+            <figure id="7b634b4f-b856-4487-bd67-7970e791c376" class="image"><a
+                    href="{% static 'assets/img/doc/Screenshot_from_2023-02-26_21-17-49.png' %}"><img
+                        style="width:398px"
+                        src="{% static 'assets/img/doc/Screenshot_from_2023-02-26_21-17-49.png' %}" /></a>
+            </figure>
+            <p id="fd4f1147-a170-48c8-b86e-8d1bd1c8321f" class="">
+            </p>
+            <p id="050a131a-ff46-47f7-a778-2c86eeb501d0" class="">In order to complete your ordering, you must choose
+                your shipping address as well:</p>
+            <p id="8b955636-94f7-4890-a2a3-fbc083c16b9d" class="">
+            </p>
+            <figure id="eee74eae-b8f0-4526-9b2c-1038bee7f130" class="image"><a
+                    href="{% static 'assets/img/doc/Screenshot_from_2023-02-26_21-18-09.png' %}"><img
+                        style="width:398px"
+                        src="{% static 'assets/img/doc/Screenshot_from_2023-02-26_21-18-09.png' %}" /></a>
+            </figure>
+            <p id="63e20fd9-e92b-4fae-9717-2d7dfe1dac40" class="">
+            </p>
+            <p id="ece3c1b2-94b3-4cae-a028-d40b2fbab9c8" class="">After you considered everything mentioned you can
+                click on purchase. You’ll be taken to the bank gateway where you’ll purchase the cart. </p>
+            <p id="e2f51019-ddd4-4de7-bb8a-f4eb2428895b" class="">
+            </p>
+            <figure id="195b792c-bec2-45a7-a3ba-072deb6b41e9" class="image"><a
+                    href="{% static 'assets/img/doc/Screenshot_from_2023-02-26_21-18-37.png' %}"><img
+                        style="width:398px"
+                        src="{% static 'assets/img/doc/Screenshot_from_2023-02-26_21-18-37.png' %}" /></a>
+            </figure>
+            <p id="8fdb482d-6d97-4544-a335-39fd2650aa5b" class="">
+            </p>
+            <p id="5c276d72-e7d3-43e9-87d5-b58b73b59ea4" class="">Based on the result, you’ll be redirected to
+                ‘Successful Payment’ page or ‘Payment Failed’ page:</p>
+            <p id="6b57f216-8809-4316-8b27-eb192ed4b1c3" class="">
+            </p>
+            <figure id="e642176f-44ac-42c5-85f2-4ef23cc6744e" class="image"><a
+                    href="{% static 'assets/img/doc/Screenshot_from_2023-02-26_21-19-08.png' %}"><img
+                        style="width:1363px"
+                        src="{% static 'assets/img/doc/Screenshot_from_2023-02-26_21-19-08.png' %}" /></a>
+            </figure>
+            <p id="0bef6128-1490-48a1-baca-0f36f9d00f26" class="">
+            </p>
+            <figure id="f15e48f6-2ee5-4358-ae46-cf8002f6b6b9" class="image"><a
+                    href="{% static 'assets/img/doc/Screenshot_from_2023-02-26_21-22-35.png' %}"><img
+                        style="width:1363px"
+                        src="{% static 'assets/img/doc/Screenshot_from_2023-02-26_21-22-35.png' %}" /></a>
+            </figure>
+            <p id="291d2166-e906-4434-935e-7a45d9ce899f" class="">
+            </p>
+            <p id="a818b644-c6d2-4c87-b859-44d34fee3a38" class="">You can have a look at your orders history in ‘Orders’
+                section. Make sure you’re logged in, in the navigation bar, move your cursor or click on
+                ‘Authentication’ and click on ‘Orders’. This is what you’ll see:</p>
+            <p id="12300389-4ba7-44fd-862e-e6c6f4b019a0" class="">
+            </p>
+            <figure id="55a23dad-a6f6-461d-a628-78d0b0741781" class="image"><a
+                    href="{% static 'assets/img/doc/Screenshot_from_2023-02-26_21-23-13.png' %}"><img
+                        style="width:1366px"
+                        src="{% static 'assets/img/doc/Screenshot_from_2023-02-26_21-23-13.png' %}" /></a>
+            </figure>
+            <p id="eecae28d-f4bb-4f95-964c-69700ad29120" class="">
+            </p>
+        </div>
+    </article>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.js'
+        integrity='sha512-nO7wgHUoWPYGCNriyGzcFwPSF+bPDOR+NvtOYy2wMcWkrnCNPKBcFEkU80XIN14UVja0Gdnff9EmydyLlOL7mQ=='
+        crossorigin='anonymous'></script>
+</body>
+
+</html>

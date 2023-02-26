@@ -228,7 +228,23 @@ md = {
         }),
         axisY: {
           labelInterpolationFnc: function (value) {
-            return `${value}k`;
+            var num_len = value.toString().length - 1;
+            var pow_10 = parseInt(num_len / 3);
+            val = parseInt(value / (10 ** (3*pow_10))).toString();
+            switch (pow_10) {
+              case 0:
+                return val
+              case 1:
+                return val+"k"
+              case 2:
+                return val+"m"
+              case 3:
+                return val+"b"
+              case 4:
+                return val+"kb"
+              default:
+                return val
+            };
           }
         },
         low: dataCompletedTasksLow ? parseInt(dataCompletedTasksLow) : 0,
@@ -237,7 +253,7 @@ md = {
           top: 0,
           right: 0,
           bottom: 0,
-          left: 0
+          left: 3
         }
       }
 
@@ -247,7 +263,7 @@ md = {
       md.startAnimationForLineChart(revenueChart);
 
 
-      /* ----------==========     Emails Subscription Chart initialization    ==========---------- */
+      /* ----------==========     Score Chart Initialization    ==========---------- */
       $averageScore = $("#averageScoreChart");
       scoreLabels = $averageScore.attr("chart-labels");
       scoreValues = $averageScore.attr("chart-values");

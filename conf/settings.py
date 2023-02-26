@@ -56,12 +56,14 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.github',
     'azbankgateways',
     'channels',
     'channels_redis',
     'crispy_forms',
     'debug_toolbar',
-    'django_elasticsearch_dsl',
+    # 'django_elasticsearch_dsl',
     'django_extensions',
     'django_filters',
     'dj_rest_auth',
@@ -208,7 +210,7 @@ AUTHENTICATION_BACKENDS = [
 AUTH_USER_MODEL = 'users.UserModel'
 
 ADMINS = (
-    ('Saman', 'tnsperuse@gmail.com')
+    ('Saman', 'samanzand84@gmail.com'),
 )
 
 
@@ -278,7 +280,15 @@ LOGGING = {
     }
 }
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# email config
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = env.str('EMAIL_HOST', 'smtp-relay.sendinblue.com')
+EMAIL_PORT = env.int('EMAIL_PORT', 587)
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = env.str('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = env.str('EMAIL_HOST_PASSWORD')
+
 
 # allauth configurations
 ACCOUNT_USER_MODEL_USERNAME_FIELD = 'username'
@@ -288,6 +298,14 @@ ACCOUNT_ADAPTER = 'users.adapters.AccountAdapter'
 ACCOUNT_FORMS = {
     'signup': 'users.forms.SignupForm',
     'login': 'users.forms.LoginForm',
+}
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': ['profile', 'email'],
+        'AUTH_PARAMS': {
+            'access_type': 'online'
+        }
+    }
 }
 
 # seleniumlogin conf
@@ -369,9 +387,10 @@ AZ_IRANIAN_BANK_GATEWAYS = {
 
 # webpush settings
 WEBPUSH_SETTINGS = {
-    'VAPID_PUBLIC_KEY': 'BIHR8fVG1h2R9EQ5uXqbclNBXGPTKMVYLRnI8LRbiEfLtHlt2z1qb9JQIGEoiun_ePgfM8ZyBgPs_ay7mzd5Qpo',
-    'VAPID_PRIVATE_KEY': 'tCVSwR-YUViy2xwdl4BXgwwO_hMUS5m9qGSn_xAVt5w',
-    'VAPID_ADMIN_EMAIL': 'tnsperuse@gmail.com'
+    'VAPID_PUBLIC_KEY': env.str('VAPID_PUBLIC_KEY'),
+    'VAPID_PRIVATE_KEY': env.str('VAPID_PRIVATE_KEY'),
+    'VAPID_ADMIN_EMAIL': env.str('VAPID_ADMIN_EMAIL', 
+                                 'tnsperuse@gmail.com')
 }
 
 

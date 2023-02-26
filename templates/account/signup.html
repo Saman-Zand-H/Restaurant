@@ -18,7 +18,7 @@
         <div class="container my-auto">
             <div class="row">
                 <div class="col-lg-4 col-md-8 col-12 mx-auto">
-                    <div class="card z-index-0 fadeIn3 fadeInBottom">
+                    <div class="card z-index-0 fadeIn3 fadeInBottom mt-6">
                         <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                             <div class="bg-gradient-primary shadow-primary border-radius-lg py-3 pe-1">
                                 <center>
@@ -55,11 +55,11 @@
                                     </div>
                                 </div>
                                 {{ form.picture|as_crispy_field }}
-                                <button type="submit" class="btn btn-primary mt-2">
+                                <button type="submit" class="btn btn-primary mt-3">
                                     Sign up
                                 </button>
                                 <hr>
-                                <center style="margin: -1rem 0">
+                                <center class="mb-2" style="margin: -1rem 0">
                                     <a href="{% url 'account_login' %}">Already have an account?</a>
                                 </center>
                             </form>
@@ -72,7 +72,7 @@
         {% include "base/includes/footer_transparent.html" %}
 
         <script>
-            $("input").addClass('bg-gray-300');
+            $("input").addClass('bg-gray-300 px-2');
         </script>
     </div>
 </body>

@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect
 from django.contrib.auth import get_user_model
 from django.db.models import F
 from django.db import transaction
@@ -6,6 +6,7 @@ from django.http.response import (JsonResponse,
                                   HttpResponseBadRequest)
 from django.template.loader import get_template
 from django.views import View
+from django.views.generic import TemplateView
 from django.contrib import messages
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
@@ -169,8 +170,6 @@ class RestaurantPageView(View):
 restaurant_page_view = RestaurantPageView.as_view()
 
 
-
-# todo: this has to become csrf exempt.
 class NewPartnerAjax(SignupView):
     form_template_name = "restaurants/new_partner_form.html"
     
@@ -243,3 +242,10 @@ class NewPartnerView(View):
 
 
 new_partner_view = NewPartnerView.as_view()
+
+
+class KnowledgeBaseView(TemplateView):
+    template_name = "restaurants/knowledge_center.html"
+
+
+knowledge_base_view = KnowledgeBaseView.as_view()

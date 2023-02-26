@@ -1,4 +1,4 @@
-{% load crispy_forms_tags %}
+{% load crispy_forms_tags dash_tags %}
 
     <!-- edit orders -->
     {% for order in orders %}
@@ -147,7 +147,7 @@
     {% endfor %}
 
     <!-- delete orders -->
-    {% if user|check_perm:"in_place.delete_orders" %in_place.delete_orders}
+    {% if user|check_perm:"in_place.delete_orders" %}
         {% for order in orders %}
             <div 
                  class="modal fade" 

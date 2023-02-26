@@ -6,14 +6,20 @@ from django.db.models import F
 from itertools import groupby, chain
 from operator import is_not, attrgetter
 import numpy as np
-import xlwt
 from scipy import stats
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import r2_score, mean_squared_error
-from math import ceil
+from math import ceil, floor
 
 from restaurants.models import Restaurant
 from delivery.models import DeliveryCartItem, DeliveryCart
+
+
+class ChartData(NamedTuple):
+        labels: str
+        values: str
+        high: int
+        low: int = 0
 
 
 def weekly_sale_chart_data(weekly_sale: List[int]):
@@ -28,23 +34,26 @@ def weekly_sale_chart_data(weekly_sale: List[int]):
             , the higher bound and the lower bound.
     """
 
-    class ChartData(NamedTuple):
-        labels: str
-        values: str
-        high: int
-        low: int = 0
-
     labels = reversed(
         [
-            JalaliDate(datetime.now() - timedelta(days=i)).ctime().split(" ")[0][0]
+            (
+                JalaliDate(
+                    datetime.now() - timedelta(days=i))
+                .ctime()
+                .split(" ")[0][0]
+            )
             for i in range(7)
         ]
     )
     values = weekly_sale
+    low = floor(min(values))
     # To keep a little space at the top of the chart
     high = ceil(max(values) + 5)
     values = [str(i) for i in weekly_sale]
-    return ChartData("-".join(labels), "-".join(values), high=high)
+    return ChartData("-".join(labels), 
+                     "-".join(values), 
+                     high=high, 
+                     low=low)
 
 
 def weekly_score_chart_data(weekly_score: List[int]):
@@ -58,15 +67,14 @@ def weekly_score_chart_data(weekly_score: List[int]):
             , the higher bound and the lower bound.
     """
 
-    class ChartData(NamedTuple):
-        labels: str
-        values: str
-        high: int
-        low: int = 1
-
     labels = reversed(
         [
-            JalaliDate(datetime.now() - timedelta(days=i)).ctime().split(" ")[0][0]
+            (
+                JalaliDate(
+                    datetime.now() - timedelta(days=i))
+                .ctime()
+                .split(" ")[0][0]
+            )
             for i in range(7)
         ]
     )
@@ -74,7 +82,9 @@ def weekly_score_chart_data(weekly_score: List[int]):
     # To keep a little space at the top of the chart
     high = 6
     values = [str(i) for i in weekly_score]
-    return ChartData("-".join(labels), "-".join(values), high=high)
+    return ChartData("-".join(labels), 
+                     "-".join(values), 
+                     high=high)
 
 
 def weekly_revenue_chart_data(weekly_revenue: List[int]):
@@ -89,23 +99,27 @@ def weekly_revenue_chart_data(weekly_revenue: List[int]):
             , the higher bound and the lower bound.
     """
 
-    class ChartData(NamedTuple):
-        labels: str
-        values: str
-        high: int
-        low: int = 0
-
     labels = reversed(
         [
-            JalaliDate(datetime.now() - timedelta(days=i)).ctime().split(" ")[0][0]
+            (
+                JalaliDate(
+                    datetime.now() - timedelta(days=i))
+                .ctime()
+                .split(" ")[0][0]
+            )
             for i in range(7)
         ]
     )
     values = weekly_revenue
+    low = floor(min(values))
     # To keep a little space at the top of the chart
     high = ceil(max(values) + 5)
     values = [f"{i}" for i in weekly_revenue]
-    return ChartData("-".join(labels), "-".join(values), high=high)
+    
+    return ChartData("-".join(labels), 
+                     "-".join(values), 
+                     high=high, 
+                     low=low)
 
 
 def get_restaurant_sales(restaurant_id: int):

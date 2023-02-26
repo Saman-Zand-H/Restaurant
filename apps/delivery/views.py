@@ -48,7 +48,10 @@ class AddToCartView(View, LoginRequiredMixin):
             item_var = ItemVariation.objects.filter(
                 public_uuid=form_data.cleaned_data.get("public_uuid"))
             
-            if item_var.exists():
+            if (
+                item_var.exists() 
+                and (location:=item_var.first().item.cuisine.restaurant.location) is not None
+            ):
                 _, created = DeliveryCartItem.objects.get_or_create(
                     cart=cart,
                     item=item_var.first(),
@@ -64,11 +67,18 @@ class AddToCartView(View, LoginRequiredMixin):
                     "message": message,
                     "message_tag": "success" if created else "info",
                 })
-                
+            
+            elif location is None:
+                messages.error(
+                    self.request, 
+                    "This restaurant doesn't currently support delivery orders."
+                )
+            
             else:
                 messages.warning(self.request, 
                                  "No valid item was retrieved by us.")
-                return HttpResponseBadRequest()
+            
+            return HttpResponseBadRequest()
                 
                 
 add_to_cart_view = AddToCartView.as_view()

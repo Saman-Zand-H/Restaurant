@@ -111,7 +111,7 @@
                                 {% endfor %}
                             </div>
                             <div class="my-4">
-                                {{ order_form.description }}
+                                {{ order_form.description|as_crispy_field }}
                             </div>
                             <div id="new_dinein_info">
                                 <hr>
@@ -464,7 +464,7 @@
                     </div>
                     <p class="card-category">Monthly Revenue</p>
                     <h3 class="card-title">
-                        {{ restaurant.weekly_revenue_sum|default:'0'|trunc_number }}T</h3>
+                        {{ restaurant.monthly_revenue|default:'0'|trunc_number }}T</h3>
                 </div>
                 <div class="card-footer">
                     <div class="stats">

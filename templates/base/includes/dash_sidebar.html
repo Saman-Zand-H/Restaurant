@@ -49,7 +49,7 @@
                     <p>Delivery Service</p>
                 </a>
             </li> -->
-            <li class="nav-item">
+            <li class="nav-item {% if 'orders' in request.path %}active{% endif %}">
                 <a class="nav-link" href="{% url 'in_place:orders' %}">
                     <i class="material-icons">grading</i>
                     <p>Orders</p>

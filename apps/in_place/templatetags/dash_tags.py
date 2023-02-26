@@ -20,12 +20,24 @@ def trunc_number(val:str|int):
     assert isinstance(val, int) or (isinstance(val, str) and val.isdigit())
     if isinstance(val, str):
         val = int(val)
-    if val // 1000 == 0:
-        return val
-    elif val // 1000 < 1000:
-        return f"{val//1000}k"
-    else:
-        return f"{val//10**5/10}m"
+    
+    len_number = len(str(val)) - 1
+    pow_10 = len_number // 3
+        
+    prefix = ""
+    match pow_10:
+        case 0:
+            pass
+        case 1:
+            prefix = "k"
+        case 2:
+            prefix = "m"
+        case 3:
+            prefix = "b"
+        case 4:
+            prefix = "kb"
+    
+    return f"{val//pow(10, 3*pow_10)}{prefix.upper()}"
     
 
 @register.filter

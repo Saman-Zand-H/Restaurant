@@ -191,7 +191,7 @@
                                               >
                                         <input 
                                                type="text" 
-                                               class="form-control"
+                                               class="form-control change-staff"
                                                value="{{ member.date_created.isoformat }}"
                                                id="change_staff_datetime_{{ member.user.username }}"
                                                onclick="generateDatepicker('{{ member.user.username }}')"
@@ -449,5 +449,6 @@
                 }
             })
         };
+        $(".change-staff").click();
     </script>
 {% endblock %}
