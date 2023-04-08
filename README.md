@@ -2,9 +2,19 @@
 
 A django app that serves restaurants. Something like GrubHub and SnappFood.
 
+### Environment
+
+![](static/assets/img/doc/Screenshot_from_2023-02-26_20-23-10.png?raw=true)
+
 ![](static/assets/img/doc/Firefox_Screenshot_2023-02-26T16-06-59.539Z.png?raw=true)
 
 ![](static/assets/img/doc/Firefox_Screenshot_2023-02-26T16-58-45.081Z.png?raw=true)
+
+![](static/assets/img/doc/Screenshot_from_2023-02-25_01-19-05.png?raw=true)
+
+![](static/assets/img/doc/Screenshot_from_2023-02-26_21-14-00.png?raw=true)
+
+---
 
 This app uses the following technologies:
 + Written in Python
