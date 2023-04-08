@@ -40,4 +40,6 @@ I also am working on a technical documentation.
 - [ ] Define status_types for orders, so that they're either 'Pending', 'Canceled', 'Ready', or 'Delivered'.
 - [ ] Handle Discounts and offs.
 - [x] Adding Salary and Payslips and Payments for employees (in development)
-- [ ] adding a celery-beats job for making payslips on the first they of each month for all the employees.
+- [ ] Adding a celery-beats job for making payslips on the first they of each month for all the employees.
+- [ ] Reformat the code.
+- [ ] Change the name of the app 'in_place' to 'dine_in'
