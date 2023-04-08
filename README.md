@@ -1,6 +1,9 @@
 # Restaurant
 
 A django app that serves restaurants. Something like GrubHub and SnappFood.
+
+![](static/assets/img/doc/Firefox_Screenshot_2023-02-26T16-06-59.539Z.png?raw=true)
+
 This app uses the following technologies:
 + Written in Python
 + Django
@@ -31,7 +34,7 @@ This app uses the following technologies:
 Currently, because of some issues there's no possibility for deployment because of my uni-enterance exam,
   but soon enough i will deploy it on a server. I apologize for that.
 Also, this app is under constant update and maintainance so every once in a while you may see new features in it.
-You can have a look at the app. I have provided images of it and they're accessible in 'static/assets/img/examples'.
+You can have a look at the app. I have provided images of it and they're accessible in 'static/assets/img/doc'.
 I also am working on a technical documentation.
 
 ---
