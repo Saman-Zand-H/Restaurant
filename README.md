@@ -25,6 +25,8 @@ This app uses the following technologies:
 + Elasticsearch
 + Docker
 + PostgreSQL
++ Nginx
++ Git
 
 Currently, because of some issues there's no possibility for deployment because of my uni-enterance exam,
   but soon enough i will deploy it on a server. I apologize for that.
