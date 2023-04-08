@@ -30,8 +30,10 @@ Currently, because of some issues there's no possibility for deployment because 
   but soon enough i will deploy it on a server. I apologize for that.
 Also, this app is under constant update and maintainance so every once in a while you may see new features in it.
 You can have a look at the app. I have provided images of it and they're accessible in 'static/assets/img/examples'.
+I also am working on a technical documentation.
 
-TODO:
+---
+### TODO:
 - [ ] Add the feature for admins to manage their resources and ingrediants. Also, define a new type of user 'supplier' for that.
 - [ ] Handle dine-in orders so that waiters can submit orders in real-time (the real time is handled).
 - [ ] Handle Drivers and Carriers.
