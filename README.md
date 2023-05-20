@@ -43,8 +43,7 @@ This app uses the following technologies:
 + Nginx
 + Git
 
-Currently, because of some issues there's no possibility for deployment because of my uni-enterance exam,
-  but soon enough i will deploy it on a server. I apologize for that.
+Currently due to my uni-enterance exams I can't deploy the app, but it will be deployed to production in 2 months.
 Also, this app is under constant update and maintainance so every once in a while you may see new features in it.
 You can have a look at the app. I have provided images of it and they're accessible in 'static/assets/img/doc'.
 I also am working on a technical documentation.
